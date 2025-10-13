@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package metaApp;
+
+import "sdk_initialization.proto";
+import "key_loading.proto";
+
+service PinPad {
+    rpc getDeviceInfo(GetDeviceInfoRequest) returns (GetDeviceInfoResponse);
+    rpc initSDK(InitSDKRequest) returns (InitSDKResponse);
+    rpc checkLoadedKey(CheckLoadedKeyRequest) returns (CheckLoadedKeyResponse);
+}

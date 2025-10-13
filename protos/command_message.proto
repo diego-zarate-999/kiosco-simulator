@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package metaApp;
+
+import "error.proto";
+import "sdk_initialization.proto";
+import "key_loading.proto";
+
+message CommandMessage {
+    oneof type {
+        GetDeviceInfoRequest getDeviceInfoRequest = 1;
+        InitSDKRequest initSDKRequest = 2;
+        CheckLoadedKeyRequest checkLoadedKeyRequest = 3;
+        LoadKeyRequest loadKeyRequest = 4;
+    }
+}
+
+message CommandResponse {
+    oneof type {
+        GetDeviceInfoResponse getDeviceInfoResponse = 1;
+        InitSDKResponse initSDKResponse = 2;
+        CheckLoadedKeyResponse checkLoadedKeyResponse = 3;
+        LoadKeyResponse loadKeyResponse = 4;
+        ErrorResponse error = 5;
+    }
+}

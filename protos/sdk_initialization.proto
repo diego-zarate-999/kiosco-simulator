@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package metaApp;
+
+message GetDeviceInfoRequest { }
+
+message GetDeviceInfoResponse {
+    string serialNumber = 1;
+    string brand = 2;
+}
+
+message InitSDKRequest {
+    string token = 1;
+}
+
+message InitSDKResponse {
+    string message = 1;
+}

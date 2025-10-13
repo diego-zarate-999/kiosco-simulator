@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package metaApp;
+
+enum KeyType {
+    DES = 0;
+    AES = 1;
+}
+
+enum CipherMode  {
+    ECB = 0;
+    CBC = 1;
+}
+
+message AlgorithmParameters {
+    CipherMode cipherMode = 1;
+    repeated int32 iv = 2;
+}
+
+message SymmetricKey {
+    int32 index = 1;
+    KeyType keyType = 2;
+    repeated int32 data = 3;
+    repeated int32 kcv = 4;
+}
+
+message DUKPTKey {
+    KeyType keyType = 1;
+    int32 keyIndex = 2;
+    repeated int32 data = 3;
+    repeated int32 ksn = 4;
+    optional int32 derivateKeyLen = 5;
+    repeated int32 kcv = 6;
+}
+
+
+///
+/// Request y response para ver si hay una llave cargada.
+///
+message CheckLoadedKeyRequest {
+    DUKPTKey dukptKey = 1;
+}
+
+message CheckLoadedKeyResponse {
+    bool keyIsLoaded = 1;
+}
+
+///
+/// Request y response para cargar una llave
+///
+message LoadKeyRequest {
+    DUKPTKey key = 1;
+    optional SymmetricKey kek = 2;
+    optional AlgorithmParameters algorithmParameters = 3;
+}
+
+message LoadKeyResponse {
+    bool keyWasLoaded = 1;
+}

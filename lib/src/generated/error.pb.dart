@@ -1,0 +1,527 @@
+// This is a generated file - do not edit.
+//
+// Generated from error.proto.
+
+// @dart = 3.3
+
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: curly_braces_in_flow_control_structures
+// ignore_for_file: deprecated_member_use_from_same_package, library_prefixes
+// ignore_for_file: non_constant_identifier_names
+
+import 'dart:core' as $core;
+
+import 'package:protobuf/protobuf.dart' as $pb;
+
+export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
+
+enum ErrorResponse_Type {
+  errorPinpadConnection,
+  errorSdkInitialize,
+  errorInvalidCommand,
+  errorCheckLoadedKey,
+  errorLoadKey,
+  errorTransacion,
+  notSet
+}
+
+class ErrorResponse extends $pb.GeneratedMessage {
+  factory ErrorResponse({
+    ErrorPinPadConnection? errorPinpadConnection,
+    ErrorSdkIntialize? errorSdkInitialize,
+    ErrorInvalidCommand? errorInvalidCommand,
+    ErrorCheckLoadedKey? errorCheckLoadedKey,
+    ErrorLoadKey? errorLoadKey,
+    ErrorTransaction? errorTransacion,
+  }) {
+    final result = create();
+    if (errorPinpadConnection != null)
+      result.errorPinpadConnection = errorPinpadConnection;
+    if (errorSdkInitialize != null)
+      result.errorSdkInitialize = errorSdkInitialize;
+    if (errorInvalidCommand != null)
+      result.errorInvalidCommand = errorInvalidCommand;
+    if (errorCheckLoadedKey != null)
+      result.errorCheckLoadedKey = errorCheckLoadedKey;
+    if (errorLoadKey != null) result.errorLoadKey = errorLoadKey;
+    if (errorTransacion != null) result.errorTransacion = errorTransacion;
+    return result;
+  }
+
+  ErrorResponse._();
+
+  factory ErrorResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ErrorResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static const $core.Map<$core.int, ErrorResponse_Type>
+      _ErrorResponse_TypeByTag = {
+    1: ErrorResponse_Type.errorPinpadConnection,
+    2: ErrorResponse_Type.errorSdkInitialize,
+    3: ErrorResponse_Type.errorInvalidCommand,
+    4: ErrorResponse_Type.errorCheckLoadedKey,
+    5: ErrorResponse_Type.errorLoadKey,
+    6: ErrorResponse_Type.errorTransacion,
+    0: ErrorResponse_Type.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ErrorResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..oo(0, [1, 2, 3, 4, 5, 6])
+    ..aOM<ErrorPinPadConnection>(
+        1, _omitFieldNames ? '' : 'errorPinpadConnection',
+        protoName: 'errorPinpadConnection',
+        subBuilder: ErrorPinPadConnection.create)
+    ..aOM<ErrorSdkIntialize>(2, _omitFieldNames ? '' : 'errorSdkInitialize',
+        protoName: 'errorSdkInitialize', subBuilder: ErrorSdkIntialize.create)
+    ..aOM<ErrorInvalidCommand>(3, _omitFieldNames ? '' : 'errorInvalidCommand',
+        protoName: 'errorInvalidCommand',
+        subBuilder: ErrorInvalidCommand.create)
+    ..aOM<ErrorCheckLoadedKey>(4, _omitFieldNames ? '' : 'errorCheckLoadedKey',
+        protoName: 'errorCheckLoadedKey',
+        subBuilder: ErrorCheckLoadedKey.create)
+    ..aOM<ErrorLoadKey>(5, _omitFieldNames ? '' : 'errorLoadKey',
+        protoName: 'errorLoadKey', subBuilder: ErrorLoadKey.create)
+    ..aOM<ErrorTransaction>(6, _omitFieldNames ? '' : 'errorTransacion',
+        protoName: 'errorTransacion', subBuilder: ErrorTransaction.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorResponse clone() => ErrorResponse()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorResponse copyWith(void Function(ErrorResponse) updates) =>
+      super.copyWith((message) => updates(message as ErrorResponse))
+          as ErrorResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ErrorResponse create() => ErrorResponse._();
+  @$core.override
+  ErrorResponse createEmptyInstance() => create();
+  static $pb.PbList<ErrorResponse> createRepeated() =>
+      $pb.PbList<ErrorResponse>();
+  @$core.pragma('dart2js:noInline')
+  static ErrorResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ErrorResponse>(create);
+  static ErrorResponse? _defaultInstance;
+
+  ErrorResponse_Type whichType() => _ErrorResponse_TypeByTag[$_whichOneof(0)]!;
+  void clearType() => $_clearField($_whichOneof(0));
+
+  @$pb.TagNumber(1)
+  ErrorPinPadConnection get errorPinpadConnection => $_getN(0);
+  @$pb.TagNumber(1)
+  set errorPinpadConnection(ErrorPinPadConnection value) =>
+      $_setField(1, value);
+  @$pb.TagNumber(1)
+  $core.bool hasErrorPinpadConnection() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearErrorPinpadConnection() => $_clearField(1);
+  @$pb.TagNumber(1)
+  ErrorPinPadConnection ensureErrorPinpadConnection() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  ErrorSdkIntialize get errorSdkInitialize => $_getN(1);
+  @$pb.TagNumber(2)
+  set errorSdkInitialize(ErrorSdkIntialize value) => $_setField(2, value);
+  @$pb.TagNumber(2)
+  $core.bool hasErrorSdkInitialize() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearErrorSdkInitialize() => $_clearField(2);
+  @$pb.TagNumber(2)
+  ErrorSdkIntialize ensureErrorSdkInitialize() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  ErrorInvalidCommand get errorInvalidCommand => $_getN(2);
+  @$pb.TagNumber(3)
+  set errorInvalidCommand(ErrorInvalidCommand value) => $_setField(3, value);
+  @$pb.TagNumber(3)
+  $core.bool hasErrorInvalidCommand() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearErrorInvalidCommand() => $_clearField(3);
+  @$pb.TagNumber(3)
+  ErrorInvalidCommand ensureErrorInvalidCommand() => $_ensure(2);
+
+  @$pb.TagNumber(4)
+  ErrorCheckLoadedKey get errorCheckLoadedKey => $_getN(3);
+  @$pb.TagNumber(4)
+  set errorCheckLoadedKey(ErrorCheckLoadedKey value) => $_setField(4, value);
+  @$pb.TagNumber(4)
+  $core.bool hasErrorCheckLoadedKey() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearErrorCheckLoadedKey() => $_clearField(4);
+  @$pb.TagNumber(4)
+  ErrorCheckLoadedKey ensureErrorCheckLoadedKey() => $_ensure(3);
+
+  @$pb.TagNumber(5)
+  ErrorLoadKey get errorLoadKey => $_getN(4);
+  @$pb.TagNumber(5)
+  set errorLoadKey(ErrorLoadKey value) => $_setField(5, value);
+  @$pb.TagNumber(5)
+  $core.bool hasErrorLoadKey() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearErrorLoadKey() => $_clearField(5);
+  @$pb.TagNumber(5)
+  ErrorLoadKey ensureErrorLoadKey() => $_ensure(4);
+
+  @$pb.TagNumber(6)
+  ErrorTransaction get errorTransacion => $_getN(5);
+  @$pb.TagNumber(6)
+  set errorTransacion(ErrorTransaction value) => $_setField(6, value);
+  @$pb.TagNumber(6)
+  $core.bool hasErrorTransacion() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearErrorTransacion() => $_clearField(6);
+  @$pb.TagNumber(6)
+  ErrorTransaction ensureErrorTransacion() => $_ensure(5);
+}
+
+class ErrorPinPadConnection extends $pb.GeneratedMessage {
+  factory ErrorPinPadConnection({
+    $core.String? message,
+  }) {
+    final result = create();
+    if (message != null) result.message = message;
+    return result;
+  }
+
+  ErrorPinPadConnection._();
+
+  factory ErrorPinPadConnection.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ErrorPinPadConnection.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ErrorPinPadConnection',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'message')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorPinPadConnection clone() =>
+      ErrorPinPadConnection()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorPinPadConnection copyWith(
+          void Function(ErrorPinPadConnection) updates) =>
+      super.copyWith((message) => updates(message as ErrorPinPadConnection))
+          as ErrorPinPadConnection;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ErrorPinPadConnection create() => ErrorPinPadConnection._();
+  @$core.override
+  ErrorPinPadConnection createEmptyInstance() => create();
+  static $pb.PbList<ErrorPinPadConnection> createRepeated() =>
+      $pb.PbList<ErrorPinPadConnection>();
+  @$core.pragma('dart2js:noInline')
+  static ErrorPinPadConnection getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ErrorPinPadConnection>(create);
+  static ErrorPinPadConnection? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get message => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set message($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasMessage() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMessage() => $_clearField(1);
+}
+
+class ErrorInvalidCommand extends $pb.GeneratedMessage {
+  factory ErrorInvalidCommand({
+    $core.String? message,
+  }) {
+    final result = create();
+    if (message != null) result.message = message;
+    return result;
+  }
+
+  ErrorInvalidCommand._();
+
+  factory ErrorInvalidCommand.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ErrorInvalidCommand.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ErrorInvalidCommand',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'message')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorInvalidCommand clone() => ErrorInvalidCommand()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorInvalidCommand copyWith(void Function(ErrorInvalidCommand) updates) =>
+      super.copyWith((message) => updates(message as ErrorInvalidCommand))
+          as ErrorInvalidCommand;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ErrorInvalidCommand create() => ErrorInvalidCommand._();
+  @$core.override
+  ErrorInvalidCommand createEmptyInstance() => create();
+  static $pb.PbList<ErrorInvalidCommand> createRepeated() =>
+      $pb.PbList<ErrorInvalidCommand>();
+  @$core.pragma('dart2js:noInline')
+  static ErrorInvalidCommand getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ErrorInvalidCommand>(create);
+  static ErrorInvalidCommand? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get message => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set message($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasMessage() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMessage() => $_clearField(1);
+}
+
+class ErrorSdkIntialize extends $pb.GeneratedMessage {
+  factory ErrorSdkIntialize({
+    $core.String? message,
+  }) {
+    final result = create();
+    if (message != null) result.message = message;
+    return result;
+  }
+
+  ErrorSdkIntialize._();
+
+  factory ErrorSdkIntialize.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ErrorSdkIntialize.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ErrorSdkIntialize',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'message')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorSdkIntialize clone() => ErrorSdkIntialize()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorSdkIntialize copyWith(void Function(ErrorSdkIntialize) updates) =>
+      super.copyWith((message) => updates(message as ErrorSdkIntialize))
+          as ErrorSdkIntialize;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ErrorSdkIntialize create() => ErrorSdkIntialize._();
+  @$core.override
+  ErrorSdkIntialize createEmptyInstance() => create();
+  static $pb.PbList<ErrorSdkIntialize> createRepeated() =>
+      $pb.PbList<ErrorSdkIntialize>();
+  @$core.pragma('dart2js:noInline')
+  static ErrorSdkIntialize getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ErrorSdkIntialize>(create);
+  static ErrorSdkIntialize? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get message => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set message($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasMessage() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMessage() => $_clearField(1);
+}
+
+class ErrorCheckLoadedKey extends $pb.GeneratedMessage {
+  factory ErrorCheckLoadedKey({
+    $core.String? message,
+  }) {
+    final result = create();
+    if (message != null) result.message = message;
+    return result;
+  }
+
+  ErrorCheckLoadedKey._();
+
+  factory ErrorCheckLoadedKey.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ErrorCheckLoadedKey.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ErrorCheckLoadedKey',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'message')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorCheckLoadedKey clone() => ErrorCheckLoadedKey()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorCheckLoadedKey copyWith(void Function(ErrorCheckLoadedKey) updates) =>
+      super.copyWith((message) => updates(message as ErrorCheckLoadedKey))
+          as ErrorCheckLoadedKey;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ErrorCheckLoadedKey create() => ErrorCheckLoadedKey._();
+  @$core.override
+  ErrorCheckLoadedKey createEmptyInstance() => create();
+  static $pb.PbList<ErrorCheckLoadedKey> createRepeated() =>
+      $pb.PbList<ErrorCheckLoadedKey>();
+  @$core.pragma('dart2js:noInline')
+  static ErrorCheckLoadedKey getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ErrorCheckLoadedKey>(create);
+  static ErrorCheckLoadedKey? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get message => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set message($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasMessage() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMessage() => $_clearField(1);
+}
+
+class ErrorLoadKey extends $pb.GeneratedMessage {
+  factory ErrorLoadKey({
+    $core.String? message,
+  }) {
+    final result = create();
+    if (message != null) result.message = message;
+    return result;
+  }
+
+  ErrorLoadKey._();
+
+  factory ErrorLoadKey.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ErrorLoadKey.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ErrorLoadKey',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'message')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorLoadKey clone() => ErrorLoadKey()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorLoadKey copyWith(void Function(ErrorLoadKey) updates) =>
+      super.copyWith((message) => updates(message as ErrorLoadKey))
+          as ErrorLoadKey;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ErrorLoadKey create() => ErrorLoadKey._();
+  @$core.override
+  ErrorLoadKey createEmptyInstance() => create();
+  static $pb.PbList<ErrorLoadKey> createRepeated() =>
+      $pb.PbList<ErrorLoadKey>();
+  @$core.pragma('dart2js:noInline')
+  static ErrorLoadKey getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ErrorLoadKey>(create);
+  static ErrorLoadKey? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get message => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set message($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasMessage() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMessage() => $_clearField(1);
+}
+
+class ErrorTransaction extends $pb.GeneratedMessage {
+  factory ErrorTransaction({
+    $core.String? message,
+  }) {
+    final result = create();
+    if (message != null) result.message = message;
+    return result;
+  }
+
+  ErrorTransaction._();
+
+  factory ErrorTransaction.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ErrorTransaction.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ErrorTransaction',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'message')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorTransaction clone() => ErrorTransaction()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorTransaction copyWith(void Function(ErrorTransaction) updates) =>
+      super.copyWith((message) => updates(message as ErrorTransaction))
+          as ErrorTransaction;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ErrorTransaction create() => ErrorTransaction._();
+  @$core.override
+  ErrorTransaction createEmptyInstance() => create();
+  static $pb.PbList<ErrorTransaction> createRepeated() =>
+      $pb.PbList<ErrorTransaction>();
+  @$core.pragma('dart2js:noInline')
+  static ErrorTransaction getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ErrorTransaction>(create);
+  static ErrorTransaction? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get message => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set message($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasMessage() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMessage() => $_clearField(1);
+}
+
+const $core.bool _omitFieldNames =
+    $core.bool.fromEnvironment('protobuf.omit_field_names');
+const $core.bool _omitMessageNames =
+    $core.bool.fromEnvironment('protobuf.omit_message_names');

@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package metaApp;
+
+message ErrorResponse {
+    oneof type {
+        ErrorPinPadConnection errorPinpadConnection = 1;
+        ErrorSdkIntialize errorSdkInitialize = 2;
+        ErrorInvalidCommand errorInvalidCommand = 3;
+        ErrorCheckLoadedKey errorCheckLoadedKey = 4;
+        ErrorLoadKey errorLoadKey = 5;
+        ErrorTransaction errorTransacion = 6;
+    }
+}
+
+message ErrorPinPadConnection {
+    string message = 1;
+}
+
+message ErrorInvalidCommand {
+    string message = 1;
+}
+
+message ErrorSdkIntialize {
+    string message = 1;
+}
+
+message ErrorCheckLoadedKey {
+    string message = 1;
+}
+
+message ErrorLoadKey {
+    string message = 1;
+}
+
+message ErrorTransaction {
+    string message = 1;
+
+    // TODO: Se agregaran mas campos despues.
+}

@@ -1,0 +1,245 @@
+// This is a generated file - do not edit.
+//
+// Generated from sdk_initialization.proto.
+
+// @dart = 3.3
+
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: curly_braces_in_flow_control_structures
+// ignore_for_file: deprecated_member_use_from_same_package, library_prefixes
+// ignore_for_file: non_constant_identifier_names
+
+import 'dart:core' as $core;
+
+import 'package:protobuf/protobuf.dart' as $pb;
+
+export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
+
+class GetDeviceInfoRequest extends $pb.GeneratedMessage {
+  factory GetDeviceInfoRequest() => create();
+
+  GetDeviceInfoRequest._();
+
+  factory GetDeviceInfoRequest.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory GetDeviceInfoRequest.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GetDeviceInfoRequest',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GetDeviceInfoRequest clone() =>
+      GetDeviceInfoRequest()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GetDeviceInfoRequest copyWith(void Function(GetDeviceInfoRequest) updates) =>
+      super.copyWith((message) => updates(message as GetDeviceInfoRequest))
+          as GetDeviceInfoRequest;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GetDeviceInfoRequest create() => GetDeviceInfoRequest._();
+  @$core.override
+  GetDeviceInfoRequest createEmptyInstance() => create();
+  static $pb.PbList<GetDeviceInfoRequest> createRepeated() =>
+      $pb.PbList<GetDeviceInfoRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetDeviceInfoRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GetDeviceInfoRequest>(create);
+  static GetDeviceInfoRequest? _defaultInstance;
+}
+
+class GetDeviceInfoResponse extends $pb.GeneratedMessage {
+  factory GetDeviceInfoResponse({
+    $core.String? serialNumber,
+    $core.String? brand,
+  }) {
+    final result = create();
+    if (serialNumber != null) result.serialNumber = serialNumber;
+    if (brand != null) result.brand = brand;
+    return result;
+  }
+
+  GetDeviceInfoResponse._();
+
+  factory GetDeviceInfoResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory GetDeviceInfoResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GetDeviceInfoResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'serialNumber', protoName: 'serialNumber')
+    ..aOS(2, _omitFieldNames ? '' : 'brand')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GetDeviceInfoResponse clone() =>
+      GetDeviceInfoResponse()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GetDeviceInfoResponse copyWith(
+          void Function(GetDeviceInfoResponse) updates) =>
+      super.copyWith((message) => updates(message as GetDeviceInfoResponse))
+          as GetDeviceInfoResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GetDeviceInfoResponse create() => GetDeviceInfoResponse._();
+  @$core.override
+  GetDeviceInfoResponse createEmptyInstance() => create();
+  static $pb.PbList<GetDeviceInfoResponse> createRepeated() =>
+      $pb.PbList<GetDeviceInfoResponse>();
+  @$core.pragma('dart2js:noInline')
+  static GetDeviceInfoResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GetDeviceInfoResponse>(create);
+  static GetDeviceInfoResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get serialNumber => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set serialNumber($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasSerialNumber() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSerialNumber() => $_clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get brand => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set brand($core.String value) => $_setString(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasBrand() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearBrand() => $_clearField(2);
+}
+
+class InitSDKRequest extends $pb.GeneratedMessage {
+  factory InitSDKRequest({
+    $core.String? token,
+  }) {
+    final result = create();
+    if (token != null) result.token = token;
+    return result;
+  }
+
+  InitSDKRequest._();
+
+  factory InitSDKRequest.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory InitSDKRequest.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'InitSDKRequest',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'token')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  InitSDKRequest clone() => InitSDKRequest()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  InitSDKRequest copyWith(void Function(InitSDKRequest) updates) =>
+      super.copyWith((message) => updates(message as InitSDKRequest))
+          as InitSDKRequest;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static InitSDKRequest create() => InitSDKRequest._();
+  @$core.override
+  InitSDKRequest createEmptyInstance() => create();
+  static $pb.PbList<InitSDKRequest> createRepeated() =>
+      $pb.PbList<InitSDKRequest>();
+  @$core.pragma('dart2js:noInline')
+  static InitSDKRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<InitSDKRequest>(create);
+  static InitSDKRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get token => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set token($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasToken() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearToken() => $_clearField(1);
+}
+
+class InitSDKResponse extends $pb.GeneratedMessage {
+  factory InitSDKResponse({
+    $core.String? message,
+  }) {
+    final result = create();
+    if (message != null) result.message = message;
+    return result;
+  }
+
+  InitSDKResponse._();
+
+  factory InitSDKResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory InitSDKResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'InitSDKResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'message')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  InitSDKResponse clone() => InitSDKResponse()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  InitSDKResponse copyWith(void Function(InitSDKResponse) updates) =>
+      super.copyWith((message) => updates(message as InitSDKResponse))
+          as InitSDKResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static InitSDKResponse create() => InitSDKResponse._();
+  @$core.override
+  InitSDKResponse createEmptyInstance() => create();
+  static $pb.PbList<InitSDKResponse> createRepeated() =>
+      $pb.PbList<InitSDKResponse>();
+  @$core.pragma('dart2js:noInline')
+  static InitSDKResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<InitSDKResponse>(create);
+  static InitSDKResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get message => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set message($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasMessage() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMessage() => $_clearField(1);
+}
+
+const $core.bool _omitFieldNames =
+    $core.bool.fromEnvironment('protobuf.omit_field_names');
+const $core.bool _omitMessageNames =
+    $core.bool.fromEnvironment('protobuf.omit_message_names');
