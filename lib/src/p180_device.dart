@@ -60,11 +60,26 @@ class P180Device {
   }
 
   Future<void> injectKey() async {
+    // final dukptKey = DUKPTKey(
+    //   keyType: KeyType.DES,
+    //   keyIndex: 2,
+    //   data: "80848CA21F30523C199B2A18C30A3832".toHexBytes(),
+    //   ksn: "FFFFFFFFFFECF0000001".toHexBytes(),
+    // );
+
     final dukptKey = DUKPTKey(
-      keyType: KeyType.DES,
       keyIndex: 2,
-      data: "80848CA21F30523C199B2A18C30A3832".toHexBytes(),
-      ksn: "FFFFFFFFFFECF0000001".toHexBytes(),
+      keyType: KeyType.DES,
+      data: "5796338DF4BE979272A4F49F1D9999C1".toHexBytes(),
+      ksn: "FFFF7790169673800001".toHexBytes(),
+      kcv: "2764BA".toHexBytes(),
+    );
+
+    final kek = SymmetricKey(
+      index: 1,
+      keyType: KeyType.DES,
+      data: "D50B293EDCF8046EC85DF808F4A8FB85AD3873492C2970CE".toHexBytes(),
+      kcv: "2764BA".toHexBytes(),
     );
 
     final keyIsLoaded = await checkKeyLoaded(dukptKey);
@@ -73,10 +88,7 @@ class P180Device {
     if (!keyIsLoaded) {
       print("Inyectar nueva llave...");
       final request = CommandMessage(
-        loadKeyRequest: LoadKeyRequest(
-          key: dukptKey,
-          kek: SymmetricKey(index: 1, keyType: KeyType.DES),
-        ),
+        loadKeyRequest: LoadKeyRequest(key: dukptKey, kek: kek),
       );
       final response = await _communicationManager.sendRequest(request);
 
