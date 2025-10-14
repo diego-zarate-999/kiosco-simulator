@@ -5,22 +5,25 @@ package metaApp;
 import "error.proto";
 import "sdk_initialization.proto";
 import "key_loading.proto";
+import "ping.proto";
 
 message CommandMessage {
     oneof type {
-        GetDeviceInfoRequest getDeviceInfoRequest = 1;
-        InitSDKRequest initSDKRequest = 2;
-        CheckLoadedKeyRequest checkLoadedKeyRequest = 3;
-        LoadKeyRequest loadKeyRequest = 4;
+        PingRequest pingRequest                     = 1;
+        GetDeviceInfoRequest getDeviceInfoRequest   = 2;
+        InitSDKRequest initSDKRequest               = 3;
+        CheckLoadedKeyRequest checkLoadedKeyRequest = 4;
+        LoadKeyRequest loadKeyRequest               = 5;
     }
 }
 
 message CommandResponse {
     oneof type {
-        GetDeviceInfoResponse getDeviceInfoResponse = 1;
-        InitSDKResponse initSDKResponse = 2;
-        CheckLoadedKeyResponse checkLoadedKeyResponse = 3;
-        LoadKeyResponse loadKeyResponse = 4;
-        ErrorResponse error = 5;
+        PingResponse pingResponse                     = 1;
+        GetDeviceInfoResponse getDeviceInfoResponse   = 2;
+        InitSDKResponse initSDKResponse               = 3;
+        CheckLoadedKeyResponse checkLoadedKeyResponse = 4;
+        LoadKeyResponse loadKeyResponse               = 5;
+        ErrorResponse error                           = 6;
     }
 }

@@ -14,13 +14,15 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'error.pb.dart' as $2;
-import 'key_loading.pb.dart' as $1;
-import 'sdk_initialization.pb.dart' as $0;
+import 'error.pb.dart' as $3;
+import 'key_loading.pb.dart' as $2;
+import 'ping.pb.dart' as $0;
+import 'sdk_initialization.pb.dart' as $1;
 
 export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 enum CommandMessage_Type {
+  pingRequest,
   getDeviceInfoRequest,
   initSDKRequest,
   checkLoadedKeyRequest,
@@ -30,12 +32,14 @@ enum CommandMessage_Type {
 
 class CommandMessage extends $pb.GeneratedMessage {
   factory CommandMessage({
-    $0.GetDeviceInfoRequest? getDeviceInfoRequest,
-    $0.InitSDKRequest? initSDKRequest,
-    $1.CheckLoadedKeyRequest? checkLoadedKeyRequest,
-    $1.LoadKeyRequest? loadKeyRequest,
+    $0.PingRequest? pingRequest,
+    $1.GetDeviceInfoRequest? getDeviceInfoRequest,
+    $1.InitSDKRequest? initSDKRequest,
+    $2.CheckLoadedKeyRequest? checkLoadedKeyRequest,
+    $2.LoadKeyRequest? loadKeyRequest,
   }) {
     final result = create();
+    if (pingRequest != null) result.pingRequest = pingRequest;
     if (getDeviceInfoRequest != null)
       result.getDeviceInfoRequest = getDeviceInfoRequest;
     if (initSDKRequest != null) result.initSDKRequest = initSDKRequest;
@@ -56,29 +60,32 @@ class CommandMessage extends $pb.GeneratedMessage {
 
   static const $core.Map<$core.int, CommandMessage_Type>
       _CommandMessage_TypeByTag = {
-    1: CommandMessage_Type.getDeviceInfoRequest,
-    2: CommandMessage_Type.initSDKRequest,
-    3: CommandMessage_Type.checkLoadedKeyRequest,
-    4: CommandMessage_Type.loadKeyRequest,
+    1: CommandMessage_Type.pingRequest,
+    2: CommandMessage_Type.getDeviceInfoRequest,
+    3: CommandMessage_Type.initSDKRequest,
+    4: CommandMessage_Type.checkLoadedKeyRequest,
+    5: CommandMessage_Type.loadKeyRequest,
     0: CommandMessage_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'CommandMessage',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4])
-    ..aOM<$0.GetDeviceInfoRequest>(
-        1, _omitFieldNames ? '' : 'getDeviceInfoRequest',
+    ..oo(0, [1, 2, 3, 4, 5])
+    ..aOM<$0.PingRequest>(1, _omitFieldNames ? '' : 'pingRequest',
+        protoName: 'pingRequest', subBuilder: $0.PingRequest.create)
+    ..aOM<$1.GetDeviceInfoRequest>(
+        2, _omitFieldNames ? '' : 'getDeviceInfoRequest',
         protoName: 'getDeviceInfoRequest',
-        subBuilder: $0.GetDeviceInfoRequest.create)
-    ..aOM<$0.InitSDKRequest>(2, _omitFieldNames ? '' : 'initSDKRequest',
-        protoName: 'initSDKRequest', subBuilder: $0.InitSDKRequest.create)
-    ..aOM<$1.CheckLoadedKeyRequest>(
-        3, _omitFieldNames ? '' : 'checkLoadedKeyRequest',
+        subBuilder: $1.GetDeviceInfoRequest.create)
+    ..aOM<$1.InitSDKRequest>(3, _omitFieldNames ? '' : 'initSDKRequest',
+        protoName: 'initSDKRequest', subBuilder: $1.InitSDKRequest.create)
+    ..aOM<$2.CheckLoadedKeyRequest>(
+        4, _omitFieldNames ? '' : 'checkLoadedKeyRequest',
         protoName: 'checkLoadedKeyRequest',
-        subBuilder: $1.CheckLoadedKeyRequest.create)
-    ..aOM<$1.LoadKeyRequest>(4, _omitFieldNames ? '' : 'loadKeyRequest',
-        protoName: 'loadKeyRequest', subBuilder: $1.LoadKeyRequest.create)
+        subBuilder: $2.CheckLoadedKeyRequest.create)
+    ..aOM<$2.LoadKeyRequest>(5, _omitFieldNames ? '' : 'loadKeyRequest',
+        protoName: 'loadKeyRequest', subBuilder: $2.LoadKeyRequest.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -107,53 +114,65 @@ class CommandMessage extends $pb.GeneratedMessage {
   void clearType() => $_clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
-  $0.GetDeviceInfoRequest get getDeviceInfoRequest => $_getN(0);
+  $0.PingRequest get pingRequest => $_getN(0);
   @$pb.TagNumber(1)
-  set getDeviceInfoRequest($0.GetDeviceInfoRequest value) =>
-      $_setField(1, value);
+  set pingRequest($0.PingRequest value) => $_setField(1, value);
   @$pb.TagNumber(1)
-  $core.bool hasGetDeviceInfoRequest() => $_has(0);
+  $core.bool hasPingRequest() => $_has(0);
   @$pb.TagNumber(1)
-  void clearGetDeviceInfoRequest() => $_clearField(1);
+  void clearPingRequest() => $_clearField(1);
   @$pb.TagNumber(1)
-  $0.GetDeviceInfoRequest ensureGetDeviceInfoRequest() => $_ensure(0);
+  $0.PingRequest ensurePingRequest() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $0.InitSDKRequest get initSDKRequest => $_getN(1);
+  $1.GetDeviceInfoRequest get getDeviceInfoRequest => $_getN(1);
   @$pb.TagNumber(2)
-  set initSDKRequest($0.InitSDKRequest value) => $_setField(2, value);
+  set getDeviceInfoRequest($1.GetDeviceInfoRequest value) =>
+      $_setField(2, value);
   @$pb.TagNumber(2)
-  $core.bool hasInitSDKRequest() => $_has(1);
+  $core.bool hasGetDeviceInfoRequest() => $_has(1);
   @$pb.TagNumber(2)
-  void clearInitSDKRequest() => $_clearField(2);
+  void clearGetDeviceInfoRequest() => $_clearField(2);
   @$pb.TagNumber(2)
-  $0.InitSDKRequest ensureInitSDKRequest() => $_ensure(1);
+  $1.GetDeviceInfoRequest ensureGetDeviceInfoRequest() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $1.CheckLoadedKeyRequest get checkLoadedKeyRequest => $_getN(2);
+  $1.InitSDKRequest get initSDKRequest => $_getN(2);
   @$pb.TagNumber(3)
-  set checkLoadedKeyRequest($1.CheckLoadedKeyRequest value) =>
-      $_setField(3, value);
+  set initSDKRequest($1.InitSDKRequest value) => $_setField(3, value);
   @$pb.TagNumber(3)
-  $core.bool hasCheckLoadedKeyRequest() => $_has(2);
+  $core.bool hasInitSDKRequest() => $_has(2);
   @$pb.TagNumber(3)
-  void clearCheckLoadedKeyRequest() => $_clearField(3);
+  void clearInitSDKRequest() => $_clearField(3);
   @$pb.TagNumber(3)
-  $1.CheckLoadedKeyRequest ensureCheckLoadedKeyRequest() => $_ensure(2);
+  $1.InitSDKRequest ensureInitSDKRequest() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $1.LoadKeyRequest get loadKeyRequest => $_getN(3);
+  $2.CheckLoadedKeyRequest get checkLoadedKeyRequest => $_getN(3);
   @$pb.TagNumber(4)
-  set loadKeyRequest($1.LoadKeyRequest value) => $_setField(4, value);
+  set checkLoadedKeyRequest($2.CheckLoadedKeyRequest value) =>
+      $_setField(4, value);
   @$pb.TagNumber(4)
-  $core.bool hasLoadKeyRequest() => $_has(3);
+  $core.bool hasCheckLoadedKeyRequest() => $_has(3);
   @$pb.TagNumber(4)
-  void clearLoadKeyRequest() => $_clearField(4);
+  void clearCheckLoadedKeyRequest() => $_clearField(4);
   @$pb.TagNumber(4)
-  $1.LoadKeyRequest ensureLoadKeyRequest() => $_ensure(3);
+  $2.CheckLoadedKeyRequest ensureCheckLoadedKeyRequest() => $_ensure(3);
+
+  @$pb.TagNumber(5)
+  $2.LoadKeyRequest get loadKeyRequest => $_getN(4);
+  @$pb.TagNumber(5)
+  set loadKeyRequest($2.LoadKeyRequest value) => $_setField(5, value);
+  @$pb.TagNumber(5)
+  $core.bool hasLoadKeyRequest() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearLoadKeyRequest() => $_clearField(5);
+  @$pb.TagNumber(5)
+  $2.LoadKeyRequest ensureLoadKeyRequest() => $_ensure(4);
 }
 
 enum CommandResponse_Type {
+  pingResponse,
   getDeviceInfoResponse,
   initSDKResponse,
   checkLoadedKeyResponse,
@@ -164,13 +183,15 @@ enum CommandResponse_Type {
 
 class CommandResponse extends $pb.GeneratedMessage {
   factory CommandResponse({
-    $0.GetDeviceInfoResponse? getDeviceInfoResponse,
-    $0.InitSDKResponse? initSDKResponse,
-    $1.CheckLoadedKeyResponse? checkLoadedKeyResponse,
-    $1.LoadKeyResponse? loadKeyResponse,
-    $2.ErrorResponse? error,
+    $0.PingResponse? pingResponse,
+    $1.GetDeviceInfoResponse? getDeviceInfoResponse,
+    $1.InitSDKResponse? initSDKResponse,
+    $2.CheckLoadedKeyResponse? checkLoadedKeyResponse,
+    $2.LoadKeyResponse? loadKeyResponse,
+    $3.ErrorResponse? error,
   }) {
     final result = create();
+    if (pingResponse != null) result.pingResponse = pingResponse;
     if (getDeviceInfoResponse != null)
       result.getDeviceInfoResponse = getDeviceInfoResponse;
     if (initSDKResponse != null) result.initSDKResponse = initSDKResponse;
@@ -192,32 +213,35 @@ class CommandResponse extends $pb.GeneratedMessage {
 
   static const $core.Map<$core.int, CommandResponse_Type>
       _CommandResponse_TypeByTag = {
-    1: CommandResponse_Type.getDeviceInfoResponse,
-    2: CommandResponse_Type.initSDKResponse,
-    3: CommandResponse_Type.checkLoadedKeyResponse,
-    4: CommandResponse_Type.loadKeyResponse,
-    5: CommandResponse_Type.error,
+    1: CommandResponse_Type.pingResponse,
+    2: CommandResponse_Type.getDeviceInfoResponse,
+    3: CommandResponse_Type.initSDKResponse,
+    4: CommandResponse_Type.checkLoadedKeyResponse,
+    5: CommandResponse_Type.loadKeyResponse,
+    6: CommandResponse_Type.error,
     0: CommandResponse_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'CommandResponse',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5])
-    ..aOM<$0.GetDeviceInfoResponse>(
-        1, _omitFieldNames ? '' : 'getDeviceInfoResponse',
+    ..oo(0, [1, 2, 3, 4, 5, 6])
+    ..aOM<$0.PingResponse>(1, _omitFieldNames ? '' : 'pingResponse',
+        protoName: 'pingResponse', subBuilder: $0.PingResponse.create)
+    ..aOM<$1.GetDeviceInfoResponse>(
+        2, _omitFieldNames ? '' : 'getDeviceInfoResponse',
         protoName: 'getDeviceInfoResponse',
-        subBuilder: $0.GetDeviceInfoResponse.create)
-    ..aOM<$0.InitSDKResponse>(2, _omitFieldNames ? '' : 'initSDKResponse',
-        protoName: 'initSDKResponse', subBuilder: $0.InitSDKResponse.create)
-    ..aOM<$1.CheckLoadedKeyResponse>(
-        3, _omitFieldNames ? '' : 'checkLoadedKeyResponse',
+        subBuilder: $1.GetDeviceInfoResponse.create)
+    ..aOM<$1.InitSDKResponse>(3, _omitFieldNames ? '' : 'initSDKResponse',
+        protoName: 'initSDKResponse', subBuilder: $1.InitSDKResponse.create)
+    ..aOM<$2.CheckLoadedKeyResponse>(
+        4, _omitFieldNames ? '' : 'checkLoadedKeyResponse',
         protoName: 'checkLoadedKeyResponse',
-        subBuilder: $1.CheckLoadedKeyResponse.create)
-    ..aOM<$1.LoadKeyResponse>(4, _omitFieldNames ? '' : 'loadKeyResponse',
-        protoName: 'loadKeyResponse', subBuilder: $1.LoadKeyResponse.create)
-    ..aOM<$2.ErrorResponse>(5, _omitFieldNames ? '' : 'error',
-        subBuilder: $2.ErrorResponse.create)
+        subBuilder: $2.CheckLoadedKeyResponse.create)
+    ..aOM<$2.LoadKeyResponse>(5, _omitFieldNames ? '' : 'loadKeyResponse',
+        protoName: 'loadKeyResponse', subBuilder: $2.LoadKeyResponse.create)
+    ..aOM<$3.ErrorResponse>(6, _omitFieldNames ? '' : 'error',
+        subBuilder: $3.ErrorResponse.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -246,61 +270,72 @@ class CommandResponse extends $pb.GeneratedMessage {
   void clearType() => $_clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
-  $0.GetDeviceInfoResponse get getDeviceInfoResponse => $_getN(0);
+  $0.PingResponse get pingResponse => $_getN(0);
   @$pb.TagNumber(1)
-  set getDeviceInfoResponse($0.GetDeviceInfoResponse value) =>
-      $_setField(1, value);
+  set pingResponse($0.PingResponse value) => $_setField(1, value);
   @$pb.TagNumber(1)
-  $core.bool hasGetDeviceInfoResponse() => $_has(0);
+  $core.bool hasPingResponse() => $_has(0);
   @$pb.TagNumber(1)
-  void clearGetDeviceInfoResponse() => $_clearField(1);
+  void clearPingResponse() => $_clearField(1);
   @$pb.TagNumber(1)
-  $0.GetDeviceInfoResponse ensureGetDeviceInfoResponse() => $_ensure(0);
+  $0.PingResponse ensurePingResponse() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $0.InitSDKResponse get initSDKResponse => $_getN(1);
+  $1.GetDeviceInfoResponse get getDeviceInfoResponse => $_getN(1);
   @$pb.TagNumber(2)
-  set initSDKResponse($0.InitSDKResponse value) => $_setField(2, value);
+  set getDeviceInfoResponse($1.GetDeviceInfoResponse value) =>
+      $_setField(2, value);
   @$pb.TagNumber(2)
-  $core.bool hasInitSDKResponse() => $_has(1);
+  $core.bool hasGetDeviceInfoResponse() => $_has(1);
   @$pb.TagNumber(2)
-  void clearInitSDKResponse() => $_clearField(2);
+  void clearGetDeviceInfoResponse() => $_clearField(2);
   @$pb.TagNumber(2)
-  $0.InitSDKResponse ensureInitSDKResponse() => $_ensure(1);
+  $1.GetDeviceInfoResponse ensureGetDeviceInfoResponse() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $1.CheckLoadedKeyResponse get checkLoadedKeyResponse => $_getN(2);
+  $1.InitSDKResponse get initSDKResponse => $_getN(2);
   @$pb.TagNumber(3)
-  set checkLoadedKeyResponse($1.CheckLoadedKeyResponse value) =>
-      $_setField(3, value);
+  set initSDKResponse($1.InitSDKResponse value) => $_setField(3, value);
   @$pb.TagNumber(3)
-  $core.bool hasCheckLoadedKeyResponse() => $_has(2);
+  $core.bool hasInitSDKResponse() => $_has(2);
   @$pb.TagNumber(3)
-  void clearCheckLoadedKeyResponse() => $_clearField(3);
+  void clearInitSDKResponse() => $_clearField(3);
   @$pb.TagNumber(3)
-  $1.CheckLoadedKeyResponse ensureCheckLoadedKeyResponse() => $_ensure(2);
+  $1.InitSDKResponse ensureInitSDKResponse() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $1.LoadKeyResponse get loadKeyResponse => $_getN(3);
+  $2.CheckLoadedKeyResponse get checkLoadedKeyResponse => $_getN(3);
   @$pb.TagNumber(4)
-  set loadKeyResponse($1.LoadKeyResponse value) => $_setField(4, value);
+  set checkLoadedKeyResponse($2.CheckLoadedKeyResponse value) =>
+      $_setField(4, value);
   @$pb.TagNumber(4)
-  $core.bool hasLoadKeyResponse() => $_has(3);
+  $core.bool hasCheckLoadedKeyResponse() => $_has(3);
   @$pb.TagNumber(4)
-  void clearLoadKeyResponse() => $_clearField(4);
+  void clearCheckLoadedKeyResponse() => $_clearField(4);
   @$pb.TagNumber(4)
-  $1.LoadKeyResponse ensureLoadKeyResponse() => $_ensure(3);
+  $2.CheckLoadedKeyResponse ensureCheckLoadedKeyResponse() => $_ensure(3);
 
   @$pb.TagNumber(5)
-  $2.ErrorResponse get error => $_getN(4);
+  $2.LoadKeyResponse get loadKeyResponse => $_getN(4);
   @$pb.TagNumber(5)
-  set error($2.ErrorResponse value) => $_setField(5, value);
+  set loadKeyResponse($2.LoadKeyResponse value) => $_setField(5, value);
   @$pb.TagNumber(5)
-  $core.bool hasError() => $_has(4);
+  $core.bool hasLoadKeyResponse() => $_has(4);
   @$pb.TagNumber(5)
-  void clearError() => $_clearField(5);
+  void clearLoadKeyResponse() => $_clearField(5);
   @$pb.TagNumber(5)
-  $2.ErrorResponse ensureError() => $_ensure(4);
+  $2.LoadKeyResponse ensureLoadKeyResponse() => $_ensure(4);
+
+  @$pb.TagNumber(6)
+  $3.ErrorResponse get error => $_getN(5);
+  @$pb.TagNumber(6)
+  set error($3.ErrorResponse value) => $_setField(6, value);
+  @$pb.TagNumber(6)
+  $core.bool hasError() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearError() => $_clearField(6);
+  @$pb.TagNumber(6)
+  $3.ErrorResponse ensureError() => $_ensure(5);
 }
 
 const $core.bool _omitFieldNames =
