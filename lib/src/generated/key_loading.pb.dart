@@ -273,6 +273,74 @@ class DUKPTKey extends $pb.GeneratedMessage {
   $pb.PbList<$core.int> get kcv => $_getList(5);
 }
 
+class RSAPublicKeyData extends $pb.GeneratedMessage {
+  factory RSAPublicKeyData({
+    $core.String? modulus,
+    $core.String? exponent,
+  }) {
+    final result = create();
+    if (modulus != null) result.modulus = modulus;
+    if (exponent != null) result.exponent = exponent;
+    return result;
+  }
+
+  RSAPublicKeyData._();
+
+  factory RSAPublicKeyData.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory RSAPublicKeyData.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'RSAPublicKeyData',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'modulus')
+    ..aOS(2, _omitFieldNames ? '' : 'exponent')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  RSAPublicKeyData clone() => RSAPublicKeyData()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  RSAPublicKeyData copyWith(void Function(RSAPublicKeyData) updates) =>
+      super.copyWith((message) => updates(message as RSAPublicKeyData))
+          as RSAPublicKeyData;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static RSAPublicKeyData create() => RSAPublicKeyData._();
+  @$core.override
+  RSAPublicKeyData createEmptyInstance() => create();
+  static $pb.PbList<RSAPublicKeyData> createRepeated() =>
+      $pb.PbList<RSAPublicKeyData>();
+  @$core.pragma('dart2js:noInline')
+  static RSAPublicKeyData getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RSAPublicKeyData>(create);
+  static RSAPublicKeyData? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get modulus => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set modulus($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasModulus() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearModulus() => $_clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get exponent => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set exponent($core.String value) => $_setString(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasExponent() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearExponent() => $_clearField(2);
+}
+
 /// /
 /// / Request y response para ver si hay una llave cargada.
 /// /
@@ -393,6 +461,132 @@ class CheckLoadedKeyResponse extends $pb.GeneratedMessage {
   $core.bool hasKeyIsLoaded() => $_has(0);
   @$pb.TagNumber(1)
   void clearKeyIsLoaded() => $_clearField(1);
+}
+
+/// /
+/// / Request y response para generar llave de transporte.
+/// /
+class GenerateTransportKeyRequest extends $pb.GeneratedMessage {
+  factory GenerateTransportKeyRequest({
+    RSAPublicKeyData? rSAPublicKeyData,
+  }) {
+    final result = create();
+    if (rSAPublicKeyData != null) result.rSAPublicKeyData = rSAPublicKeyData;
+    return result;
+  }
+
+  GenerateTransportKeyRequest._();
+
+  factory GenerateTransportKeyRequest.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory GenerateTransportKeyRequest.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GenerateTransportKeyRequest',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..aOM<RSAPublicKeyData>(1, _omitFieldNames ? '' : 'rSAPublicKeyData',
+        protoName: 'rSAPublicKeyData', subBuilder: RSAPublicKeyData.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GenerateTransportKeyRequest clone() =>
+      GenerateTransportKeyRequest()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GenerateTransportKeyRequest copyWith(
+          void Function(GenerateTransportKeyRequest) updates) =>
+      super.copyWith(
+              (message) => updates(message as GenerateTransportKeyRequest))
+          as GenerateTransportKeyRequest;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GenerateTransportKeyRequest create() =>
+      GenerateTransportKeyRequest._();
+  @$core.override
+  GenerateTransportKeyRequest createEmptyInstance() => create();
+  static $pb.PbList<GenerateTransportKeyRequest> createRepeated() =>
+      $pb.PbList<GenerateTransportKeyRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GenerateTransportKeyRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GenerateTransportKeyRequest>(create);
+  static GenerateTransportKeyRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  RSAPublicKeyData get rSAPublicKeyData => $_getN(0);
+  @$pb.TagNumber(1)
+  set rSAPublicKeyData(RSAPublicKeyData value) => $_setField(1, value);
+  @$pb.TagNumber(1)
+  $core.bool hasRSAPublicKeyData() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearRSAPublicKeyData() => $_clearField(1);
+  @$pb.TagNumber(1)
+  RSAPublicKeyData ensureRSAPublicKeyData() => $_ensure(0);
+}
+
+class GenerateTransportKeyResponse extends $pb.GeneratedMessage {
+  factory GenerateTransportKeyResponse({
+    $core.Iterable<$core.int>? key,
+    $core.Iterable<$core.int>? kcv,
+  }) {
+    final result = create();
+    if (key != null) result.key.addAll(key);
+    if (kcv != null) result.kcv.addAll(kcv);
+    return result;
+  }
+
+  GenerateTransportKeyResponse._();
+
+  factory GenerateTransportKeyResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory GenerateTransportKeyResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GenerateTransportKeyResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..p<$core.int>(1, _omitFieldNames ? '' : 'key', $pb.PbFieldType.K3)
+    ..p<$core.int>(2, _omitFieldNames ? '' : 'kcv', $pb.PbFieldType.K3)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GenerateTransportKeyResponse clone() =>
+      GenerateTransportKeyResponse()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GenerateTransportKeyResponse copyWith(
+          void Function(GenerateTransportKeyResponse) updates) =>
+      super.copyWith(
+              (message) => updates(message as GenerateTransportKeyResponse))
+          as GenerateTransportKeyResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GenerateTransportKeyResponse create() =>
+      GenerateTransportKeyResponse._();
+  @$core.override
+  GenerateTransportKeyResponse createEmptyInstance() => create();
+  static $pb.PbList<GenerateTransportKeyResponse> createRepeated() =>
+      $pb.PbList<GenerateTransportKeyResponse>();
+  @$core.pragma('dart2js:noInline')
+  static GenerateTransportKeyResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GenerateTransportKeyResponse>(create);
+  static GenerateTransportKeyResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $pb.PbList<$core.int> get key => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $pb.PbList<$core.int> get kcv => $_getList(1);
 }
 
 /// /
@@ -543,6 +737,248 @@ class LoadKeyResponse extends $pb.GeneratedMessage {
   $core.bool hasKeyWasLoaded() => $_has(0);
   @$pb.TagNumber(1)
   void clearKeyWasLoaded() => $_clearField(1);
+}
+
+/// /
+/// / Request y response para obtener KSN
+/// /
+class GetKSNRequest extends $pb.GeneratedMessage {
+  factory GetKSNRequest({
+    DUKPTKey? dUKPTKey,
+  }) {
+    final result = create();
+    if (dUKPTKey != null) result.dUKPTKey = dUKPTKey;
+    return result;
+  }
+
+  GetKSNRequest._();
+
+  factory GetKSNRequest.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory GetKSNRequest.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GetKSNRequest',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..aOM<DUKPTKey>(1, _omitFieldNames ? '' : 'dUKPTKey',
+        protoName: 'dUKPTKey', subBuilder: DUKPTKey.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GetKSNRequest clone() => GetKSNRequest()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GetKSNRequest copyWith(void Function(GetKSNRequest) updates) =>
+      super.copyWith((message) => updates(message as GetKSNRequest))
+          as GetKSNRequest;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GetKSNRequest create() => GetKSNRequest._();
+  @$core.override
+  GetKSNRequest createEmptyInstance() => create();
+  static $pb.PbList<GetKSNRequest> createRepeated() =>
+      $pb.PbList<GetKSNRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetKSNRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GetKSNRequest>(create);
+  static GetKSNRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  DUKPTKey get dUKPTKey => $_getN(0);
+  @$pb.TagNumber(1)
+  set dUKPTKey(DUKPTKey value) => $_setField(1, value);
+  @$pb.TagNumber(1)
+  $core.bool hasDUKPTKey() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDUKPTKey() => $_clearField(1);
+  @$pb.TagNumber(1)
+  DUKPTKey ensureDUKPTKey() => $_ensure(0);
+}
+
+class GetKSNResponse extends $pb.GeneratedMessage {
+  factory GetKSNResponse({
+    $core.Iterable<$core.int>? ksn,
+  }) {
+    final result = create();
+    if (ksn != null) result.ksn.addAll(ksn);
+    return result;
+  }
+
+  GetKSNResponse._();
+
+  factory GetKSNResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory GetKSNResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GetKSNResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..p<$core.int>(1, _omitFieldNames ? '' : 'ksn', $pb.PbFieldType.K3)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GetKSNResponse clone() => GetKSNResponse()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GetKSNResponse copyWith(void Function(GetKSNResponse) updates) =>
+      super.copyWith((message) => updates(message as GetKSNResponse))
+          as GetKSNResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GetKSNResponse create() => GetKSNResponse._();
+  @$core.override
+  GetKSNResponse createEmptyInstance() => create();
+  static $pb.PbList<GetKSNResponse> createRepeated() =>
+      $pb.PbList<GetKSNResponse>();
+  @$core.pragma('dart2js:noInline')
+  static GetKSNResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GetKSNResponse>(create);
+  static GetKSNResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $pb.PbList<$core.int> get ksn => $_getList(0);
+}
+
+enum DeleteKeyRequest_Key { symmetricKey, dukptKey, notSet }
+
+/// /
+/// / Request y response para eliminar llave
+/// /
+class DeleteKeyRequest extends $pb.GeneratedMessage {
+  factory DeleteKeyRequest({
+    SymmetricKey? symmetricKey,
+    DUKPTKey? dukptKey,
+  }) {
+    final result = create();
+    if (symmetricKey != null) result.symmetricKey = symmetricKey;
+    if (dukptKey != null) result.dukptKey = dukptKey;
+    return result;
+  }
+
+  DeleteKeyRequest._();
+
+  factory DeleteKeyRequest.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory DeleteKeyRequest.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static const $core.Map<$core.int, DeleteKeyRequest_Key>
+      _DeleteKeyRequest_KeyByTag = {
+    1: DeleteKeyRequest_Key.symmetricKey,
+    2: DeleteKeyRequest_Key.dukptKey,
+    0: DeleteKeyRequest_Key.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'DeleteKeyRequest',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..oo(0, [1, 2])
+    ..aOM<SymmetricKey>(1, _omitFieldNames ? '' : 'symmetricKey',
+        protoName: 'symmetricKey', subBuilder: SymmetricKey.create)
+    ..aOM<DUKPTKey>(2, _omitFieldNames ? '' : 'dukptKey',
+        protoName: 'dukptKey', subBuilder: DUKPTKey.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  DeleteKeyRequest clone() => DeleteKeyRequest()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  DeleteKeyRequest copyWith(void Function(DeleteKeyRequest) updates) =>
+      super.copyWith((message) => updates(message as DeleteKeyRequest))
+          as DeleteKeyRequest;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static DeleteKeyRequest create() => DeleteKeyRequest._();
+  @$core.override
+  DeleteKeyRequest createEmptyInstance() => create();
+  static $pb.PbList<DeleteKeyRequest> createRepeated() =>
+      $pb.PbList<DeleteKeyRequest>();
+  @$core.pragma('dart2js:noInline')
+  static DeleteKeyRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DeleteKeyRequest>(create);
+  static DeleteKeyRequest? _defaultInstance;
+
+  DeleteKeyRequest_Key whichKey() =>
+      _DeleteKeyRequest_KeyByTag[$_whichOneof(0)]!;
+  void clearKey() => $_clearField($_whichOneof(0));
+
+  @$pb.TagNumber(1)
+  SymmetricKey get symmetricKey => $_getN(0);
+  @$pb.TagNumber(1)
+  set symmetricKey(SymmetricKey value) => $_setField(1, value);
+  @$pb.TagNumber(1)
+  $core.bool hasSymmetricKey() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSymmetricKey() => $_clearField(1);
+  @$pb.TagNumber(1)
+  SymmetricKey ensureSymmetricKey() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  DUKPTKey get dukptKey => $_getN(1);
+  @$pb.TagNumber(2)
+  set dukptKey(DUKPTKey value) => $_setField(2, value);
+  @$pb.TagNumber(2)
+  $core.bool hasDukptKey() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDukptKey() => $_clearField(2);
+  @$pb.TagNumber(2)
+  DUKPTKey ensureDukptKey() => $_ensure(1);
+}
+
+class DeleteKeyResponse extends $pb.GeneratedMessage {
+  factory DeleteKeyResponse() => create();
+
+  DeleteKeyResponse._();
+
+  factory DeleteKeyResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory DeleteKeyResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'DeleteKeyResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  DeleteKeyResponse clone() => DeleteKeyResponse()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  DeleteKeyResponse copyWith(void Function(DeleteKeyResponse) updates) =>
+      super.copyWith((message) => updates(message as DeleteKeyResponse))
+          as DeleteKeyResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static DeleteKeyResponse create() => DeleteKeyResponse._();
+  @$core.override
+  DeleteKeyResponse createEmptyInstance() => create();
+  static $pb.PbList<DeleteKeyResponse> createRepeated() =>
+      $pb.PbList<DeleteKeyResponse>();
+  @$core.pragma('dart2js:noInline')
+  static DeleteKeyResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DeleteKeyResponse>(create);
+  static DeleteKeyResponse? _defaultInstance;
 }
 
 const $core.bool _omitFieldNames =

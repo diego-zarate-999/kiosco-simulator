@@ -1,8 +1,12 @@
+import 'dart:typed_data';
+
 import 'package:kiosco_simulator/extensions/hex_string.dart';
 import 'package:kiosco_simulator/src/communication_manager.dart';
 import 'package:kiosco_simulator/src/generated/command_message.pb.dart';
 import 'package:kiosco_simulator/src/generated/key_loading.pb.dart';
+import 'package:kiosco_simulator/src/generated/ping.pb.dart';
 import 'package:kiosco_simulator/src/generated/sdk_initialization.pb.dart';
+import 'package:pointycastle/impl.dart' as ptc;
 
 class DeviceInformation {
   final String brand;
@@ -14,11 +18,27 @@ class DeviceInformation {
   String toString() => "Brand = $brand | SN = $serialNumber";
 }
 
+class TransportKey {
+  final Uint8List key;
+  final Uint8List kcv;
+
+  TransportKey({required this.key, required this.kcv});
+}
+
 class P180Device {
   late final CommunicationManager _communicationManager;
 
   P180Device(String portName) {
     _communicationManager = CommunicationManager(portName);
+  }
+
+  Future<void> sendPing(String message) async {
+    final ping = CommandMessage(pingRequest: PingRequest(message: message));
+
+    print("Enviando ping...");
+    final response = await _communicationManager.sendRequest(ping);
+
+    print("Echo reciibido: ${response.pingResponse.message}");
   }
 
   Future<DeviceInformation> getDeviceInformation() async {
@@ -67,12 +87,20 @@ class P180Device {
     //   ksn: "FFFFFFFFFFECF0000001".toHexBytes(),
     // );
 
-    final dukptKey = DUKPTKey(
-      keyIndex: 2,
+    // final dukptKey = DUKPTKey(
+    //   keyIndex: 2,
+    //   keyType: KeyType.DES,
+    //   data: "5796338DF4BE979272A4F49F1D9999C1".toHexBytes(),
+    //   ksn: "FFFF7790169673800001".toHexBytes(),
+    //   kcv: "2764BA".toHexBytes(),
+    // );
+
+    final testDataDUKPT = DUKPTKey(
       keyType: KeyType.DES,
-      data: "5796338DF4BE979272A4F49F1D9999C1".toHexBytes(),
+      keyIndex: 6,
+      data: "F6A74E05C7CD21685961E4EC63D26A57".toHexBytes(),
       ksn: "FFFF7790169673800001".toHexBytes(),
-      kcv: "2764BA".toHexBytes(),
+      kcv: "098551".toHexBytes(),
     );
 
     final kek = SymmetricKey(
@@ -82,19 +110,72 @@ class P180Device {
       kcv: "2764BA".toHexBytes(),
     );
 
-    final keyIsLoaded = await checkKeyLoaded(dukptKey);
+    final keyIsLoaded = await checkKeyLoaded(testDataDUKPT);
     print("keyIsLoaded = $keyIsLoaded");
 
     if (!keyIsLoaded) {
       print("Inyectar nueva llave...");
       final request = CommandMessage(
-        loadKeyRequest: LoadKeyRequest(key: dukptKey, kek: kek),
+        loadKeyRequest: LoadKeyRequest(key: testDataDUKPT, kek: kek),
       );
       final response = await _communicationManager.sendRequest(request);
 
       if (response.hasError()) {
         throw Exception(response.error.errorLoadKey.message);
       }
+    }
+  }
+
+  Future<TransportKey> getTransKey(ptc.RSAPublicKey publicKey) async {
+    final request = CommandMessage(
+      generateTransportKeyRequest: GenerateTransportKeyRequest(
+        rSAPublicKeyData: RSAPublicKeyData(
+          exponent: publicKey.exponent.toString(),
+          modulus: publicKey.modulus.toString(),
+        ),
+      ),
+    );
+
+    final response = await _communicationManager.sendRequest(request);
+    final key = response.generateTransportKeyResponse.key;
+    final kcv = response.generateTransportKeyResponse.kcv;
+
+    return TransportKey(
+      key: Uint8List.fromList(key),
+      kcv: Uint8List.fromList(kcv),
+    );
+  }
+
+  Future<Uint8List> getKeyKsn(DUKPTKey dukptKey) async {
+    final request = CommandMessage(
+      getKSNRequest: GetKSNRequest(dUKPTKey: dukptKey),
+    );
+
+    final response = await _communicationManager.sendRequest(request);
+    if (response.hasError()) {
+      throw Exception(response.error.errorCheckLoadedKey.message);
+    }
+
+    final ksn = Uint8List.fromList(response.getKSNResponse.ksn);
+    return ksn;
+  }
+
+  Future<void> deleteDUKPTKey(DUKPTKey key) async {
+    final request = CommandMessage(
+      deleteKeyRequest: DeleteKeyRequest(
+        dukptKey: DUKPTKey(
+          data: key.data,
+          derivateKeyLen: key.derivateKeyLen,
+          keyIndex: key.keyIndex,
+          kcv: key.kcv,
+          keyType: key.keyType,
+        ),
+      ),
+    );
+
+    final response = await _communicationManager.sendRequest(request);
+    if (response.hasError()) {
+      throw Exception(response.error.errorCheckLoadedKey.message);
     }
   }
 }

@@ -9,21 +9,27 @@ import "ping.proto";
 
 message CommandMessage {
     oneof type {
-        PingRequest pingRequest                     = 1;
-        GetDeviceInfoRequest getDeviceInfoRequest   = 2;
-        InitSDKRequest initSDKRequest               = 3;
-        CheckLoadedKeyRequest checkLoadedKeyRequest = 4;
-        LoadKeyRequest loadKeyRequest               = 5;
+        PingRequest pingRequest                                 = 1;
+        GetDeviceInfoRequest getDeviceInfoRequest               = 2;
+        InitSDKRequest initSDKRequest                           = 3;
+        GenerateTransportKeyRequest generateTransportKeyRequest = 4;
+        CheckLoadedKeyRequest checkLoadedKeyRequest             = 5;
+        GetKSNRequest getKSNRequest                             = 6;
+        DeleteKeyRequest deleteKeyRequest                       = 7;
+        LoadKeyRequest loadKeyRequest                           = 8;
     }
 }
 
 message CommandResponse {
     oneof type {
-        PingResponse pingResponse                     = 1;
-        GetDeviceInfoResponse getDeviceInfoResponse   = 2;
-        InitSDKResponse initSDKResponse               = 3;
-        CheckLoadedKeyResponse checkLoadedKeyResponse = 4;
-        LoadKeyResponse loadKeyResponse               = 5;
-        ErrorResponse error                           = 6;
+        PingResponse pingResponse                                   = 1;
+        GetDeviceInfoResponse getDeviceInfoResponse                 = 2;
+        InitSDKResponse initSDKResponse                             = 3;
+        CheckLoadedKeyResponse checkLoadedKeyResponse               = 4;
+        GenerateTransportKeyResponse generateTransportKeyResponse   = 5;
+        LoadKeyResponse loadKeyResponse                             = 6;
+        GetKSNResponse getKSNResponse                               = 7;
+        DeleteKeyResponse deleteKeyResponse                         = 8;
+        ErrorResponse error                                         = 9;
     }
 }

@@ -33,6 +33,10 @@ message DUKPTKey {
     repeated int32 kcv = 6;
 }
 
+message RSAPublicKeyData {
+    string modulus = 1;
+    string exponent = 2;
+}
 
 ///
 /// Request y response para ver si hay una llave cargada.
@@ -43,6 +47,19 @@ message CheckLoadedKeyRequest {
 
 message CheckLoadedKeyResponse {
     bool keyIsLoaded = 1;
+}
+
+
+///
+/// Request y response para generar llave de transporte.
+///
+message GenerateTransportKeyRequest {
+    RSAPublicKeyData rSAPublicKeyData = 1;
+}
+
+message GenerateTransportKeyResponse {
+    repeated int32 key = 1;
+    repeated int32 kcv = 2;
 }
 
 ///
@@ -57,3 +74,26 @@ message LoadKeyRequest {
 message LoadKeyResponse {
     bool keyWasLoaded = 1;
 }
+
+///
+/// Request y response para obtener KSN
+///
+message GetKSNRequest {
+    DUKPTKey dUKPTKey = 1;
+}
+
+message GetKSNResponse {
+    repeated int32 ksn = 1;
+}
+
+///
+/// Request y response para eliminar llave
+///
+message DeleteKeyRequest {
+    oneof key {
+        SymmetricKey symmetricKey = 1;
+        DUKPTKey dukptKey = 2;
+    }
+}
+
+message DeleteKeyResponse { }

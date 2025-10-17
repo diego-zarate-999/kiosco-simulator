@@ -62,6 +62,13 @@ class PinPadClient extends $grpc.Client {
     return $createUnaryCall(_$checkLoadedKey, request, options: options);
   }
 
+  $grpc.ResponseFuture<$2.GenerateTransportKeyResponse> generateTransportKey(
+    $2.GenerateTransportKeyRequest request, {
+    $grpc.CallOptions? options,
+  }) {
+    return $createUnaryCall(_$generateTransportKey, request, options: options);
+  }
+
   $grpc.ResponseFuture<$2.LoadKeyResponse> loadKey(
     $2.LoadKeyRequest request, {
     $grpc.CallOptions? options,
@@ -90,6 +97,11 @@ class PinPadClient extends $grpc.Client {
           '/metaApp.PinPad/checkLoadedKey',
           ($2.CheckLoadedKeyRequest value) => value.writeToBuffer(),
           $2.CheckLoadedKeyResponse.fromBuffer);
+  static final _$generateTransportKey = $grpc.ClientMethod<
+          $2.GenerateTransportKeyRequest, $2.GenerateTransportKeyResponse>(
+      '/metaApp.PinPad/generateTransportKey',
+      ($2.GenerateTransportKeyRequest value) => value.writeToBuffer(),
+      $2.GenerateTransportKeyResponse.fromBuffer);
   static final _$loadKey =
       $grpc.ClientMethod<$2.LoadKeyRequest, $2.LoadKeyResponse>(
           '/metaApp.PinPad/loadKey',
@@ -134,6 +146,15 @@ abstract class PinPadServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) =>
             $2.CheckLoadedKeyRequest.fromBuffer(value),
         ($2.CheckLoadedKeyResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.GenerateTransportKeyRequest,
+            $2.GenerateTransportKeyResponse>(
+        'generateTransportKey',
+        generateTransportKey_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $2.GenerateTransportKeyRequest.fromBuffer(value),
+        ($2.GenerateTransportKeyResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$2.LoadKeyRequest, $2.LoadKeyResponse>(
         'loadKey',
         loadKey_Pre,
@@ -176,6 +197,15 @@ abstract class PinPadServiceBase extends $grpc.Service {
 
   $async.Future<$2.CheckLoadedKeyResponse> checkLoadedKey(
       $grpc.ServiceCall call, $2.CheckLoadedKeyRequest request);
+
+  $async.Future<$2.GenerateTransportKeyResponse> generateTransportKey_Pre(
+      $grpc.ServiceCall $call,
+      $async.Future<$2.GenerateTransportKeyRequest> $request) async {
+    return generateTransportKey($call, await $request);
+  }
+
+  $async.Future<$2.GenerateTransportKeyResponse> generateTransportKey(
+      $grpc.ServiceCall call, $2.GenerateTransportKeyRequest request);
 
   $async.Future<$2.LoadKeyResponse> loadKey_Pre($grpc.ServiceCall $call,
       $async.Future<$2.LoadKeyRequest> $request) async {

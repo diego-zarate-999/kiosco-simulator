@@ -25,7 +25,10 @@ enum CommandMessage_Type {
   pingRequest,
   getDeviceInfoRequest,
   initSDKRequest,
+  generateTransportKeyRequest,
   checkLoadedKeyRequest,
+  getKSNRequest,
+  deleteKeyRequest,
   loadKeyRequest,
   notSet
 }
@@ -35,7 +38,10 @@ class CommandMessage extends $pb.GeneratedMessage {
     $0.PingRequest? pingRequest,
     $1.GetDeviceInfoRequest? getDeviceInfoRequest,
     $1.InitSDKRequest? initSDKRequest,
+    $2.GenerateTransportKeyRequest? generateTransportKeyRequest,
     $2.CheckLoadedKeyRequest? checkLoadedKeyRequest,
+    $2.GetKSNRequest? getKSNRequest,
+    $2.DeleteKeyRequest? deleteKeyRequest,
     $2.LoadKeyRequest? loadKeyRequest,
   }) {
     final result = create();
@@ -43,8 +49,12 @@ class CommandMessage extends $pb.GeneratedMessage {
     if (getDeviceInfoRequest != null)
       result.getDeviceInfoRequest = getDeviceInfoRequest;
     if (initSDKRequest != null) result.initSDKRequest = initSDKRequest;
+    if (generateTransportKeyRequest != null)
+      result.generateTransportKeyRequest = generateTransportKeyRequest;
     if (checkLoadedKeyRequest != null)
       result.checkLoadedKeyRequest = checkLoadedKeyRequest;
+    if (getKSNRequest != null) result.getKSNRequest = getKSNRequest;
+    if (deleteKeyRequest != null) result.deleteKeyRequest = deleteKeyRequest;
     if (loadKeyRequest != null) result.loadKeyRequest = loadKeyRequest;
     return result;
   }
@@ -63,15 +73,18 @@ class CommandMessage extends $pb.GeneratedMessage {
     1: CommandMessage_Type.pingRequest,
     2: CommandMessage_Type.getDeviceInfoRequest,
     3: CommandMessage_Type.initSDKRequest,
-    4: CommandMessage_Type.checkLoadedKeyRequest,
-    5: CommandMessage_Type.loadKeyRequest,
+    4: CommandMessage_Type.generateTransportKeyRequest,
+    5: CommandMessage_Type.checkLoadedKeyRequest,
+    6: CommandMessage_Type.getKSNRequest,
+    7: CommandMessage_Type.deleteKeyRequest,
+    8: CommandMessage_Type.loadKeyRequest,
     0: CommandMessage_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'CommandMessage',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8])
     ..aOM<$0.PingRequest>(1, _omitFieldNames ? '' : 'pingRequest',
         protoName: 'pingRequest', subBuilder: $0.PingRequest.create)
     ..aOM<$1.GetDeviceInfoRequest>(
@@ -80,11 +93,19 @@ class CommandMessage extends $pb.GeneratedMessage {
         subBuilder: $1.GetDeviceInfoRequest.create)
     ..aOM<$1.InitSDKRequest>(3, _omitFieldNames ? '' : 'initSDKRequest',
         protoName: 'initSDKRequest', subBuilder: $1.InitSDKRequest.create)
+    ..aOM<$2.GenerateTransportKeyRequest>(
+        4, _omitFieldNames ? '' : 'generateTransportKeyRequest',
+        protoName: 'generateTransportKeyRequest',
+        subBuilder: $2.GenerateTransportKeyRequest.create)
     ..aOM<$2.CheckLoadedKeyRequest>(
-        4, _omitFieldNames ? '' : 'checkLoadedKeyRequest',
+        5, _omitFieldNames ? '' : 'checkLoadedKeyRequest',
         protoName: 'checkLoadedKeyRequest',
         subBuilder: $2.CheckLoadedKeyRequest.create)
-    ..aOM<$2.LoadKeyRequest>(5, _omitFieldNames ? '' : 'loadKeyRequest',
+    ..aOM<$2.GetKSNRequest>(6, _omitFieldNames ? '' : 'getKSNRequest',
+        protoName: 'getKSNRequest', subBuilder: $2.GetKSNRequest.create)
+    ..aOM<$2.DeleteKeyRequest>(7, _omitFieldNames ? '' : 'deleteKeyRequest',
+        protoName: 'deleteKeyRequest', subBuilder: $2.DeleteKeyRequest.create)
+    ..aOM<$2.LoadKeyRequest>(8, _omitFieldNames ? '' : 'loadKeyRequest',
         protoName: 'loadKeyRequest', subBuilder: $2.LoadKeyRequest.create)
     ..hasRequiredFields = false;
 
@@ -148,27 +169,62 @@ class CommandMessage extends $pb.GeneratedMessage {
   $1.InitSDKRequest ensureInitSDKRequest() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $2.CheckLoadedKeyRequest get checkLoadedKeyRequest => $_getN(3);
+  $2.GenerateTransportKeyRequest get generateTransportKeyRequest => $_getN(3);
   @$pb.TagNumber(4)
-  set checkLoadedKeyRequest($2.CheckLoadedKeyRequest value) =>
+  set generateTransportKeyRequest($2.GenerateTransportKeyRequest value) =>
       $_setField(4, value);
   @$pb.TagNumber(4)
-  $core.bool hasCheckLoadedKeyRequest() => $_has(3);
+  $core.bool hasGenerateTransportKeyRequest() => $_has(3);
   @$pb.TagNumber(4)
-  void clearCheckLoadedKeyRequest() => $_clearField(4);
+  void clearGenerateTransportKeyRequest() => $_clearField(4);
   @$pb.TagNumber(4)
-  $2.CheckLoadedKeyRequest ensureCheckLoadedKeyRequest() => $_ensure(3);
+  $2.GenerateTransportKeyRequest ensureGenerateTransportKeyRequest() =>
+      $_ensure(3);
 
   @$pb.TagNumber(5)
-  $2.LoadKeyRequest get loadKeyRequest => $_getN(4);
+  $2.CheckLoadedKeyRequest get checkLoadedKeyRequest => $_getN(4);
   @$pb.TagNumber(5)
-  set loadKeyRequest($2.LoadKeyRequest value) => $_setField(5, value);
+  set checkLoadedKeyRequest($2.CheckLoadedKeyRequest value) =>
+      $_setField(5, value);
   @$pb.TagNumber(5)
-  $core.bool hasLoadKeyRequest() => $_has(4);
+  $core.bool hasCheckLoadedKeyRequest() => $_has(4);
   @$pb.TagNumber(5)
-  void clearLoadKeyRequest() => $_clearField(5);
+  void clearCheckLoadedKeyRequest() => $_clearField(5);
   @$pb.TagNumber(5)
-  $2.LoadKeyRequest ensureLoadKeyRequest() => $_ensure(4);
+  $2.CheckLoadedKeyRequest ensureCheckLoadedKeyRequest() => $_ensure(4);
+
+  @$pb.TagNumber(6)
+  $2.GetKSNRequest get getKSNRequest => $_getN(5);
+  @$pb.TagNumber(6)
+  set getKSNRequest($2.GetKSNRequest value) => $_setField(6, value);
+  @$pb.TagNumber(6)
+  $core.bool hasGetKSNRequest() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearGetKSNRequest() => $_clearField(6);
+  @$pb.TagNumber(6)
+  $2.GetKSNRequest ensureGetKSNRequest() => $_ensure(5);
+
+  @$pb.TagNumber(7)
+  $2.DeleteKeyRequest get deleteKeyRequest => $_getN(6);
+  @$pb.TagNumber(7)
+  set deleteKeyRequest($2.DeleteKeyRequest value) => $_setField(7, value);
+  @$pb.TagNumber(7)
+  $core.bool hasDeleteKeyRequest() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearDeleteKeyRequest() => $_clearField(7);
+  @$pb.TagNumber(7)
+  $2.DeleteKeyRequest ensureDeleteKeyRequest() => $_ensure(6);
+
+  @$pb.TagNumber(8)
+  $2.LoadKeyRequest get loadKeyRequest => $_getN(7);
+  @$pb.TagNumber(8)
+  set loadKeyRequest($2.LoadKeyRequest value) => $_setField(8, value);
+  @$pb.TagNumber(8)
+  $core.bool hasLoadKeyRequest() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearLoadKeyRequest() => $_clearField(8);
+  @$pb.TagNumber(8)
+  $2.LoadKeyRequest ensureLoadKeyRequest() => $_ensure(7);
 }
 
 enum CommandResponse_Type {
@@ -176,7 +232,10 @@ enum CommandResponse_Type {
   getDeviceInfoResponse,
   initSDKResponse,
   checkLoadedKeyResponse,
+  generateTransportKeyResponse,
   loadKeyResponse,
+  getKSNResponse,
+  deleteKeyResponse,
   error,
   notSet
 }
@@ -187,7 +246,10 @@ class CommandResponse extends $pb.GeneratedMessage {
     $1.GetDeviceInfoResponse? getDeviceInfoResponse,
     $1.InitSDKResponse? initSDKResponse,
     $2.CheckLoadedKeyResponse? checkLoadedKeyResponse,
+    $2.GenerateTransportKeyResponse? generateTransportKeyResponse,
     $2.LoadKeyResponse? loadKeyResponse,
+    $2.GetKSNResponse? getKSNResponse,
+    $2.DeleteKeyResponse? deleteKeyResponse,
     $3.ErrorResponse? error,
   }) {
     final result = create();
@@ -197,7 +259,11 @@ class CommandResponse extends $pb.GeneratedMessage {
     if (initSDKResponse != null) result.initSDKResponse = initSDKResponse;
     if (checkLoadedKeyResponse != null)
       result.checkLoadedKeyResponse = checkLoadedKeyResponse;
+    if (generateTransportKeyResponse != null)
+      result.generateTransportKeyResponse = generateTransportKeyResponse;
     if (loadKeyResponse != null) result.loadKeyResponse = loadKeyResponse;
+    if (getKSNResponse != null) result.getKSNResponse = getKSNResponse;
+    if (deleteKeyResponse != null) result.deleteKeyResponse = deleteKeyResponse;
     if (error != null) result.error = error;
     return result;
   }
@@ -217,15 +283,18 @@ class CommandResponse extends $pb.GeneratedMessage {
     2: CommandResponse_Type.getDeviceInfoResponse,
     3: CommandResponse_Type.initSDKResponse,
     4: CommandResponse_Type.checkLoadedKeyResponse,
-    5: CommandResponse_Type.loadKeyResponse,
-    6: CommandResponse_Type.error,
+    5: CommandResponse_Type.generateTransportKeyResponse,
+    6: CommandResponse_Type.loadKeyResponse,
+    7: CommandResponse_Type.getKSNResponse,
+    8: CommandResponse_Type.deleteKeyResponse,
+    9: CommandResponse_Type.error,
     0: CommandResponse_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'CommandResponse',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 6])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9])
     ..aOM<$0.PingResponse>(1, _omitFieldNames ? '' : 'pingResponse',
         protoName: 'pingResponse', subBuilder: $0.PingResponse.create)
     ..aOM<$1.GetDeviceInfoResponse>(
@@ -238,9 +307,17 @@ class CommandResponse extends $pb.GeneratedMessage {
         4, _omitFieldNames ? '' : 'checkLoadedKeyResponse',
         protoName: 'checkLoadedKeyResponse',
         subBuilder: $2.CheckLoadedKeyResponse.create)
-    ..aOM<$2.LoadKeyResponse>(5, _omitFieldNames ? '' : 'loadKeyResponse',
+    ..aOM<$2.GenerateTransportKeyResponse>(
+        5, _omitFieldNames ? '' : 'generateTransportKeyResponse',
+        protoName: 'generateTransportKeyResponse',
+        subBuilder: $2.GenerateTransportKeyResponse.create)
+    ..aOM<$2.LoadKeyResponse>(6, _omitFieldNames ? '' : 'loadKeyResponse',
         protoName: 'loadKeyResponse', subBuilder: $2.LoadKeyResponse.create)
-    ..aOM<$3.ErrorResponse>(6, _omitFieldNames ? '' : 'error',
+    ..aOM<$2.GetKSNResponse>(7, _omitFieldNames ? '' : 'getKSNResponse',
+        protoName: 'getKSNResponse', subBuilder: $2.GetKSNResponse.create)
+    ..aOM<$2.DeleteKeyResponse>(8, _omitFieldNames ? '' : 'deleteKeyResponse',
+        protoName: 'deleteKeyResponse', subBuilder: $2.DeleteKeyResponse.create)
+    ..aOM<$3.ErrorResponse>(9, _omitFieldNames ? '' : 'error',
         subBuilder: $3.ErrorResponse.create)
     ..hasRequiredFields = false;
 
@@ -316,26 +393,61 @@ class CommandResponse extends $pb.GeneratedMessage {
   $2.CheckLoadedKeyResponse ensureCheckLoadedKeyResponse() => $_ensure(3);
 
   @$pb.TagNumber(5)
-  $2.LoadKeyResponse get loadKeyResponse => $_getN(4);
+  $2.GenerateTransportKeyResponse get generateTransportKeyResponse => $_getN(4);
   @$pb.TagNumber(5)
-  set loadKeyResponse($2.LoadKeyResponse value) => $_setField(5, value);
+  set generateTransportKeyResponse($2.GenerateTransportKeyResponse value) =>
+      $_setField(5, value);
   @$pb.TagNumber(5)
-  $core.bool hasLoadKeyResponse() => $_has(4);
+  $core.bool hasGenerateTransportKeyResponse() => $_has(4);
   @$pb.TagNumber(5)
-  void clearLoadKeyResponse() => $_clearField(5);
+  void clearGenerateTransportKeyResponse() => $_clearField(5);
   @$pb.TagNumber(5)
-  $2.LoadKeyResponse ensureLoadKeyResponse() => $_ensure(4);
+  $2.GenerateTransportKeyResponse ensureGenerateTransportKeyResponse() =>
+      $_ensure(4);
 
   @$pb.TagNumber(6)
-  $3.ErrorResponse get error => $_getN(5);
+  $2.LoadKeyResponse get loadKeyResponse => $_getN(5);
   @$pb.TagNumber(6)
-  set error($3.ErrorResponse value) => $_setField(6, value);
+  set loadKeyResponse($2.LoadKeyResponse value) => $_setField(6, value);
   @$pb.TagNumber(6)
-  $core.bool hasError() => $_has(5);
+  $core.bool hasLoadKeyResponse() => $_has(5);
   @$pb.TagNumber(6)
-  void clearError() => $_clearField(6);
+  void clearLoadKeyResponse() => $_clearField(6);
   @$pb.TagNumber(6)
-  $3.ErrorResponse ensureError() => $_ensure(5);
+  $2.LoadKeyResponse ensureLoadKeyResponse() => $_ensure(5);
+
+  @$pb.TagNumber(7)
+  $2.GetKSNResponse get getKSNResponse => $_getN(6);
+  @$pb.TagNumber(7)
+  set getKSNResponse($2.GetKSNResponse value) => $_setField(7, value);
+  @$pb.TagNumber(7)
+  $core.bool hasGetKSNResponse() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearGetKSNResponse() => $_clearField(7);
+  @$pb.TagNumber(7)
+  $2.GetKSNResponse ensureGetKSNResponse() => $_ensure(6);
+
+  @$pb.TagNumber(8)
+  $2.DeleteKeyResponse get deleteKeyResponse => $_getN(7);
+  @$pb.TagNumber(8)
+  set deleteKeyResponse($2.DeleteKeyResponse value) => $_setField(8, value);
+  @$pb.TagNumber(8)
+  $core.bool hasDeleteKeyResponse() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearDeleteKeyResponse() => $_clearField(8);
+  @$pb.TagNumber(8)
+  $2.DeleteKeyResponse ensureDeleteKeyResponse() => $_ensure(7);
+
+  @$pb.TagNumber(9)
+  $3.ErrorResponse get error => $_getN(8);
+  @$pb.TagNumber(9)
+  set error($3.ErrorResponse value) => $_setField(9, value);
+  @$pb.TagNumber(9)
+  $core.bool hasError() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearError() => $_clearField(9);
+  @$pb.TagNumber(9)
+  $3.ErrorResponse ensureError() => $_ensure(8);
 }
 
 const $core.bool _omitFieldNames =

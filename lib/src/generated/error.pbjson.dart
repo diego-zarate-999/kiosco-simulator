@@ -64,8 +64,26 @@ const ErrorResponse$json = {
       '10': 'errorLoadKey'
     },
     {
-      '1': 'errorTransacion',
+      '1': 'errorGenerateTransportKey',
       '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.ErrorGenerateTransportKey',
+      '9': 0,
+      '10': 'errorGenerateTransportKey'
+    },
+    {
+      '1': 'errorDeleteKey',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.ErrorDeleteKey',
+      '9': 0,
+      '10': 'errorDeleteKey'
+    },
+    {
+      '1': 'errorTransacion',
+      '3': 8,
       '4': 1,
       '5': 11,
       '6': '.metaApp.ErrorTransaction',
@@ -87,8 +105,11 @@ final $typed_data.Uint8List errorResponseDescriptor = $convert.base64Decode(
     'cnJvckludmFsaWRDb21tYW5kSABSE2Vycm9ySW52YWxpZENvbW1hbmQSUAoTZXJyb3JDaGVja0'
     'xvYWRlZEtleRgEIAEoCzIcLm1ldGFBcHAuRXJyb3JDaGVja0xvYWRlZEtleUgAUhNlcnJvckNo'
     'ZWNrTG9hZGVkS2V5EjsKDGVycm9yTG9hZEtleRgFIAEoCzIVLm1ldGFBcHAuRXJyb3JMb2FkS2'
-    'V5SABSDGVycm9yTG9hZEtleRJFCg9lcnJvclRyYW5zYWNpb24YBiABKAsyGS5tZXRhQXBwLkVy'
-    'cm9yVHJhbnNhY3Rpb25IAFIPZXJyb3JUcmFuc2FjaW9uQgYKBHR5cGU=');
+    'V5SABSDGVycm9yTG9hZEtleRJiChllcnJvckdlbmVyYXRlVHJhbnNwb3J0S2V5GAYgASgLMiIu'
+    'bWV0YUFwcC5FcnJvckdlbmVyYXRlVHJhbnNwb3J0S2V5SABSGWVycm9yR2VuZXJhdGVUcmFuc3'
+    'BvcnRLZXkSQQoOZXJyb3JEZWxldGVLZXkYByABKAsyFy5tZXRhQXBwLkVycm9yRGVsZXRlS2V5'
+    'SABSDmVycm9yRGVsZXRlS2V5EkUKD2Vycm9yVHJhbnNhY2lvbhgIIAEoCzIZLm1ldGFBcHAuRX'
+    'Jyb3JUcmFuc2FjdGlvbkgAUg9lcnJvclRyYW5zYWNpb25CBgoEdHlwZQ==');
 
 @$core.Deprecated('Use errorPinPadConnectionDescriptor instead')
 const ErrorPinPadConnection$json = {
@@ -152,6 +173,31 @@ const ErrorLoadKey$json = {
 /// Descriptor for `ErrorLoadKey`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List errorLoadKeyDescriptor = $convert
     .base64Decode('CgxFcnJvckxvYWRLZXkSGAoHbWVzc2FnZRgBIAEoCVIHbWVzc2FnZQ==');
+
+@$core.Deprecated('Use errorGenerateTransportKeyDescriptor instead')
+const ErrorGenerateTransportKey$json = {
+  '1': 'ErrorGenerateTransportKey',
+  '2': [
+    {'1': 'message', '3': 1, '4': 1, '5': 9, '10': 'message'},
+  ],
+};
+
+/// Descriptor for `ErrorGenerateTransportKey`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List errorGenerateTransportKeyDescriptor =
+    $convert.base64Decode(
+        'ChlFcnJvckdlbmVyYXRlVHJhbnNwb3J0S2V5EhgKB21lc3NhZ2UYASABKAlSB21lc3NhZ2U=');
+
+@$core.Deprecated('Use errorDeleteKeyDescriptor instead')
+const ErrorDeleteKey$json = {
+  '1': 'ErrorDeleteKey',
+  '2': [
+    {'1': 'message', '3': 1, '4': 1, '5': 9, '10': 'message'},
+  ],
+};
+
+/// Descriptor for `ErrorDeleteKey`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List errorDeleteKeyDescriptor = $convert
+    .base64Decode('Cg5FcnJvckRlbGV0ZUtleRIYCgdtZXNzYWdlGAEgASgJUgdtZXNzYWdl');
 
 @$core.Deprecated('Use errorTransactionDescriptor instead')
 const ErrorTransaction$json = {

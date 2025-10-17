@@ -11,5 +11,6 @@ service PinPad {
     rpc getDeviceInfo(GetDeviceInfoRequest) returns (GetDeviceInfoResponse);
     rpc initSDK(InitSDKRequest) returns (InitSDKResponse);
     rpc checkLoadedKey(CheckLoadedKeyRequest) returns (CheckLoadedKeyResponse);
+    rpc generateTransportKey(GenerateTransportKeyRequest) returns (GenerateTransportKeyResponse);
     rpc loadKey(LoadKeyRequest) returns (LoadKeyResponse);
 }

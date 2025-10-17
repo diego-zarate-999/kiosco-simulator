@@ -21,4 +21,9 @@ class CommunicationManager {
 
     return response;
   }
+
+  Future<void> sendMessage(CommandMessage message) async {
+    _serialPortManager.open(_portName);
+    _serialPortManager.sendData(message.writeToBuffer());
+  }
 }

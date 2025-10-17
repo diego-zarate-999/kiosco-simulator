@@ -22,6 +22,8 @@ enum ErrorResponse_Type {
   errorInvalidCommand,
   errorCheckLoadedKey,
   errorLoadKey,
+  errorGenerateTransportKey,
+  errorDeleteKey,
   errorTransacion,
   notSet
 }
@@ -33,6 +35,8 @@ class ErrorResponse extends $pb.GeneratedMessage {
     ErrorInvalidCommand? errorInvalidCommand,
     ErrorCheckLoadedKey? errorCheckLoadedKey,
     ErrorLoadKey? errorLoadKey,
+    ErrorGenerateTransportKey? errorGenerateTransportKey,
+    ErrorDeleteKey? errorDeleteKey,
     ErrorTransaction? errorTransacion,
   }) {
     final result = create();
@@ -45,6 +49,9 @@ class ErrorResponse extends $pb.GeneratedMessage {
     if (errorCheckLoadedKey != null)
       result.errorCheckLoadedKey = errorCheckLoadedKey;
     if (errorLoadKey != null) result.errorLoadKey = errorLoadKey;
+    if (errorGenerateTransportKey != null)
+      result.errorGenerateTransportKey = errorGenerateTransportKey;
+    if (errorDeleteKey != null) result.errorDeleteKey = errorDeleteKey;
     if (errorTransacion != null) result.errorTransacion = errorTransacion;
     return result;
   }
@@ -65,14 +72,16 @@ class ErrorResponse extends $pb.GeneratedMessage {
     3: ErrorResponse_Type.errorInvalidCommand,
     4: ErrorResponse_Type.errorCheckLoadedKey,
     5: ErrorResponse_Type.errorLoadKey,
-    6: ErrorResponse_Type.errorTransacion,
+    6: ErrorResponse_Type.errorGenerateTransportKey,
+    7: ErrorResponse_Type.errorDeleteKey,
+    8: ErrorResponse_Type.errorTransacion,
     0: ErrorResponse_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'ErrorResponse',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 6])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8])
     ..aOM<ErrorPinPadConnection>(
         1, _omitFieldNames ? '' : 'errorPinpadConnection',
         protoName: 'errorPinpadConnection',
@@ -87,7 +96,13 @@ class ErrorResponse extends $pb.GeneratedMessage {
         subBuilder: ErrorCheckLoadedKey.create)
     ..aOM<ErrorLoadKey>(5, _omitFieldNames ? '' : 'errorLoadKey',
         protoName: 'errorLoadKey', subBuilder: ErrorLoadKey.create)
-    ..aOM<ErrorTransaction>(6, _omitFieldNames ? '' : 'errorTransacion',
+    ..aOM<ErrorGenerateTransportKey>(
+        6, _omitFieldNames ? '' : 'errorGenerateTransportKey',
+        protoName: 'errorGenerateTransportKey',
+        subBuilder: ErrorGenerateTransportKey.create)
+    ..aOM<ErrorDeleteKey>(7, _omitFieldNames ? '' : 'errorDeleteKey',
+        protoName: 'errorDeleteKey', subBuilder: ErrorDeleteKey.create)
+    ..aOM<ErrorTransaction>(8, _omitFieldNames ? '' : 'errorTransacion',
         protoName: 'errorTransacion', subBuilder: ErrorTransaction.create)
     ..hasRequiredFields = false;
 
@@ -172,15 +187,38 @@ class ErrorResponse extends $pb.GeneratedMessage {
   ErrorLoadKey ensureErrorLoadKey() => $_ensure(4);
 
   @$pb.TagNumber(6)
-  ErrorTransaction get errorTransacion => $_getN(5);
+  ErrorGenerateTransportKey get errorGenerateTransportKey => $_getN(5);
   @$pb.TagNumber(6)
-  set errorTransacion(ErrorTransaction value) => $_setField(6, value);
+  set errorGenerateTransportKey(ErrorGenerateTransportKey value) =>
+      $_setField(6, value);
   @$pb.TagNumber(6)
-  $core.bool hasErrorTransacion() => $_has(5);
+  $core.bool hasErrorGenerateTransportKey() => $_has(5);
   @$pb.TagNumber(6)
-  void clearErrorTransacion() => $_clearField(6);
+  void clearErrorGenerateTransportKey() => $_clearField(6);
   @$pb.TagNumber(6)
-  ErrorTransaction ensureErrorTransacion() => $_ensure(5);
+  ErrorGenerateTransportKey ensureErrorGenerateTransportKey() => $_ensure(5);
+
+  @$pb.TagNumber(7)
+  ErrorDeleteKey get errorDeleteKey => $_getN(6);
+  @$pb.TagNumber(7)
+  set errorDeleteKey(ErrorDeleteKey value) => $_setField(7, value);
+  @$pb.TagNumber(7)
+  $core.bool hasErrorDeleteKey() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearErrorDeleteKey() => $_clearField(7);
+  @$pb.TagNumber(7)
+  ErrorDeleteKey ensureErrorDeleteKey() => $_ensure(6);
+
+  @$pb.TagNumber(8)
+  ErrorTransaction get errorTransacion => $_getN(7);
+  @$pb.TagNumber(8)
+  set errorTransacion(ErrorTransaction value) => $_setField(8, value);
+  @$pb.TagNumber(8)
+  $core.bool hasErrorTransacion() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearErrorTransacion() => $_clearField(8);
+  @$pb.TagNumber(8)
+  ErrorTransaction ensureErrorTransacion() => $_ensure(7);
 }
 
 class ErrorPinPadConnection extends $pb.GeneratedMessage {
@@ -454,6 +492,120 @@ class ErrorLoadKey extends $pb.GeneratedMessage {
   static ErrorLoadKey getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ErrorLoadKey>(create);
   static ErrorLoadKey? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get message => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set message($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasMessage() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMessage() => $_clearField(1);
+}
+
+class ErrorGenerateTransportKey extends $pb.GeneratedMessage {
+  factory ErrorGenerateTransportKey({
+    $core.String? message,
+  }) {
+    final result = create();
+    if (message != null) result.message = message;
+    return result;
+  }
+
+  ErrorGenerateTransportKey._();
+
+  factory ErrorGenerateTransportKey.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ErrorGenerateTransportKey.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ErrorGenerateTransportKey',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'message')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorGenerateTransportKey clone() =>
+      ErrorGenerateTransportKey()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorGenerateTransportKey copyWith(
+          void Function(ErrorGenerateTransportKey) updates) =>
+      super.copyWith((message) => updates(message as ErrorGenerateTransportKey))
+          as ErrorGenerateTransportKey;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ErrorGenerateTransportKey create() => ErrorGenerateTransportKey._();
+  @$core.override
+  ErrorGenerateTransportKey createEmptyInstance() => create();
+  static $pb.PbList<ErrorGenerateTransportKey> createRepeated() =>
+      $pb.PbList<ErrorGenerateTransportKey>();
+  @$core.pragma('dart2js:noInline')
+  static ErrorGenerateTransportKey getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ErrorGenerateTransportKey>(create);
+  static ErrorGenerateTransportKey? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get message => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set message($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasMessage() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMessage() => $_clearField(1);
+}
+
+class ErrorDeleteKey extends $pb.GeneratedMessage {
+  factory ErrorDeleteKey({
+    $core.String? message,
+  }) {
+    final result = create();
+    if (message != null) result.message = message;
+    return result;
+  }
+
+  ErrorDeleteKey._();
+
+  factory ErrorDeleteKey.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ErrorDeleteKey.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ErrorDeleteKey',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'message')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorDeleteKey clone() => ErrorDeleteKey()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ErrorDeleteKey copyWith(void Function(ErrorDeleteKey) updates) =>
+      super.copyWith((message) => updates(message as ErrorDeleteKey))
+          as ErrorDeleteKey;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ErrorDeleteKey create() => ErrorDeleteKey._();
+  @$core.override
+  ErrorDeleteKey createEmptyInstance() => create();
+  static $pb.PbList<ErrorDeleteKey> createRepeated() =>
+      $pb.PbList<ErrorDeleteKey>();
+  @$core.pragma('dart2js:noInline')
+  static ErrorDeleteKey getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ErrorDeleteKey>(create);
+  static ErrorDeleteKey? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get message => $_getSZ(0);
