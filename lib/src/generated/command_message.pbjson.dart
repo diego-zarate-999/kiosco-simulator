@@ -28,8 +28,17 @@ const CommandMessage$json = {
       '10': 'pingRequest'
     },
     {
-      '1': 'getDeviceInfoRequest',
+      '1': 'setDeviceDateTimeRequest',
       '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.SetDeviceDateTimeRequest',
+      '9': 0,
+      '10': 'setDeviceDateTimeRequest'
+    },
+    {
+      '1': 'getDeviceInfoRequest',
+      '3': 3,
       '4': 1,
       '5': 11,
       '6': '.metaApp.GetDeviceInfoRequest',
@@ -38,7 +47,7 @@ const CommandMessage$json = {
     },
     {
       '1': 'initSDKRequest',
-      '3': 3,
+      '3': 4,
       '4': 1,
       '5': 11,
       '6': '.metaApp.InitSDKRequest',
@@ -47,7 +56,7 @@ const CommandMessage$json = {
     },
     {
       '1': 'generateTransportKeyRequest',
-      '3': 4,
+      '3': 5,
       '4': 1,
       '5': 11,
       '6': '.metaApp.GenerateTransportKeyRequest',
@@ -56,7 +65,7 @@ const CommandMessage$json = {
     },
     {
       '1': 'checkLoadedKeyRequest',
-      '3': 5,
+      '3': 6,
       '4': 1,
       '5': 11,
       '6': '.metaApp.CheckLoadedKeyRequest',
@@ -65,7 +74,7 @@ const CommandMessage$json = {
     },
     {
       '1': 'getKSNRequest',
-      '3': 6,
+      '3': 7,
       '4': 1,
       '5': 11,
       '6': '.metaApp.GetKSNRequest',
@@ -74,7 +83,7 @@ const CommandMessage$json = {
     },
     {
       '1': 'deleteKeyRequest',
-      '3': 7,
+      '3': 8,
       '4': 1,
       '5': 11,
       '6': '.metaApp.DeleteKeyRequest',
@@ -83,7 +92,7 @@ const CommandMessage$json = {
     },
     {
       '1': 'loadKeyRequest',
-      '3': 8,
+      '3': 9,
       '4': 1,
       '5': 11,
       '6': '.metaApp.LoadKeyRequest',
@@ -99,17 +108,19 @@ const CommandMessage$json = {
 /// Descriptor for `CommandMessage`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List commandMessageDescriptor = $convert.base64Decode(
     'Cg5Db21tYW5kTWVzc2FnZRI4CgtwaW5nUmVxdWVzdBgBIAEoCzIULm1ldGFBcHAuUGluZ1JlcX'
-    'Vlc3RIAFILcGluZ1JlcXVlc3QSUwoUZ2V0RGV2aWNlSW5mb1JlcXVlc3QYAiABKAsyHS5tZXRh'
-    'QXBwLkdldERldmljZUluZm9SZXF1ZXN0SABSFGdldERldmljZUluZm9SZXF1ZXN0EkEKDmluaX'
-    'RTREtSZXF1ZXN0GAMgASgLMhcubWV0YUFwcC5Jbml0U0RLUmVxdWVzdEgAUg5pbml0U0RLUmVx'
-    'dWVzdBJoChtnZW5lcmF0ZVRyYW5zcG9ydEtleVJlcXVlc3QYBCABKAsyJC5tZXRhQXBwLkdlbm'
-    'VyYXRlVHJhbnNwb3J0S2V5UmVxdWVzdEgAUhtnZW5lcmF0ZVRyYW5zcG9ydEtleVJlcXVlc3QS'
-    'VgoVY2hlY2tMb2FkZWRLZXlSZXF1ZXN0GAUgASgLMh4ubWV0YUFwcC5DaGVja0xvYWRlZEtleV'
-    'JlcXVlc3RIAFIVY2hlY2tMb2FkZWRLZXlSZXF1ZXN0Ej4KDWdldEtTTlJlcXVlc3QYBiABKAsy'
-    'Fi5tZXRhQXBwLkdldEtTTlJlcXVlc3RIAFINZ2V0S1NOUmVxdWVzdBJHChBkZWxldGVLZXlSZX'
-    'F1ZXN0GAcgASgLMhkubWV0YUFwcC5EZWxldGVLZXlSZXF1ZXN0SABSEGRlbGV0ZUtleVJlcXVl'
-    'c3QSQQoObG9hZEtleVJlcXVlc3QYCCABKAsyFy5tZXRhQXBwLkxvYWRLZXlSZXF1ZXN0SABSDm'
-    'xvYWRLZXlSZXF1ZXN0QgYKBHR5cGU=');
+    'Vlc3RIAFILcGluZ1JlcXVlc3QSXwoYc2V0RGV2aWNlRGF0ZVRpbWVSZXF1ZXN0GAIgASgLMiEu'
+    'bWV0YUFwcC5TZXREZXZpY2VEYXRlVGltZVJlcXVlc3RIAFIYc2V0RGV2aWNlRGF0ZVRpbWVSZX'
+    'F1ZXN0ElMKFGdldERldmljZUluZm9SZXF1ZXN0GAMgASgLMh0ubWV0YUFwcC5HZXREZXZpY2VJ'
+    'bmZvUmVxdWVzdEgAUhRnZXREZXZpY2VJbmZvUmVxdWVzdBJBCg5pbml0U0RLUmVxdWVzdBgEIA'
+    'EoCzIXLm1ldGFBcHAuSW5pdFNES1JlcXVlc3RIAFIOaW5pdFNES1JlcXVlc3QSaAobZ2VuZXJh'
+    'dGVUcmFuc3BvcnRLZXlSZXF1ZXN0GAUgASgLMiQubWV0YUFwcC5HZW5lcmF0ZVRyYW5zcG9ydE'
+    'tleVJlcXVlc3RIAFIbZ2VuZXJhdGVUcmFuc3BvcnRLZXlSZXF1ZXN0ElYKFWNoZWNrTG9hZGVk'
+    'S2V5UmVxdWVzdBgGIAEoCzIeLm1ldGFBcHAuQ2hlY2tMb2FkZWRLZXlSZXF1ZXN0SABSFWNoZW'
+    'NrTG9hZGVkS2V5UmVxdWVzdBI+Cg1nZXRLU05SZXF1ZXN0GAcgASgLMhYubWV0YUFwcC5HZXRL'
+    'U05SZXF1ZXN0SABSDWdldEtTTlJlcXVlc3QSRwoQZGVsZXRlS2V5UmVxdWVzdBgIIAEoCzIZLm'
+    '1ldGFBcHAuRGVsZXRlS2V5UmVxdWVzdEgAUhBkZWxldGVLZXlSZXF1ZXN0EkEKDmxvYWRLZXlS'
+    'ZXF1ZXN0GAkgASgLMhcubWV0YUFwcC5Mb2FkS2V5UmVxdWVzdEgAUg5sb2FkS2V5UmVxdWVzdE'
+    'IGCgR0eXBl');
 
 @$core.Deprecated('Use commandResponseDescriptor instead')
 const CommandResponse$json = {
@@ -125,8 +136,17 @@ const CommandResponse$json = {
       '10': 'pingResponse'
     },
     {
-      '1': 'getDeviceInfoResponse',
+      '1': 'setDeviceDateTimeResponse',
       '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.SetDeviceDateTimeResponse',
+      '9': 0,
+      '10': 'setDeviceDateTimeResponse'
+    },
+    {
+      '1': 'getDeviceInfoResponse',
+      '3': 3,
       '4': 1,
       '5': 11,
       '6': '.metaApp.GetDeviceInfoResponse',
@@ -135,7 +155,7 @@ const CommandResponse$json = {
     },
     {
       '1': 'initSDKResponse',
-      '3': 3,
+      '3': 4,
       '4': 1,
       '5': 11,
       '6': '.metaApp.InitSDKResponse',
@@ -144,7 +164,7 @@ const CommandResponse$json = {
     },
     {
       '1': 'checkLoadedKeyResponse',
-      '3': 4,
+      '3': 5,
       '4': 1,
       '5': 11,
       '6': '.metaApp.CheckLoadedKeyResponse',
@@ -153,7 +173,7 @@ const CommandResponse$json = {
     },
     {
       '1': 'generateTransportKeyResponse',
-      '3': 5,
+      '3': 6,
       '4': 1,
       '5': 11,
       '6': '.metaApp.GenerateTransportKeyResponse',
@@ -162,7 +182,7 @@ const CommandResponse$json = {
     },
     {
       '1': 'loadKeyResponse',
-      '3': 6,
+      '3': 7,
       '4': 1,
       '5': 11,
       '6': '.metaApp.LoadKeyResponse',
@@ -171,7 +191,7 @@ const CommandResponse$json = {
     },
     {
       '1': 'getKSNResponse',
-      '3': 7,
+      '3': 8,
       '4': 1,
       '5': 11,
       '6': '.metaApp.GetKSNResponse',
@@ -180,7 +200,7 @@ const CommandResponse$json = {
     },
     {
       '1': 'deleteKeyResponse',
-      '3': 8,
+      '3': 9,
       '4': 1,
       '5': 11,
       '6': '.metaApp.DeleteKeyResponse',
@@ -189,7 +209,7 @@ const CommandResponse$json = {
     },
     {
       '1': 'error',
-      '3': 9,
+      '3': 10,
       '4': 1,
       '5': 11,
       '6': '.metaApp.ErrorResponse',
@@ -205,15 +225,17 @@ const CommandResponse$json = {
 /// Descriptor for `CommandResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List commandResponseDescriptor = $convert.base64Decode(
     'Cg9Db21tYW5kUmVzcG9uc2USOwoMcGluZ1Jlc3BvbnNlGAEgASgLMhUubWV0YUFwcC5QaW5nUm'
-    'VzcG9uc2VIAFIMcGluZ1Jlc3BvbnNlElYKFWdldERldmljZUluZm9SZXNwb25zZRgCIAEoCzIe'
-    'Lm1ldGFBcHAuR2V0RGV2aWNlSW5mb1Jlc3BvbnNlSABSFWdldERldmljZUluZm9SZXNwb25zZR'
-    'JECg9pbml0U0RLUmVzcG9uc2UYAyABKAsyGC5tZXRhQXBwLkluaXRTREtSZXNwb25zZUgAUg9p'
-    'bml0U0RLUmVzcG9uc2USWQoWY2hlY2tMb2FkZWRLZXlSZXNwb25zZRgEIAEoCzIfLm1ldGFBcH'
-    'AuQ2hlY2tMb2FkZWRLZXlSZXNwb25zZUgAUhZjaGVja0xvYWRlZEtleVJlc3BvbnNlEmsKHGdl'
-    'bmVyYXRlVHJhbnNwb3J0S2V5UmVzcG9uc2UYBSABKAsyJS5tZXRhQXBwLkdlbmVyYXRlVHJhbn'
-    'Nwb3J0S2V5UmVzcG9uc2VIAFIcZ2VuZXJhdGVUcmFuc3BvcnRLZXlSZXNwb25zZRJECg9sb2Fk'
-    'S2V5UmVzcG9uc2UYBiABKAsyGC5tZXRhQXBwLkxvYWRLZXlSZXNwb25zZUgAUg9sb2FkS2V5Um'
-    'VzcG9uc2USQQoOZ2V0S1NOUmVzcG9uc2UYByABKAsyFy5tZXRhQXBwLkdldEtTTlJlc3BvbnNl'
-    'SABSDmdldEtTTlJlc3BvbnNlEkoKEWRlbGV0ZUtleVJlc3BvbnNlGAggASgLMhoubWV0YUFwcC'
-    '5EZWxldGVLZXlSZXNwb25zZUgAUhFkZWxldGVLZXlSZXNwb25zZRIuCgVlcnJvchgJIAEoCzIW'
-    'Lm1ldGFBcHAuRXJyb3JSZXNwb25zZUgAUgVlcnJvckIGCgR0eXBl');
+    'VzcG9uc2VIAFIMcGluZ1Jlc3BvbnNlEmIKGXNldERldmljZURhdGVUaW1lUmVzcG9uc2UYAiAB'
+    'KAsyIi5tZXRhQXBwLlNldERldmljZURhdGVUaW1lUmVzcG9uc2VIAFIZc2V0RGV2aWNlRGF0ZV'
+    'RpbWVSZXNwb25zZRJWChVnZXREZXZpY2VJbmZvUmVzcG9uc2UYAyABKAsyHi5tZXRhQXBwLkdl'
+    'dERldmljZUluZm9SZXNwb25zZUgAUhVnZXREZXZpY2VJbmZvUmVzcG9uc2USRAoPaW5pdFNES1'
+    'Jlc3BvbnNlGAQgASgLMhgubWV0YUFwcC5Jbml0U0RLUmVzcG9uc2VIAFIPaW5pdFNES1Jlc3Bv'
+    'bnNlElkKFmNoZWNrTG9hZGVkS2V5UmVzcG9uc2UYBSABKAsyHy5tZXRhQXBwLkNoZWNrTG9hZG'
+    'VkS2V5UmVzcG9uc2VIAFIWY2hlY2tMb2FkZWRLZXlSZXNwb25zZRJrChxnZW5lcmF0ZVRyYW5z'
+    'cG9ydEtleVJlc3BvbnNlGAYgASgLMiUubWV0YUFwcC5HZW5lcmF0ZVRyYW5zcG9ydEtleVJlc3'
+    'BvbnNlSABSHGdlbmVyYXRlVHJhbnNwb3J0S2V5UmVzcG9uc2USRAoPbG9hZEtleVJlc3BvbnNl'
+    'GAcgASgLMhgubWV0YUFwcC5Mb2FkS2V5UmVzcG9uc2VIAFIPbG9hZEtleVJlc3BvbnNlEkEKDm'
+    'dldEtTTlJlc3BvbnNlGAggASgLMhcubWV0YUFwcC5HZXRLU05SZXNwb25zZUgAUg5nZXRLU05S'
+    'ZXNwb25zZRJKChFkZWxldGVLZXlSZXNwb25zZRgJIAEoCzIaLm1ldGFBcHAuRGVsZXRlS2V5Um'
+    'VzcG9uc2VIAFIRZGVsZXRlS2V5UmVzcG9uc2USLgoFZXJyb3IYCiABKAsyFi5tZXRhQXBwLkVy'
+    'cm9yUmVzcG9uc2VIAFIFZXJyb3JCBgoEdHlwZQ==');

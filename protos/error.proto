@@ -4,15 +4,20 @@ package metaApp;
 
 message ErrorResponse {
     oneof type {
-        ErrorPinPadConnection errorPinpadConnection         = 1;
-        ErrorSdkIntialize errorSdkInitialize                = 2;
-        ErrorInvalidCommand errorInvalidCommand             = 3;
-        ErrorCheckLoadedKey errorCheckLoadedKey             = 4;
-        ErrorLoadKey errorLoadKey                           = 5;
-        ErrorGenerateTransportKey errorGenerateTransportKey = 6;
-        ErrorDeleteKey errorDeleteKey                       = 7;
-        ErrorTransaction errorTransacion                    = 8;
+        DeviceError deviceError                             = 1;
+        ErrorPinPadConnection errorPinpadConnection         = 2;
+        ErrorSdkIntialize errorSdkInitialize                = 3;
+        ErrorInvalidCommand errorInvalidCommand             = 4;
+        ErrorCheckLoadedKey errorCheckLoadedKey             = 5;
+        ErrorLoadKey errorLoadKey                           = 6;
+        ErrorGenerateTransportKey errorGenerateTransportKey = 7;
+        ErrorDeleteKey errorDeleteKey                       = 8;
+        ErrorTransaction errorTransacion                    = 9;
     }
+}
+
+message DeviceError {
+    string message = 1;
 }
 
 message ErrorPinPadConnection {

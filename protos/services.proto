@@ -3,14 +3,18 @@ syntax = "proto3";
 package metaApp;
 
 import "ping.proto";
+import "device.proto";
 import "sdk_initialization.proto";
 import "key_loading.proto";
 
 service PinPad {
     rpc ping(PingRequest) returns (PingResponse);
+    rpc setDeviceDateTime(SetDeviceDateTimeRequest) returns (SetDeviceDateTimeResponse);
     rpc getDeviceInfo(GetDeviceInfoRequest) returns (GetDeviceInfoResponse);
     rpc initSDK(InitSDKRequest) returns (InitSDKResponse);
     rpc checkLoadedKey(CheckLoadedKeyRequest) returns (CheckLoadedKeyResponse);
     rpc generateTransportKey(GenerateTransportKeyRequest) returns (GenerateTransportKeyResponse);
     rpc loadKey(LoadKeyRequest) returns (LoadKeyResponse);
+    rpc getKeyKsn(GetKSNRequest) returns (GetKSNResponse);
+    rpc deleteKey (DeleteKeyRequest) returns (DeleteKeyResponse);
 }

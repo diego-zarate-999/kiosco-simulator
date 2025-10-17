@@ -3,6 +3,7 @@ syntax = "proto3";
 package metaApp;
 
 import "error.proto";
+import "device.proto";
 import "sdk_initialization.proto";
 import "key_loading.proto";
 import "ping.proto";
@@ -10,26 +11,28 @@ import "ping.proto";
 message CommandMessage {
     oneof type {
         PingRequest pingRequest                                 = 1;
-        GetDeviceInfoRequest getDeviceInfoRequest               = 2;
-        InitSDKRequest initSDKRequest                           = 3;
-        GenerateTransportKeyRequest generateTransportKeyRequest = 4;
-        CheckLoadedKeyRequest checkLoadedKeyRequest             = 5;
-        GetKSNRequest getKSNRequest                             = 6;
-        DeleteKeyRequest deleteKeyRequest                       = 7;
-        LoadKeyRequest loadKeyRequest                           = 8;
+        SetDeviceDateTimeRequest setDeviceDateTimeRequest       = 2;
+        GetDeviceInfoRequest getDeviceInfoRequest               = 3;
+        InitSDKRequest initSDKRequest                           = 4;
+        GenerateTransportKeyRequest generateTransportKeyRequest = 5;
+        CheckLoadedKeyRequest checkLoadedKeyRequest             = 6;
+        GetKSNRequest getKSNRequest                             = 7;
+        DeleteKeyRequest deleteKeyRequest                       = 8;
+        LoadKeyRequest loadKeyRequest                           = 9;
     }
 }
 
 message CommandResponse {
     oneof type {
         PingResponse pingResponse                                   = 1;
-        GetDeviceInfoResponse getDeviceInfoResponse                 = 2;
-        InitSDKResponse initSDKResponse                             = 3;
-        CheckLoadedKeyResponse checkLoadedKeyResponse               = 4;
-        GenerateTransportKeyResponse generateTransportKeyResponse   = 5;
-        LoadKeyResponse loadKeyResponse                             = 6;
-        GetKSNResponse getKSNResponse                               = 7;
-        DeleteKeyResponse deleteKeyResponse                         = 8;
-        ErrorResponse error                                         = 9;
+        SetDeviceDateTimeResponse setDeviceDateTimeResponse         = 2;
+        GetDeviceInfoResponse getDeviceInfoResponse                 = 3;
+        InitSDKResponse initSDKResponse                             = 4;
+        CheckLoadedKeyResponse checkLoadedKeyResponse               = 5;
+        GenerateTransportKeyResponse generateTransportKeyResponse   = 6;
+        LoadKeyResponse loadKeyResponse                             = 7;
+        GetKSNResponse getKSNResponse                               = 8;
+        DeleteKeyResponse deleteKeyResponse                         = 9;
+        ErrorResponse error                                         = 10;
     }
 }

@@ -19,8 +19,17 @@ const ErrorResponse$json = {
   '1': 'ErrorResponse',
   '2': [
     {
-      '1': 'errorPinpadConnection',
+      '1': 'deviceError',
       '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.DeviceError',
+      '9': 0,
+      '10': 'deviceError'
+    },
+    {
+      '1': 'errorPinpadConnection',
+      '3': 2,
       '4': 1,
       '5': 11,
       '6': '.metaApp.ErrorPinPadConnection',
@@ -29,7 +38,7 @@ const ErrorResponse$json = {
     },
     {
       '1': 'errorSdkInitialize',
-      '3': 2,
+      '3': 3,
       '4': 1,
       '5': 11,
       '6': '.metaApp.ErrorSdkIntialize',
@@ -38,7 +47,7 @@ const ErrorResponse$json = {
     },
     {
       '1': 'errorInvalidCommand',
-      '3': 3,
+      '3': 4,
       '4': 1,
       '5': 11,
       '6': '.metaApp.ErrorInvalidCommand',
@@ -47,7 +56,7 @@ const ErrorResponse$json = {
     },
     {
       '1': 'errorCheckLoadedKey',
-      '3': 4,
+      '3': 5,
       '4': 1,
       '5': 11,
       '6': '.metaApp.ErrorCheckLoadedKey',
@@ -56,7 +65,7 @@ const ErrorResponse$json = {
     },
     {
       '1': 'errorLoadKey',
-      '3': 5,
+      '3': 6,
       '4': 1,
       '5': 11,
       '6': '.metaApp.ErrorLoadKey',
@@ -65,7 +74,7 @@ const ErrorResponse$json = {
     },
     {
       '1': 'errorGenerateTransportKey',
-      '3': 6,
+      '3': 7,
       '4': 1,
       '5': 11,
       '6': '.metaApp.ErrorGenerateTransportKey',
@@ -74,7 +83,7 @@ const ErrorResponse$json = {
     },
     {
       '1': 'errorDeleteKey',
-      '3': 7,
+      '3': 8,
       '4': 1,
       '5': 11,
       '6': '.metaApp.ErrorDeleteKey',
@@ -83,7 +92,7 @@ const ErrorResponse$json = {
     },
     {
       '1': 'errorTransacion',
-      '3': 8,
+      '3': 9,
       '4': 1,
       '5': 11,
       '6': '.metaApp.ErrorTransaction',
@@ -98,18 +107,31 @@ const ErrorResponse$json = {
 
 /// Descriptor for `ErrorResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List errorResponseDescriptor = $convert.base64Decode(
-    'Cg1FcnJvclJlc3BvbnNlElYKFWVycm9yUGlucGFkQ29ubmVjdGlvbhgBIAEoCzIeLm1ldGFBcH'
-    'AuRXJyb3JQaW5QYWRDb25uZWN0aW9uSABSFWVycm9yUGlucGFkQ29ubmVjdGlvbhJMChJlcnJv'
-    'clNka0luaXRpYWxpemUYAiABKAsyGi5tZXRhQXBwLkVycm9yU2RrSW50aWFsaXplSABSEmVycm'
-    '9yU2RrSW5pdGlhbGl6ZRJQChNlcnJvckludmFsaWRDb21tYW5kGAMgASgLMhwubWV0YUFwcC5F'
-    'cnJvckludmFsaWRDb21tYW5kSABSE2Vycm9ySW52YWxpZENvbW1hbmQSUAoTZXJyb3JDaGVja0'
-    'xvYWRlZEtleRgEIAEoCzIcLm1ldGFBcHAuRXJyb3JDaGVja0xvYWRlZEtleUgAUhNlcnJvckNo'
-    'ZWNrTG9hZGVkS2V5EjsKDGVycm9yTG9hZEtleRgFIAEoCzIVLm1ldGFBcHAuRXJyb3JMb2FkS2'
-    'V5SABSDGVycm9yTG9hZEtleRJiChllcnJvckdlbmVyYXRlVHJhbnNwb3J0S2V5GAYgASgLMiIu'
-    'bWV0YUFwcC5FcnJvckdlbmVyYXRlVHJhbnNwb3J0S2V5SABSGWVycm9yR2VuZXJhdGVUcmFuc3'
-    'BvcnRLZXkSQQoOZXJyb3JEZWxldGVLZXkYByABKAsyFy5tZXRhQXBwLkVycm9yRGVsZXRlS2V5'
-    'SABSDmVycm9yRGVsZXRlS2V5EkUKD2Vycm9yVHJhbnNhY2lvbhgIIAEoCzIZLm1ldGFBcHAuRX'
-    'Jyb3JUcmFuc2FjdGlvbkgAUg9lcnJvclRyYW5zYWNpb25CBgoEdHlwZQ==');
+    'Cg1FcnJvclJlc3BvbnNlEjgKC2RldmljZUVycm9yGAEgASgLMhQubWV0YUFwcC5EZXZpY2VFcn'
+    'JvckgAUgtkZXZpY2VFcnJvchJWChVlcnJvclBpbnBhZENvbm5lY3Rpb24YAiABKAsyHi5tZXRh'
+    'QXBwLkVycm9yUGluUGFkQ29ubmVjdGlvbkgAUhVlcnJvclBpbnBhZENvbm5lY3Rpb24STAoSZX'
+    'Jyb3JTZGtJbml0aWFsaXplGAMgASgLMhoubWV0YUFwcC5FcnJvclNka0ludGlhbGl6ZUgAUhJl'
+    'cnJvclNka0luaXRpYWxpemUSUAoTZXJyb3JJbnZhbGlkQ29tbWFuZBgEIAEoCzIcLm1ldGFBcH'
+    'AuRXJyb3JJbnZhbGlkQ29tbWFuZEgAUhNlcnJvckludmFsaWRDb21tYW5kElAKE2Vycm9yQ2hl'
+    'Y2tMb2FkZWRLZXkYBSABKAsyHC5tZXRhQXBwLkVycm9yQ2hlY2tMb2FkZWRLZXlIAFITZXJyb3'
+    'JDaGVja0xvYWRlZEtleRI7CgxlcnJvckxvYWRLZXkYBiABKAsyFS5tZXRhQXBwLkVycm9yTG9h'
+    'ZEtleUgAUgxlcnJvckxvYWRLZXkSYgoZZXJyb3JHZW5lcmF0ZVRyYW5zcG9ydEtleRgHIAEoCz'
+    'IiLm1ldGFBcHAuRXJyb3JHZW5lcmF0ZVRyYW5zcG9ydEtleUgAUhllcnJvckdlbmVyYXRlVHJh'
+    'bnNwb3J0S2V5EkEKDmVycm9yRGVsZXRlS2V5GAggASgLMhcubWV0YUFwcC5FcnJvckRlbGV0ZU'
+    'tleUgAUg5lcnJvckRlbGV0ZUtleRJFCg9lcnJvclRyYW5zYWNpb24YCSABKAsyGS5tZXRhQXBw'
+    'LkVycm9yVHJhbnNhY3Rpb25IAFIPZXJyb3JUcmFuc2FjaW9uQgYKBHR5cGU=');
+
+@$core.Deprecated('Use deviceErrorDescriptor instead')
+const DeviceError$json = {
+  '1': 'DeviceError',
+  '2': [
+    {'1': 'message', '3': 1, '4': 1, '5': 9, '10': 'message'},
+  ],
+};
+
+/// Descriptor for `DeviceError`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deviceErrorDescriptor = $convert
+    .base64Decode('CgtEZXZpY2VFcnJvchIYCgdtZXNzYWdlGAEgASgJUgdtZXNzYWdl');
 
 @$core.Deprecated('Use errorPinPadConnectionDescriptor instead')
 const ErrorPinPadConnection$json = {

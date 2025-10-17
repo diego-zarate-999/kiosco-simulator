@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package metaApp;
+
+///
+/// Request y response para establecer datetime del dispositivo.
+///
+
+
+message SetDeviceDateTimeRequest {
+    string dateTime = 1;
+}
+
+
+message SetDeviceDateTimeResponse { }

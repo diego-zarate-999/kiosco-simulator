@@ -1,12 +1,16 @@
 import 'dart:typed_data';
 
+import 'package:intl/intl.dart';
 import 'package:kiosco_simulator/extensions/hex_string.dart';
 import 'package:kiosco_simulator/src/communication_manager.dart';
 import 'package:kiosco_simulator/src/generated/command_message.pb.dart';
+import 'package:kiosco_simulator/src/generated/device.pb.dart';
 import 'package:kiosco_simulator/src/generated/key_loading.pb.dart';
 import 'package:kiosco_simulator/src/generated/ping.pb.dart';
 import 'package:kiosco_simulator/src/generated/sdk_initialization.pb.dart';
 import 'package:pointycastle/impl.dart' as ptc;
+
+final formatter = DateFormat("yyyyMMddHHmmss");
 
 class DeviceInformation {
   final String brand;
@@ -39,6 +43,21 @@ class P180Device {
     final response = await _communicationManager.sendRequest(ping);
 
     print("Echo reciibido: ${response.pingResponse.message}");
+  }
+
+  Future<void> setDateTime(DateTime dateTime) async {
+    final formattedDateTime = formatter.format(dateTime);
+    final request = CommandMessage(
+      setDeviceDateTimeRequest: SetDeviceDateTimeRequest(
+        dateTime: formattedDateTime,
+      ),
+    );
+
+    final response = await _communicationManager.sendRequest(request);
+
+    if (response.hasError()) {
+      throw Exception(response.error.errorSdkInitialize.message);
+    }
   }
 
   Future<DeviceInformation> getDeviceInformation() async {
