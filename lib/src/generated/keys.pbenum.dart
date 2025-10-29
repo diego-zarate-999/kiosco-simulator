@@ -1,6 +1,6 @@
 // This is a generated file - do not edit.
 //
-// Generated from key_loading.proto.
+// Generated from keys.proto.
 
 // @dart = 3.3
 

@@ -116,6 +116,117 @@ class SetDeviceDateTimeResponse extends $pb.GeneratedMessage {
   static SetDeviceDateTimeResponse? _defaultInstance;
 }
 
+class GetDeviceInfoRequest extends $pb.GeneratedMessage {
+  factory GetDeviceInfoRequest() => create();
+
+  GetDeviceInfoRequest._();
+
+  factory GetDeviceInfoRequest.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory GetDeviceInfoRequest.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GetDeviceInfoRequest',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GetDeviceInfoRequest clone() =>
+      GetDeviceInfoRequest()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GetDeviceInfoRequest copyWith(void Function(GetDeviceInfoRequest) updates) =>
+      super.copyWith((message) => updates(message as GetDeviceInfoRequest))
+          as GetDeviceInfoRequest;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GetDeviceInfoRequest create() => GetDeviceInfoRequest._();
+  @$core.override
+  GetDeviceInfoRequest createEmptyInstance() => create();
+  static $pb.PbList<GetDeviceInfoRequest> createRepeated() =>
+      $pb.PbList<GetDeviceInfoRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetDeviceInfoRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GetDeviceInfoRequest>(create);
+  static GetDeviceInfoRequest? _defaultInstance;
+}
+
+class GetDeviceInfoResponse extends $pb.GeneratedMessage {
+  factory GetDeviceInfoResponse({
+    $core.String? serialNumber,
+    $core.String? brand,
+  }) {
+    final result = create();
+    if (serialNumber != null) result.serialNumber = serialNumber;
+    if (brand != null) result.brand = brand;
+    return result;
+  }
+
+  GetDeviceInfoResponse._();
+
+  factory GetDeviceInfoResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory GetDeviceInfoResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GetDeviceInfoResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'serialNumber', protoName: 'serialNumber')
+    ..aOS(2, _omitFieldNames ? '' : 'brand')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GetDeviceInfoResponse clone() =>
+      GetDeviceInfoResponse()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GetDeviceInfoResponse copyWith(
+          void Function(GetDeviceInfoResponse) updates) =>
+      super.copyWith((message) => updates(message as GetDeviceInfoResponse))
+          as GetDeviceInfoResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GetDeviceInfoResponse create() => GetDeviceInfoResponse._();
+  @$core.override
+  GetDeviceInfoResponse createEmptyInstance() => create();
+  static $pb.PbList<GetDeviceInfoResponse> createRepeated() =>
+      $pb.PbList<GetDeviceInfoResponse>();
+  @$core.pragma('dart2js:noInline')
+  static GetDeviceInfoResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GetDeviceInfoResponse>(create);
+  static GetDeviceInfoResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get serialNumber => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set serialNumber($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasSerialNumber() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSerialNumber() => $_clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get brand => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set brand($core.String value) => $_setString(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasBrand() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearBrand() => $_clearField(2);
+}
+
 const $core.bool _omitFieldNames =
     $core.bool.fromEnvironment('protobuf.omit_field_names');
 const $core.bool _omitMessageNames =

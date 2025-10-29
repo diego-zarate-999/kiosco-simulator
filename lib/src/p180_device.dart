@@ -5,9 +5,8 @@ import 'package:kiosco_simulator/extensions/hex_string.dart';
 import 'package:kiosco_simulator/src/communication_manager.dart';
 import 'package:kiosco_simulator/src/generated/command_message.pb.dart';
 import 'package:kiosco_simulator/src/generated/device.pb.dart';
-import 'package:kiosco_simulator/src/generated/key_loading.pb.dart';
-import 'package:kiosco_simulator/src/generated/ping.pb.dart';
-import 'package:kiosco_simulator/src/generated/sdk_initialization.pb.dart';
+import 'package:kiosco_simulator/src/generated/keys.pb.dart';
+import 'package:kiosco_simulator/src/generated/sdk.pb.dart';
 import 'package:pointycastle/impl.dart' as ptc;
 
 final formatter = DateFormat("yyyyMMddHHmmss");
@@ -37,7 +36,7 @@ class P180Device {
   }
 
   Future<void> sendPing(String message) async {
-    final ping = CommandMessage(pingRequest: PingRequest(message: message));
+    final ping = CommandMessage();
 
     print("Enviando ping...");
     final response = await _communicationManager.sendRequest(ping);
@@ -46,6 +45,7 @@ class P180Device {
   }
 
   Future<void> setDateTime(DateTime dateTime) async {
+    print(dateTime.toString());
     final formattedDateTime = formatter.format(dateTime);
     final request = CommandMessage(
       setDeviceDateTimeRequest: SetDeviceDateTimeRequest(
@@ -56,7 +56,7 @@ class P180Device {
     final response = await _communicationManager.sendRequest(request);
 
     if (response.hasError()) {
-      throw Exception(response.error.errorSdkInitialize.message);
+      throw Exception(response.error.message);
     }
   }
 
@@ -80,7 +80,7 @@ class P180Device {
     final response = await _communicationManager.sendRequest(request);
 
     if (response.hasError()) {
-      throw Exception(response.error.errorSdkInitialize.message);
+      throw Exception(response.error.message);
     }
   }
 
@@ -92,7 +92,7 @@ class P180Device {
     final response = await _communicationManager.sendRequest(request);
 
     if (response.hasError()) {
-      throw Exception(response.error.errorCheckLoadedKey.message);
+      throw Exception(response.error.message);
     }
 
     return response.checkLoadedKeyResponse.keyIsLoaded;
@@ -140,7 +140,7 @@ class P180Device {
       final response = await _communicationManager.sendRequest(request);
 
       if (response.hasError()) {
-        throw Exception(response.error.errorLoadKey.message);
+        throw Exception(response.error.message);
       }
     }
   }
@@ -156,8 +156,13 @@ class P180Device {
     );
 
     final response = await _communicationManager.sendRequest(request);
-    final key = response.generateTransportKeyResponse.key;
-    final kcv = response.generateTransportKeyResponse.kcv;
+
+    if (response.hasError()) {
+      throw Exception(response.error.message);
+    }
+
+    final key = response.generateTransportKeyResponse.generatedTransportKey.key;
+    final kcv = response.generateTransportKeyResponse.generatedTransportKey.kcv;
 
     return TransportKey(
       key: Uint8List.fromList(key),
@@ -171,8 +176,9 @@ class P180Device {
     );
 
     final response = await _communicationManager.sendRequest(request);
+    print("response = ${response.toString()}");
     if (response.hasError()) {
-      throw Exception(response.error.errorCheckLoadedKey.message);
+      throw Exception(response.error.message);
     }
 
     final ksn = Uint8List.fromList(response.getKSNResponse.ksn);
@@ -181,7 +187,7 @@ class P180Device {
 
   Future<void> deleteDUKPTKey(DUKPTKey key) async {
     final request = CommandMessage(
-      deleteKeyRequest: DeleteKeyRequest(
+      deleteDukptKeyRequest: DeleteDukptKeyRequest(
         dukptKey: DUKPTKey(
           data: key.data,
           derivateKeyLen: key.derivateKeyLen,
@@ -194,7 +200,7 @@ class P180Device {
 
     final response = await _communicationManager.sendRequest(request);
     if (response.hasError()) {
-      throw Exception(response.error.errorCheckLoadedKey.message);
+      throw Exception(response.error.message);
     }
   }
 }

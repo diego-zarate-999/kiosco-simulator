@@ -9,7 +9,7 @@ class SerialPortManager {
     if (_isOpen) return;
 
     _serialPort = SerialPort(portName);
-    print("Puertos disponibles: ${SerialPort.availablePorts}");
+    // print("Puertos disponibles: ${SerialPort.availablePorts}");
 
     _serialPort.config.baudRate = 115200;
     _serialPort.config.bits = 8;

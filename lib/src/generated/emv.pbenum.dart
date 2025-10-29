@@ -1,6 +1,6 @@
 // This is a generated file - do not edit.
 //
-// Generated from sdk_initialization.proto.
+// Generated from emv.proto.
 
 // @dart = 3.3
 

@@ -6,10 +6,15 @@ package metaApp;
 /// Request y response para establecer datetime del dispositivo.
 ///
 
-
 message SetDeviceDateTimeRequest {
     string dateTime = 1;
 }
 
-
 message SetDeviceDateTimeResponse { }
+
+message GetDeviceInfoRequest { }
+
+message GetDeviceInfoResponse {
+    string serialNumber = 1;
+    string brand = 2;
+}

@@ -15,10 +15,11 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'device.pb.dart' as $1;
-import 'error.pb.dart' as $4;
-import 'key_loading.pb.dart' as $3;
+import 'emv.pb.dart' as $4;
+import 'error.pb.dart' as $5;
+import 'keys.pb.dart' as $3;
 import 'ping.pb.dart' as $0;
-import 'sdk_initialization.pb.dart' as $2;
+import 'sdk.pb.dart' as $2;
 
 export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
@@ -30,8 +31,11 @@ enum CommandMessage_Type {
   generateTransportKeyRequest,
   checkLoadedKeyRequest,
   getKSNRequest,
-  deleteKeyRequest,
+  deleteDukptKeyRequest,
   loadKeyRequest,
+  loadTerminalParametersRequest,
+  loadCapksRequest,
+  loadEmvAppsRequest,
   notSet
 }
 
@@ -39,13 +43,16 @@ class CommandMessage extends $pb.GeneratedMessage {
   factory CommandMessage({
     $0.PingRequest? pingRequest,
     $1.SetDeviceDateTimeRequest? setDeviceDateTimeRequest,
-    $2.GetDeviceInfoRequest? getDeviceInfoRequest,
+    $1.GetDeviceInfoRequest? getDeviceInfoRequest,
     $2.InitSDKRequest? initSDKRequest,
     $3.GenerateTransportKeyRequest? generateTransportKeyRequest,
     $3.CheckLoadedKeyRequest? checkLoadedKeyRequest,
     $3.GetKSNRequest? getKSNRequest,
-    $3.DeleteKeyRequest? deleteKeyRequest,
+    $3.DeleteDukptKeyRequest? deleteDukptKeyRequest,
     $3.LoadKeyRequest? loadKeyRequest,
+    $4.LoadTerminalParametersRequest? loadTerminalParametersRequest,
+    $4.LoadCapksRequest? loadCapksRequest,
+    $4.LoadEmvAppsRequest? loadEmvAppsRequest,
   }) {
     final result = create();
     if (pingRequest != null) result.pingRequest = pingRequest;
@@ -59,8 +66,14 @@ class CommandMessage extends $pb.GeneratedMessage {
     if (checkLoadedKeyRequest != null)
       result.checkLoadedKeyRequest = checkLoadedKeyRequest;
     if (getKSNRequest != null) result.getKSNRequest = getKSNRequest;
-    if (deleteKeyRequest != null) result.deleteKeyRequest = deleteKeyRequest;
+    if (deleteDukptKeyRequest != null)
+      result.deleteDukptKeyRequest = deleteDukptKeyRequest;
     if (loadKeyRequest != null) result.loadKeyRequest = loadKeyRequest;
+    if (loadTerminalParametersRequest != null)
+      result.loadTerminalParametersRequest = loadTerminalParametersRequest;
+    if (loadCapksRequest != null) result.loadCapksRequest = loadCapksRequest;
+    if (loadEmvAppsRequest != null)
+      result.loadEmvAppsRequest = loadEmvAppsRequest;
     return result;
   }
 
@@ -82,25 +95,28 @@ class CommandMessage extends $pb.GeneratedMessage {
     5: CommandMessage_Type.generateTransportKeyRequest,
     6: CommandMessage_Type.checkLoadedKeyRequest,
     7: CommandMessage_Type.getKSNRequest,
-    8: CommandMessage_Type.deleteKeyRequest,
+    8: CommandMessage_Type.deleteDukptKeyRequest,
     9: CommandMessage_Type.loadKeyRequest,
+    10: CommandMessage_Type.loadTerminalParametersRequest,
+    11: CommandMessage_Type.loadCapksRequest,
+    12: CommandMessage_Type.loadEmvAppsRequest,
     0: CommandMessage_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'CommandMessage',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
     ..aOM<$0.PingRequest>(1, _omitFieldNames ? '' : 'pingRequest',
         protoName: 'pingRequest', subBuilder: $0.PingRequest.create)
     ..aOM<$1.SetDeviceDateTimeRequest>(
         2, _omitFieldNames ? '' : 'setDeviceDateTimeRequest',
         protoName: 'setDeviceDateTimeRequest',
         subBuilder: $1.SetDeviceDateTimeRequest.create)
-    ..aOM<$2.GetDeviceInfoRequest>(
+    ..aOM<$1.GetDeviceInfoRequest>(
         3, _omitFieldNames ? '' : 'getDeviceInfoRequest',
         protoName: 'getDeviceInfoRequest',
-        subBuilder: $2.GetDeviceInfoRequest.create)
+        subBuilder: $1.GetDeviceInfoRequest.create)
     ..aOM<$2.InitSDKRequest>(4, _omitFieldNames ? '' : 'initSDKRequest',
         protoName: 'initSDKRequest', subBuilder: $2.InitSDKRequest.create)
     ..aOM<$3.GenerateTransportKeyRequest>(
@@ -113,10 +129,22 @@ class CommandMessage extends $pb.GeneratedMessage {
         subBuilder: $3.CheckLoadedKeyRequest.create)
     ..aOM<$3.GetKSNRequest>(7, _omitFieldNames ? '' : 'getKSNRequest',
         protoName: 'getKSNRequest', subBuilder: $3.GetKSNRequest.create)
-    ..aOM<$3.DeleteKeyRequest>(8, _omitFieldNames ? '' : 'deleteKeyRequest',
-        protoName: 'deleteKeyRequest', subBuilder: $3.DeleteKeyRequest.create)
+    ..aOM<$3.DeleteDukptKeyRequest>(
+        8, _omitFieldNames ? '' : 'deleteDukptKeyRequest',
+        protoName: 'deleteDukptKeyRequest',
+        subBuilder: $3.DeleteDukptKeyRequest.create)
     ..aOM<$3.LoadKeyRequest>(9, _omitFieldNames ? '' : 'loadKeyRequest',
         protoName: 'loadKeyRequest', subBuilder: $3.LoadKeyRequest.create)
+    ..aOM<$4.LoadTerminalParametersRequest>(
+        10, _omitFieldNames ? '' : 'loadTerminalParametersRequest',
+        protoName: 'loadTerminalParametersRequest',
+        subBuilder: $4.LoadTerminalParametersRequest.create)
+    ..aOM<$4.LoadCapksRequest>(11, _omitFieldNames ? '' : 'loadCapksRequest',
+        protoName: 'loadCapksRequest', subBuilder: $4.LoadCapksRequest.create)
+    ..aOM<$4.LoadEmvAppsRequest>(
+        12, _omitFieldNames ? '' : 'loadEmvAppsRequest',
+        protoName: 'loadEmvAppsRequest',
+        subBuilder: $4.LoadEmvAppsRequest.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -168,16 +196,16 @@ class CommandMessage extends $pb.GeneratedMessage {
   $1.SetDeviceDateTimeRequest ensureSetDeviceDateTimeRequest() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $2.GetDeviceInfoRequest get getDeviceInfoRequest => $_getN(2);
+  $1.GetDeviceInfoRequest get getDeviceInfoRequest => $_getN(2);
   @$pb.TagNumber(3)
-  set getDeviceInfoRequest($2.GetDeviceInfoRequest value) =>
+  set getDeviceInfoRequest($1.GetDeviceInfoRequest value) =>
       $_setField(3, value);
   @$pb.TagNumber(3)
   $core.bool hasGetDeviceInfoRequest() => $_has(2);
   @$pb.TagNumber(3)
   void clearGetDeviceInfoRequest() => $_clearField(3);
   @$pb.TagNumber(3)
-  $2.GetDeviceInfoRequest ensureGetDeviceInfoRequest() => $_ensure(2);
+  $1.GetDeviceInfoRequest ensureGetDeviceInfoRequest() => $_ensure(2);
 
   @$pb.TagNumber(4)
   $2.InitSDKRequest get initSDKRequest => $_getN(3);
@@ -227,15 +255,16 @@ class CommandMessage extends $pb.GeneratedMessage {
   $3.GetKSNRequest ensureGetKSNRequest() => $_ensure(6);
 
   @$pb.TagNumber(8)
-  $3.DeleteKeyRequest get deleteKeyRequest => $_getN(7);
+  $3.DeleteDukptKeyRequest get deleteDukptKeyRequest => $_getN(7);
   @$pb.TagNumber(8)
-  set deleteKeyRequest($3.DeleteKeyRequest value) => $_setField(8, value);
+  set deleteDukptKeyRequest($3.DeleteDukptKeyRequest value) =>
+      $_setField(8, value);
   @$pb.TagNumber(8)
-  $core.bool hasDeleteKeyRequest() => $_has(7);
+  $core.bool hasDeleteDukptKeyRequest() => $_has(7);
   @$pb.TagNumber(8)
-  void clearDeleteKeyRequest() => $_clearField(8);
+  void clearDeleteDukptKeyRequest() => $_clearField(8);
   @$pb.TagNumber(8)
-  $3.DeleteKeyRequest ensureDeleteKeyRequest() => $_ensure(7);
+  $3.DeleteDukptKeyRequest ensureDeleteDukptKeyRequest() => $_ensure(7);
 
   @$pb.TagNumber(9)
   $3.LoadKeyRequest get loadKeyRequest => $_getN(8);
@@ -247,6 +276,42 @@ class CommandMessage extends $pb.GeneratedMessage {
   void clearLoadKeyRequest() => $_clearField(9);
   @$pb.TagNumber(9)
   $3.LoadKeyRequest ensureLoadKeyRequest() => $_ensure(8);
+
+  @$pb.TagNumber(10)
+  $4.LoadTerminalParametersRequest get loadTerminalParametersRequest =>
+      $_getN(9);
+  @$pb.TagNumber(10)
+  set loadTerminalParametersRequest($4.LoadTerminalParametersRequest value) =>
+      $_setField(10, value);
+  @$pb.TagNumber(10)
+  $core.bool hasLoadTerminalParametersRequest() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearLoadTerminalParametersRequest() => $_clearField(10);
+  @$pb.TagNumber(10)
+  $4.LoadTerminalParametersRequest ensureLoadTerminalParametersRequest() =>
+      $_ensure(9);
+
+  @$pb.TagNumber(11)
+  $4.LoadCapksRequest get loadCapksRequest => $_getN(10);
+  @$pb.TagNumber(11)
+  set loadCapksRequest($4.LoadCapksRequest value) => $_setField(11, value);
+  @$pb.TagNumber(11)
+  $core.bool hasLoadCapksRequest() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearLoadCapksRequest() => $_clearField(11);
+  @$pb.TagNumber(11)
+  $4.LoadCapksRequest ensureLoadCapksRequest() => $_ensure(10);
+
+  @$pb.TagNumber(12)
+  $4.LoadEmvAppsRequest get loadEmvAppsRequest => $_getN(11);
+  @$pb.TagNumber(12)
+  set loadEmvAppsRequest($4.LoadEmvAppsRequest value) => $_setField(12, value);
+  @$pb.TagNumber(12)
+  $core.bool hasLoadEmvAppsRequest() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearLoadEmvAppsRequest() => $_clearField(12);
+  @$pb.TagNumber(12)
+  $4.LoadEmvAppsRequest ensureLoadEmvAppsRequest() => $_ensure(11);
 }
 
 enum CommandResponse_Type {
@@ -258,7 +323,10 @@ enum CommandResponse_Type {
   generateTransportKeyResponse,
   loadKeyResponse,
   getKSNResponse,
-  deleteKeyResponse,
+  deletedUKPTKeyResponse,
+  loadTerminalParametersResponse,
+  loadCapksResponse,
+  loadEmvAppsResponse,
   error,
   notSet
 }
@@ -267,14 +335,17 @@ class CommandResponse extends $pb.GeneratedMessage {
   factory CommandResponse({
     $0.PingResponse? pingResponse,
     $1.SetDeviceDateTimeResponse? setDeviceDateTimeResponse,
-    $2.GetDeviceInfoResponse? getDeviceInfoResponse,
+    $1.GetDeviceInfoResponse? getDeviceInfoResponse,
     $2.InitSDKResponse? initSDKResponse,
     $3.CheckLoadedKeyResponse? checkLoadedKeyResponse,
     $3.GenerateTransportKeyResponse? generateTransportKeyResponse,
     $3.LoadKeyResponse? loadKeyResponse,
     $3.GetKSNResponse? getKSNResponse,
-    $3.DeleteKeyResponse? deleteKeyResponse,
-    $4.ErrorResponse? error,
+    $3.DeleteDukptKeyResponse? deletedUKPTKeyResponse,
+    $4.LoadTerminalParametersResponse? loadTerminalParametersResponse,
+    $4.LoadCapksResponse? loadCapksResponse,
+    $4.LoadEmvAppsResponse? loadEmvAppsResponse,
+    $5.ErrorResponse? error,
   }) {
     final result = create();
     if (pingResponse != null) result.pingResponse = pingResponse;
@@ -289,7 +360,13 @@ class CommandResponse extends $pb.GeneratedMessage {
       result.generateTransportKeyResponse = generateTransportKeyResponse;
     if (loadKeyResponse != null) result.loadKeyResponse = loadKeyResponse;
     if (getKSNResponse != null) result.getKSNResponse = getKSNResponse;
-    if (deleteKeyResponse != null) result.deleteKeyResponse = deleteKeyResponse;
+    if (deletedUKPTKeyResponse != null)
+      result.deletedUKPTKeyResponse = deletedUKPTKeyResponse;
+    if (loadTerminalParametersResponse != null)
+      result.loadTerminalParametersResponse = loadTerminalParametersResponse;
+    if (loadCapksResponse != null) result.loadCapksResponse = loadCapksResponse;
+    if (loadEmvAppsResponse != null)
+      result.loadEmvAppsResponse = loadEmvAppsResponse;
     if (error != null) result.error = error;
     return result;
   }
@@ -313,25 +390,28 @@ class CommandResponse extends $pb.GeneratedMessage {
     6: CommandResponse_Type.generateTransportKeyResponse,
     7: CommandResponse_Type.loadKeyResponse,
     8: CommandResponse_Type.getKSNResponse,
-    9: CommandResponse_Type.deleteKeyResponse,
-    10: CommandResponse_Type.error,
+    9: CommandResponse_Type.deletedUKPTKeyResponse,
+    10: CommandResponse_Type.loadTerminalParametersResponse,
+    11: CommandResponse_Type.loadCapksResponse,
+    12: CommandResponse_Type.loadEmvAppsResponse,
+    13: CommandResponse_Type.error,
     0: CommandResponse_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'CommandResponse',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
     ..aOM<$0.PingResponse>(1, _omitFieldNames ? '' : 'pingResponse',
         protoName: 'pingResponse', subBuilder: $0.PingResponse.create)
     ..aOM<$1.SetDeviceDateTimeResponse>(
         2, _omitFieldNames ? '' : 'setDeviceDateTimeResponse',
         protoName: 'setDeviceDateTimeResponse',
         subBuilder: $1.SetDeviceDateTimeResponse.create)
-    ..aOM<$2.GetDeviceInfoResponse>(
+    ..aOM<$1.GetDeviceInfoResponse>(
         3, _omitFieldNames ? '' : 'getDeviceInfoResponse',
         protoName: 'getDeviceInfoResponse',
-        subBuilder: $2.GetDeviceInfoResponse.create)
+        subBuilder: $1.GetDeviceInfoResponse.create)
     ..aOM<$2.InitSDKResponse>(4, _omitFieldNames ? '' : 'initSDKResponse',
         protoName: 'initSDKResponse', subBuilder: $2.InitSDKResponse.create)
     ..aOM<$3.CheckLoadedKeyResponse>(
@@ -346,10 +426,22 @@ class CommandResponse extends $pb.GeneratedMessage {
         protoName: 'loadKeyResponse', subBuilder: $3.LoadKeyResponse.create)
     ..aOM<$3.GetKSNResponse>(8, _omitFieldNames ? '' : 'getKSNResponse',
         protoName: 'getKSNResponse', subBuilder: $3.GetKSNResponse.create)
-    ..aOM<$3.DeleteKeyResponse>(9, _omitFieldNames ? '' : 'deleteKeyResponse',
-        protoName: 'deleteKeyResponse', subBuilder: $3.DeleteKeyResponse.create)
-    ..aOM<$4.ErrorResponse>(10, _omitFieldNames ? '' : 'error',
-        subBuilder: $4.ErrorResponse.create)
+    ..aOM<$3.DeleteDukptKeyResponse>(
+        9, _omitFieldNames ? '' : 'deletedUKPTKeyResponse',
+        protoName: 'deletedUKPTKeyResponse',
+        subBuilder: $3.DeleteDukptKeyResponse.create)
+    ..aOM<$4.LoadTerminalParametersResponse>(
+        10, _omitFieldNames ? '' : 'loadTerminalParametersResponse',
+        protoName: 'loadTerminalParametersResponse',
+        subBuilder: $4.LoadTerminalParametersResponse.create)
+    ..aOM<$4.LoadCapksResponse>(11, _omitFieldNames ? '' : 'loadCapksResponse',
+        protoName: 'loadCapksResponse', subBuilder: $4.LoadCapksResponse.create)
+    ..aOM<$4.LoadEmvAppsResponse>(
+        12, _omitFieldNames ? '' : 'loadEmvAppsResponse',
+        protoName: 'loadEmvAppsResponse',
+        subBuilder: $4.LoadEmvAppsResponse.create)
+    ..aOM<$5.ErrorResponse>(13, _omitFieldNames ? '' : 'error',
+        subBuilder: $5.ErrorResponse.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -401,16 +493,16 @@ class CommandResponse extends $pb.GeneratedMessage {
   $1.SetDeviceDateTimeResponse ensureSetDeviceDateTimeResponse() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $2.GetDeviceInfoResponse get getDeviceInfoResponse => $_getN(2);
+  $1.GetDeviceInfoResponse get getDeviceInfoResponse => $_getN(2);
   @$pb.TagNumber(3)
-  set getDeviceInfoResponse($2.GetDeviceInfoResponse value) =>
+  set getDeviceInfoResponse($1.GetDeviceInfoResponse value) =>
       $_setField(3, value);
   @$pb.TagNumber(3)
   $core.bool hasGetDeviceInfoResponse() => $_has(2);
   @$pb.TagNumber(3)
   void clearGetDeviceInfoResponse() => $_clearField(3);
   @$pb.TagNumber(3)
-  $2.GetDeviceInfoResponse ensureGetDeviceInfoResponse() => $_ensure(2);
+  $1.GetDeviceInfoResponse ensureGetDeviceInfoResponse() => $_ensure(2);
 
   @$pb.TagNumber(4)
   $2.InitSDKResponse get initSDKResponse => $_getN(3);
@@ -471,26 +563,64 @@ class CommandResponse extends $pb.GeneratedMessage {
   $3.GetKSNResponse ensureGetKSNResponse() => $_ensure(7);
 
   @$pb.TagNumber(9)
-  $3.DeleteKeyResponse get deleteKeyResponse => $_getN(8);
+  $3.DeleteDukptKeyResponse get deletedUKPTKeyResponse => $_getN(8);
   @$pb.TagNumber(9)
-  set deleteKeyResponse($3.DeleteKeyResponse value) => $_setField(9, value);
+  set deletedUKPTKeyResponse($3.DeleteDukptKeyResponse value) =>
+      $_setField(9, value);
   @$pb.TagNumber(9)
-  $core.bool hasDeleteKeyResponse() => $_has(8);
+  $core.bool hasDeletedUKPTKeyResponse() => $_has(8);
   @$pb.TagNumber(9)
-  void clearDeleteKeyResponse() => $_clearField(9);
+  void clearDeletedUKPTKeyResponse() => $_clearField(9);
   @$pb.TagNumber(9)
-  $3.DeleteKeyResponse ensureDeleteKeyResponse() => $_ensure(8);
+  $3.DeleteDukptKeyResponse ensureDeletedUKPTKeyResponse() => $_ensure(8);
 
   @$pb.TagNumber(10)
-  $4.ErrorResponse get error => $_getN(9);
+  $4.LoadTerminalParametersResponse get loadTerminalParametersResponse =>
+      $_getN(9);
   @$pb.TagNumber(10)
-  set error($4.ErrorResponse value) => $_setField(10, value);
+  set loadTerminalParametersResponse($4.LoadTerminalParametersResponse value) =>
+      $_setField(10, value);
   @$pb.TagNumber(10)
-  $core.bool hasError() => $_has(9);
+  $core.bool hasLoadTerminalParametersResponse() => $_has(9);
   @$pb.TagNumber(10)
-  void clearError() => $_clearField(10);
+  void clearLoadTerminalParametersResponse() => $_clearField(10);
   @$pb.TagNumber(10)
-  $4.ErrorResponse ensureError() => $_ensure(9);
+  $4.LoadTerminalParametersResponse ensureLoadTerminalParametersResponse() =>
+      $_ensure(9);
+
+  @$pb.TagNumber(11)
+  $4.LoadCapksResponse get loadCapksResponse => $_getN(10);
+  @$pb.TagNumber(11)
+  set loadCapksResponse($4.LoadCapksResponse value) => $_setField(11, value);
+  @$pb.TagNumber(11)
+  $core.bool hasLoadCapksResponse() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearLoadCapksResponse() => $_clearField(11);
+  @$pb.TagNumber(11)
+  $4.LoadCapksResponse ensureLoadCapksResponse() => $_ensure(10);
+
+  @$pb.TagNumber(12)
+  $4.LoadEmvAppsResponse get loadEmvAppsResponse => $_getN(11);
+  @$pb.TagNumber(12)
+  set loadEmvAppsResponse($4.LoadEmvAppsResponse value) =>
+      $_setField(12, value);
+  @$pb.TagNumber(12)
+  $core.bool hasLoadEmvAppsResponse() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearLoadEmvAppsResponse() => $_clearField(12);
+  @$pb.TagNumber(12)
+  $4.LoadEmvAppsResponse ensureLoadEmvAppsResponse() => $_ensure(11);
+
+  @$pb.TagNumber(13)
+  $5.ErrorResponse get error => $_getN(12);
+  @$pb.TagNumber(13)
+  set error($5.ErrorResponse value) => $_setField(13, value);
+  @$pb.TagNumber(13)
+  $core.bool hasError() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearError() => $_clearField(13);
+  @$pb.TagNumber(13)
+  $5.ErrorResponse ensureError() => $_ensure(12);
 }
 
 const $core.bool _omitFieldNames =

@@ -17,9 +17,10 @@ import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'device.pb.dart' as $1;
-import 'key_loading.pb.dart' as $3;
+import 'emv.pb.dart' as $4;
+import 'keys.pb.dart' as $3;
 import 'ping.pb.dart' as $0;
-import 'sdk_initialization.pb.dart' as $2;
+import 'sdk.pb.dart' as $2;
 
 export 'services.pb.dart';
 
@@ -49,8 +50,8 @@ class PinPadClient extends $grpc.Client {
     return $createUnaryCall(_$setDeviceDateTime, request, options: options);
   }
 
-  $grpc.ResponseFuture<$2.GetDeviceInfoResponse> getDeviceInfo(
-    $2.GetDeviceInfoRequest request, {
+  $grpc.ResponseFuture<$1.GetDeviceInfoResponse> getDeviceInfo(
+    $1.GetDeviceInfoRequest request, {
     $grpc.CallOptions? options,
   }) {
     return $createUnaryCall(_$getDeviceInfo, request, options: options);
@@ -91,11 +92,34 @@ class PinPadClient extends $grpc.Client {
     return $createUnaryCall(_$getKeyKsn, request, options: options);
   }
 
-  $grpc.ResponseFuture<$3.DeleteKeyResponse> deleteKey(
-    $3.DeleteKeyRequest request, {
+  $grpc.ResponseFuture<$3.DeleteDukptKeyResponse> deleteKey(
+    $3.DeleteDukptKeyRequest request, {
     $grpc.CallOptions? options,
   }) {
     return $createUnaryCall(_$deleteKey, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$4.LoadTerminalParametersResponse>
+      loadTerminalParameters(
+    $4.LoadTerminalParametersRequest request, {
+    $grpc.CallOptions? options,
+  }) {
+    return $createUnaryCall(_$loadTerminalParameters, request,
+        options: options);
+  }
+
+  $grpc.ResponseFuture<$4.LoadCapksResponse> loadCapks(
+    $4.LoadCapksRequest request, {
+    $grpc.CallOptions? options,
+  }) {
+    return $createUnaryCall(_$loadCapks, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$4.LoadEmvAppsResponse> loadEmvApps(
+    $4.LoadEmvAppsRequest request, {
+    $grpc.CallOptions? options,
+  }) {
+    return $createUnaryCall(_$loadEmvApps, request, options: options);
   }
 
   // method descriptors
@@ -110,10 +134,10 @@ class PinPadClient extends $grpc.Client {
       ($1.SetDeviceDateTimeRequest value) => value.writeToBuffer(),
       $1.SetDeviceDateTimeResponse.fromBuffer);
   static final _$getDeviceInfo =
-      $grpc.ClientMethod<$2.GetDeviceInfoRequest, $2.GetDeviceInfoResponse>(
+      $grpc.ClientMethod<$1.GetDeviceInfoRequest, $1.GetDeviceInfoResponse>(
           '/metaApp.PinPad/getDeviceInfo',
-          ($2.GetDeviceInfoRequest value) => value.writeToBuffer(),
-          $2.GetDeviceInfoResponse.fromBuffer);
+          ($1.GetDeviceInfoRequest value) => value.writeToBuffer(),
+          $1.GetDeviceInfoResponse.fromBuffer);
   static final _$initSDK =
       $grpc.ClientMethod<$2.InitSDKRequest, $2.InitSDKResponse>(
           '/metaApp.PinPad/initSDK',
@@ -140,10 +164,25 @@ class PinPadClient extends $grpc.Client {
           ($3.GetKSNRequest value) => value.writeToBuffer(),
           $3.GetKSNResponse.fromBuffer);
   static final _$deleteKey =
-      $grpc.ClientMethod<$3.DeleteKeyRequest, $3.DeleteKeyResponse>(
+      $grpc.ClientMethod<$3.DeleteDukptKeyRequest, $3.DeleteDukptKeyResponse>(
           '/metaApp.PinPad/deleteKey',
-          ($3.DeleteKeyRequest value) => value.writeToBuffer(),
-          $3.DeleteKeyResponse.fromBuffer);
+          ($3.DeleteDukptKeyRequest value) => value.writeToBuffer(),
+          $3.DeleteDukptKeyResponse.fromBuffer);
+  static final _$loadTerminalParameters = $grpc.ClientMethod<
+          $4.LoadTerminalParametersRequest, $4.LoadTerminalParametersResponse>(
+      '/metaApp.PinPad/loadTerminalParameters',
+      ($4.LoadTerminalParametersRequest value) => value.writeToBuffer(),
+      $4.LoadTerminalParametersResponse.fromBuffer);
+  static final _$loadCapks =
+      $grpc.ClientMethod<$4.LoadCapksRequest, $4.LoadCapksResponse>(
+          '/metaApp.PinPad/loadCapks',
+          ($4.LoadCapksRequest value) => value.writeToBuffer(),
+          $4.LoadCapksResponse.fromBuffer);
+  static final _$loadEmvApps =
+      $grpc.ClientMethod<$4.LoadEmvAppsRequest, $4.LoadEmvAppsResponse>(
+          '/metaApp.PinPad/loadEmvApps',
+          ($4.LoadEmvAppsRequest value) => value.writeToBuffer(),
+          $4.LoadEmvAppsResponse.fromBuffer);
 }
 
 @$pb.GrpcServiceName('metaApp.PinPad')
@@ -168,14 +207,14 @@ abstract class PinPadServiceBase extends $grpc.Service {
             $1.SetDeviceDateTimeRequest.fromBuffer(value),
         ($1.SetDeviceDateTimeResponse value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$2.GetDeviceInfoRequest, $2.GetDeviceInfoResponse>(
+        $grpc.ServiceMethod<$1.GetDeviceInfoRequest, $1.GetDeviceInfoResponse>(
             'getDeviceInfo',
             getDeviceInfo_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $2.GetDeviceInfoRequest.fromBuffer(value),
-            ($2.GetDeviceInfoResponse value) => value.writeToBuffer()));
+                $1.GetDeviceInfoRequest.fromBuffer(value),
+            ($1.GetDeviceInfoResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$2.InitSDKRequest, $2.InitSDKResponse>(
         'initSDK',
         initSDK_Pre,
@@ -215,13 +254,40 @@ abstract class PinPadServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $3.GetKSNRequest.fromBuffer(value),
         ($3.GetKSNResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.DeleteKeyRequest, $3.DeleteKeyResponse>(
+    $addMethod($grpc.ServiceMethod<$3.DeleteDukptKeyRequest,
+            $3.DeleteDukptKeyResponse>(
         'deleteKey',
         deleteKey_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.DeleteKeyRequest.fromBuffer(value),
-        ($3.DeleteKeyResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) =>
+            $3.DeleteDukptKeyRequest.fromBuffer(value),
+        ($3.DeleteDukptKeyResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.LoadTerminalParametersRequest,
+            $4.LoadTerminalParametersResponse>(
+        'loadTerminalParameters',
+        loadTerminalParameters_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $4.LoadTerminalParametersRequest.fromBuffer(value),
+        ($4.LoadTerminalParametersResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.LoadCapksRequest, $4.LoadCapksResponse>(
+        'loadCapks',
+        loadCapks_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $4.LoadCapksRequest.fromBuffer(value),
+        ($4.LoadCapksResponse value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$4.LoadEmvAppsRequest, $4.LoadEmvAppsResponse>(
+            'loadEmvApps',
+            loadEmvApps_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $4.LoadEmvAppsRequest.fromBuffer(value),
+            ($4.LoadEmvAppsResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.PingResponse> ping_Pre(
@@ -241,14 +307,14 @@ abstract class PinPadServiceBase extends $grpc.Service {
   $async.Future<$1.SetDeviceDateTimeResponse> setDeviceDateTime(
       $grpc.ServiceCall call, $1.SetDeviceDateTimeRequest request);
 
-  $async.Future<$2.GetDeviceInfoResponse> getDeviceInfo_Pre(
+  $async.Future<$1.GetDeviceInfoResponse> getDeviceInfo_Pre(
       $grpc.ServiceCall $call,
-      $async.Future<$2.GetDeviceInfoRequest> $request) async {
+      $async.Future<$1.GetDeviceInfoRequest> $request) async {
     return getDeviceInfo($call, await $request);
   }
 
-  $async.Future<$2.GetDeviceInfoResponse> getDeviceInfo(
-      $grpc.ServiceCall call, $2.GetDeviceInfoRequest request);
+  $async.Future<$1.GetDeviceInfoResponse> getDeviceInfo(
+      $grpc.ServiceCall call, $1.GetDeviceInfoRequest request);
 
   $async.Future<$2.InitSDKResponse> initSDK_Pre($grpc.ServiceCall $call,
       $async.Future<$2.InitSDKRequest> $request) async {
@@ -292,11 +358,37 @@ abstract class PinPadServiceBase extends $grpc.Service {
   $async.Future<$3.GetKSNResponse> getKeyKsn(
       $grpc.ServiceCall call, $3.GetKSNRequest request);
 
-  $async.Future<$3.DeleteKeyResponse> deleteKey_Pre($grpc.ServiceCall $call,
-      $async.Future<$3.DeleteKeyRequest> $request) async {
+  $async.Future<$3.DeleteDukptKeyResponse> deleteKey_Pre(
+      $grpc.ServiceCall $call,
+      $async.Future<$3.DeleteDukptKeyRequest> $request) async {
     return deleteKey($call, await $request);
   }
 
-  $async.Future<$3.DeleteKeyResponse> deleteKey(
-      $grpc.ServiceCall call, $3.DeleteKeyRequest request);
+  $async.Future<$3.DeleteDukptKeyResponse> deleteKey(
+      $grpc.ServiceCall call, $3.DeleteDukptKeyRequest request);
+
+  $async.Future<$4.LoadTerminalParametersResponse> loadTerminalParameters_Pre(
+      $grpc.ServiceCall $call,
+      $async.Future<$4.LoadTerminalParametersRequest> $request) async {
+    return loadTerminalParameters($call, await $request);
+  }
+
+  $async.Future<$4.LoadTerminalParametersResponse> loadTerminalParameters(
+      $grpc.ServiceCall call, $4.LoadTerminalParametersRequest request);
+
+  $async.Future<$4.LoadCapksResponse> loadCapks_Pre($grpc.ServiceCall $call,
+      $async.Future<$4.LoadCapksRequest> $request) async {
+    return loadCapks($call, await $request);
+  }
+
+  $async.Future<$4.LoadCapksResponse> loadCapks(
+      $grpc.ServiceCall call, $4.LoadCapksRequest request);
+
+  $async.Future<$4.LoadEmvAppsResponse> loadEmvApps_Pre($grpc.ServiceCall $call,
+      $async.Future<$4.LoadEmvAppsRequest> $request) async {
+    return loadEmvApps($call, await $request);
+  }
+
+  $async.Future<$4.LoadEmvAppsResponse> loadEmvApps(
+      $grpc.ServiceCall call, $4.LoadEmvAppsRequest request);
 }

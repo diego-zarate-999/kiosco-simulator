@@ -1,6 +1,6 @@
 // This is a generated file - do not edit.
 //
-// Generated from key_loading.proto.
+// Generated from keys.proto.
 
 // @dart = 3.3
 
@@ -137,6 +137,20 @@ final $typed_data.Uint8List rSAPublicKeyDataDescriptor = $convert.base64Decode(
     'ChBSU0FQdWJsaWNLZXlEYXRhEhgKB21vZHVsdXMYASABKAlSB21vZHVsdXMSGgoIZXhwb25lbn'
     'QYAiABKAlSCGV4cG9uZW50');
 
+@$core.Deprecated('Use generatedTransportKeyDescriptor instead')
+const GeneratedTransportKey$json = {
+  '1': 'GeneratedTransportKey',
+  '2': [
+    {'1': 'key', '3': 1, '4': 3, '5': 5, '10': 'key'},
+    {'1': 'kcv', '3': 2, '4': 3, '5': 5, '10': 'kcv'},
+  ],
+};
+
+/// Descriptor for `GeneratedTransportKey`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List generatedTransportKeyDescriptor = $convert.base64Decode(
+    'ChVHZW5lcmF0ZWRUcmFuc3BvcnRLZXkSEAoDa2V5GAEgAygFUgNrZXkSEAoDa2N2GAIgAygFUg'
+    'NrY3Y=');
+
 @$core.Deprecated('Use checkLoadedKeyRequestDescriptor instead')
 const CheckLoadedKeyRequest$json = {
   '1': 'CheckLoadedKeyRequest',
@@ -196,16 +210,23 @@ final $typed_data.Uint8List generateTransportKeyRequestDescriptor =
 const GenerateTransportKeyResponse$json = {
   '1': 'GenerateTransportKeyResponse',
   '2': [
-    {'1': 'key', '3': 1, '4': 3, '5': 5, '10': 'key'},
-    {'1': 'kcv', '3': 2, '4': 3, '5': 5, '10': 'kcv'},
+    {
+      '1': 'generatedTransportKey',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.GeneratedTransportKey',
+      '10': 'generatedTransportKey'
+    },
   ],
 };
 
 /// Descriptor for `GenerateTransportKeyResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List generateTransportKeyResponseDescriptor =
     $convert.base64Decode(
-        'ChxHZW5lcmF0ZVRyYW5zcG9ydEtleVJlc3BvbnNlEhAKA2tleRgBIAMoBVIDa2V5EhAKA2tjdh'
-        'gCIAMoBVIDa2N2');
+        'ChxHZW5lcmF0ZVRyYW5zcG9ydEtleVJlc3BvbnNlElQKFWdlbmVyYXRlZFRyYW5zcG9ydEtleR'
+        'gBIAEoCzIeLm1ldGFBcHAuR2VuZXJhdGVkVHJhbnNwb3J0S2V5UhVnZW5lcmF0ZWRUcmFuc3Bv'
+        'cnRLZXk=');
 
 @$core.Deprecated('Use loadKeyRequestDescriptor instead')
 const LoadKeyRequest$json = {
@@ -297,45 +318,31 @@ const GetKSNResponse$json = {
 final $typed_data.Uint8List getKSNResponseDescriptor =
     $convert.base64Decode('Cg5HZXRLU05SZXNwb25zZRIQCgNrc24YASADKAVSA2tzbg==');
 
-@$core.Deprecated('Use deleteKeyRequestDescriptor instead')
-const DeleteKeyRequest$json = {
-  '1': 'DeleteKeyRequest',
+@$core.Deprecated('Use deleteDukptKeyRequestDescriptor instead')
+const DeleteDukptKeyRequest$json = {
+  '1': 'DeleteDukptKeyRequest',
   '2': [
     {
-      '1': 'symmetricKey',
+      '1': 'dukptKey',
       '3': 1,
       '4': 1,
       '5': 11,
-      '6': '.metaApp.SymmetricKey',
-      '9': 0,
-      '10': 'symmetricKey'
-    },
-    {
-      '1': 'dukptKey',
-      '3': 2,
-      '4': 1,
-      '5': 11,
       '6': '.metaApp.DUKPTKey',
-      '9': 0,
       '10': 'dukptKey'
     },
   ],
-  '8': [
-    {'1': 'key'},
-  ],
 };
 
-/// Descriptor for `DeleteKeyRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List deleteKeyRequestDescriptor = $convert.base64Decode(
-    'ChBEZWxldGVLZXlSZXF1ZXN0EjsKDHN5bW1ldHJpY0tleRgBIAEoCzIVLm1ldGFBcHAuU3ltbW'
-    'V0cmljS2V5SABSDHN5bW1ldHJpY0tleRIvCghkdWtwdEtleRgCIAEoCzIRLm1ldGFBcHAuRFVL'
-    'UFRLZXlIAFIIZHVrcHRLZXlCBQoDa2V5');
+/// Descriptor for `DeleteDukptKeyRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deleteDukptKeyRequestDescriptor = $convert.base64Decode(
+    'ChVEZWxldGVEdWtwdEtleVJlcXVlc3QSLQoIZHVrcHRLZXkYASABKAsyES5tZXRhQXBwLkRVS1'
+    'BUS2V5UghkdWtwdEtleQ==');
 
-@$core.Deprecated('Use deleteKeyResponseDescriptor instead')
-const DeleteKeyResponse$json = {
-  '1': 'DeleteKeyResponse',
+@$core.Deprecated('Use deleteDukptKeyResponseDescriptor instead')
+const DeleteDukptKeyResponse$json = {
+  '1': 'DeleteDukptKeyResponse',
 };
 
-/// Descriptor for `DeleteKeyResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List deleteKeyResponseDescriptor =
-    $convert.base64Decode('ChFEZWxldGVLZXlSZXNwb25zZQ==');
+/// Descriptor for `DeleteDukptKeyResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deleteDukptKeyResponseDescriptor =
+    $convert.base64Decode('ChZEZWxldGVEdWtwdEtleVJlc3BvbnNl');

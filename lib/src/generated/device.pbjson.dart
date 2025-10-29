@@ -35,3 +35,26 @@ const SetDeviceDateTimeResponse$json = {
 /// Descriptor for `SetDeviceDateTimeResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List setDeviceDateTimeResponseDescriptor =
     $convert.base64Decode('ChlTZXREZXZpY2VEYXRlVGltZVJlc3BvbnNl');
+
+@$core.Deprecated('Use getDeviceInfoRequestDescriptor instead')
+const GetDeviceInfoRequest$json = {
+  '1': 'GetDeviceInfoRequest',
+};
+
+/// Descriptor for `GetDeviceInfoRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getDeviceInfoRequestDescriptor =
+    $convert.base64Decode('ChRHZXREZXZpY2VJbmZvUmVxdWVzdA==');
+
+@$core.Deprecated('Use getDeviceInfoResponseDescriptor instead')
+const GetDeviceInfoResponse$json = {
+  '1': 'GetDeviceInfoResponse',
+  '2': [
+    {'1': 'serialNumber', '3': 1, '4': 1, '5': 9, '10': 'serialNumber'},
+    {'1': 'brand', '3': 2, '4': 1, '5': 9, '10': 'brand'},
+  ],
+};
+
+/// Descriptor for `GetDeviceInfoResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getDeviceInfoResponseDescriptor = $convert.base64Decode(
+    'ChVHZXREZXZpY2VJbmZvUmVzcG9uc2USIgoMc2VyaWFsTnVtYmVyGAEgASgJUgxzZXJpYWxOdW'
+    '1iZXISFAoFYnJhbmQYAiABKAlSBWJyYW5k');

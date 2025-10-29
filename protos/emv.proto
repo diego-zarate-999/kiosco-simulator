@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package metaApp;
+
+message TerminalInformation {
+    string defaultDDOL                    = 1;
+    string terminalType                   = 2;
+    string defaultTDOL                    = 3;
+    string terminalFloorLimit             = 4;
+    string terminalCapabilities           = 5;
+    string additionalTerminalCapabilities = 6;
+    string terminalCountryCode            = 7;
+    string transactionCurrencyCode        = 8;
+    int32 transactionCurrencyExp          = 9;
+    string referenceCurrencyConversion    = 10;
+    string referenceCurrencyCode          = 11;
+    int32 referenceCurrencyExp            = 12;
+    string terminalId                     = 13;
+    string ifdSerialNumber                = 14;
+    string acquirerId                     = 15;
+    string merchantId                     = 16;
+    string merchantCategoryCode           = 17;
+    string merchantNameAndLocation        = 18;
+    string thresholdValue                 = 19;
+    int32 targetPercentage                = 20;
+    int32 maxTargetPercentage             = 21;
+}
+
+message CAPKInformation {
+    string rid            = 1;
+    string index          = 2;
+    string exponent       = 3;
+    string modulus        = 4;
+    string checkSum       = 5;
+    string expirationDate = 6;
+}
+
+message EmvAppParameters {
+    string aid                                     = 1;
+    string kernelId                                = 2;
+    string appVersionNum                           = 3;
+    string tacDenial                               = 4;
+    string tacOnline                               = 5;
+    string tacDefault                              = 6;
+    optional string terminalFloorLimit             = 7;
+    optional string contactlessFloorLimit          = 8;
+    optional string contactlessTransactionLimit    = 9;
+    optional string cvmRequiredLimit              = 10;
+    optional string riskManagementData            = 11;
+    optional string thresholdValue                = 12;
+    optional string terminalTransactionQualifiers = 13;
+    optional int32 targetPercentage               = 14;
+    optional int32 maxTargetPercentage            = 15;
+}
+
+message LoadTerminalParametersRequest {
+    TerminalInformation terminalInformation = 1;
+}
+
+message LoadTerminalParametersResponse {
+    bool parametersWereLoaded = 1;
+}
+
+message LoadCapksRequest { }
+
+message LoadCapksResponse {
+    bool capksWereLoaded = 1;
+}
+
+message LoadEmvAppsRequest {
+    repeated EmvAppParameters emvApps = 1;
+}
+
+message LoadEmvAppsResponse {
+    bool appsWereLoaded = 1;
+}

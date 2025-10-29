@@ -3,53 +3,5 @@ syntax = "proto3";
 package metaApp;
 
 message ErrorResponse {
-    oneof type {
-        DeviceError deviceError                             = 1;
-        ErrorPinPadConnection errorPinpadConnection         = 2;
-        ErrorSdkIntialize errorSdkInitialize                = 3;
-        ErrorInvalidCommand errorInvalidCommand             = 4;
-        ErrorCheckLoadedKey errorCheckLoadedKey             = 5;
-        ErrorLoadKey errorLoadKey                           = 6;
-        ErrorGenerateTransportKey errorGenerateTransportKey = 7;
-        ErrorDeleteKey errorDeleteKey                       = 8;
-        ErrorTransaction errorTransacion                    = 9;
-    }
-}
-
-message DeviceError {
     string message = 1;
-}
-
-message ErrorPinPadConnection {
-    string message = 1;
-}
-
-message ErrorInvalidCommand {
-    string message = 1;
-}
-
-message ErrorSdkIntialize {
-    string message = 1;
-}
-
-message ErrorCheckLoadedKey {
-    string message = 1;
-}
-
-message ErrorLoadKey {
-    string message = 1;
-}
-
-message ErrorGenerateTransportKey {
-    string message = 1;
-}
-
-message ErrorDeleteKey {
-    string message = 1;
-}
-
-message ErrorTransaction {
-    string message = 1;
-
-    // TODO: Se agregaran mas campos despues.
 }

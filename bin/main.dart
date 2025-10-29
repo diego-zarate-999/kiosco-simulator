@@ -1,17 +1,40 @@
-import 'package:kiosco_simulator/src/p180_device.dart';
-import 'package:kiosco_simulator/src/tests/delete_key.dart';
-import 'package:kiosco_simulator/src/tests/init_sdk.dart';
+import 'package:kiosco_simulator/src/generated/command_message.pb.dart';
+import 'package:kiosco_simulator/src/generated/emv.pb.dart';
 
 void main() async {
-  P180Device p180 = P180Device("COM9");
+  final sendedMsgBytes = CommandMessage(
+    loadTerminalParametersRequest: LoadTerminalParametersRequest(
+      terminalInformation: TerminalInformation(
+        acquirerId: "",
+        additionalTerminalCapabilities: "",
+        defaultDDOL: "",
+        defaultTDOL: "",
+        ifdSerialNumber: "",
+        maxTargetPercentage: 0,
+        merchantCategoryCode: "",
+        merchantId: "",
+        merchantNameAndLocation: "",
+        referenceCurrencyCode: "",
+        referenceCurrencyConversion: "",
+        referenceCurrencyExp: 0,
+        targetPercentage: 0,
+        terminalCapabilities: "",
+        terminalCountryCode: "",
+        terminalId: "",
+        terminalFloorLimit: "",
+        terminalType: "",
+        thresholdValue: "",
+        transactionCurrencyCode: "",
+        transactionCurrencyExp: 0,
+      ),
+    ),
+  ).writeToBuffer();
 
-  await initSDK(p180);
+  final receivedMessage = CommandMessage.fromBuffer(sendedMsgBytes);
 
-  // await p180.injectKey();
-
-  try {
-    await deleteKey(p180);
-  } catch (error) {
-    print(error.toString());
+  if (receivedMessage.loadTerminalParametersRequest.hasRequiredFields()) {
+    print("SI");
+  } else {
+    print("NO");
   }
 }

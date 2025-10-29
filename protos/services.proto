@@ -4,8 +4,9 @@ package metaApp;
 
 import "ping.proto";
 import "device.proto";
-import "sdk_initialization.proto";
-import "key_loading.proto";
+import "sdk.proto";
+import "keys.proto";
+import "emv.proto";
 
 service PinPad {
     rpc ping(PingRequest) returns (PingResponse);
@@ -16,5 +17,8 @@ service PinPad {
     rpc generateTransportKey(GenerateTransportKeyRequest) returns (GenerateTransportKeyResponse);
     rpc loadKey(LoadKeyRequest) returns (LoadKeyResponse);
     rpc getKeyKsn(GetKSNRequest) returns (GetKSNResponse);
-    rpc deleteKey (DeleteKeyRequest) returns (DeleteKeyResponse);
+    rpc deleteKey (DeleteDukptKeyRequest) returns (DeleteDukptKeyResponse);
+    rpc loadTerminalParameters (LoadTerminalParametersRequest) returns (LoadTerminalParametersResponse);
+    rpc loadCapks (LoadCapksRequest) returns (LoadCapksResponse);
+    rpc loadEmvApps (LoadEmvAppsRequest) returns (LoadEmvAppsResponse);
 }

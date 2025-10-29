@@ -38,6 +38,11 @@ message RSAPublicKeyData {
     string exponent = 2;
 }
 
+message GeneratedTransportKey {
+    repeated int32 key = 1;
+    repeated int32 kcv = 2;
+}
+
 ///
 /// Request y response para ver si hay una llave cargada.
 ///
@@ -58,8 +63,7 @@ message GenerateTransportKeyRequest {
 }
 
 message GenerateTransportKeyResponse {
-    repeated int32 key = 1;
-    repeated int32 kcv = 2;
+    GeneratedTransportKey generatedTransportKey = 1;
 }
 
 ///
@@ -89,11 +93,8 @@ message GetKSNResponse {
 ///
 /// Request y response para eliminar llave
 ///
-message DeleteKeyRequest {
-    oneof key {
-        SymmetricKey symmetricKey = 1;
-        DUKPTKey dukptKey = 2;
-    }
+message DeleteDukptKeyRequest {
+    DUKPTKey dukptKey = 1;
 }
 
-message DeleteKeyResponse { }
+message DeleteDukptKeyResponse { }

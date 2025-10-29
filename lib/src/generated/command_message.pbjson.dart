@@ -82,13 +82,13 @@ const CommandMessage$json = {
       '10': 'getKSNRequest'
     },
     {
-      '1': 'deleteKeyRequest',
+      '1': 'deleteDukptKeyRequest',
       '3': 8,
       '4': 1,
       '5': 11,
-      '6': '.metaApp.DeleteKeyRequest',
+      '6': '.metaApp.DeleteDukptKeyRequest',
       '9': 0,
-      '10': 'deleteKeyRequest'
+      '10': 'deleteDukptKeyRequest'
     },
     {
       '1': 'loadKeyRequest',
@@ -98,6 +98,33 @@ const CommandMessage$json = {
       '6': '.metaApp.LoadKeyRequest',
       '9': 0,
       '10': 'loadKeyRequest'
+    },
+    {
+      '1': 'loadTerminalParametersRequest',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.LoadTerminalParametersRequest',
+      '9': 0,
+      '10': 'loadTerminalParametersRequest'
+    },
+    {
+      '1': 'loadCapksRequest',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.LoadCapksRequest',
+      '9': 0,
+      '10': 'loadCapksRequest'
+    },
+    {
+      '1': 'loadEmvAppsRequest',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.LoadEmvAppsRequest',
+      '9': 0,
+      '10': 'loadEmvAppsRequest'
     },
   ],
   '8': [
@@ -117,10 +144,15 @@ final $typed_data.Uint8List commandMessageDescriptor = $convert.base64Decode(
     'tleVJlcXVlc3RIAFIbZ2VuZXJhdGVUcmFuc3BvcnRLZXlSZXF1ZXN0ElYKFWNoZWNrTG9hZGVk'
     'S2V5UmVxdWVzdBgGIAEoCzIeLm1ldGFBcHAuQ2hlY2tMb2FkZWRLZXlSZXF1ZXN0SABSFWNoZW'
     'NrTG9hZGVkS2V5UmVxdWVzdBI+Cg1nZXRLU05SZXF1ZXN0GAcgASgLMhYubWV0YUFwcC5HZXRL'
-    'U05SZXF1ZXN0SABSDWdldEtTTlJlcXVlc3QSRwoQZGVsZXRlS2V5UmVxdWVzdBgIIAEoCzIZLm'
-    '1ldGFBcHAuRGVsZXRlS2V5UmVxdWVzdEgAUhBkZWxldGVLZXlSZXF1ZXN0EkEKDmxvYWRLZXlS'
-    'ZXF1ZXN0GAkgASgLMhcubWV0YUFwcC5Mb2FkS2V5UmVxdWVzdEgAUg5sb2FkS2V5UmVxdWVzdE'
-    'IGCgR0eXBl');
+    'U05SZXF1ZXN0SABSDWdldEtTTlJlcXVlc3QSVgoVZGVsZXRlRHVrcHRLZXlSZXF1ZXN0GAggAS'
+    'gLMh4ubWV0YUFwcC5EZWxldGVEdWtwdEtleVJlcXVlc3RIAFIVZGVsZXRlRHVrcHRLZXlSZXF1'
+    'ZXN0EkEKDmxvYWRLZXlSZXF1ZXN0GAkgASgLMhcubWV0YUFwcC5Mb2FkS2V5UmVxdWVzdEgAUg'
+    '5sb2FkS2V5UmVxdWVzdBJuCh1sb2FkVGVybWluYWxQYXJhbWV0ZXJzUmVxdWVzdBgKIAEoCzIm'
+    'Lm1ldGFBcHAuTG9hZFRlcm1pbmFsUGFyYW1ldGVyc1JlcXVlc3RIAFIdbG9hZFRlcm1pbmFsUG'
+    'FyYW1ldGVyc1JlcXVlc3QSRwoQbG9hZENhcGtzUmVxdWVzdBgLIAEoCzIZLm1ldGFBcHAuTG9h'
+    'ZENhcGtzUmVxdWVzdEgAUhBsb2FkQ2Fwa3NSZXF1ZXN0Ek0KEmxvYWRFbXZBcHBzUmVxdWVzdB'
+    'gMIAEoCzIbLm1ldGFBcHAuTG9hZEVtdkFwcHNSZXF1ZXN0SABSEmxvYWRFbXZBcHBzUmVxdWVz'
+    'dEIGCgR0eXBl');
 
 @$core.Deprecated('Use commandResponseDescriptor instead')
 const CommandResponse$json = {
@@ -199,17 +231,44 @@ const CommandResponse$json = {
       '10': 'getKSNResponse'
     },
     {
-      '1': 'deleteKeyResponse',
+      '1': 'deletedUKPTKeyResponse',
       '3': 9,
       '4': 1,
       '5': 11,
-      '6': '.metaApp.DeleteKeyResponse',
+      '6': '.metaApp.DeleteDukptKeyResponse',
       '9': 0,
-      '10': 'deleteKeyResponse'
+      '10': 'deletedUKPTKeyResponse'
+    },
+    {
+      '1': 'loadTerminalParametersResponse',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.LoadTerminalParametersResponse',
+      '9': 0,
+      '10': 'loadTerminalParametersResponse'
+    },
+    {
+      '1': 'loadCapksResponse',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.LoadCapksResponse',
+      '9': 0,
+      '10': 'loadCapksResponse'
+    },
+    {
+      '1': 'loadEmvAppsResponse',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.LoadEmvAppsResponse',
+      '9': 0,
+      '10': 'loadEmvAppsResponse'
     },
     {
       '1': 'error',
-      '3': 10,
+      '3': 13,
       '4': 1,
       '5': 11,
       '6': '.metaApp.ErrorResponse',
@@ -236,6 +295,11 @@ final $typed_data.Uint8List commandResponseDescriptor = $convert.base64Decode(
     'BvbnNlSABSHGdlbmVyYXRlVHJhbnNwb3J0S2V5UmVzcG9uc2USRAoPbG9hZEtleVJlc3BvbnNl'
     'GAcgASgLMhgubWV0YUFwcC5Mb2FkS2V5UmVzcG9uc2VIAFIPbG9hZEtleVJlc3BvbnNlEkEKDm'
     'dldEtTTlJlc3BvbnNlGAggASgLMhcubWV0YUFwcC5HZXRLU05SZXNwb25zZUgAUg5nZXRLU05S'
-    'ZXNwb25zZRJKChFkZWxldGVLZXlSZXNwb25zZRgJIAEoCzIaLm1ldGFBcHAuRGVsZXRlS2V5Um'
-    'VzcG9uc2VIAFIRZGVsZXRlS2V5UmVzcG9uc2USLgoFZXJyb3IYCiABKAsyFi5tZXRhQXBwLkVy'
-    'cm9yUmVzcG9uc2VIAFIFZXJyb3JCBgoEdHlwZQ==');
+    'ZXNwb25zZRJZChZkZWxldGVkVUtQVEtleVJlc3BvbnNlGAkgASgLMh8ubWV0YUFwcC5EZWxldG'
+    'VEdWtwdEtleVJlc3BvbnNlSABSFmRlbGV0ZWRVS1BUS2V5UmVzcG9uc2UScQoebG9hZFRlcm1p'
+    'bmFsUGFyYW1ldGVyc1Jlc3BvbnNlGAogASgLMicubWV0YUFwcC5Mb2FkVGVybWluYWxQYXJhbW'
+    'V0ZXJzUmVzcG9uc2VIAFIebG9hZFRlcm1pbmFsUGFyYW1ldGVyc1Jlc3BvbnNlEkoKEWxvYWRD'
+    'YXBrc1Jlc3BvbnNlGAsgASgLMhoubWV0YUFwcC5Mb2FkQ2Fwa3NSZXNwb25zZUgAUhFsb2FkQ2'
+    'Fwa3NSZXNwb25zZRJQChNsb2FkRW12QXBwc1Jlc3BvbnNlGAwgASgLMhwubWV0YUFwcC5Mb2Fk'
+    'RW12QXBwc1Jlc3BvbnNlSABSE2xvYWRFbXZBcHBzUmVzcG9uc2USLgoFZXJyb3IYDSABKAsyFi'
+    '5tZXRhQXBwLkVycm9yUmVzcG9uc2VIAFIFZXJyb3JCBgoEdHlwZQ==');

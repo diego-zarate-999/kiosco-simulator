@@ -1,5 +1,6 @@
 import 'package:kiosco_simulator/extensions/hex_string.dart';
-import 'package:kiosco_simulator/src/generated/key_loading.pb.dart';
+import 'package:kiosco_simulator/src/generated/keys.pb.dart';
+
 import 'package:kiosco_simulator/src/p180_device.dart';
 
 Future<void> deleteKey(P180Device p180) async {
