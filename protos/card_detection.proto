@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package metaApp;
+
+enum CardEntryMode {
+    manual          = 0;
+    chip            = 1;
+    magneticStripe  = 2;
+    contactless     = 3;
+}
+
+message CardTimeout { }
+
+message StartCardReaderRequest {
+    repeated CardEntryMode cardEntryModes = 1;
+    int32 timeout               = 2;
+}
+
+message StartCardReaderResponse {
+    oneof type {
+        CardEntryMode cardEntryMode = 1;
+        CardTimeout cardTimeout     = 2;
+    }
+}
+

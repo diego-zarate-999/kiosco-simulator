@@ -32,7 +32,7 @@ class P180Device {
   late final CommunicationManager _communicationManager;
 
   P180Device(String portName) {
-    _communicationManager = CommunicationManager(portName);
+    _communicationManager = CommunicationManager.instance;
   }
 
   Future<void> sendPing(String message) async {

@@ -2,28 +2,34 @@ import 'package:kiosco_simulator/src/generated/command_message.pb.dart';
 import 'package:kiosco_simulator/src/serialport_manager.dart';
 
 class CommunicationManager {
-  late final String _portName;
-  late final SerialPortManager _serialPortManager;
+  final String _portName;
+  final SerialPortManager _serialPortManager;
 
-  CommunicationManager(String portName) {
-    _portName = portName;
-    _serialPortManager = SerialPortManager();
+  static final CommunicationManager _instance = CommunicationManager._internal(
+    "COM9",
+  );
+
+  static CommunicationManager get instance => _instance;
+
+  CommunicationManager._internal(this._portName)
+    : _serialPortManager = SerialPortManager() {
+    _serialPortManager.open(_portName);
   }
 
   Future<CommandResponse> sendRequest(CommandMessage request) async {
-    _serialPortManager.open(_portName);
-
     final requestBuffer = request.writeToBuffer();
     _serialPortManager.sendData(requestBuffer);
 
     final responseBuffer = _serialPortManager.readData();
-    final response = CommandResponse.fromBuffer(responseBuffer);
-
-    return response;
+    return CommandResponse.fromBuffer(responseBuffer);
   }
 
-  Future<void> sendMessage(CommandMessage message) async {
-    _serialPortManager.open(_portName);
-    _serialPortManager.sendData(message.writeToBuffer());
+  Future<CommandResponse> waitForReponse() async {
+    final responseBuffer = _serialPortManager.readData();
+    return CommandResponse.fromBuffer(responseBuffer);
+  }
+
+  Future<void> close() async {
+    _serialPortManager.close();
   }
 }

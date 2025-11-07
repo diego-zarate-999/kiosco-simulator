@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package metaApp;
+
+//TODO: Agregar el resto de tipo de transacciones.
+enum TransType {
+    sale        = 0;
+    refund      = 1;
+}
+
+message EmvStartTransactionParams {
+    int32 amount               = 1;
+    optional int32 amountOther = 2;
+    int32 sequenceCounter      = 3;
+    TransType transType        = 4;
+    optional bool forceOnline  = 5;
+}
+
+message StartEmvProcessRequest {
+    EmvStartTransactionParams transactionParams = 1;
+}
+
+// Este evento indica que la PinPad está esperando que el usuario
+// selecciona una app.
+message EmvCandidateListEventResponse { }
+
+// Este evento indica que el usuario o el pinpad ya ha seleccionado una app.
+message EmvSelectedAppEventResponse {
+    repeated int32 aid = 1;
+    string appLabel    = 2;
+}
+
+message EmvEventNotificationResponse {
+    oneof type {
+        EmvCandidateListEventResponse emvCandidateListEventResponse = 1;
+        EmvSelectedAppEventResponse emvSelectedAppEventResponse     = 2;
+    }
+}

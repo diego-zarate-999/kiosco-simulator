@@ -17,7 +17,7 @@ import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'device.pb.dart' as $1;
-import 'emv.pb.dart' as $4;
+import 'emv_module.pb.dart' as $4;
 import 'keys.pb.dart' as $3;
 import 'ping.pb.dart' as $0;
 import 'sdk.pb.dart' as $2;

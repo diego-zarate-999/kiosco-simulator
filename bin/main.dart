@@ -1,5 +1,5 @@
 import 'package:kiosco_simulator/src/generated/command_message.pb.dart';
-import 'package:kiosco_simulator/src/generated/emv.pb.dart';
+import 'package:kiosco_simulator/src/generated/emv_module.pb.dart';
 
 void main() async {
   final sendedMsgBytes = CommandMessage(

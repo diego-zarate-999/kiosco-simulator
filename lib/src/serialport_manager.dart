@@ -34,7 +34,7 @@ class SerialPortManager {
 
     Uint8List receivedData = Uint8List(0);
     while (receivedData.isEmpty) {
-      receivedData = _serialPort.read(1024, timeout: 300);
+      receivedData = _serialPort.read(1024, timeout: 500);
     }
 
     return receivedData;

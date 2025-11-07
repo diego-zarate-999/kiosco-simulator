@@ -7,7 +7,9 @@ import "error.proto";
 import "device.proto";
 import "sdk.proto";
 import "keys.proto";
-import "emv.proto";
+import "card_detection.proto";
+import "emv_module.proto";
+import "emv_transaction.proto";
 
 message CommandMessage {
     oneof type {
@@ -23,6 +25,8 @@ message CommandMessage {
         LoadTerminalParametersRequest loadTerminalParametersRequest = 10;
         LoadCapksRequest loadCapksRequest                           = 11;
         LoadEmvAppsRequest loadEmvAppsRequest                       = 12;
+        StartCardReaderRequest startCardReaderRequest               = 13;
+        StartEmvProcessRequest startEmvProcessRequest               = 14;
     }
 }
 
@@ -40,6 +44,8 @@ message CommandResponse {
         LoadTerminalParametersResponse loadTerminalParametersResponse = 10;
         LoadCapksResponse loadCapksResponse                           = 11;
         LoadEmvAppsResponse loadEmvAppsResponse                       = 12;
-        ErrorResponse error                                           = 13;
+        StartCardReaderResponse startCardReaderResponse               = 13;
+        EmvEventNotificationResponse emvEventNotificationResponse     = 14;
+        ErrorResponse error                                           = 15;
     }
 }

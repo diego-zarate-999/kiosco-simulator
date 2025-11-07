@@ -6,7 +6,7 @@ import "ping.proto";
 import "device.proto";
 import "sdk.proto";
 import "keys.proto";
-import "emv.proto";
+import "emv_module.proto";
 
 service PinPad {
     rpc ping(PingRequest) returns (PingResponse);

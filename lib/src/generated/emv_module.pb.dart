@@ -1,6 +1,6 @@
 // This is a generated file - do not edit.
 //
-// Generated from emv.proto.
+// Generated from emv_module.proto.
 
 // @dart = 3.3
 

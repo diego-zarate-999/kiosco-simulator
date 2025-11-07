@@ -14,9 +14,11 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'card_detection.pb.dart' as $5;
 import 'device.pb.dart' as $1;
-import 'emv.pb.dart' as $4;
-import 'error.pb.dart' as $5;
+import 'emv_module.pb.dart' as $4;
+import 'emv_transaction.pb.dart' as $6;
+import 'error.pb.dart' as $7;
 import 'keys.pb.dart' as $3;
 import 'ping.pb.dart' as $0;
 import 'sdk.pb.dart' as $2;
@@ -36,6 +38,8 @@ enum CommandMessage_Type {
   loadTerminalParametersRequest,
   loadCapksRequest,
   loadEmvAppsRequest,
+  startCardReaderRequest,
+  startEmvProcessRequest,
   notSet
 }
 
@@ -53,6 +57,8 @@ class CommandMessage extends $pb.GeneratedMessage {
     $4.LoadTerminalParametersRequest? loadTerminalParametersRequest,
     $4.LoadCapksRequest? loadCapksRequest,
     $4.LoadEmvAppsRequest? loadEmvAppsRequest,
+    $5.StartCardReaderRequest? startCardReaderRequest,
+    $6.StartEmvProcessRequest? startEmvProcessRequest,
   }) {
     final result = create();
     if (pingRequest != null) result.pingRequest = pingRequest;
@@ -74,6 +80,10 @@ class CommandMessage extends $pb.GeneratedMessage {
     if (loadCapksRequest != null) result.loadCapksRequest = loadCapksRequest;
     if (loadEmvAppsRequest != null)
       result.loadEmvAppsRequest = loadEmvAppsRequest;
+    if (startCardReaderRequest != null)
+      result.startCardReaderRequest = startCardReaderRequest;
+    if (startEmvProcessRequest != null)
+      result.startEmvProcessRequest = startEmvProcessRequest;
     return result;
   }
 
@@ -100,13 +110,15 @@ class CommandMessage extends $pb.GeneratedMessage {
     10: CommandMessage_Type.loadTerminalParametersRequest,
     11: CommandMessage_Type.loadCapksRequest,
     12: CommandMessage_Type.loadEmvAppsRequest,
+    13: CommandMessage_Type.startCardReaderRequest,
+    14: CommandMessage_Type.startEmvProcessRequest,
     0: CommandMessage_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'CommandMessage',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14])
     ..aOM<$0.PingRequest>(1, _omitFieldNames ? '' : 'pingRequest',
         protoName: 'pingRequest', subBuilder: $0.PingRequest.create)
     ..aOM<$1.SetDeviceDateTimeRequest>(
@@ -145,6 +157,14 @@ class CommandMessage extends $pb.GeneratedMessage {
         12, _omitFieldNames ? '' : 'loadEmvAppsRequest',
         protoName: 'loadEmvAppsRequest',
         subBuilder: $4.LoadEmvAppsRequest.create)
+    ..aOM<$5.StartCardReaderRequest>(
+        13, _omitFieldNames ? '' : 'startCardReaderRequest',
+        protoName: 'startCardReaderRequest',
+        subBuilder: $5.StartCardReaderRequest.create)
+    ..aOM<$6.StartEmvProcessRequest>(
+        14, _omitFieldNames ? '' : 'startEmvProcessRequest',
+        protoName: 'startEmvProcessRequest',
+        subBuilder: $6.StartEmvProcessRequest.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -312,6 +332,30 @@ class CommandMessage extends $pb.GeneratedMessage {
   void clearLoadEmvAppsRequest() => $_clearField(12);
   @$pb.TagNumber(12)
   $4.LoadEmvAppsRequest ensureLoadEmvAppsRequest() => $_ensure(11);
+
+  @$pb.TagNumber(13)
+  $5.StartCardReaderRequest get startCardReaderRequest => $_getN(12);
+  @$pb.TagNumber(13)
+  set startCardReaderRequest($5.StartCardReaderRequest value) =>
+      $_setField(13, value);
+  @$pb.TagNumber(13)
+  $core.bool hasStartCardReaderRequest() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearStartCardReaderRequest() => $_clearField(13);
+  @$pb.TagNumber(13)
+  $5.StartCardReaderRequest ensureStartCardReaderRequest() => $_ensure(12);
+
+  @$pb.TagNumber(14)
+  $6.StartEmvProcessRequest get startEmvProcessRequest => $_getN(13);
+  @$pb.TagNumber(14)
+  set startEmvProcessRequest($6.StartEmvProcessRequest value) =>
+      $_setField(14, value);
+  @$pb.TagNumber(14)
+  $core.bool hasStartEmvProcessRequest() => $_has(13);
+  @$pb.TagNumber(14)
+  void clearStartEmvProcessRequest() => $_clearField(14);
+  @$pb.TagNumber(14)
+  $6.StartEmvProcessRequest ensureStartEmvProcessRequest() => $_ensure(13);
 }
 
 enum CommandResponse_Type {
@@ -327,6 +371,8 @@ enum CommandResponse_Type {
   loadTerminalParametersResponse,
   loadCapksResponse,
   loadEmvAppsResponse,
+  startCardReaderResponse,
+  emvEventNotificationResponse,
   error,
   notSet
 }
@@ -345,7 +391,9 @@ class CommandResponse extends $pb.GeneratedMessage {
     $4.LoadTerminalParametersResponse? loadTerminalParametersResponse,
     $4.LoadCapksResponse? loadCapksResponse,
     $4.LoadEmvAppsResponse? loadEmvAppsResponse,
-    $5.ErrorResponse? error,
+    $5.StartCardReaderResponse? startCardReaderResponse,
+    $6.EmvEventNotificationResponse? emvEventNotificationResponse,
+    $7.ErrorResponse? error,
   }) {
     final result = create();
     if (pingResponse != null) result.pingResponse = pingResponse;
@@ -367,6 +415,10 @@ class CommandResponse extends $pb.GeneratedMessage {
     if (loadCapksResponse != null) result.loadCapksResponse = loadCapksResponse;
     if (loadEmvAppsResponse != null)
       result.loadEmvAppsResponse = loadEmvAppsResponse;
+    if (startCardReaderResponse != null)
+      result.startCardReaderResponse = startCardReaderResponse;
+    if (emvEventNotificationResponse != null)
+      result.emvEventNotificationResponse = emvEventNotificationResponse;
     if (error != null) result.error = error;
     return result;
   }
@@ -394,14 +446,16 @@ class CommandResponse extends $pb.GeneratedMessage {
     10: CommandResponse_Type.loadTerminalParametersResponse,
     11: CommandResponse_Type.loadCapksResponse,
     12: CommandResponse_Type.loadEmvAppsResponse,
-    13: CommandResponse_Type.error,
+    13: CommandResponse_Type.startCardReaderResponse,
+    14: CommandResponse_Type.emvEventNotificationResponse,
+    15: CommandResponse_Type.error,
     0: CommandResponse_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'CommandResponse',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
     ..aOM<$0.PingResponse>(1, _omitFieldNames ? '' : 'pingResponse',
         protoName: 'pingResponse', subBuilder: $0.PingResponse.create)
     ..aOM<$1.SetDeviceDateTimeResponse>(
@@ -440,8 +494,16 @@ class CommandResponse extends $pb.GeneratedMessage {
         12, _omitFieldNames ? '' : 'loadEmvAppsResponse',
         protoName: 'loadEmvAppsResponse',
         subBuilder: $4.LoadEmvAppsResponse.create)
-    ..aOM<$5.ErrorResponse>(13, _omitFieldNames ? '' : 'error',
-        subBuilder: $5.ErrorResponse.create)
+    ..aOM<$5.StartCardReaderResponse>(
+        13, _omitFieldNames ? '' : 'startCardReaderResponse',
+        protoName: 'startCardReaderResponse',
+        subBuilder: $5.StartCardReaderResponse.create)
+    ..aOM<$6.EmvEventNotificationResponse>(
+        14, _omitFieldNames ? '' : 'emvEventNotificationResponse',
+        protoName: 'emvEventNotificationResponse',
+        subBuilder: $6.EmvEventNotificationResponse.create)
+    ..aOM<$7.ErrorResponse>(15, _omitFieldNames ? '' : 'error',
+        subBuilder: $7.ErrorResponse.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -612,15 +674,41 @@ class CommandResponse extends $pb.GeneratedMessage {
   $4.LoadEmvAppsResponse ensureLoadEmvAppsResponse() => $_ensure(11);
 
   @$pb.TagNumber(13)
-  $5.ErrorResponse get error => $_getN(12);
+  $5.StartCardReaderResponse get startCardReaderResponse => $_getN(12);
   @$pb.TagNumber(13)
-  set error($5.ErrorResponse value) => $_setField(13, value);
+  set startCardReaderResponse($5.StartCardReaderResponse value) =>
+      $_setField(13, value);
   @$pb.TagNumber(13)
-  $core.bool hasError() => $_has(12);
+  $core.bool hasStartCardReaderResponse() => $_has(12);
   @$pb.TagNumber(13)
-  void clearError() => $_clearField(13);
+  void clearStartCardReaderResponse() => $_clearField(13);
   @$pb.TagNumber(13)
-  $5.ErrorResponse ensureError() => $_ensure(12);
+  $5.StartCardReaderResponse ensureStartCardReaderResponse() => $_ensure(12);
+
+  @$pb.TagNumber(14)
+  $6.EmvEventNotificationResponse get emvEventNotificationResponse =>
+      $_getN(13);
+  @$pb.TagNumber(14)
+  set emvEventNotificationResponse($6.EmvEventNotificationResponse value) =>
+      $_setField(14, value);
+  @$pb.TagNumber(14)
+  $core.bool hasEmvEventNotificationResponse() => $_has(13);
+  @$pb.TagNumber(14)
+  void clearEmvEventNotificationResponse() => $_clearField(14);
+  @$pb.TagNumber(14)
+  $6.EmvEventNotificationResponse ensureEmvEventNotificationResponse() =>
+      $_ensure(13);
+
+  @$pb.TagNumber(15)
+  $7.ErrorResponse get error => $_getN(14);
+  @$pb.TagNumber(15)
+  set error($7.ErrorResponse value) => $_setField(15, value);
+  @$pb.TagNumber(15)
+  $core.bool hasError() => $_has(14);
+  @$pb.TagNumber(15)
+  void clearError() => $_clearField(15);
+  @$pb.TagNumber(15)
+  $7.ErrorResponse ensureError() => $_ensure(14);
 }
 
 const $core.bool _omitFieldNames =
