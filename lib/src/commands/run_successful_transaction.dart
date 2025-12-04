@@ -21,8 +21,8 @@ Future<void> runSuccessfulTransaction() async {
 
   final response = await communicationManager.sendRequest(request);
 
-  if (response.hasEmvEventNotificationResponse()) {
-    throw ("Proto Incorrecto!");
+  if (!response.hasEmvEventNotificationResponse()) {
+    throw ("Proto Incorrecto: ${response.toString()}");
   }
 
   var emvResponse = response.emvEventNotificationResponse;
@@ -42,17 +42,17 @@ Future<void> runSuccessfulTransaction() async {
           .emvEventNotificationResponse;
     } else if (emvResponse.hasEmvSelectedAppEventResponse()) {
       final emvEventResponse = emvResponse.emvSelectedAppEventResponse;
-      print("App candidate seleccionado...");
-      print("✓ Datos de la app seleccionada:");
-      print("\t AID = ${emvEventResponse.aid}");
-      print("\t appLabel = ${emvEventResponse.appLabel}");
 
       emvResponse = (await communicationManager.waitForReponse())
           .emvEventNotificationResponse;
+
+      print("App candidate seleccionado!!");
+      print("✓ Datos de la app seleccionada:");
+      print("\t AID = ${emvEventResponse.aid}");
+      print("\t appLabel = ${emvEventResponse.appLabel}");
     } else if (emvResponse.hasEmvPinRequestedEventResponse()) {
       print("✓ PinPad pide solicitar PIN.");
 
-      await Future.delayed(const Duration(seconds: 2));
       final startPinResponse = await communicationManager.sendRequest(
         CommandMessage(
           startPinEntryRequest: StartPinEntryRequest(
@@ -76,21 +76,21 @@ Future<void> runSuccessfulTransaction() async {
           print("✓ Tiempo agotado para ingresar el PIN.");
         } else if (pinResponseEvent.hasPinEntryCancelledResponse()) {
           print("✓ Operación cancelada por el Usuario.");
-        } else if (pinResponseEvent.hasPinEntryFinishedResponse()) {
-          print("✓ Termina la solicitud de PIN.");
         }
+
+        /// Quedar a la espera de los tags
+        emvResponse = (await communicationManager.waitForReponse())
+            .emvEventNotificationResponse;
       } else {
         throw Exception(
           "Fallo al iniciar solicitud de PIN. Proto: ${startPinResponse.toString()}",
         );
       }
-
-      emvResponse = (await communicationManager.waitForReponse())
-          .emvEventNotificationResponse;
-    } else if (emvResponse.hasEmvGoOnlineEventResponse()) {
       print(
-        "1st gen tags: ${response.emvEventNotificationResponse.emvGoOnlineEventResponse.tags}",
+        "Proto recibido despues de solicitar PIN: ${emvResponse.toString()}",
       );
+    } else if (emvResponse.hasEmvGoOnlineEventResponse()) {
+      print("1st gen tags: ${emvResponse.emvGoOnlineEventResponse.tags}");
       print("Simular solicitud a host...");
       print("Completando proceso EMV...");
 
