@@ -33,5 +33,73 @@ class TransType extends $pb.ProtobufEnum {
   const TransType._(super.value, super.name);
 }
 
+class EmvTxnKernelType extends $pb.ProtobufEnum {
+  static const EmvTxnKernelType payPass =
+      EmvTxnKernelType._(0, _omitEnumNames ? '' : 'payPass');
+  static const EmvTxnKernelType payWave =
+      EmvTxnKernelType._(1, _omitEnumNames ? '' : 'payWave');
+  static const EmvTxnKernelType expressPay =
+      EmvTxnKernelType._(2, _omitEnumNames ? '' : 'expressPay');
+
+  static const $core.List<EmvTxnKernelType> values = <EmvTxnKernelType>[
+    payPass,
+    payWave,
+    expressPay,
+  ];
+
+  static final $core.List<EmvTxnKernelType?> _byValue =
+      $pb.ProtobufEnum.$_initByValueList(values, 2);
+  static EmvTxnKernelType? valueOf($core.int value) =>
+      value < 0 || value >= _byValue.length ? null : _byValue[value];
+
+  const EmvTxnKernelType._(super.value, super.name);
+}
+
+class EmvTxnResult extends $pb.ProtobufEnum {
+  static const EmvTxnResult approved =
+      EmvTxnResult._(0, _omitEnumNames ? '' : 'approved');
+  static const EmvTxnResult denied =
+      EmvTxnResult._(1, _omitEnumNames ? '' : 'denied');
+  static const EmvTxnResult fallback =
+      EmvTxnResult._(2, _omitEnumNames ? '' : 'fallback');
+  static const EmvTxnResult tryAnother =
+      EmvTxnResult._(3, _omitEnumNames ? '' : 'tryAnother');
+  static const EmvTxnResult fail =
+      EmvTxnResult._(4, _omitEnumNames ? '' : 'fail');
+  static const EmvTxnResult cmdError =
+      EmvTxnResult._(5, _omitEnumNames ? '' : 'cmdError');
+  static const EmvTxnResult appBlock =
+      EmvTxnResult._(6, _omitEnumNames ? '' : 'appBlock');
+  static const EmvTxnResult cardBlock =
+      EmvTxnResult._(7, _omitEnumNames ? '' : 'cardBlock');
+  static const EmvTxnResult referPaymentDevice =
+      EmvTxnResult._(8, _omitEnumNames ? '' : 'referPaymentDevice');
+  static const EmvTxnResult pinTimeout =
+      EmvTxnResult._(9, _omitEnumNames ? '' : 'pinTimeout');
+  static const EmvTxnResult pinCancel =
+      EmvTxnResult._(10, _omitEnumNames ? '' : 'pinCancel');
+
+  static const $core.List<EmvTxnResult> values = <EmvTxnResult>[
+    approved,
+    denied,
+    fallback,
+    tryAnother,
+    fail,
+    cmdError,
+    appBlock,
+    cardBlock,
+    referPaymentDevice,
+    pinTimeout,
+    pinCancel,
+  ];
+
+  static final $core.List<EmvTxnResult?> _byValue =
+      $pb.ProtobufEnum.$_initByValueList(values, 10);
+  static EmvTxnResult? valueOf($core.int value) =>
+      value < 0 || value >= _byValue.length ? null : _byValue[value];
+
+  const EmvTxnResult._(super.value, super.name);
+}
+
 const $core.bool _omitEnumNames =
     $core.bool.fromEnvironment('protobuf.omit_enum_names');

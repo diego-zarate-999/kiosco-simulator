@@ -144,6 +144,33 @@ const CommandMessage$json = {
       '9': 0,
       '10': 'startEmvProcessRequest'
     },
+    {
+      '1': 'startPinEntryRequest',
+      '3': 15,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.StartPinEntryRequest',
+      '9': 0,
+      '10': 'startPinEntryRequest'
+    },
+    {
+      '1': 'completeEmvProcessRequest',
+      '3': 16,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.CompleteEmvProcessRequest',
+      '9': 0,
+      '10': 'completeEmvProcessRequest'
+    },
+    {
+      '1': 'cancelEmvProcessRequest',
+      '3': 17,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.CancelEmvProcessRequest',
+      '9': 0,
+      '10': 'cancelEmvProcessRequest'
+    },
   ],
   '8': [
     {'1': 'type'},
@@ -173,7 +200,12 @@ final $typed_data.Uint8List commandMessageDescriptor = $convert.base64Decode(
     'dBJZChZzdGFydENhcmRSZWFkZXJSZXF1ZXN0GA0gASgLMh8ubWV0YUFwcC5TdGFydENhcmRSZW'
     'FkZXJSZXF1ZXN0SABSFnN0YXJ0Q2FyZFJlYWRlclJlcXVlc3QSWQoWc3RhcnRFbXZQcm9jZXNz'
     'UmVxdWVzdBgOIAEoCzIfLm1ldGFBcHAuU3RhcnRFbXZQcm9jZXNzUmVxdWVzdEgAUhZzdGFydE'
-    'VtdlByb2Nlc3NSZXF1ZXN0QgYKBHR5cGU=');
+    'VtdlByb2Nlc3NSZXF1ZXN0ElMKFHN0YXJ0UGluRW50cnlSZXF1ZXN0GA8gASgLMh0ubWV0YUFw'
+    'cC5TdGFydFBpbkVudHJ5UmVxdWVzdEgAUhRzdGFydFBpbkVudHJ5UmVxdWVzdBJiChljb21wbG'
+    'V0ZUVtdlByb2Nlc3NSZXF1ZXN0GBAgASgLMiIubWV0YUFwcC5Db21wbGV0ZUVtdlByb2Nlc3NS'
+    'ZXF1ZXN0SABSGWNvbXBsZXRlRW12UHJvY2Vzc1JlcXVlc3QSXAoXY2FuY2VsRW12UHJvY2Vzc1'
+    'JlcXVlc3QYESABKAsyIC5tZXRhQXBwLkNhbmNlbEVtdlByb2Nlc3NSZXF1ZXN0SABSF2NhbmNl'
+    'bEVtdlByb2Nlc3NSZXF1ZXN0QgYKBHR5cGU=');
 
 @$core.Deprecated('Use commandResponseDescriptor instead')
 const CommandResponse$json = {

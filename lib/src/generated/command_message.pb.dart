@@ -40,6 +40,9 @@ enum CommandMessage_Type {
   loadEmvAppsRequest,
   startCardReaderRequest,
   startEmvProcessRequest,
+  startPinEntryRequest,
+  completeEmvProcessRequest,
+  cancelEmvProcessRequest,
   notSet
 }
 
@@ -59,6 +62,9 @@ class CommandMessage extends $pb.GeneratedMessage {
     $4.LoadEmvAppsRequest? loadEmvAppsRequest,
     $5.StartCardReaderRequest? startCardReaderRequest,
     $6.StartEmvProcessRequest? startEmvProcessRequest,
+    $6.StartPinEntryRequest? startPinEntryRequest,
+    $6.CompleteEmvProcessRequest? completeEmvProcessRequest,
+    $6.CancelEmvProcessRequest? cancelEmvProcessRequest,
   }) {
     final result = create();
     if (pingRequest != null) result.pingRequest = pingRequest;
@@ -84,6 +90,12 @@ class CommandMessage extends $pb.GeneratedMessage {
       result.startCardReaderRequest = startCardReaderRequest;
     if (startEmvProcessRequest != null)
       result.startEmvProcessRequest = startEmvProcessRequest;
+    if (startPinEntryRequest != null)
+      result.startPinEntryRequest = startPinEntryRequest;
+    if (completeEmvProcessRequest != null)
+      result.completeEmvProcessRequest = completeEmvProcessRequest;
+    if (cancelEmvProcessRequest != null)
+      result.cancelEmvProcessRequest = cancelEmvProcessRequest;
     return result;
   }
 
@@ -112,13 +124,16 @@ class CommandMessage extends $pb.GeneratedMessage {
     12: CommandMessage_Type.loadEmvAppsRequest,
     13: CommandMessage_Type.startCardReaderRequest,
     14: CommandMessage_Type.startEmvProcessRequest,
+    15: CommandMessage_Type.startPinEntryRequest,
+    16: CommandMessage_Type.completeEmvProcessRequest,
+    17: CommandMessage_Type.cancelEmvProcessRequest,
     0: CommandMessage_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'CommandMessage',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17])
     ..aOM<$0.PingRequest>(1, _omitFieldNames ? '' : 'pingRequest',
         protoName: 'pingRequest', subBuilder: $0.PingRequest.create)
     ..aOM<$1.SetDeviceDateTimeRequest>(
@@ -165,6 +180,18 @@ class CommandMessage extends $pb.GeneratedMessage {
         14, _omitFieldNames ? '' : 'startEmvProcessRequest',
         protoName: 'startEmvProcessRequest',
         subBuilder: $6.StartEmvProcessRequest.create)
+    ..aOM<$6.StartPinEntryRequest>(
+        15, _omitFieldNames ? '' : 'startPinEntryRequest',
+        protoName: 'startPinEntryRequest',
+        subBuilder: $6.StartPinEntryRequest.create)
+    ..aOM<$6.CompleteEmvProcessRequest>(
+        16, _omitFieldNames ? '' : 'completeEmvProcessRequest',
+        protoName: 'completeEmvProcessRequest',
+        subBuilder: $6.CompleteEmvProcessRequest.create)
+    ..aOM<$6.CancelEmvProcessRequest>(
+        17, _omitFieldNames ? '' : 'cancelEmvProcessRequest',
+        protoName: 'cancelEmvProcessRequest',
+        subBuilder: $6.CancelEmvProcessRequest.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -356,6 +383,43 @@ class CommandMessage extends $pb.GeneratedMessage {
   void clearStartEmvProcessRequest() => $_clearField(14);
   @$pb.TagNumber(14)
   $6.StartEmvProcessRequest ensureStartEmvProcessRequest() => $_ensure(13);
+
+  @$pb.TagNumber(15)
+  $6.StartPinEntryRequest get startPinEntryRequest => $_getN(14);
+  @$pb.TagNumber(15)
+  set startPinEntryRequest($6.StartPinEntryRequest value) =>
+      $_setField(15, value);
+  @$pb.TagNumber(15)
+  $core.bool hasStartPinEntryRequest() => $_has(14);
+  @$pb.TagNumber(15)
+  void clearStartPinEntryRequest() => $_clearField(15);
+  @$pb.TagNumber(15)
+  $6.StartPinEntryRequest ensureStartPinEntryRequest() => $_ensure(14);
+
+  @$pb.TagNumber(16)
+  $6.CompleteEmvProcessRequest get completeEmvProcessRequest => $_getN(15);
+  @$pb.TagNumber(16)
+  set completeEmvProcessRequest($6.CompleteEmvProcessRequest value) =>
+      $_setField(16, value);
+  @$pb.TagNumber(16)
+  $core.bool hasCompleteEmvProcessRequest() => $_has(15);
+  @$pb.TagNumber(16)
+  void clearCompleteEmvProcessRequest() => $_clearField(16);
+  @$pb.TagNumber(16)
+  $6.CompleteEmvProcessRequest ensureCompleteEmvProcessRequest() =>
+      $_ensure(15);
+
+  @$pb.TagNumber(17)
+  $6.CancelEmvProcessRequest get cancelEmvProcessRequest => $_getN(16);
+  @$pb.TagNumber(17)
+  set cancelEmvProcessRequest($6.CancelEmvProcessRequest value) =>
+      $_setField(17, value);
+  @$pb.TagNumber(17)
+  $core.bool hasCancelEmvProcessRequest() => $_has(16);
+  @$pb.TagNumber(17)
+  void clearCancelEmvProcessRequest() => $_clearField(17);
+  @$pb.TagNumber(17)
+  $6.CancelEmvProcessRequest ensureCancelEmvProcessRequest() => $_ensure(16);
 }
 
 enum CommandResponse_Type {

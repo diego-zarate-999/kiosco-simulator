@@ -130,6 +130,7 @@ class StartCardReaderRequest extends $pb.GeneratedMessage {
 
 enum StartCardReaderResponse_Type { cardEntryMode, cardTimeout, notSet }
 
+/// / Regresa el tipo de entry Mode o informa si hay timeout.
 class StartCardReaderResponse extends $pb.GeneratedMessage {
   factory StartCardReaderResponse({
     CardEntryMode? cardEntryMode,

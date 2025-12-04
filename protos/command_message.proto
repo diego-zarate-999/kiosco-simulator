@@ -13,20 +13,23 @@ import "emv_transaction.proto";
 
 message CommandMessage {
     oneof type {
-        PingRequest pingRequest                                      = 1;
-        SetDeviceDateTimeRequest setDeviceDateTimeRequest            = 2;
-        GetDeviceInfoRequest getDeviceInfoRequest                    = 3;
-        InitSDKRequest initSDKRequest                                = 4;
-        GenerateTransportKeyRequest generateTransportKeyRequest      = 5;
-        CheckLoadedKeyRequest checkLoadedKeyRequest                  = 6;
-        GetKSNRequest getKSNRequest                                  = 7;
-        DeleteDukptKeyRequest deleteDukptKeyRequest                  = 8;
-        LoadKeyRequest loadKeyRequest                                = 9;
-        LoadTerminalParametersRequest loadTerminalParametersRequest = 10;
-        LoadCapksRequest loadCapksRequest                           = 11;
-        LoadEmvAppsRequest loadEmvAppsRequest                       = 12;
-        StartCardReaderRequest startCardReaderRequest               = 13;
-        StartEmvProcessRequest startEmvProcessRequest               = 14;
+        PingRequest pingRequest                                              = 1;
+        SetDeviceDateTimeRequest setDeviceDateTimeRequest                    = 2;
+        GetDeviceInfoRequest getDeviceInfoRequest                            = 3;
+        InitSDKRequest initSDKRequest                                        = 4;
+        GenerateTransportKeyRequest generateTransportKeyRequest              = 5;
+        CheckLoadedKeyRequest checkLoadedKeyRequest                          = 6;
+        GetKSNRequest getKSNRequest                                          = 7;
+        DeleteDukptKeyRequest deleteDukptKeyRequest                          = 8;
+        LoadKeyRequest loadKeyRequest                                        = 9;
+        LoadTerminalParametersRequest loadTerminalParametersRequest         = 10;
+        LoadCapksRequest loadCapksRequest                                   = 11;
+        LoadEmvAppsRequest loadEmvAppsRequest                               = 12;
+        StartCardReaderRequest startCardReaderRequest                       = 13;
+        StartEmvProcessRequest startEmvProcessRequest                       = 14;
+        StartPinEntryRequest startPinEntryRequest                           = 15;
+        CompleteEmvProcessRequest completeEmvProcessRequest                 = 16;
+        CancelEmvProcessRequest cancelEmvProcessRequest                     = 17;
     }
 }
 

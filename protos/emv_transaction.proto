@@ -2,10 +2,37 @@ syntax = "proto3";
 
 package metaApp;
 
+import "keys.proto";
+
 //TODO: Agregar el resto de tipo de transacciones.
 enum TransType {
     sale        = 0;
     refund      = 1;
+}
+
+enum EmvTxnKernelType {
+    payPass     = 0;
+    payWave     = 1;
+    expressPay  = 2;
+}
+
+enum EmvTxnResult {
+    approved            = 0;
+    denied              = 1;
+    fallback            = 2;
+    tryAnother          = 3;
+    fail                = 4;
+    cmdError            = 5;
+    appBlock            = 6;
+    cardBlock           = 7;
+    referPaymentDevice  = 8;
+    pinTimeout          = 9;
+    pinCancel          = 10;
+}         
+
+message EmvTagEntry {
+    string tagId            = 1;
+    repeated int32 tagValue = 2;
 }
 
 message EmvStartTransactionParams {
@@ -20,6 +47,25 @@ message StartEmvProcessRequest {
     EmvStartTransactionParams transactionParams = 1;
 }
 
+message StartPinEntryRequest {
+    int32 timeout                = 1;
+    int32 keyIndex               = 2;
+    CipherMode cipherMode        = 3;
+    repeated int32 allowedLength = 4;
+}
+
+message CompleteEmvProcessRequest {
+    bool successful                         = 1;
+    string authorisationResponseCode        = 2;
+    string displayMessage                   = 3;
+    optional string authorisationCode       = 4;
+    repeated int32 issuerAuthenticationData = 5;
+    repeated int32 issuerScript1            = 6;
+    repeated int32 issuerScript2            = 7;
+}
+
+message CancelEmvProcessRequest { }
+
 // Este evento indica que la PinPad está esperando que el usuario
 // selecciona una app.
 message EmvCandidateListEventResponse { }
@@ -30,9 +76,60 @@ message EmvSelectedAppEventResponse {
     string appLabel    = 2;
 }
 
+// Este mensaje regresa datos impotantes de la tarjeta.
+message EmvCardDataResponse {
+    string track2         = 1;
+    string pan            = 2;
+    string expirationDate = 3;
+    string cardholderName = 4;
+}
+
+// Este evento notifica los tags del first generate
+message EmvGoOnlineEventResponse {
+    repeated EmvTagEntry tags  = 1;
+}
+
+// Notifica que se require PIN.
+message EmvPinRequestedEventResponse { }
+
+// Se regresa para notificar que ya se esta ingresando el PIN
+message PinEntryStartedResponse { }
+
+// Se regresa cuando hay un timeout en ingreso de pin.
+message PinEntryTimeoutResponse { }
+
+// Se regresa cuando hay un timeout en ingreso de pin.
+message PinEntryCancelledResponse { }
+
+// Resultado de ingreso del PIN.
+message PinEntryFinishedResponse {
+    bool success = 1;
+}
+
+message EmvCancelTransactionResponse { }
+
+message EmvFinishEventResponse {
+    bool isContactless                    = 1;
+    bool onlineRequested                  = 2;
+    bool pinRequested                     = 3;
+    EmvTxnResult txnResult                = 4;
+    optional EmvTxnKernelType kernelType  = 5;
+    repeated int32 scriptResults          = 6;
+    repeated EmvTagEntry secondGenTags    = 7;
+}
+
 message EmvEventNotificationResponse {
     oneof type {
-        EmvCandidateListEventResponse emvCandidateListEventResponse = 1;
-        EmvSelectedAppEventResponse emvSelectedAppEventResponse     = 2;
+        EmvCandidateListEventResponse emvCandidateListEventResponse       = 1;
+        EmvSelectedAppEventResponse emvSelectedAppEventResponse           = 2;
+        EmvCardDataResponse emvCardDataResponse                           = 3;
+        EmvGoOnlineEventResponse emvGoOnlineEventResponse                 = 4;
+        EmvFinishEventResponse emvFinishEventResponse                     = 5;
+        EmvPinRequestedEventResponse emvPinRequestedEventResponse         = 6;
+        PinEntryStartedResponse pinEntryStartedResponse                   = 7;
+        PinEntryTimeoutResponse pinEntryTimeoutResponse                   = 8;
+        PinEntryCancelledResponse pinEntryCancelledResponse               = 9;
+        PinEntryFinishedResponse pinEntryFinishedResponse                 = 10;
+        EmvCancelTransactionResponse emvCancelTransactionResponse         = 11;
     }
 }
