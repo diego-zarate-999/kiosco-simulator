@@ -14,8 +14,9 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'card_detection.pbenum.dart' as $0;
 import 'emv_transaction.pbenum.dart';
-import 'keys.pbenum.dart' as $0;
+import 'keys.pbenum.dart' as $1;
 
 export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
@@ -85,8 +86,8 @@ class EmvTagEntry extends $pb.GeneratedMessage {
 
 class EmvStartTransactionParams extends $pb.GeneratedMessage {
   factory EmvStartTransactionParams({
-    $core.int? amount,
-    $core.int? amountOther,
+    $core.double? amount,
+    $core.double? amountOther,
     $core.int? sequenceCounter,
     TransType? transType,
     $core.bool? forceOnline,
@@ -113,8 +114,9 @@ class EmvStartTransactionParams extends $pb.GeneratedMessage {
       _omitMessageNames ? '' : 'EmvStartTransactionParams',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..a<$core.int>(1, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'amountOther', $pb.PbFieldType.O3,
+    ..a<$core.double>(1, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OD)
+    ..a<$core.double>(
+        2, _omitFieldNames ? '' : 'amountOther', $pb.PbFieldType.OD,
         protoName: 'amountOther')
     ..a<$core.int>(
         3, _omitFieldNames ? '' : 'sequenceCounter', $pb.PbFieldType.O3,
@@ -151,18 +153,18 @@ class EmvStartTransactionParams extends $pb.GeneratedMessage {
   static EmvStartTransactionParams? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.int get amount => $_getIZ(0);
+  $core.double get amount => $_getN(0);
   @$pb.TagNumber(1)
-  set amount($core.int value) => $_setSignedInt32(0, value);
+  set amount($core.double value) => $_setDouble(0, value);
   @$pb.TagNumber(1)
   $core.bool hasAmount() => $_has(0);
   @$pb.TagNumber(1)
   void clearAmount() => $_clearField(1);
 
   @$pb.TagNumber(2)
-  $core.int get amountOther => $_getIZ(1);
+  $core.double get amountOther => $_getN(1);
   @$pb.TagNumber(2)
-  set amountOther($core.int value) => $_setSignedInt32(1, value);
+  set amountOther($core.double value) => $_setDouble(1, value);
   @$pb.TagNumber(2)
   $core.bool hasAmountOther() => $_has(1);
   @$pb.TagNumber(2)
@@ -198,9 +200,14 @@ class EmvStartTransactionParams extends $pb.GeneratedMessage {
 
 class StartEmvProcessRequest extends $pb.GeneratedMessage {
   factory StartEmvProcessRequest({
+    $core.Iterable<$0.CardEntryMode>? cardEntryModes,
+    $core.int? cardDetectionTimeout,
     EmvStartTransactionParams? transactionParams,
   }) {
     final result = create();
+    if (cardEntryModes != null) result.cardEntryModes.addAll(cardEntryModes);
+    if (cardDetectionTimeout != null)
+      result.cardDetectionTimeout = cardDetectionTimeout;
     if (transactionParams != null) result.transactionParams = transactionParams;
     return result;
   }
@@ -218,8 +225,17 @@ class StartEmvProcessRequest extends $pb.GeneratedMessage {
       _omitMessageNames ? '' : 'StartEmvProcessRequest',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
+    ..pc<$0.CardEntryMode>(
+        1, _omitFieldNames ? '' : 'cardEntryModes', $pb.PbFieldType.KE,
+        protoName: 'cardEntryModes',
+        valueOf: $0.CardEntryMode.valueOf,
+        enumValues: $0.CardEntryMode.values,
+        defaultEnumValue: $0.CardEntryMode.manual)
+    ..a<$core.int>(
+        2, _omitFieldNames ? '' : 'cardDetectionTimeout', $pb.PbFieldType.O3,
+        protoName: 'cardDetectionTimeout')
     ..aOM<EmvStartTransactionParams>(
-        1, _omitFieldNames ? '' : 'transactionParams',
+        3, _omitFieldNames ? '' : 'transactionParams',
         protoName: 'transactionParams',
         subBuilder: EmvStartTransactionParams.create)
     ..hasRequiredFields = false;
@@ -248,23 +264,35 @@ class StartEmvProcessRequest extends $pb.GeneratedMessage {
   static StartEmvProcessRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  EmvStartTransactionParams get transactionParams => $_getN(0);
-  @$pb.TagNumber(1)
+  $pb.PbList<$0.CardEntryMode> get cardEntryModes => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $core.int get cardDetectionTimeout => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set cardDetectionTimeout($core.int value) => $_setSignedInt32(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasCardDetectionTimeout() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearCardDetectionTimeout() => $_clearField(2);
+
+  @$pb.TagNumber(3)
+  EmvStartTransactionParams get transactionParams => $_getN(2);
+  @$pb.TagNumber(3)
   set transactionParams(EmvStartTransactionParams value) =>
-      $_setField(1, value);
-  @$pb.TagNumber(1)
-  $core.bool hasTransactionParams() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearTransactionParams() => $_clearField(1);
-  @$pb.TagNumber(1)
-  EmvStartTransactionParams ensureTransactionParams() => $_ensure(0);
+      $_setField(3, value);
+  @$pb.TagNumber(3)
+  $core.bool hasTransactionParams() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearTransactionParams() => $_clearField(3);
+  @$pb.TagNumber(3)
+  EmvStartTransactionParams ensureTransactionParams() => $_ensure(2);
 }
 
 class StartPinEntryRequest extends $pb.GeneratedMessage {
   factory StartPinEntryRequest({
     $core.int? timeout,
     $core.int? keyIndex,
-    $0.CipherMode? cipherMode,
+    $1.CipherMode? cipherMode,
     $core.Iterable<$core.int>? allowedLength,
   }) {
     final result = create();
@@ -291,12 +319,12 @@ class StartPinEntryRequest extends $pb.GeneratedMessage {
     ..a<$core.int>(1, _omitFieldNames ? '' : 'timeout', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'keyIndex', $pb.PbFieldType.O3,
         protoName: 'keyIndex')
-    ..e<$0.CipherMode>(
+    ..e<$1.CipherMode>(
         3, _omitFieldNames ? '' : 'cipherMode', $pb.PbFieldType.OE,
         protoName: 'cipherMode',
-        defaultOrMaker: $0.CipherMode.ECB,
-        valueOf: $0.CipherMode.valueOf,
-        enumValues: $0.CipherMode.values)
+        defaultOrMaker: $1.CipherMode.ECB,
+        valueOf: $1.CipherMode.valueOf,
+        enumValues: $1.CipherMode.values)
     ..p<$core.int>(
         4, _omitFieldNames ? '' : 'allowedLength', $pb.PbFieldType.K3,
         protoName: 'allowedLength')
@@ -343,9 +371,9 @@ class StartPinEntryRequest extends $pb.GeneratedMessage {
   void clearKeyIndex() => $_clearField(2);
 
   @$pb.TagNumber(3)
-  $0.CipherMode get cipherMode => $_getN(2);
+  $1.CipherMode get cipherMode => $_getN(2);
   @$pb.TagNumber(3)
-  set cipherMode($0.CipherMode value) => $_setField(3, value);
+  set cipherMode($1.CipherMode value) => $_setField(3, value);
   @$pb.TagNumber(3)
   $core.bool hasCipherMode() => $_has(2);
   @$pb.TagNumber(3)

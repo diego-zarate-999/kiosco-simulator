@@ -3,6 +3,7 @@ syntax = "proto3";
 package metaApp;
 
 import "keys.proto";
+import "card_detection.proto";
 
 //TODO: Agregar el resto de tipo de transacciones.
 enum TransType {
@@ -36,15 +37,17 @@ message EmvTagEntry {
 }
 
 message EmvStartTransactionParams {
-    int32 amount               = 1;
-    optional int32 amountOther = 2;
+    double amount               = 1;
+    optional double amountOther = 2;
     int32 sequenceCounter      = 3;
     TransType transType        = 4;
     optional bool forceOnline  = 5;
 }
 
 message StartEmvProcessRequest {
-    EmvStartTransactionParams transactionParams = 1;
+    repeated CardEntryMode cardEntryModes       = 1;
+    optional int32 cardDetectionTimeout         = 2;
+    EmvStartTransactionParams transactionParams = 3;
 }
 
 message StartPinEntryRequest {

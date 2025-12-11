@@ -85,12 +85,12 @@ final $typed_data.Uint8List emvTagEntryDescriptor = $convert.base64Decode(
 const EmvStartTransactionParams$json = {
   '1': 'EmvStartTransactionParams',
   '2': [
-    {'1': 'amount', '3': 1, '4': 1, '5': 5, '10': 'amount'},
+    {'1': 'amount', '3': 1, '4': 1, '5': 1, '10': 'amount'},
     {
       '1': 'amountOther',
       '3': 2,
       '4': 1,
-      '5': 5,
+      '5': 1,
       '9': 0,
       '10': 'amountOther',
       '17': true
@@ -122,8 +122,8 @@ const EmvStartTransactionParams$json = {
 
 /// Descriptor for `EmvStartTransactionParams`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List emvStartTransactionParamsDescriptor = $convert.base64Decode(
-    'ChlFbXZTdGFydFRyYW5zYWN0aW9uUGFyYW1zEhYKBmFtb3VudBgBIAEoBVIGYW1vdW50EiUKC2'
-    'Ftb3VudE90aGVyGAIgASgFSABSC2Ftb3VudE90aGVyiAEBEigKD3NlcXVlbmNlQ291bnRlchgD'
+    'ChlFbXZTdGFydFRyYW5zYWN0aW9uUGFyYW1zEhYKBmFtb3VudBgBIAEoAVIGYW1vdW50EiUKC2'
+    'Ftb3VudE90aGVyGAIgASgBSABSC2Ftb3VudE90aGVyiAEBEigKD3NlcXVlbmNlQ291bnRlchgD'
     'IAEoBVIPc2VxdWVuY2VDb3VudGVyEjAKCXRyYW5zVHlwZRgEIAEoDjISLm1ldGFBcHAuVHJhbn'
     'NUeXBlUgl0cmFuc1R5cGUSJQoLZm9yY2VPbmxpbmUYBSABKAhIAVILZm9yY2VPbmxpbmWIAQFC'
     'DgoMX2Ftb3VudE90aGVyQg4KDF9mb3JjZU9ubGluZQ==');
@@ -133,20 +133,43 @@ const StartEmvProcessRequest$json = {
   '1': 'StartEmvProcessRequest',
   '2': [
     {
-      '1': 'transactionParams',
+      '1': 'cardEntryModes',
       '3': 1,
+      '4': 3,
+      '5': 14,
+      '6': '.metaApp.CardEntryMode',
+      '10': 'cardEntryModes'
+    },
+    {
+      '1': 'cardDetectionTimeout',
+      '3': 2,
+      '4': 1,
+      '5': 5,
+      '9': 0,
+      '10': 'cardDetectionTimeout',
+      '17': true
+    },
+    {
+      '1': 'transactionParams',
+      '3': 3,
       '4': 1,
       '5': 11,
       '6': '.metaApp.EmvStartTransactionParams',
       '10': 'transactionParams'
     },
   ],
+  '8': [
+    {'1': '_cardDetectionTimeout'},
+  ],
 };
 
 /// Descriptor for `StartEmvProcessRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List startEmvProcessRequestDescriptor = $convert.base64Decode(
-    'ChZTdGFydEVtdlByb2Nlc3NSZXF1ZXN0ElAKEXRyYW5zYWN0aW9uUGFyYW1zGAEgASgLMiIubW'
-    'V0YUFwcC5FbXZTdGFydFRyYW5zYWN0aW9uUGFyYW1zUhF0cmFuc2FjdGlvblBhcmFtcw==');
+    'ChZTdGFydEVtdlByb2Nlc3NSZXF1ZXN0Ej4KDmNhcmRFbnRyeU1vZGVzGAEgAygOMhYubWV0YU'
+    'FwcC5DYXJkRW50cnlNb2RlUg5jYXJkRW50cnlNb2RlcxI3ChRjYXJkRGV0ZWN0aW9uVGltZW91'
+    'dBgCIAEoBUgAUhRjYXJkRGV0ZWN0aW9uVGltZW91dIgBARJQChF0cmFuc2FjdGlvblBhcmFtcx'
+    'gDIAEoCzIiLm1ldGFBcHAuRW12U3RhcnRUcmFuc2FjdGlvblBhcmFtc1IRdHJhbnNhY3Rpb25Q'
+    'YXJhbXNCFwoVX2NhcmREZXRlY3Rpb25UaW1lb3V0');
 
 @$core.Deprecated('Use startPinEntryRequestDescriptor instead')
 const StartPinEntryRequest$json = {

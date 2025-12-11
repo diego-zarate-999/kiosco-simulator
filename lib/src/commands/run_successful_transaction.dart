@@ -1,4 +1,5 @@
 import 'package:kiosco_simulator/src/communication_manager.dart';
+import 'package:kiosco_simulator/src/generated/card_detection.pbenum.dart';
 import 'package:kiosco_simulator/src/generated/command_message.pb.dart';
 import 'package:kiosco_simulator/src/generated/emv_transaction.pb.dart';
 import 'package:kiosco_simulator/src/generated/keys.pb.dart';
@@ -8,8 +9,14 @@ Future<void> runSuccessfulTransaction() async {
 
   final request = CommandMessage(
     startEmvProcessRequest: StartEmvProcessRequest(
+      cardEntryModes: [
+        CardEntryMode.chip,
+        CardEntryMode.contactless,
+        CardEntryMode.magneticStripe,
+      ],
+      cardDetectionTimeout: 20,
       transactionParams: EmvStartTransactionParams(
-        amount: 10,
+        amount: 25.50,
         forceOnline: true,
         sequenceCounter: 1,
         transType: TransType.sale,
@@ -19,12 +26,15 @@ Future<void> runSuccessfulTransaction() async {
 
   print("Comenzando Transaccion EMV...");
 
-  final response = await communicationManager.sendRequest(request);
+  var response = await communicationManager.sendRequest(request);
 
-  if (!response.hasEmvEventNotificationResponse()) {
+  if (!response.hasStartCardReaderResponse()) {
     throw ("Proto Incorrecto: ${response.toString()}");
   }
 
+  print("Tarjeta detectada: ${response.startCardReaderResponse.cardEntryMode}");
+
+  response = await communicationManager.waitForReponse();
   var emvResponse = response.emvEventNotificationResponse;
   do {
     if (emvResponse.hasEmvCandidateListEventResponse()) {
@@ -56,7 +66,7 @@ Future<void> runSuccessfulTransaction() async {
       final startPinResponse = await communicationManager.sendRequest(
         CommandMessage(
           startPinEntryRequest: StartPinEntryRequest(
-            keyIndex: 2,
+            keyIndex: 10,
             cipherMode: CipherMode.ECB,
             timeout: 15,
             allowedLength: [4, 6],
@@ -71,16 +81,16 @@ Future<void> runSuccessfulTransaction() async {
         print("✓ Se inició la solicitud de PIN.");
 
         final pinResultResponse = await communicationManager.waitForReponse();
+
+        print("Response despues de PIN: ${pinResultResponse.toString()}");
+
         final pinResponseEvent = pinResultResponse.emvEventNotificationResponse;
         if (pinResponseEvent.hasPinEntryTimeoutResponse()) {
           print("✓ Tiempo agotado para ingresar el PIN.");
         } else if (pinResponseEvent.hasPinEntryCancelledResponse()) {
           print("✓ Operación cancelada por el Usuario.");
         }
-
-        /// Quedar a la espera de los tags
-        emvResponse = (await communicationManager.waitForReponse())
-            .emvEventNotificationResponse;
+        emvResponse = pinResponseEvent;
       } else {
         throw Exception(
           "Fallo al iniciar solicitud de PIN. Proto: ${startPinResponse.toString()}",
@@ -91,7 +101,7 @@ Future<void> runSuccessfulTransaction() async {
       );
     } else if (emvResponse.hasEmvGoOnlineEventResponse()) {
       print("1st gen tags: ${emvResponse.emvGoOnlineEventResponse.tags}");
-      print("Simular solicitud a host...");
+      print("Simular solicitud a host");
       print("Completando proceso EMV...");
 
       // Simular un response exitoso.
@@ -108,8 +118,9 @@ Future<void> runSuccessfulTransaction() async {
 
       print("✓ Se envia comando para completar EMV.");
       emvResponse = finishEmvResponse.emvEventNotificationResponse;
-    } else if (emvResponse.hasEmvFinishEventResponse()) {
+
       final result = emvResponse.emvFinishEventResponse;
+      print("2n gen tags = ${result.secondGenTags}");
       print("✓ Proceso EMV terminado con resultado = ${result.txnResult}.");
     }
   } while (!emvResponse.hasEmvFinishEventResponse());
