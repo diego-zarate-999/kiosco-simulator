@@ -28,17 +28,17 @@ Future<void> runSuccessfulTransaction() async {
 
   var response = await communicationManager.sendRequest(request);
 
-  if (!response.hasStartCardReaderResponse()) {
+  if (!response.hasDetectedCardResponse()) {
     throw ("Proto Incorrecto: ${response.toString()}");
   }
 
-  print("Tarjeta detectada: ${response.startCardReaderResponse.cardEntryMode}");
+  print("Tarjeta detectada: ${response.detectedCardResponse.cardEntryMode}");
 
   response = await communicationManager.waitForReponse();
   var emvResponse = response.emvEventNotificationResponse;
   do {
     if (emvResponse.hasEmvCandidateListEventResponse()) {
-      print("Seleccionando app candidate...");
+      print("Usuario esta seleccionando app candidate...");
       final emvSelectedAppEvent = await communicationManager.waitForReponse();
       final emvEventResponse = emvSelectedAppEvent
           .emvEventNotificationResponse
@@ -53,20 +53,20 @@ Future<void> runSuccessfulTransaction() async {
     } else if (emvResponse.hasEmvSelectedAppEventResponse()) {
       final emvEventResponse = emvResponse.emvSelectedAppEventResponse;
 
-      emvResponse = (await communicationManager.waitForReponse())
-          .emvEventNotificationResponse;
-
       print("App candidate seleccionado!!");
       print("✓ Datos de la app seleccionada:");
       print("\t AID = ${emvEventResponse.aid}");
       print("\t appLabel = ${emvEventResponse.appLabel}");
+
+      emvResponse = (await communicationManager.waitForReponse())
+          .emvEventNotificationResponse;
     } else if (emvResponse.hasEmvPinRequestedEventResponse()) {
       print("✓ PinPad pide solicitar PIN.");
 
       final startPinResponse = await communicationManager.sendRequest(
         CommandMessage(
           startPinEntryRequest: StartPinEntryRequest(
-            keyIndex: 10,
+            keyIndex: 2,
             cipherMode: CipherMode.ECB,
             timeout: 15,
             allowedLength: [4, 6],
@@ -100,7 +100,26 @@ Future<void> runSuccessfulTransaction() async {
         "Proto recibido despues de solicitar PIN: ${emvResponse.toString()}",
       );
     } else if (emvResponse.hasEmvGoOnlineEventResponse()) {
-      print("1st gen tags: ${emvResponse.emvGoOnlineEventResponse.tags}");
+      print("Obteniendo los 1st gen tags...");
+      final tagsResponse = await communicationManager.sendRequest(
+        CommandMessage(
+          getEmvTagsRequest: GetEmvTagsRequest(
+            requestedTags: [
+              "5F25",
+              "5F28",
+              "5F2A",
+              "5F34",
+              "82",
+              "84",
+              "95",
+              "9A",
+              "9B",
+              "9C",
+            ],
+          ),
+        ),
+      );
+      print("Tags = ${tagsResponse.getEmvTagsResponse.tags}");
       print("Simular solicitud a host");
       print("Completando proceso EMV...");
 

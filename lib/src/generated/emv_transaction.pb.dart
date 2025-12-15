@@ -758,13 +758,7 @@ class EmvCardDataResponse extends $pb.GeneratedMessage {
 
 /// Este evento notifica los tags del first generate
 class EmvGoOnlineEventResponse extends $pb.GeneratedMessage {
-  factory EmvGoOnlineEventResponse({
-    $core.Iterable<EmvTagEntry>? tags,
-  }) {
-    final result = create();
-    if (tags != null) result.tags.addAll(tags);
-    return result;
-  }
+  factory EmvGoOnlineEventResponse() => create();
 
   EmvGoOnlineEventResponse._();
 
@@ -779,8 +773,6 @@ class EmvGoOnlineEventResponse extends $pb.GeneratedMessage {
       _omitMessageNames ? '' : 'EmvGoOnlineEventResponse',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..pc<EmvTagEntry>(1, _omitFieldNames ? '' : 'tags', $pb.PbFieldType.PM,
-        subBuilder: EmvTagEntry.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -805,9 +797,6 @@ class EmvGoOnlineEventResponse extends $pb.GeneratedMessage {
   static EmvGoOnlineEventResponse getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<EmvGoOnlineEventResponse>(create);
   static EmvGoOnlineEventResponse? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $pb.PbList<EmvTagEntry> get tags => $_getList(0);
 }
 
 /// Notifica que se require PIN.
@@ -1085,6 +1074,107 @@ class EmvCancelTransactionResponse extends $pb.GeneratedMessage {
   static EmvCancelTransactionResponse getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<EmvCancelTransactionResponse>(create);
   static EmvCancelTransactionResponse? _defaultInstance;
+}
+
+class GetEmvTagsRequest extends $pb.GeneratedMessage {
+  factory GetEmvTagsRequest({
+    $core.Iterable<$core.String>? requestedTags,
+  }) {
+    final result = create();
+    if (requestedTags != null) result.requestedTags.addAll(requestedTags);
+    return result;
+  }
+
+  GetEmvTagsRequest._();
+
+  factory GetEmvTagsRequest.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory GetEmvTagsRequest.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GetEmvTagsRequest',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..pPS(1, _omitFieldNames ? '' : 'requestedTags', protoName: 'requestedTags')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GetEmvTagsRequest clone() => GetEmvTagsRequest()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GetEmvTagsRequest copyWith(void Function(GetEmvTagsRequest) updates) =>
+      super.copyWith((message) => updates(message as GetEmvTagsRequest))
+          as GetEmvTagsRequest;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GetEmvTagsRequest create() => GetEmvTagsRequest._();
+  @$core.override
+  GetEmvTagsRequest createEmptyInstance() => create();
+  static $pb.PbList<GetEmvTagsRequest> createRepeated() =>
+      $pb.PbList<GetEmvTagsRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetEmvTagsRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GetEmvTagsRequest>(create);
+  static GetEmvTagsRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $pb.PbList<$core.String> get requestedTags => $_getList(0);
+}
+
+class GetEmvTagsResponse extends $pb.GeneratedMessage {
+  factory GetEmvTagsResponse({
+    $core.Iterable<EmvTagEntry>? tags,
+  }) {
+    final result = create();
+    if (tags != null) result.tags.addAll(tags);
+    return result;
+  }
+
+  GetEmvTagsResponse._();
+
+  factory GetEmvTagsResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory GetEmvTagsResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GetEmvTagsResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..pc<EmvTagEntry>(1, _omitFieldNames ? '' : 'tags', $pb.PbFieldType.PM,
+        subBuilder: EmvTagEntry.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GetEmvTagsResponse clone() => GetEmvTagsResponse()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  GetEmvTagsResponse copyWith(void Function(GetEmvTagsResponse) updates) =>
+      super.copyWith((message) => updates(message as GetEmvTagsResponse))
+          as GetEmvTagsResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GetEmvTagsResponse create() => GetEmvTagsResponse._();
+  @$core.override
+  GetEmvTagsResponse createEmptyInstance() => create();
+  static $pb.PbList<GetEmvTagsResponse> createRepeated() =>
+      $pb.PbList<GetEmvTagsResponse>();
+  @$core.pragma('dart2js:noInline')
+  static GetEmvTagsResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GetEmvTagsResponse>(create);
+  static GetEmvTagsResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $pb.PbList<EmvTagEntry> get tags => $_getList(0);
 }
 
 class EmvFinishEventResponse extends $pb.GeneratedMessage {

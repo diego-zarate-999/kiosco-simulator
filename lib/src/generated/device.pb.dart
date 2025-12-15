@@ -227,6 +227,112 @@ class GetDeviceInfoResponse extends $pb.GeneratedMessage {
   void clearBrand() => $_clearField(2);
 }
 
+class SetAppLogoRequest extends $pb.GeneratedMessage {
+  factory SetAppLogoRequest({
+    $core.Iterable<$core.int>? bitmap,
+  }) {
+    final result = create();
+    if (bitmap != null) result.bitmap.addAll(bitmap);
+    return result;
+  }
+
+  SetAppLogoRequest._();
+
+  factory SetAppLogoRequest.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory SetAppLogoRequest.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SetAppLogoRequest',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..p<$core.int>(1, _omitFieldNames ? '' : 'bitmap', $pb.PbFieldType.K3)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  SetAppLogoRequest clone() => SetAppLogoRequest()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  SetAppLogoRequest copyWith(void Function(SetAppLogoRequest) updates) =>
+      super.copyWith((message) => updates(message as SetAppLogoRequest))
+          as SetAppLogoRequest;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static SetAppLogoRequest create() => SetAppLogoRequest._();
+  @$core.override
+  SetAppLogoRequest createEmptyInstance() => create();
+  static $pb.PbList<SetAppLogoRequest> createRepeated() =>
+      $pb.PbList<SetAppLogoRequest>();
+  @$core.pragma('dart2js:noInline')
+  static SetAppLogoRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SetAppLogoRequest>(create);
+  static SetAppLogoRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $pb.PbList<$core.int> get bitmap => $_getList(0);
+}
+
+class SetAppLogoResponse extends $pb.GeneratedMessage {
+  factory SetAppLogoResponse({
+    $core.bool? success,
+  }) {
+    final result = create();
+    if (success != null) result.success = success;
+    return result;
+  }
+
+  SetAppLogoResponse._();
+
+  factory SetAppLogoResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory SetAppLogoResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SetAppLogoResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'success')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  SetAppLogoResponse clone() => SetAppLogoResponse()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  SetAppLogoResponse copyWith(void Function(SetAppLogoResponse) updates) =>
+      super.copyWith((message) => updates(message as SetAppLogoResponse))
+          as SetAppLogoResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static SetAppLogoResponse create() => SetAppLogoResponse._();
+  @$core.override
+  SetAppLogoResponse createEmptyInstance() => create();
+  static $pb.PbList<SetAppLogoResponse> createRepeated() =>
+      $pb.PbList<SetAppLogoResponse>();
+  @$core.pragma('dart2js:noInline')
+  static SetAppLogoResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SetAppLogoResponse>(create);
+  static SetAppLogoResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.bool get success => $_getBF(0);
+  @$pb.TagNumber(1)
+  set success($core.bool value) => $_setBool(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasSuccess() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSuccess() => $_clearField(1);
+}
+
 const $core.bool _omitFieldNames =
     $core.bool.fromEnvironment('protobuf.omit_field_names');
 const $core.bool _omitMessageNames =

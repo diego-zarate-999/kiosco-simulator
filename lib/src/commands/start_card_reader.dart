@@ -21,7 +21,7 @@ Future<void> startCardReader() async {
       throw Exception("Error en lectura de tarjeta");
     }
 
-    final cardReaderResponse = response.startCardReaderResponse;
+    final cardReaderResponse = response.detectedCardResponse;
 
     if (cardReaderResponse.hasCardEntryMode()) {
       print("✓ Tarjeta leida: ${cardReaderResponse.cardEntryMode}");

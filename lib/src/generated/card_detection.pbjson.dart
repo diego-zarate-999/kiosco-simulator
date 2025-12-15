@@ -61,9 +61,9 @@ final $typed_data.Uint8List startCardReaderRequestDescriptor = $convert.base64De
     'FwcC5DYXJkRW50cnlNb2RlUg5jYXJkRW50cnlNb2RlcxIYCgd0aW1lb3V0GAIgASgFUgd0aW1l'
     'b3V0');
 
-@$core.Deprecated('Use startCardReaderResponseDescriptor instead')
-const StartCardReaderResponse$json = {
-  '1': 'StartCardReaderResponse',
+@$core.Deprecated('Use detectedCardResponseDescriptor instead')
+const DetectedCardResponse$json = {
+  '1': 'DetectedCardResponse',
   '2': [
     {
       '1': 'cardEntryMode',
@@ -89,8 +89,8 @@ const StartCardReaderResponse$json = {
   ],
 };
 
-/// Descriptor for `StartCardReaderResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List startCardReaderResponseDescriptor = $convert.base64Decode(
-    'ChdTdGFydENhcmRSZWFkZXJSZXNwb25zZRI+Cg1jYXJkRW50cnlNb2RlGAEgASgOMhYubWV0YU'
-    'FwcC5DYXJkRW50cnlNb2RlSABSDWNhcmRFbnRyeU1vZGUSOAoLY2FyZFRpbWVvdXQYAiABKAsy'
-    'FC5tZXRhQXBwLkNhcmRUaW1lb3V0SABSC2NhcmRUaW1lb3V0QgYKBHR5cGU=');
+/// Descriptor for `DetectedCardResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List detectedCardResponseDescriptor = $convert.base64Decode(
+    'ChREZXRlY3RlZENhcmRSZXNwb25zZRI+Cg1jYXJkRW50cnlNb2RlGAEgASgOMhYubWV0YUFwcC'
+    '5DYXJkRW50cnlNb2RlSABSDWNhcmRFbnRyeU1vZGUSOAoLY2FyZFRpbWVvdXQYAiABKAsyFC5t'
+    'ZXRhQXBwLkNhcmRUaW1lb3V0SABSC2NhcmRUaW1lb3V0QgYKBHR5cGU=');

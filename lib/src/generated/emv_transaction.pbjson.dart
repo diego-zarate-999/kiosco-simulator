@@ -296,23 +296,11 @@ final $typed_data.Uint8List emvCardDataResponseDescriptor = $convert.base64Decod
 @$core.Deprecated('Use emvGoOnlineEventResponseDescriptor instead')
 const EmvGoOnlineEventResponse$json = {
   '1': 'EmvGoOnlineEventResponse',
-  '2': [
-    {
-      '1': 'tags',
-      '3': 1,
-      '4': 3,
-      '5': 11,
-      '6': '.metaApp.EmvTagEntry',
-      '10': 'tags'
-    },
-  ],
 };
 
 /// Descriptor for `EmvGoOnlineEventResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List emvGoOnlineEventResponseDescriptor =
-    $convert.base64Decode(
-        'ChhFbXZHb09ubGluZUV2ZW50UmVzcG9uc2USKAoEdGFncxgBIAMoCzIULm1ldGFBcHAuRW12VG'
-        'FnRW50cnlSBHRhZ3M=');
+    $convert.base64Decode('ChhFbXZHb09ubGluZUV2ZW50UmVzcG9uc2U=');
 
 @$core.Deprecated('Use emvPinRequestedEventResponseDescriptor instead')
 const EmvPinRequestedEventResponse$json = {
@@ -371,6 +359,39 @@ const EmvCancelTransactionResponse$json = {
 /// Descriptor for `EmvCancelTransactionResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List emvCancelTransactionResponseDescriptor =
     $convert.base64Decode('ChxFbXZDYW5jZWxUcmFuc2FjdGlvblJlc3BvbnNl');
+
+@$core.Deprecated('Use getEmvTagsRequestDescriptor instead')
+const GetEmvTagsRequest$json = {
+  '1': 'GetEmvTagsRequest',
+  '2': [
+    {'1': 'requestedTags', '3': 1, '4': 3, '5': 9, '10': 'requestedTags'},
+  ],
+};
+
+/// Descriptor for `GetEmvTagsRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getEmvTagsRequestDescriptor = $convert.base64Decode(
+    'ChFHZXRFbXZUYWdzUmVxdWVzdBIkCg1yZXF1ZXN0ZWRUYWdzGAEgAygJUg1yZXF1ZXN0ZWRUYW'
+    'dz');
+
+@$core.Deprecated('Use getEmvTagsResponseDescriptor instead')
+const GetEmvTagsResponse$json = {
+  '1': 'GetEmvTagsResponse',
+  '2': [
+    {
+      '1': 'tags',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.metaApp.EmvTagEntry',
+      '10': 'tags'
+    },
+  ],
+};
+
+/// Descriptor for `GetEmvTagsResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getEmvTagsResponseDescriptor = $convert.base64Decode(
+    'ChJHZXRFbXZUYWdzUmVzcG9uc2USKAoEdGFncxgBIAMoCzIULm1ldGFBcHAuRW12VGFnRW50cn'
+    'lSBHRhZ3M=');
 
 @$core.Deprecated('Use emvFinishEventResponseDescriptor instead')
 const EmvFinishEventResponse$json = {

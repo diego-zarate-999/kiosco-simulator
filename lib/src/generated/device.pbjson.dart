@@ -58,3 +58,28 @@ const GetDeviceInfoResponse$json = {
 final $typed_data.Uint8List getDeviceInfoResponseDescriptor = $convert.base64Decode(
     'ChVHZXREZXZpY2VJbmZvUmVzcG9uc2USIgoMc2VyaWFsTnVtYmVyGAEgASgJUgxzZXJpYWxOdW'
     '1iZXISFAoFYnJhbmQYAiABKAlSBWJyYW5k');
+
+@$core.Deprecated('Use setAppLogoRequestDescriptor instead')
+const SetAppLogoRequest$json = {
+  '1': 'SetAppLogoRequest',
+  '2': [
+    {'1': 'bitmap', '3': 1, '4': 3, '5': 5, '10': 'bitmap'},
+  ],
+};
+
+/// Descriptor for `SetAppLogoRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List setAppLogoRequestDescriptor = $convert.base64Decode(
+    'ChFTZXRBcHBMb2dvUmVxdWVzdBIWCgZiaXRtYXAYASADKAVSBmJpdG1hcA==');
+
+@$core.Deprecated('Use setAppLogoResponseDescriptor instead')
+const SetAppLogoResponse$json = {
+  '1': 'SetAppLogoResponse',
+  '2': [
+    {'1': 'success', '3': 1, '4': 1, '5': 8, '10': 'success'},
+  ],
+};
+
+/// Descriptor for `SetAppLogoResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List setAppLogoResponseDescriptor =
+    $convert.base64Decode(
+        'ChJTZXRBcHBMb2dvUmVzcG9uc2USGAoHc3VjY2VzcxgBIAEoCFIHc3VjY2Vzcw==');

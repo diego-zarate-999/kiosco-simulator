@@ -39,9 +39,9 @@ message EmvTagEntry {
 message EmvStartTransactionParams {
     double amount               = 1;
     optional double amountOther = 2;
-    int32 sequenceCounter      = 3;
-    TransType transType        = 4;
-    optional bool forceOnline  = 5;
+    int32 sequenceCounter       = 3;
+    TransType transType         = 4;
+    optional bool forceOnline   = 5;
 }
 
 message StartEmvProcessRequest {
@@ -88,9 +88,7 @@ message EmvCardDataResponse {
 }
 
 // Este evento notifica los tags del first generate
-message EmvGoOnlineEventResponse {
-    repeated EmvTagEntry tags  = 1;
-}
+message EmvGoOnlineEventResponse { }
 
 // Notifica que se require PIN.
 message EmvPinRequestedEventResponse { }
@@ -110,6 +108,14 @@ message PinEntryFinishedResponse {
 }
 
 message EmvCancelTransactionResponse { }
+
+message GetEmvTagsRequest {
+    repeated string requestedTags = 1;
+}
+
+message GetEmvTagsResponse {
+    repeated EmvTagEntry tags = 1;
+}
 
 message EmvFinishEventResponse {
     bool isContactless                    = 1;

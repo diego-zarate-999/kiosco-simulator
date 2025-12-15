@@ -18,3 +18,11 @@ message GetDeviceInfoResponse {
     string serialNumber = 1;
     string brand = 2;
 }
+
+message SetAppLogoRequest {
+    repeated int32 bitmap = 1;
+}
+
+message SetAppLogoResponse {
+    bool success = 1;
+}

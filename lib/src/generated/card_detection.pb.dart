@@ -128,11 +128,11 @@ class StartCardReaderRequest extends $pb.GeneratedMessage {
   void clearTimeout() => $_clearField(2);
 }
 
-enum StartCardReaderResponse_Type { cardEntryMode, cardTimeout, notSet }
+enum DetectedCardResponse_Type { cardEntryMode, cardTimeout, notSet }
 
 /// / Regresa el tipo de entry Mode o informa si hay timeout.
-class StartCardReaderResponse extends $pb.GeneratedMessage {
-  factory StartCardReaderResponse({
+class DetectedCardResponse extends $pb.GeneratedMessage {
+  factory DetectedCardResponse({
     CardEntryMode? cardEntryMode,
     CardTimeout? cardTimeout,
   }) {
@@ -142,23 +142,23 @@ class StartCardReaderResponse extends $pb.GeneratedMessage {
     return result;
   }
 
-  StartCardReaderResponse._();
+  DetectedCardResponse._();
 
-  factory StartCardReaderResponse.fromBuffer($core.List<$core.int> data,
+  factory DetectedCardResponse.fromBuffer($core.List<$core.int> data,
           [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory StartCardReaderResponse.fromJson($core.String json,
+  factory DetectedCardResponse.fromJson($core.String json,
           [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(json, registry);
 
-  static const $core.Map<$core.int, StartCardReaderResponse_Type>
-      _StartCardReaderResponse_TypeByTag = {
-    1: StartCardReaderResponse_Type.cardEntryMode,
-    2: StartCardReaderResponse_Type.cardTimeout,
-    0: StartCardReaderResponse_Type.notSet
+  static const $core.Map<$core.int, DetectedCardResponse_Type>
+      _DetectedCardResponse_TypeByTag = {
+    1: DetectedCardResponse_Type.cardEntryMode,
+    2: DetectedCardResponse_Type.cardTimeout,
+    0: DetectedCardResponse_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'StartCardReaderResponse',
+      _omitMessageNames ? '' : 'DetectedCardResponse',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
     ..oo(0, [1, 2])
@@ -173,30 +173,29 @@ class StartCardReaderResponse extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  StartCardReaderResponse clone() =>
-      StartCardReaderResponse()..mergeFromMessage(this);
+  DetectedCardResponse clone() =>
+      DetectedCardResponse()..mergeFromMessage(this);
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  StartCardReaderResponse copyWith(
-          void Function(StartCardReaderResponse) updates) =>
-      super.copyWith((message) => updates(message as StartCardReaderResponse))
-          as StartCardReaderResponse;
+  DetectedCardResponse copyWith(void Function(DetectedCardResponse) updates) =>
+      super.copyWith((message) => updates(message as DetectedCardResponse))
+          as DetectedCardResponse;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static StartCardReaderResponse create() => StartCardReaderResponse._();
+  static DetectedCardResponse create() => DetectedCardResponse._();
   @$core.override
-  StartCardReaderResponse createEmptyInstance() => create();
-  static $pb.PbList<StartCardReaderResponse> createRepeated() =>
-      $pb.PbList<StartCardReaderResponse>();
+  DetectedCardResponse createEmptyInstance() => create();
+  static $pb.PbList<DetectedCardResponse> createRepeated() =>
+      $pb.PbList<DetectedCardResponse>();
   @$core.pragma('dart2js:noInline')
-  static StartCardReaderResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<StartCardReaderResponse>(create);
-  static StartCardReaderResponse? _defaultInstance;
+  static DetectedCardResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DetectedCardResponse>(create);
+  static DetectedCardResponse? _defaultInstance;
 
-  StartCardReaderResponse_Type whichType() =>
-      _StartCardReaderResponse_TypeByTag[$_whichOneof(0)]!;
+  DetectedCardResponse_Type whichType() =>
+      _DetectedCardResponse_TypeByTag[$_whichOneof(0)]!;
   void clearType() => $_clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
