@@ -68,7 +68,7 @@ Future<void> runSuccessfulTransaction() async {
           startPinEntryRequest: StartPinEntryRequest(
             keyIndex: 2,
             cipherMode: CipherMode.ECB,
-            timeout: 15,
+            timeout: 60,
             allowedLength: [4, 6],
           ),
         ),

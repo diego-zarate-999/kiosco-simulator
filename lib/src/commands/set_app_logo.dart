@@ -5,13 +5,15 @@ import 'package:kiosco_simulator/src/communication_manager.dart';
 import 'package:kiosco_simulator/src/generated/command_message.pb.dart';
 import 'package:kiosco_simulator/src/generated/device.pb.dart';
 
-Future<void> setAppLogo() async {
+import 'package:image/image.dart' as img;
+
+Future<void> setAppLogo(String path) async {
   final communicationManager = CommunicationManager.instance;
 
   try {
     print("Estableciendo logo de la app...");
 
-    final imageBitmap = await readImageAsBytes("assets/images/pharos_icon.png");
+    final imageBitmap = await prepareImageForSending(path);
 
     final request = CommandMessage(
       setAppLogoRequest: SetAppLogoRequest(bitmap: imageBitmap),
@@ -30,7 +32,18 @@ Future<void> setAppLogo() async {
   }
 }
 
-Future<Uint8List> readImageAsBytes(String path) async {
-  final file = File(path);
-  return await file.readAsBytes();
+Future<Uint8List> prepareImageForSending(
+  String path, {
+  int maxWidth = 420,
+  int quality = 60,
+}) async {
+  final bytes = await File(path).readAsBytes();
+  final image = img.decodeImage(bytes);
+  if (image == null) throw Exception('No se pudo decodificar la imagen');
+
+  final resized = img.copyResize(image, width: maxWidth);
+
+  final jpegBytes = img.encodeJpg(resized, quality: quality);
+
+  return Uint8List.fromList(jpegBytes);
 }
