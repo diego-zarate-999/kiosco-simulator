@@ -333,6 +333,177 @@ class SetAppLogoResponse extends $pb.GeneratedMessage {
   void clearSuccess() => $_clearField(1);
 }
 
+/// /
+/// / Request y response para reiniciar el dispositivo.
+/// /
+class RebootDeviceRequest extends $pb.GeneratedMessage {
+  factory RebootDeviceRequest() => create();
+
+  RebootDeviceRequest._();
+
+  factory RebootDeviceRequest.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory RebootDeviceRequest.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'RebootDeviceRequest',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  RebootDeviceRequest clone() => RebootDeviceRequest()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  RebootDeviceRequest copyWith(void Function(RebootDeviceRequest) updates) =>
+      super.copyWith((message) => updates(message as RebootDeviceRequest))
+          as RebootDeviceRequest;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static RebootDeviceRequest create() => RebootDeviceRequest._();
+  @$core.override
+  RebootDeviceRequest createEmptyInstance() => create();
+  static $pb.PbList<RebootDeviceRequest> createRepeated() =>
+      $pb.PbList<RebootDeviceRequest>();
+  @$core.pragma('dart2js:noInline')
+  static RebootDeviceRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RebootDeviceRequest>(create);
+  static RebootDeviceRequest? _defaultInstance;
+}
+
+class RebootDeviceResponse extends $pb.GeneratedMessage {
+  factory RebootDeviceResponse() => create();
+
+  RebootDeviceResponse._();
+
+  factory RebootDeviceResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory RebootDeviceResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'RebootDeviceResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  RebootDeviceResponse clone() =>
+      RebootDeviceResponse()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  RebootDeviceResponse copyWith(void Function(RebootDeviceResponse) updates) =>
+      super.copyWith((message) => updates(message as RebootDeviceResponse))
+          as RebootDeviceResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static RebootDeviceResponse create() => RebootDeviceResponse._();
+  @$core.override
+  RebootDeviceResponse createEmptyInstance() => create();
+  static $pb.PbList<RebootDeviceResponse> createRepeated() =>
+      $pb.PbList<RebootDeviceResponse>();
+  @$core.pragma('dart2js:noInline')
+  static RebootDeviceResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RebootDeviceResponse>(create);
+  static RebootDeviceResponse? _defaultInstance;
+}
+
+/// /
+/// / Request y response para apagar el dispositivo.
+/// /
+class ShutdownDeviceRequest extends $pb.GeneratedMessage {
+  factory ShutdownDeviceRequest() => create();
+
+  ShutdownDeviceRequest._();
+
+  factory ShutdownDeviceRequest.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ShutdownDeviceRequest.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ShutdownDeviceRequest',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ShutdownDeviceRequest clone() =>
+      ShutdownDeviceRequest()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ShutdownDeviceRequest copyWith(
+          void Function(ShutdownDeviceRequest) updates) =>
+      super.copyWith((message) => updates(message as ShutdownDeviceRequest))
+          as ShutdownDeviceRequest;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ShutdownDeviceRequest create() => ShutdownDeviceRequest._();
+  @$core.override
+  ShutdownDeviceRequest createEmptyInstance() => create();
+  static $pb.PbList<ShutdownDeviceRequest> createRepeated() =>
+      $pb.PbList<ShutdownDeviceRequest>();
+  @$core.pragma('dart2js:noInline')
+  static ShutdownDeviceRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ShutdownDeviceRequest>(create);
+  static ShutdownDeviceRequest? _defaultInstance;
+}
+
+class ShutdownDeviceResponse extends $pb.GeneratedMessage {
+  factory ShutdownDeviceResponse() => create();
+
+  ShutdownDeviceResponse._();
+
+  factory ShutdownDeviceResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ShutdownDeviceResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ShutdownDeviceResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ShutdownDeviceResponse clone() =>
+      ShutdownDeviceResponse()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ShutdownDeviceResponse copyWith(
+          void Function(ShutdownDeviceResponse) updates) =>
+      super.copyWith((message) => updates(message as ShutdownDeviceResponse))
+          as ShutdownDeviceResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ShutdownDeviceResponse create() => ShutdownDeviceResponse._();
+  @$core.override
+  ShutdownDeviceResponse createEmptyInstance() => create();
+  static $pb.PbList<ShutdownDeviceResponse> createRepeated() =>
+      $pb.PbList<ShutdownDeviceResponse>();
+  @$core.pragma('dart2js:noInline')
+  static ShutdownDeviceResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ShutdownDeviceResponse>(create);
+  static ShutdownDeviceResponse? _defaultInstance;
+}
+
 const $core.bool _omitFieldNames =
     $core.bool.fromEnvironment('protobuf.omit_field_names');
 const $core.bool _omitMessageNames =

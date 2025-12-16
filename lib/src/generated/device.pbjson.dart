@@ -83,3 +83,39 @@ const SetAppLogoResponse$json = {
 final $typed_data.Uint8List setAppLogoResponseDescriptor =
     $convert.base64Decode(
         'ChJTZXRBcHBMb2dvUmVzcG9uc2USGAoHc3VjY2VzcxgBIAEoCFIHc3VjY2Vzcw==');
+
+@$core.Deprecated('Use rebootDeviceRequestDescriptor instead')
+const RebootDeviceRequest$json = {
+  '1': 'RebootDeviceRequest',
+};
+
+/// Descriptor for `RebootDeviceRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List rebootDeviceRequestDescriptor =
+    $convert.base64Decode('ChNSZWJvb3REZXZpY2VSZXF1ZXN0');
+
+@$core.Deprecated('Use rebootDeviceResponseDescriptor instead')
+const RebootDeviceResponse$json = {
+  '1': 'RebootDeviceResponse',
+};
+
+/// Descriptor for `RebootDeviceResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List rebootDeviceResponseDescriptor =
+    $convert.base64Decode('ChRSZWJvb3REZXZpY2VSZXNwb25zZQ==');
+
+@$core.Deprecated('Use shutdownDeviceRequestDescriptor instead')
+const ShutdownDeviceRequest$json = {
+  '1': 'ShutdownDeviceRequest',
+};
+
+/// Descriptor for `ShutdownDeviceRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List shutdownDeviceRequestDescriptor =
+    $convert.base64Decode('ChVTaHV0ZG93bkRldmljZVJlcXVlc3Q=');
+
+@$core.Deprecated('Use shutdownDeviceResponseDescriptor instead')
+const ShutdownDeviceResponse$json = {
+  '1': 'ShutdownDeviceResponse',
+};
+
+/// Descriptor for `ShutdownDeviceResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List shutdownDeviceResponseDescriptor =
+    $convert.base64Decode('ChZTaHV0ZG93bkRldmljZVJlc3BvbnNl');

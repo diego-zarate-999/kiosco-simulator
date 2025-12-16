@@ -26,3 +26,17 @@ message SetAppLogoRequest {
 message SetAppLogoResponse {
     bool success = 1;
 }
+
+///
+/// Request y response para reiniciar el dispositivo.
+///
+message RebootDeviceRequest { }
+
+message RebootDeviceResponse { }
+
+///
+/// Request y response para apagar el dispositivo.
+///
+message ShutdownDeviceRequest { }
+
+message ShutdownDeviceResponse { }
