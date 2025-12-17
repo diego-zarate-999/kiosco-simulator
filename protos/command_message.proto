@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package metaApp;
 
+import "qr.proto";
 import "ping.proto";
 import "error.proto";
 import "device.proto";
@@ -14,49 +15,51 @@ import "emv_transaction.proto";
 message CommandMessage {
     oneof type {
         PingRequest pingRequest                                              = 1;
-        SetAppLogoRequest setAppLogoRequest                                  = 2;
-        RebootDeviceRequest rebootDeviceRequest                              = 3;
-        ShutdownDeviceRequest shutdownDeviceRequest                          = 4;
-        SetDeviceDateTimeRequest setDeviceDateTimeRequest                    = 5;
-        GetDeviceInfoRequest getDeviceInfoRequest                            = 6;
-        InitSDKRequest initSDKRequest                                        = 7;
-        GenerateTransportKeyRequest generateTransportKeyRequest              = 8;
-        CheckLoadedKeyRequest checkLoadedKeyRequest                          = 9;
-        GetKSNRequest getKSNRequest                                          = 10;
-        DeleteDukptKeyRequest deleteDukptKeyRequest                          = 11;
-        LoadKeyRequest loadKeyRequest                                        = 12;
-        LoadTerminalParametersRequest loadTerminalParametersRequest          = 13;
-        LoadCapksRequest loadCapksRequest                                    = 14;
-        LoadEmvAppsRequest loadEmvAppsRequest                                = 15;
-        StartCardReaderRequest startCardReaderRequest                        = 16;
-        StartEmvProcessRequest startEmvProcessRequest                        = 17;
-        StartPinEntryRequest startPinEntryRequest                            = 18;
-        GetEmvTagsRequest getEmvTagsRequest                                  = 19;
-        CompleteEmvProcessRequest completeEmvProcessRequest                  = 20;
-        CancelEmvProcessRequest cancelEmvProcessRequest                      = 21;
+        DisplayQRRequest displayQRRequest                                    = 2;
+        SetAppLogoRequest setAppLogoRequest                                  = 3;
+        RebootDeviceRequest rebootDeviceRequest                              = 4;
+        ShutdownDeviceRequest shutdownDeviceRequest                          = 5;
+        SetDeviceDateTimeRequest setDeviceDateTimeRequest                    = 6;
+        GetDeviceInfoRequest getDeviceInfoRequest                            = 7;
+        InitSDKRequest initSDKRequest                                        = 8;
+        GenerateTransportKeyRequest generateTransportKeyRequest              = 9;
+        CheckLoadedKeyRequest checkLoadedKeyRequest                          = 10;
+        GetKSNRequest getKSNRequest                                          = 11;
+        DeleteDukptKeyRequest deleteDukptKeyRequest                          = 12;
+        LoadKeyRequest loadKeyRequest                                        = 13;
+        LoadTerminalParametersRequest loadTerminalParametersRequest          = 14;
+        LoadCapksRequest loadCapksRequest                                    = 15;
+        LoadEmvAppsRequest loadEmvAppsRequest                                = 16;
+        StartCardReaderRequest startCardReaderRequest                        = 17;
+        StartEmvProcessRequest startEmvProcessRequest                        = 18;
+        StartPinEntryRequest startPinEntryRequest                            = 19;
+        GetEmvTagsRequest getEmvTagsRequest                                  = 20;
+        CompleteEmvProcessRequest completeEmvProcessRequest                  = 21;
+        CancelEmvProcessRequest cancelEmvProcessRequest                      = 22;
     }
 }
 
 message CommandResponse {
     oneof type  {
         PingResponse pingResponse                                      = 1;
-        SetAppLogoResponse setAppLogoResponse                          = 2;
-        RebootDeviceResponse rebootDeviceResponse                      = 3;
-        ShutdownDeviceResponse shutdownDeviceResponse                  = 4;
-        SetDeviceDateTimeResponse setDeviceDateTimeResponse            = 5;
-        GetDeviceInfoResponse getDeviceInfoResponse                    = 6;
-        InitSDKResponse initSDKResponse                                = 7;
-        CheckLoadedKeyResponse checkLoadedKeyResponse                  = 8;
-        GenerateTransportKeyResponse generateTransportKeyResponse      = 9;
-        LoadKeyResponse loadKeyResponse                                = 10;
-        GetKSNResponse getKSNResponse                                  = 11;
-        DeleteDukptKeyResponse deletedUKPTKeyResponse                  = 12;
-        LoadTerminalParametersResponse loadTerminalParametersResponse  = 13;
-        LoadCapksResponse loadCapksResponse                            = 14;
-        LoadEmvAppsResponse loadEmvAppsResponse                        = 15;
-        DetectedCardResponse detectedCardResponse                      = 16;
-        GetEmvTagsResponse getEmvTagsResponse                          = 17;
-        EmvEventNotificationResponse emvEventNotificationResponse      = 18;
-        ErrorResponse error                                            = 19;
+        DisplayQRResponse displayQRResponse                            = 2;
+        SetAppLogoResponse setAppLogoResponse                          = 3;
+        RebootDeviceResponse rebootDeviceResponse                      = 4;
+        ShutdownDeviceResponse shutdownDeviceResponse                  = 5;
+        SetDeviceDateTimeResponse setDeviceDateTimeResponse            = 6;
+        GetDeviceInfoResponse getDeviceInfoResponse                    = 7;
+        InitSDKResponse initSDKResponse                                = 8;
+        CheckLoadedKeyResponse checkLoadedKeyResponse                  = 9;
+        GenerateTransportKeyResponse generateTransportKeyResponse      = 10;
+        LoadKeyResponse loadKeyResponse                                = 11;
+        GetKSNResponse getKSNResponse                                  = 12;
+        DeleteDukptKeyResponse deletedUKPTKeyResponse                  = 13;
+        LoadTerminalParametersResponse loadTerminalParametersResponse  = 14;
+        LoadCapksResponse loadCapksResponse                            = 15;
+        LoadEmvAppsResponse loadEmvAppsResponse                        = 16;
+        DetectedCardResponse detectedCardResponse                      = 17;
+        GetEmvTagsResponse getEmvTagsResponse                          = 18;
+        EmvEventNotificationResponse emvEventNotificationResponse      = 19;
+        ErrorResponse error                                            = 20;
     }
 }

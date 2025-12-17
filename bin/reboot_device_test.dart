@@ -5,7 +5,9 @@ import 'package:kiosco_simulator/src/generated/device.pb.dart';
 void main() async {
   final communicator = CommunicationManager.instance;
 
-  await communicator.sendRequest(
+  final response = await communicator.sendRequest(
     CommandMessage(rebootDeviceRequest: RebootDeviceRequest()),
   );
+
+  print(response.toString());
 }

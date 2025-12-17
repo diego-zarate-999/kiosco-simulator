@@ -14,19 +14,21 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'card_detection.pb.dart' as $5;
-import 'device.pb.dart' as $1;
-import 'emv_module.pb.dart' as $4;
-import 'emv_transaction.pb.dart' as $6;
-import 'error.pb.dart' as $7;
-import 'keys.pb.dart' as $3;
+import 'card_detection.pb.dart' as $6;
+import 'device.pb.dart' as $2;
+import 'emv_module.pb.dart' as $5;
+import 'emv_transaction.pb.dart' as $7;
+import 'error.pb.dart' as $8;
+import 'keys.pb.dart' as $4;
 import 'ping.pb.dart' as $0;
-import 'sdk.pb.dart' as $2;
+import 'qr.pb.dart' as $1;
+import 'sdk.pb.dart' as $3;
 
 export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 enum CommandMessage_Type {
   pingRequest,
+  displayQRRequest,
   setAppLogoRequest,
   rebootDeviceRequest,
   shutdownDeviceRequest,
@@ -53,29 +55,31 @@ enum CommandMessage_Type {
 class CommandMessage extends $pb.GeneratedMessage {
   factory CommandMessage({
     $0.PingRequest? pingRequest,
-    $1.SetAppLogoRequest? setAppLogoRequest,
-    $1.RebootDeviceRequest? rebootDeviceRequest,
-    $1.ShutdownDeviceRequest? shutdownDeviceRequest,
-    $1.SetDeviceDateTimeRequest? setDeviceDateTimeRequest,
-    $1.GetDeviceInfoRequest? getDeviceInfoRequest,
-    $2.InitSDKRequest? initSDKRequest,
-    $3.GenerateTransportKeyRequest? generateTransportKeyRequest,
-    $3.CheckLoadedKeyRequest? checkLoadedKeyRequest,
-    $3.GetKSNRequest? getKSNRequest,
-    $3.DeleteDukptKeyRequest? deleteDukptKeyRequest,
-    $3.LoadKeyRequest? loadKeyRequest,
-    $4.LoadTerminalParametersRequest? loadTerminalParametersRequest,
-    $4.LoadCapksRequest? loadCapksRequest,
-    $4.LoadEmvAppsRequest? loadEmvAppsRequest,
-    $5.StartCardReaderRequest? startCardReaderRequest,
-    $6.StartEmvProcessRequest? startEmvProcessRequest,
-    $6.StartPinEntryRequest? startPinEntryRequest,
-    $6.GetEmvTagsRequest? getEmvTagsRequest,
-    $6.CompleteEmvProcessRequest? completeEmvProcessRequest,
-    $6.CancelEmvProcessRequest? cancelEmvProcessRequest,
+    $1.DisplayQRRequest? displayQRRequest,
+    $2.SetAppLogoRequest? setAppLogoRequest,
+    $2.RebootDeviceRequest? rebootDeviceRequest,
+    $2.ShutdownDeviceRequest? shutdownDeviceRequest,
+    $2.SetDeviceDateTimeRequest? setDeviceDateTimeRequest,
+    $2.GetDeviceInfoRequest? getDeviceInfoRequest,
+    $3.InitSDKRequest? initSDKRequest,
+    $4.GenerateTransportKeyRequest? generateTransportKeyRequest,
+    $4.CheckLoadedKeyRequest? checkLoadedKeyRequest,
+    $4.GetKSNRequest? getKSNRequest,
+    $4.DeleteDukptKeyRequest? deleteDukptKeyRequest,
+    $4.LoadKeyRequest? loadKeyRequest,
+    $5.LoadTerminalParametersRequest? loadTerminalParametersRequest,
+    $5.LoadCapksRequest? loadCapksRequest,
+    $5.LoadEmvAppsRequest? loadEmvAppsRequest,
+    $6.StartCardReaderRequest? startCardReaderRequest,
+    $7.StartEmvProcessRequest? startEmvProcessRequest,
+    $7.StartPinEntryRequest? startPinEntryRequest,
+    $7.GetEmvTagsRequest? getEmvTagsRequest,
+    $7.CompleteEmvProcessRequest? completeEmvProcessRequest,
+    $7.CancelEmvProcessRequest? cancelEmvProcessRequest,
   }) {
     final result = create();
     if (pingRequest != null) result.pingRequest = pingRequest;
+    if (displayQRRequest != null) result.displayQRRequest = displayQRRequest;
     if (setAppLogoRequest != null) result.setAppLogoRequest = setAppLogoRequest;
     if (rebootDeviceRequest != null)
       result.rebootDeviceRequest = rebootDeviceRequest;
@@ -125,26 +129,27 @@ class CommandMessage extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, CommandMessage_Type>
       _CommandMessage_TypeByTag = {
     1: CommandMessage_Type.pingRequest,
-    2: CommandMessage_Type.setAppLogoRequest,
-    3: CommandMessage_Type.rebootDeviceRequest,
-    4: CommandMessage_Type.shutdownDeviceRequest,
-    5: CommandMessage_Type.setDeviceDateTimeRequest,
-    6: CommandMessage_Type.getDeviceInfoRequest,
-    7: CommandMessage_Type.initSDKRequest,
-    8: CommandMessage_Type.generateTransportKeyRequest,
-    9: CommandMessage_Type.checkLoadedKeyRequest,
-    10: CommandMessage_Type.getKSNRequest,
-    11: CommandMessage_Type.deleteDukptKeyRequest,
-    12: CommandMessage_Type.loadKeyRequest,
-    13: CommandMessage_Type.loadTerminalParametersRequest,
-    14: CommandMessage_Type.loadCapksRequest,
-    15: CommandMessage_Type.loadEmvAppsRequest,
-    16: CommandMessage_Type.startCardReaderRequest,
-    17: CommandMessage_Type.startEmvProcessRequest,
-    18: CommandMessage_Type.startPinEntryRequest,
-    19: CommandMessage_Type.getEmvTagsRequest,
-    20: CommandMessage_Type.completeEmvProcessRequest,
-    21: CommandMessage_Type.cancelEmvProcessRequest,
+    2: CommandMessage_Type.displayQRRequest,
+    3: CommandMessage_Type.setAppLogoRequest,
+    4: CommandMessage_Type.rebootDeviceRequest,
+    5: CommandMessage_Type.shutdownDeviceRequest,
+    6: CommandMessage_Type.setDeviceDateTimeRequest,
+    7: CommandMessage_Type.getDeviceInfoRequest,
+    8: CommandMessage_Type.initSDKRequest,
+    9: CommandMessage_Type.generateTransportKeyRequest,
+    10: CommandMessage_Type.checkLoadedKeyRequest,
+    11: CommandMessage_Type.getKSNRequest,
+    12: CommandMessage_Type.deleteDukptKeyRequest,
+    13: CommandMessage_Type.loadKeyRequest,
+    14: CommandMessage_Type.loadTerminalParametersRequest,
+    15: CommandMessage_Type.loadCapksRequest,
+    16: CommandMessage_Type.loadEmvAppsRequest,
+    17: CommandMessage_Type.startCardReaderRequest,
+    18: CommandMessage_Type.startEmvProcessRequest,
+    19: CommandMessage_Type.startPinEntryRequest,
+    20: CommandMessage_Type.getEmvTagsRequest,
+    21: CommandMessage_Type.completeEmvProcessRequest,
+    22: CommandMessage_Type.cancelEmvProcessRequest,
     0: CommandMessage_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -172,78 +177,81 @@ class CommandMessage extends $pb.GeneratedMessage {
       18,
       19,
       20,
-      21
+      21,
+      22
     ])
     ..aOM<$0.PingRequest>(1, _omitFieldNames ? '' : 'pingRequest',
         protoName: 'pingRequest', subBuilder: $0.PingRequest.create)
-    ..aOM<$1.SetAppLogoRequest>(2, _omitFieldNames ? '' : 'setAppLogoRequest',
-        protoName: 'setAppLogoRequest', subBuilder: $1.SetAppLogoRequest.create)
-    ..aOM<$1.RebootDeviceRequest>(
-        3, _omitFieldNames ? '' : 'rebootDeviceRequest',
+    ..aOM<$1.DisplayQRRequest>(2, _omitFieldNames ? '' : 'displayQRRequest',
+        protoName: 'displayQRRequest', subBuilder: $1.DisplayQRRequest.create)
+    ..aOM<$2.SetAppLogoRequest>(3, _omitFieldNames ? '' : 'setAppLogoRequest',
+        protoName: 'setAppLogoRequest', subBuilder: $2.SetAppLogoRequest.create)
+    ..aOM<$2.RebootDeviceRequest>(
+        4, _omitFieldNames ? '' : 'rebootDeviceRequest',
         protoName: 'rebootDeviceRequest',
-        subBuilder: $1.RebootDeviceRequest.create)
-    ..aOM<$1.ShutdownDeviceRequest>(
-        4, _omitFieldNames ? '' : 'shutdownDeviceRequest',
+        subBuilder: $2.RebootDeviceRequest.create)
+    ..aOM<$2.ShutdownDeviceRequest>(
+        5, _omitFieldNames ? '' : 'shutdownDeviceRequest',
         protoName: 'shutdownDeviceRequest',
-        subBuilder: $1.ShutdownDeviceRequest.create)
-    ..aOM<$1.SetDeviceDateTimeRequest>(
-        5, _omitFieldNames ? '' : 'setDeviceDateTimeRequest',
+        subBuilder: $2.ShutdownDeviceRequest.create)
+    ..aOM<$2.SetDeviceDateTimeRequest>(
+        6, _omitFieldNames ? '' : 'setDeviceDateTimeRequest',
         protoName: 'setDeviceDateTimeRequest',
-        subBuilder: $1.SetDeviceDateTimeRequest.create)
-    ..aOM<$1.GetDeviceInfoRequest>(
-        6, _omitFieldNames ? '' : 'getDeviceInfoRequest',
+        subBuilder: $2.SetDeviceDateTimeRequest.create)
+    ..aOM<$2.GetDeviceInfoRequest>(
+        7, _omitFieldNames ? '' : 'getDeviceInfoRequest',
         protoName: 'getDeviceInfoRequest',
-        subBuilder: $1.GetDeviceInfoRequest.create)
-    ..aOM<$2.InitSDKRequest>(7, _omitFieldNames ? '' : 'initSDKRequest',
-        protoName: 'initSDKRequest', subBuilder: $2.InitSDKRequest.create)
-    ..aOM<$3.GenerateTransportKeyRequest>(
-        8, _omitFieldNames ? '' : 'generateTransportKeyRequest',
+        subBuilder: $2.GetDeviceInfoRequest.create)
+    ..aOM<$3.InitSDKRequest>(8, _omitFieldNames ? '' : 'initSDKRequest',
+        protoName: 'initSDKRequest', subBuilder: $3.InitSDKRequest.create)
+    ..aOM<$4.GenerateTransportKeyRequest>(
+        9, _omitFieldNames ? '' : 'generateTransportKeyRequest',
         protoName: 'generateTransportKeyRequest',
-        subBuilder: $3.GenerateTransportKeyRequest.create)
-    ..aOM<$3.CheckLoadedKeyRequest>(
-        9, _omitFieldNames ? '' : 'checkLoadedKeyRequest',
+        subBuilder: $4.GenerateTransportKeyRequest.create)
+    ..aOM<$4.CheckLoadedKeyRequest>(
+        10, _omitFieldNames ? '' : 'checkLoadedKeyRequest',
         protoName: 'checkLoadedKeyRequest',
-        subBuilder: $3.CheckLoadedKeyRequest.create)
-    ..aOM<$3.GetKSNRequest>(10, _omitFieldNames ? '' : 'getKSNRequest',
-        protoName: 'getKSNRequest', subBuilder: $3.GetKSNRequest.create)
-    ..aOM<$3.DeleteDukptKeyRequest>(
-        11, _omitFieldNames ? '' : 'deleteDukptKeyRequest',
+        subBuilder: $4.CheckLoadedKeyRequest.create)
+    ..aOM<$4.GetKSNRequest>(11, _omitFieldNames ? '' : 'getKSNRequest',
+        protoName: 'getKSNRequest', subBuilder: $4.GetKSNRequest.create)
+    ..aOM<$4.DeleteDukptKeyRequest>(
+        12, _omitFieldNames ? '' : 'deleteDukptKeyRequest',
         protoName: 'deleteDukptKeyRequest',
-        subBuilder: $3.DeleteDukptKeyRequest.create)
-    ..aOM<$3.LoadKeyRequest>(12, _omitFieldNames ? '' : 'loadKeyRequest',
-        protoName: 'loadKeyRequest', subBuilder: $3.LoadKeyRequest.create)
-    ..aOM<$4.LoadTerminalParametersRequest>(
-        13, _omitFieldNames ? '' : 'loadTerminalParametersRequest',
+        subBuilder: $4.DeleteDukptKeyRequest.create)
+    ..aOM<$4.LoadKeyRequest>(13, _omitFieldNames ? '' : 'loadKeyRequest',
+        protoName: 'loadKeyRequest', subBuilder: $4.LoadKeyRequest.create)
+    ..aOM<$5.LoadTerminalParametersRequest>(
+        14, _omitFieldNames ? '' : 'loadTerminalParametersRequest',
         protoName: 'loadTerminalParametersRequest',
-        subBuilder: $4.LoadTerminalParametersRequest.create)
-    ..aOM<$4.LoadCapksRequest>(14, _omitFieldNames ? '' : 'loadCapksRequest',
-        protoName: 'loadCapksRequest', subBuilder: $4.LoadCapksRequest.create)
-    ..aOM<$4.LoadEmvAppsRequest>(
-        15, _omitFieldNames ? '' : 'loadEmvAppsRequest',
+        subBuilder: $5.LoadTerminalParametersRequest.create)
+    ..aOM<$5.LoadCapksRequest>(15, _omitFieldNames ? '' : 'loadCapksRequest',
+        protoName: 'loadCapksRequest', subBuilder: $5.LoadCapksRequest.create)
+    ..aOM<$5.LoadEmvAppsRequest>(
+        16, _omitFieldNames ? '' : 'loadEmvAppsRequest',
         protoName: 'loadEmvAppsRequest',
-        subBuilder: $4.LoadEmvAppsRequest.create)
-    ..aOM<$5.StartCardReaderRequest>(
-        16, _omitFieldNames ? '' : 'startCardReaderRequest',
+        subBuilder: $5.LoadEmvAppsRequest.create)
+    ..aOM<$6.StartCardReaderRequest>(
+        17, _omitFieldNames ? '' : 'startCardReaderRequest',
         protoName: 'startCardReaderRequest',
-        subBuilder: $5.StartCardReaderRequest.create)
-    ..aOM<$6.StartEmvProcessRequest>(
-        17, _omitFieldNames ? '' : 'startEmvProcessRequest',
+        subBuilder: $6.StartCardReaderRequest.create)
+    ..aOM<$7.StartEmvProcessRequest>(
+        18, _omitFieldNames ? '' : 'startEmvProcessRequest',
         protoName: 'startEmvProcessRequest',
-        subBuilder: $6.StartEmvProcessRequest.create)
-    ..aOM<$6.StartPinEntryRequest>(
-        18, _omitFieldNames ? '' : 'startPinEntryRequest',
+        subBuilder: $7.StartEmvProcessRequest.create)
+    ..aOM<$7.StartPinEntryRequest>(
+        19, _omitFieldNames ? '' : 'startPinEntryRequest',
         protoName: 'startPinEntryRequest',
-        subBuilder: $6.StartPinEntryRequest.create)
-    ..aOM<$6.GetEmvTagsRequest>(19, _omitFieldNames ? '' : 'getEmvTagsRequest',
-        protoName: 'getEmvTagsRequest', subBuilder: $6.GetEmvTagsRequest.create)
-    ..aOM<$6.CompleteEmvProcessRequest>(
-        20, _omitFieldNames ? '' : 'completeEmvProcessRequest',
+        subBuilder: $7.StartPinEntryRequest.create)
+    ..aOM<$7.GetEmvTagsRequest>(20, _omitFieldNames ? '' : 'getEmvTagsRequest',
+        protoName: 'getEmvTagsRequest', subBuilder: $7.GetEmvTagsRequest.create)
+    ..aOM<$7.CompleteEmvProcessRequest>(
+        21, _omitFieldNames ? '' : 'completeEmvProcessRequest',
         protoName: 'completeEmvProcessRequest',
-        subBuilder: $6.CompleteEmvProcessRequest.create)
-    ..aOM<$6.CancelEmvProcessRequest>(
-        21, _omitFieldNames ? '' : 'cancelEmvProcessRequest',
+        subBuilder: $7.CompleteEmvProcessRequest.create)
+    ..aOM<$7.CancelEmvProcessRequest>(
+        22, _omitFieldNames ? '' : 'cancelEmvProcessRequest',
         protoName: 'cancelEmvProcessRequest',
-        subBuilder: $6.CancelEmvProcessRequest.create)
+        subBuilder: $7.CancelEmvProcessRequest.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -283,244 +291,256 @@ class CommandMessage extends $pb.GeneratedMessage {
   $0.PingRequest ensurePingRequest() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $1.SetAppLogoRequest get setAppLogoRequest => $_getN(1);
+  $1.DisplayQRRequest get displayQRRequest => $_getN(1);
   @$pb.TagNumber(2)
-  set setAppLogoRequest($1.SetAppLogoRequest value) => $_setField(2, value);
+  set displayQRRequest($1.DisplayQRRequest value) => $_setField(2, value);
   @$pb.TagNumber(2)
-  $core.bool hasSetAppLogoRequest() => $_has(1);
+  $core.bool hasDisplayQRRequest() => $_has(1);
   @$pb.TagNumber(2)
-  void clearSetAppLogoRequest() => $_clearField(2);
+  void clearDisplayQRRequest() => $_clearField(2);
   @$pb.TagNumber(2)
-  $1.SetAppLogoRequest ensureSetAppLogoRequest() => $_ensure(1);
+  $1.DisplayQRRequest ensureDisplayQRRequest() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $1.RebootDeviceRequest get rebootDeviceRequest => $_getN(2);
+  $2.SetAppLogoRequest get setAppLogoRequest => $_getN(2);
   @$pb.TagNumber(3)
-  set rebootDeviceRequest($1.RebootDeviceRequest value) => $_setField(3, value);
+  set setAppLogoRequest($2.SetAppLogoRequest value) => $_setField(3, value);
   @$pb.TagNumber(3)
-  $core.bool hasRebootDeviceRequest() => $_has(2);
+  $core.bool hasSetAppLogoRequest() => $_has(2);
   @$pb.TagNumber(3)
-  void clearRebootDeviceRequest() => $_clearField(3);
+  void clearSetAppLogoRequest() => $_clearField(3);
   @$pb.TagNumber(3)
-  $1.RebootDeviceRequest ensureRebootDeviceRequest() => $_ensure(2);
+  $2.SetAppLogoRequest ensureSetAppLogoRequest() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $1.ShutdownDeviceRequest get shutdownDeviceRequest => $_getN(3);
+  $2.RebootDeviceRequest get rebootDeviceRequest => $_getN(3);
   @$pb.TagNumber(4)
-  set shutdownDeviceRequest($1.ShutdownDeviceRequest value) =>
-      $_setField(4, value);
+  set rebootDeviceRequest($2.RebootDeviceRequest value) => $_setField(4, value);
   @$pb.TagNumber(4)
-  $core.bool hasShutdownDeviceRequest() => $_has(3);
+  $core.bool hasRebootDeviceRequest() => $_has(3);
   @$pb.TagNumber(4)
-  void clearShutdownDeviceRequest() => $_clearField(4);
+  void clearRebootDeviceRequest() => $_clearField(4);
   @$pb.TagNumber(4)
-  $1.ShutdownDeviceRequest ensureShutdownDeviceRequest() => $_ensure(3);
+  $2.RebootDeviceRequest ensureRebootDeviceRequest() => $_ensure(3);
 
   @$pb.TagNumber(5)
-  $1.SetDeviceDateTimeRequest get setDeviceDateTimeRequest => $_getN(4);
+  $2.ShutdownDeviceRequest get shutdownDeviceRequest => $_getN(4);
   @$pb.TagNumber(5)
-  set setDeviceDateTimeRequest($1.SetDeviceDateTimeRequest value) =>
+  set shutdownDeviceRequest($2.ShutdownDeviceRequest value) =>
       $_setField(5, value);
   @$pb.TagNumber(5)
-  $core.bool hasSetDeviceDateTimeRequest() => $_has(4);
+  $core.bool hasShutdownDeviceRequest() => $_has(4);
   @$pb.TagNumber(5)
-  void clearSetDeviceDateTimeRequest() => $_clearField(5);
+  void clearShutdownDeviceRequest() => $_clearField(5);
   @$pb.TagNumber(5)
-  $1.SetDeviceDateTimeRequest ensureSetDeviceDateTimeRequest() => $_ensure(4);
+  $2.ShutdownDeviceRequest ensureShutdownDeviceRequest() => $_ensure(4);
 
   @$pb.TagNumber(6)
-  $1.GetDeviceInfoRequest get getDeviceInfoRequest => $_getN(5);
+  $2.SetDeviceDateTimeRequest get setDeviceDateTimeRequest => $_getN(5);
   @$pb.TagNumber(6)
-  set getDeviceInfoRequest($1.GetDeviceInfoRequest value) =>
+  set setDeviceDateTimeRequest($2.SetDeviceDateTimeRequest value) =>
       $_setField(6, value);
   @$pb.TagNumber(6)
-  $core.bool hasGetDeviceInfoRequest() => $_has(5);
+  $core.bool hasSetDeviceDateTimeRequest() => $_has(5);
   @$pb.TagNumber(6)
-  void clearGetDeviceInfoRequest() => $_clearField(6);
+  void clearSetDeviceDateTimeRequest() => $_clearField(6);
   @$pb.TagNumber(6)
-  $1.GetDeviceInfoRequest ensureGetDeviceInfoRequest() => $_ensure(5);
+  $2.SetDeviceDateTimeRequest ensureSetDeviceDateTimeRequest() => $_ensure(5);
 
   @$pb.TagNumber(7)
-  $2.InitSDKRequest get initSDKRequest => $_getN(6);
+  $2.GetDeviceInfoRequest get getDeviceInfoRequest => $_getN(6);
   @$pb.TagNumber(7)
-  set initSDKRequest($2.InitSDKRequest value) => $_setField(7, value);
+  set getDeviceInfoRequest($2.GetDeviceInfoRequest value) =>
+      $_setField(7, value);
   @$pb.TagNumber(7)
-  $core.bool hasInitSDKRequest() => $_has(6);
+  $core.bool hasGetDeviceInfoRequest() => $_has(6);
   @$pb.TagNumber(7)
-  void clearInitSDKRequest() => $_clearField(7);
+  void clearGetDeviceInfoRequest() => $_clearField(7);
   @$pb.TagNumber(7)
-  $2.InitSDKRequest ensureInitSDKRequest() => $_ensure(6);
+  $2.GetDeviceInfoRequest ensureGetDeviceInfoRequest() => $_ensure(6);
 
   @$pb.TagNumber(8)
-  $3.GenerateTransportKeyRequest get generateTransportKeyRequest => $_getN(7);
+  $3.InitSDKRequest get initSDKRequest => $_getN(7);
   @$pb.TagNumber(8)
-  set generateTransportKeyRequest($3.GenerateTransportKeyRequest value) =>
-      $_setField(8, value);
+  set initSDKRequest($3.InitSDKRequest value) => $_setField(8, value);
   @$pb.TagNumber(8)
-  $core.bool hasGenerateTransportKeyRequest() => $_has(7);
+  $core.bool hasInitSDKRequest() => $_has(7);
   @$pb.TagNumber(8)
-  void clearGenerateTransportKeyRequest() => $_clearField(8);
+  void clearInitSDKRequest() => $_clearField(8);
   @$pb.TagNumber(8)
-  $3.GenerateTransportKeyRequest ensureGenerateTransportKeyRequest() =>
-      $_ensure(7);
+  $3.InitSDKRequest ensureInitSDKRequest() => $_ensure(7);
 
   @$pb.TagNumber(9)
-  $3.CheckLoadedKeyRequest get checkLoadedKeyRequest => $_getN(8);
+  $4.GenerateTransportKeyRequest get generateTransportKeyRequest => $_getN(8);
   @$pb.TagNumber(9)
-  set checkLoadedKeyRequest($3.CheckLoadedKeyRequest value) =>
+  set generateTransportKeyRequest($4.GenerateTransportKeyRequest value) =>
       $_setField(9, value);
   @$pb.TagNumber(9)
-  $core.bool hasCheckLoadedKeyRequest() => $_has(8);
+  $core.bool hasGenerateTransportKeyRequest() => $_has(8);
   @$pb.TagNumber(9)
-  void clearCheckLoadedKeyRequest() => $_clearField(9);
+  void clearGenerateTransportKeyRequest() => $_clearField(9);
   @$pb.TagNumber(9)
-  $3.CheckLoadedKeyRequest ensureCheckLoadedKeyRequest() => $_ensure(8);
+  $4.GenerateTransportKeyRequest ensureGenerateTransportKeyRequest() =>
+      $_ensure(8);
 
   @$pb.TagNumber(10)
-  $3.GetKSNRequest get getKSNRequest => $_getN(9);
+  $4.CheckLoadedKeyRequest get checkLoadedKeyRequest => $_getN(9);
   @$pb.TagNumber(10)
-  set getKSNRequest($3.GetKSNRequest value) => $_setField(10, value);
+  set checkLoadedKeyRequest($4.CheckLoadedKeyRequest value) =>
+      $_setField(10, value);
   @$pb.TagNumber(10)
-  $core.bool hasGetKSNRequest() => $_has(9);
+  $core.bool hasCheckLoadedKeyRequest() => $_has(9);
   @$pb.TagNumber(10)
-  void clearGetKSNRequest() => $_clearField(10);
+  void clearCheckLoadedKeyRequest() => $_clearField(10);
   @$pb.TagNumber(10)
-  $3.GetKSNRequest ensureGetKSNRequest() => $_ensure(9);
+  $4.CheckLoadedKeyRequest ensureCheckLoadedKeyRequest() => $_ensure(9);
 
   @$pb.TagNumber(11)
-  $3.DeleteDukptKeyRequest get deleteDukptKeyRequest => $_getN(10);
+  $4.GetKSNRequest get getKSNRequest => $_getN(10);
   @$pb.TagNumber(11)
-  set deleteDukptKeyRequest($3.DeleteDukptKeyRequest value) =>
-      $_setField(11, value);
+  set getKSNRequest($4.GetKSNRequest value) => $_setField(11, value);
   @$pb.TagNumber(11)
-  $core.bool hasDeleteDukptKeyRequest() => $_has(10);
+  $core.bool hasGetKSNRequest() => $_has(10);
   @$pb.TagNumber(11)
-  void clearDeleteDukptKeyRequest() => $_clearField(11);
+  void clearGetKSNRequest() => $_clearField(11);
   @$pb.TagNumber(11)
-  $3.DeleteDukptKeyRequest ensureDeleteDukptKeyRequest() => $_ensure(10);
+  $4.GetKSNRequest ensureGetKSNRequest() => $_ensure(10);
 
   @$pb.TagNumber(12)
-  $3.LoadKeyRequest get loadKeyRequest => $_getN(11);
+  $4.DeleteDukptKeyRequest get deleteDukptKeyRequest => $_getN(11);
   @$pb.TagNumber(12)
-  set loadKeyRequest($3.LoadKeyRequest value) => $_setField(12, value);
+  set deleteDukptKeyRequest($4.DeleteDukptKeyRequest value) =>
+      $_setField(12, value);
   @$pb.TagNumber(12)
-  $core.bool hasLoadKeyRequest() => $_has(11);
+  $core.bool hasDeleteDukptKeyRequest() => $_has(11);
   @$pb.TagNumber(12)
-  void clearLoadKeyRequest() => $_clearField(12);
+  void clearDeleteDukptKeyRequest() => $_clearField(12);
   @$pb.TagNumber(12)
-  $3.LoadKeyRequest ensureLoadKeyRequest() => $_ensure(11);
+  $4.DeleteDukptKeyRequest ensureDeleteDukptKeyRequest() => $_ensure(11);
 
   @$pb.TagNumber(13)
-  $4.LoadTerminalParametersRequest get loadTerminalParametersRequest =>
-      $_getN(12);
+  $4.LoadKeyRequest get loadKeyRequest => $_getN(12);
   @$pb.TagNumber(13)
-  set loadTerminalParametersRequest($4.LoadTerminalParametersRequest value) =>
-      $_setField(13, value);
+  set loadKeyRequest($4.LoadKeyRequest value) => $_setField(13, value);
   @$pb.TagNumber(13)
-  $core.bool hasLoadTerminalParametersRequest() => $_has(12);
+  $core.bool hasLoadKeyRequest() => $_has(12);
   @$pb.TagNumber(13)
-  void clearLoadTerminalParametersRequest() => $_clearField(13);
+  void clearLoadKeyRequest() => $_clearField(13);
   @$pb.TagNumber(13)
-  $4.LoadTerminalParametersRequest ensureLoadTerminalParametersRequest() =>
-      $_ensure(12);
+  $4.LoadKeyRequest ensureLoadKeyRequest() => $_ensure(12);
 
   @$pb.TagNumber(14)
-  $4.LoadCapksRequest get loadCapksRequest => $_getN(13);
+  $5.LoadTerminalParametersRequest get loadTerminalParametersRequest =>
+      $_getN(13);
   @$pb.TagNumber(14)
-  set loadCapksRequest($4.LoadCapksRequest value) => $_setField(14, value);
+  set loadTerminalParametersRequest($5.LoadTerminalParametersRequest value) =>
+      $_setField(14, value);
   @$pb.TagNumber(14)
-  $core.bool hasLoadCapksRequest() => $_has(13);
+  $core.bool hasLoadTerminalParametersRequest() => $_has(13);
   @$pb.TagNumber(14)
-  void clearLoadCapksRequest() => $_clearField(14);
+  void clearLoadTerminalParametersRequest() => $_clearField(14);
   @$pb.TagNumber(14)
-  $4.LoadCapksRequest ensureLoadCapksRequest() => $_ensure(13);
+  $5.LoadTerminalParametersRequest ensureLoadTerminalParametersRequest() =>
+      $_ensure(13);
 
   @$pb.TagNumber(15)
-  $4.LoadEmvAppsRequest get loadEmvAppsRequest => $_getN(14);
+  $5.LoadCapksRequest get loadCapksRequest => $_getN(14);
   @$pb.TagNumber(15)
-  set loadEmvAppsRequest($4.LoadEmvAppsRequest value) => $_setField(15, value);
+  set loadCapksRequest($5.LoadCapksRequest value) => $_setField(15, value);
   @$pb.TagNumber(15)
-  $core.bool hasLoadEmvAppsRequest() => $_has(14);
+  $core.bool hasLoadCapksRequest() => $_has(14);
   @$pb.TagNumber(15)
-  void clearLoadEmvAppsRequest() => $_clearField(15);
+  void clearLoadCapksRequest() => $_clearField(15);
   @$pb.TagNumber(15)
-  $4.LoadEmvAppsRequest ensureLoadEmvAppsRequest() => $_ensure(14);
+  $5.LoadCapksRequest ensureLoadCapksRequest() => $_ensure(14);
 
   @$pb.TagNumber(16)
-  $5.StartCardReaderRequest get startCardReaderRequest => $_getN(15);
+  $5.LoadEmvAppsRequest get loadEmvAppsRequest => $_getN(15);
   @$pb.TagNumber(16)
-  set startCardReaderRequest($5.StartCardReaderRequest value) =>
-      $_setField(16, value);
+  set loadEmvAppsRequest($5.LoadEmvAppsRequest value) => $_setField(16, value);
   @$pb.TagNumber(16)
-  $core.bool hasStartCardReaderRequest() => $_has(15);
+  $core.bool hasLoadEmvAppsRequest() => $_has(15);
   @$pb.TagNumber(16)
-  void clearStartCardReaderRequest() => $_clearField(16);
+  void clearLoadEmvAppsRequest() => $_clearField(16);
   @$pb.TagNumber(16)
-  $5.StartCardReaderRequest ensureStartCardReaderRequest() => $_ensure(15);
+  $5.LoadEmvAppsRequest ensureLoadEmvAppsRequest() => $_ensure(15);
 
   @$pb.TagNumber(17)
-  $6.StartEmvProcessRequest get startEmvProcessRequest => $_getN(16);
+  $6.StartCardReaderRequest get startCardReaderRequest => $_getN(16);
   @$pb.TagNumber(17)
-  set startEmvProcessRequest($6.StartEmvProcessRequest value) =>
+  set startCardReaderRequest($6.StartCardReaderRequest value) =>
       $_setField(17, value);
   @$pb.TagNumber(17)
-  $core.bool hasStartEmvProcessRequest() => $_has(16);
+  $core.bool hasStartCardReaderRequest() => $_has(16);
   @$pb.TagNumber(17)
-  void clearStartEmvProcessRequest() => $_clearField(17);
+  void clearStartCardReaderRequest() => $_clearField(17);
   @$pb.TagNumber(17)
-  $6.StartEmvProcessRequest ensureStartEmvProcessRequest() => $_ensure(16);
+  $6.StartCardReaderRequest ensureStartCardReaderRequest() => $_ensure(16);
 
   @$pb.TagNumber(18)
-  $6.StartPinEntryRequest get startPinEntryRequest => $_getN(17);
+  $7.StartEmvProcessRequest get startEmvProcessRequest => $_getN(17);
   @$pb.TagNumber(18)
-  set startPinEntryRequest($6.StartPinEntryRequest value) =>
+  set startEmvProcessRequest($7.StartEmvProcessRequest value) =>
       $_setField(18, value);
   @$pb.TagNumber(18)
-  $core.bool hasStartPinEntryRequest() => $_has(17);
+  $core.bool hasStartEmvProcessRequest() => $_has(17);
   @$pb.TagNumber(18)
-  void clearStartPinEntryRequest() => $_clearField(18);
+  void clearStartEmvProcessRequest() => $_clearField(18);
   @$pb.TagNumber(18)
-  $6.StartPinEntryRequest ensureStartPinEntryRequest() => $_ensure(17);
+  $7.StartEmvProcessRequest ensureStartEmvProcessRequest() => $_ensure(17);
 
   @$pb.TagNumber(19)
-  $6.GetEmvTagsRequest get getEmvTagsRequest => $_getN(18);
+  $7.StartPinEntryRequest get startPinEntryRequest => $_getN(18);
   @$pb.TagNumber(19)
-  set getEmvTagsRequest($6.GetEmvTagsRequest value) => $_setField(19, value);
+  set startPinEntryRequest($7.StartPinEntryRequest value) =>
+      $_setField(19, value);
   @$pb.TagNumber(19)
-  $core.bool hasGetEmvTagsRequest() => $_has(18);
+  $core.bool hasStartPinEntryRequest() => $_has(18);
   @$pb.TagNumber(19)
-  void clearGetEmvTagsRequest() => $_clearField(19);
+  void clearStartPinEntryRequest() => $_clearField(19);
   @$pb.TagNumber(19)
-  $6.GetEmvTagsRequest ensureGetEmvTagsRequest() => $_ensure(18);
+  $7.StartPinEntryRequest ensureStartPinEntryRequest() => $_ensure(18);
 
   @$pb.TagNumber(20)
-  $6.CompleteEmvProcessRequest get completeEmvProcessRequest => $_getN(19);
+  $7.GetEmvTagsRequest get getEmvTagsRequest => $_getN(19);
   @$pb.TagNumber(20)
-  set completeEmvProcessRequest($6.CompleteEmvProcessRequest value) =>
-      $_setField(20, value);
+  set getEmvTagsRequest($7.GetEmvTagsRequest value) => $_setField(20, value);
   @$pb.TagNumber(20)
-  $core.bool hasCompleteEmvProcessRequest() => $_has(19);
+  $core.bool hasGetEmvTagsRequest() => $_has(19);
   @$pb.TagNumber(20)
-  void clearCompleteEmvProcessRequest() => $_clearField(20);
+  void clearGetEmvTagsRequest() => $_clearField(20);
   @$pb.TagNumber(20)
-  $6.CompleteEmvProcessRequest ensureCompleteEmvProcessRequest() =>
-      $_ensure(19);
+  $7.GetEmvTagsRequest ensureGetEmvTagsRequest() => $_ensure(19);
 
   @$pb.TagNumber(21)
-  $6.CancelEmvProcessRequest get cancelEmvProcessRequest => $_getN(20);
+  $7.CompleteEmvProcessRequest get completeEmvProcessRequest => $_getN(20);
   @$pb.TagNumber(21)
-  set cancelEmvProcessRequest($6.CancelEmvProcessRequest value) =>
+  set completeEmvProcessRequest($7.CompleteEmvProcessRequest value) =>
       $_setField(21, value);
   @$pb.TagNumber(21)
-  $core.bool hasCancelEmvProcessRequest() => $_has(20);
+  $core.bool hasCompleteEmvProcessRequest() => $_has(20);
   @$pb.TagNumber(21)
-  void clearCancelEmvProcessRequest() => $_clearField(21);
+  void clearCompleteEmvProcessRequest() => $_clearField(21);
   @$pb.TagNumber(21)
-  $6.CancelEmvProcessRequest ensureCancelEmvProcessRequest() => $_ensure(20);
+  $7.CompleteEmvProcessRequest ensureCompleteEmvProcessRequest() =>
+      $_ensure(20);
+
+  @$pb.TagNumber(22)
+  $7.CancelEmvProcessRequest get cancelEmvProcessRequest => $_getN(21);
+  @$pb.TagNumber(22)
+  set cancelEmvProcessRequest($7.CancelEmvProcessRequest value) =>
+      $_setField(22, value);
+  @$pb.TagNumber(22)
+  $core.bool hasCancelEmvProcessRequest() => $_has(21);
+  @$pb.TagNumber(22)
+  void clearCancelEmvProcessRequest() => $_clearField(22);
+  @$pb.TagNumber(22)
+  $7.CancelEmvProcessRequest ensureCancelEmvProcessRequest() => $_ensure(21);
 }
 
 enum CommandResponse_Type {
   pingResponse,
+  displayQRResponse,
   setAppLogoResponse,
   rebootDeviceResponse,
   shutdownDeviceResponse,
@@ -545,27 +565,29 @@ enum CommandResponse_Type {
 class CommandResponse extends $pb.GeneratedMessage {
   factory CommandResponse({
     $0.PingResponse? pingResponse,
-    $1.SetAppLogoResponse? setAppLogoResponse,
-    $1.RebootDeviceResponse? rebootDeviceResponse,
-    $1.ShutdownDeviceResponse? shutdownDeviceResponse,
-    $1.SetDeviceDateTimeResponse? setDeviceDateTimeResponse,
-    $1.GetDeviceInfoResponse? getDeviceInfoResponse,
-    $2.InitSDKResponse? initSDKResponse,
-    $3.CheckLoadedKeyResponse? checkLoadedKeyResponse,
-    $3.GenerateTransportKeyResponse? generateTransportKeyResponse,
-    $3.LoadKeyResponse? loadKeyResponse,
-    $3.GetKSNResponse? getKSNResponse,
-    $3.DeleteDukptKeyResponse? deletedUKPTKeyResponse,
-    $4.LoadTerminalParametersResponse? loadTerminalParametersResponse,
-    $4.LoadCapksResponse? loadCapksResponse,
-    $4.LoadEmvAppsResponse? loadEmvAppsResponse,
-    $5.DetectedCardResponse? detectedCardResponse,
-    $6.GetEmvTagsResponse? getEmvTagsResponse,
-    $6.EmvEventNotificationResponse? emvEventNotificationResponse,
-    $7.ErrorResponse? error,
+    $1.DisplayQRResponse? displayQRResponse,
+    $2.SetAppLogoResponse? setAppLogoResponse,
+    $2.RebootDeviceResponse? rebootDeviceResponse,
+    $2.ShutdownDeviceResponse? shutdownDeviceResponse,
+    $2.SetDeviceDateTimeResponse? setDeviceDateTimeResponse,
+    $2.GetDeviceInfoResponse? getDeviceInfoResponse,
+    $3.InitSDKResponse? initSDKResponse,
+    $4.CheckLoadedKeyResponse? checkLoadedKeyResponse,
+    $4.GenerateTransportKeyResponse? generateTransportKeyResponse,
+    $4.LoadKeyResponse? loadKeyResponse,
+    $4.GetKSNResponse? getKSNResponse,
+    $4.DeleteDukptKeyResponse? deletedUKPTKeyResponse,
+    $5.LoadTerminalParametersResponse? loadTerminalParametersResponse,
+    $5.LoadCapksResponse? loadCapksResponse,
+    $5.LoadEmvAppsResponse? loadEmvAppsResponse,
+    $6.DetectedCardResponse? detectedCardResponse,
+    $7.GetEmvTagsResponse? getEmvTagsResponse,
+    $7.EmvEventNotificationResponse? emvEventNotificationResponse,
+    $8.ErrorResponse? error,
   }) {
     final result = create();
     if (pingResponse != null) result.pingResponse = pingResponse;
+    if (displayQRResponse != null) result.displayQRResponse = displayQRResponse;
     if (setAppLogoResponse != null)
       result.setAppLogoResponse = setAppLogoResponse;
     if (rebootDeviceResponse != null)
@@ -612,94 +634,98 @@ class CommandResponse extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, CommandResponse_Type>
       _CommandResponse_TypeByTag = {
     1: CommandResponse_Type.pingResponse,
-    2: CommandResponse_Type.setAppLogoResponse,
-    3: CommandResponse_Type.rebootDeviceResponse,
-    4: CommandResponse_Type.shutdownDeviceResponse,
-    5: CommandResponse_Type.setDeviceDateTimeResponse,
-    6: CommandResponse_Type.getDeviceInfoResponse,
-    7: CommandResponse_Type.initSDKResponse,
-    8: CommandResponse_Type.checkLoadedKeyResponse,
-    9: CommandResponse_Type.generateTransportKeyResponse,
-    10: CommandResponse_Type.loadKeyResponse,
-    11: CommandResponse_Type.getKSNResponse,
-    12: CommandResponse_Type.deletedUKPTKeyResponse,
-    13: CommandResponse_Type.loadTerminalParametersResponse,
-    14: CommandResponse_Type.loadCapksResponse,
-    15: CommandResponse_Type.loadEmvAppsResponse,
-    16: CommandResponse_Type.detectedCardResponse,
-    17: CommandResponse_Type.getEmvTagsResponse,
-    18: CommandResponse_Type.emvEventNotificationResponse,
-    19: CommandResponse_Type.error,
+    2: CommandResponse_Type.displayQRResponse,
+    3: CommandResponse_Type.setAppLogoResponse,
+    4: CommandResponse_Type.rebootDeviceResponse,
+    5: CommandResponse_Type.shutdownDeviceResponse,
+    6: CommandResponse_Type.setDeviceDateTimeResponse,
+    7: CommandResponse_Type.getDeviceInfoResponse,
+    8: CommandResponse_Type.initSDKResponse,
+    9: CommandResponse_Type.checkLoadedKeyResponse,
+    10: CommandResponse_Type.generateTransportKeyResponse,
+    11: CommandResponse_Type.loadKeyResponse,
+    12: CommandResponse_Type.getKSNResponse,
+    13: CommandResponse_Type.deletedUKPTKeyResponse,
+    14: CommandResponse_Type.loadTerminalParametersResponse,
+    15: CommandResponse_Type.loadCapksResponse,
+    16: CommandResponse_Type.loadEmvAppsResponse,
+    17: CommandResponse_Type.detectedCardResponse,
+    18: CommandResponse_Type.getEmvTagsResponse,
+    19: CommandResponse_Type.emvEventNotificationResponse,
+    20: CommandResponse_Type.error,
     0: CommandResponse_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'CommandResponse',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])
+    ..oo(0,
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
     ..aOM<$0.PingResponse>(1, _omitFieldNames ? '' : 'pingResponse',
         protoName: 'pingResponse', subBuilder: $0.PingResponse.create)
-    ..aOM<$1.SetAppLogoResponse>(2, _omitFieldNames ? '' : 'setAppLogoResponse',
+    ..aOM<$1.DisplayQRResponse>(2, _omitFieldNames ? '' : 'displayQRResponse',
+        protoName: 'displayQRResponse', subBuilder: $1.DisplayQRResponse.create)
+    ..aOM<$2.SetAppLogoResponse>(3, _omitFieldNames ? '' : 'setAppLogoResponse',
         protoName: 'setAppLogoResponse',
-        subBuilder: $1.SetAppLogoResponse.create)
-    ..aOM<$1.RebootDeviceResponse>(
-        3, _omitFieldNames ? '' : 'rebootDeviceResponse',
+        subBuilder: $2.SetAppLogoResponse.create)
+    ..aOM<$2.RebootDeviceResponse>(
+        4, _omitFieldNames ? '' : 'rebootDeviceResponse',
         protoName: 'rebootDeviceResponse',
-        subBuilder: $1.RebootDeviceResponse.create)
-    ..aOM<$1.ShutdownDeviceResponse>(
-        4, _omitFieldNames ? '' : 'shutdownDeviceResponse',
+        subBuilder: $2.RebootDeviceResponse.create)
+    ..aOM<$2.ShutdownDeviceResponse>(
+        5, _omitFieldNames ? '' : 'shutdownDeviceResponse',
         protoName: 'shutdownDeviceResponse',
-        subBuilder: $1.ShutdownDeviceResponse.create)
-    ..aOM<$1.SetDeviceDateTimeResponse>(
-        5, _omitFieldNames ? '' : 'setDeviceDateTimeResponse',
+        subBuilder: $2.ShutdownDeviceResponse.create)
+    ..aOM<$2.SetDeviceDateTimeResponse>(
+        6, _omitFieldNames ? '' : 'setDeviceDateTimeResponse',
         protoName: 'setDeviceDateTimeResponse',
-        subBuilder: $1.SetDeviceDateTimeResponse.create)
-    ..aOM<$1.GetDeviceInfoResponse>(
-        6, _omitFieldNames ? '' : 'getDeviceInfoResponse',
+        subBuilder: $2.SetDeviceDateTimeResponse.create)
+    ..aOM<$2.GetDeviceInfoResponse>(
+        7, _omitFieldNames ? '' : 'getDeviceInfoResponse',
         protoName: 'getDeviceInfoResponse',
-        subBuilder: $1.GetDeviceInfoResponse.create)
-    ..aOM<$2.InitSDKResponse>(7, _omitFieldNames ? '' : 'initSDKResponse',
-        protoName: 'initSDKResponse', subBuilder: $2.InitSDKResponse.create)
-    ..aOM<$3.CheckLoadedKeyResponse>(
-        8, _omitFieldNames ? '' : 'checkLoadedKeyResponse',
+        subBuilder: $2.GetDeviceInfoResponse.create)
+    ..aOM<$3.InitSDKResponse>(8, _omitFieldNames ? '' : 'initSDKResponse',
+        protoName: 'initSDKResponse', subBuilder: $3.InitSDKResponse.create)
+    ..aOM<$4.CheckLoadedKeyResponse>(
+        9, _omitFieldNames ? '' : 'checkLoadedKeyResponse',
         protoName: 'checkLoadedKeyResponse',
-        subBuilder: $3.CheckLoadedKeyResponse.create)
-    ..aOM<$3.GenerateTransportKeyResponse>(
-        9, _omitFieldNames ? '' : 'generateTransportKeyResponse',
+        subBuilder: $4.CheckLoadedKeyResponse.create)
+    ..aOM<$4.GenerateTransportKeyResponse>(
+        10, _omitFieldNames ? '' : 'generateTransportKeyResponse',
         protoName: 'generateTransportKeyResponse',
-        subBuilder: $3.GenerateTransportKeyResponse.create)
-    ..aOM<$3.LoadKeyResponse>(10, _omitFieldNames ? '' : 'loadKeyResponse',
-        protoName: 'loadKeyResponse', subBuilder: $3.LoadKeyResponse.create)
-    ..aOM<$3.GetKSNResponse>(11, _omitFieldNames ? '' : 'getKSNResponse',
-        protoName: 'getKSNResponse', subBuilder: $3.GetKSNResponse.create)
-    ..aOM<$3.DeleteDukptKeyResponse>(
-        12, _omitFieldNames ? '' : 'deletedUKPTKeyResponse',
+        subBuilder: $4.GenerateTransportKeyResponse.create)
+    ..aOM<$4.LoadKeyResponse>(11, _omitFieldNames ? '' : 'loadKeyResponse',
+        protoName: 'loadKeyResponse', subBuilder: $4.LoadKeyResponse.create)
+    ..aOM<$4.GetKSNResponse>(12, _omitFieldNames ? '' : 'getKSNResponse',
+        protoName: 'getKSNResponse', subBuilder: $4.GetKSNResponse.create)
+    ..aOM<$4.DeleteDukptKeyResponse>(
+        13, _omitFieldNames ? '' : 'deletedUKPTKeyResponse',
         protoName: 'deletedUKPTKeyResponse',
-        subBuilder: $3.DeleteDukptKeyResponse.create)
-    ..aOM<$4.LoadTerminalParametersResponse>(
-        13, _omitFieldNames ? '' : 'loadTerminalParametersResponse',
+        subBuilder: $4.DeleteDukptKeyResponse.create)
+    ..aOM<$5.LoadTerminalParametersResponse>(
+        14, _omitFieldNames ? '' : 'loadTerminalParametersResponse',
         protoName: 'loadTerminalParametersResponse',
-        subBuilder: $4.LoadTerminalParametersResponse.create)
-    ..aOM<$4.LoadCapksResponse>(14, _omitFieldNames ? '' : 'loadCapksResponse',
-        protoName: 'loadCapksResponse', subBuilder: $4.LoadCapksResponse.create)
-    ..aOM<$4.LoadEmvAppsResponse>(
-        15, _omitFieldNames ? '' : 'loadEmvAppsResponse',
+        subBuilder: $5.LoadTerminalParametersResponse.create)
+    ..aOM<$5.LoadCapksResponse>(15, _omitFieldNames ? '' : 'loadCapksResponse',
+        protoName: 'loadCapksResponse', subBuilder: $5.LoadCapksResponse.create)
+    ..aOM<$5.LoadEmvAppsResponse>(
+        16, _omitFieldNames ? '' : 'loadEmvAppsResponse',
         protoName: 'loadEmvAppsResponse',
-        subBuilder: $4.LoadEmvAppsResponse.create)
-    ..aOM<$5.DetectedCardResponse>(
-        16, _omitFieldNames ? '' : 'detectedCardResponse',
+        subBuilder: $5.LoadEmvAppsResponse.create)
+    ..aOM<$6.DetectedCardResponse>(
+        17, _omitFieldNames ? '' : 'detectedCardResponse',
         protoName: 'detectedCardResponse',
-        subBuilder: $5.DetectedCardResponse.create)
-    ..aOM<$6.GetEmvTagsResponse>(
-        17, _omitFieldNames ? '' : 'getEmvTagsResponse',
+        subBuilder: $6.DetectedCardResponse.create)
+    ..aOM<$7.GetEmvTagsResponse>(
+        18, _omitFieldNames ? '' : 'getEmvTagsResponse',
         protoName: 'getEmvTagsResponse',
-        subBuilder: $6.GetEmvTagsResponse.create)
-    ..aOM<$6.EmvEventNotificationResponse>(
-        18, _omitFieldNames ? '' : 'emvEventNotificationResponse',
+        subBuilder: $7.GetEmvTagsResponse.create)
+    ..aOM<$7.EmvEventNotificationResponse>(
+        19, _omitFieldNames ? '' : 'emvEventNotificationResponse',
         protoName: 'emvEventNotificationResponse',
-        subBuilder: $6.EmvEventNotificationResponse.create)
-    ..aOM<$7.ErrorResponse>(19, _omitFieldNames ? '' : 'error',
-        subBuilder: $7.ErrorResponse.create)
+        subBuilder: $7.EmvEventNotificationResponse.create)
+    ..aOM<$8.ErrorResponse>(20, _omitFieldNames ? '' : 'error',
+        subBuilder: $8.ErrorResponse.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -739,218 +765,229 @@ class CommandResponse extends $pb.GeneratedMessage {
   $0.PingResponse ensurePingResponse() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $1.SetAppLogoResponse get setAppLogoResponse => $_getN(1);
+  $1.DisplayQRResponse get displayQRResponse => $_getN(1);
   @$pb.TagNumber(2)
-  set setAppLogoResponse($1.SetAppLogoResponse value) => $_setField(2, value);
+  set displayQRResponse($1.DisplayQRResponse value) => $_setField(2, value);
   @$pb.TagNumber(2)
-  $core.bool hasSetAppLogoResponse() => $_has(1);
+  $core.bool hasDisplayQRResponse() => $_has(1);
   @$pb.TagNumber(2)
-  void clearSetAppLogoResponse() => $_clearField(2);
+  void clearDisplayQRResponse() => $_clearField(2);
   @$pb.TagNumber(2)
-  $1.SetAppLogoResponse ensureSetAppLogoResponse() => $_ensure(1);
+  $1.DisplayQRResponse ensureDisplayQRResponse() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $1.RebootDeviceResponse get rebootDeviceResponse => $_getN(2);
+  $2.SetAppLogoResponse get setAppLogoResponse => $_getN(2);
   @$pb.TagNumber(3)
-  set rebootDeviceResponse($1.RebootDeviceResponse value) =>
-      $_setField(3, value);
+  set setAppLogoResponse($2.SetAppLogoResponse value) => $_setField(3, value);
   @$pb.TagNumber(3)
-  $core.bool hasRebootDeviceResponse() => $_has(2);
+  $core.bool hasSetAppLogoResponse() => $_has(2);
   @$pb.TagNumber(3)
-  void clearRebootDeviceResponse() => $_clearField(3);
+  void clearSetAppLogoResponse() => $_clearField(3);
   @$pb.TagNumber(3)
-  $1.RebootDeviceResponse ensureRebootDeviceResponse() => $_ensure(2);
+  $2.SetAppLogoResponse ensureSetAppLogoResponse() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $1.ShutdownDeviceResponse get shutdownDeviceResponse => $_getN(3);
+  $2.RebootDeviceResponse get rebootDeviceResponse => $_getN(3);
   @$pb.TagNumber(4)
-  set shutdownDeviceResponse($1.ShutdownDeviceResponse value) =>
+  set rebootDeviceResponse($2.RebootDeviceResponse value) =>
       $_setField(4, value);
   @$pb.TagNumber(4)
-  $core.bool hasShutdownDeviceResponse() => $_has(3);
+  $core.bool hasRebootDeviceResponse() => $_has(3);
   @$pb.TagNumber(4)
-  void clearShutdownDeviceResponse() => $_clearField(4);
+  void clearRebootDeviceResponse() => $_clearField(4);
   @$pb.TagNumber(4)
-  $1.ShutdownDeviceResponse ensureShutdownDeviceResponse() => $_ensure(3);
+  $2.RebootDeviceResponse ensureRebootDeviceResponse() => $_ensure(3);
 
   @$pb.TagNumber(5)
-  $1.SetDeviceDateTimeResponse get setDeviceDateTimeResponse => $_getN(4);
+  $2.ShutdownDeviceResponse get shutdownDeviceResponse => $_getN(4);
   @$pb.TagNumber(5)
-  set setDeviceDateTimeResponse($1.SetDeviceDateTimeResponse value) =>
+  set shutdownDeviceResponse($2.ShutdownDeviceResponse value) =>
       $_setField(5, value);
   @$pb.TagNumber(5)
-  $core.bool hasSetDeviceDateTimeResponse() => $_has(4);
+  $core.bool hasShutdownDeviceResponse() => $_has(4);
   @$pb.TagNumber(5)
-  void clearSetDeviceDateTimeResponse() => $_clearField(5);
+  void clearShutdownDeviceResponse() => $_clearField(5);
   @$pb.TagNumber(5)
-  $1.SetDeviceDateTimeResponse ensureSetDeviceDateTimeResponse() => $_ensure(4);
+  $2.ShutdownDeviceResponse ensureShutdownDeviceResponse() => $_ensure(4);
 
   @$pb.TagNumber(6)
-  $1.GetDeviceInfoResponse get getDeviceInfoResponse => $_getN(5);
+  $2.SetDeviceDateTimeResponse get setDeviceDateTimeResponse => $_getN(5);
   @$pb.TagNumber(6)
-  set getDeviceInfoResponse($1.GetDeviceInfoResponse value) =>
+  set setDeviceDateTimeResponse($2.SetDeviceDateTimeResponse value) =>
       $_setField(6, value);
   @$pb.TagNumber(6)
-  $core.bool hasGetDeviceInfoResponse() => $_has(5);
+  $core.bool hasSetDeviceDateTimeResponse() => $_has(5);
   @$pb.TagNumber(6)
-  void clearGetDeviceInfoResponse() => $_clearField(6);
+  void clearSetDeviceDateTimeResponse() => $_clearField(6);
   @$pb.TagNumber(6)
-  $1.GetDeviceInfoResponse ensureGetDeviceInfoResponse() => $_ensure(5);
+  $2.SetDeviceDateTimeResponse ensureSetDeviceDateTimeResponse() => $_ensure(5);
 
   @$pb.TagNumber(7)
-  $2.InitSDKResponse get initSDKResponse => $_getN(6);
+  $2.GetDeviceInfoResponse get getDeviceInfoResponse => $_getN(6);
   @$pb.TagNumber(7)
-  set initSDKResponse($2.InitSDKResponse value) => $_setField(7, value);
+  set getDeviceInfoResponse($2.GetDeviceInfoResponse value) =>
+      $_setField(7, value);
   @$pb.TagNumber(7)
-  $core.bool hasInitSDKResponse() => $_has(6);
+  $core.bool hasGetDeviceInfoResponse() => $_has(6);
   @$pb.TagNumber(7)
-  void clearInitSDKResponse() => $_clearField(7);
+  void clearGetDeviceInfoResponse() => $_clearField(7);
   @$pb.TagNumber(7)
-  $2.InitSDKResponse ensureInitSDKResponse() => $_ensure(6);
+  $2.GetDeviceInfoResponse ensureGetDeviceInfoResponse() => $_ensure(6);
 
   @$pb.TagNumber(8)
-  $3.CheckLoadedKeyResponse get checkLoadedKeyResponse => $_getN(7);
+  $3.InitSDKResponse get initSDKResponse => $_getN(7);
   @$pb.TagNumber(8)
-  set checkLoadedKeyResponse($3.CheckLoadedKeyResponse value) =>
-      $_setField(8, value);
+  set initSDKResponse($3.InitSDKResponse value) => $_setField(8, value);
   @$pb.TagNumber(8)
-  $core.bool hasCheckLoadedKeyResponse() => $_has(7);
+  $core.bool hasInitSDKResponse() => $_has(7);
   @$pb.TagNumber(8)
-  void clearCheckLoadedKeyResponse() => $_clearField(8);
+  void clearInitSDKResponse() => $_clearField(8);
   @$pb.TagNumber(8)
-  $3.CheckLoadedKeyResponse ensureCheckLoadedKeyResponse() => $_ensure(7);
+  $3.InitSDKResponse ensureInitSDKResponse() => $_ensure(7);
 
   @$pb.TagNumber(9)
-  $3.GenerateTransportKeyResponse get generateTransportKeyResponse => $_getN(8);
+  $4.CheckLoadedKeyResponse get checkLoadedKeyResponse => $_getN(8);
   @$pb.TagNumber(9)
-  set generateTransportKeyResponse($3.GenerateTransportKeyResponse value) =>
+  set checkLoadedKeyResponse($4.CheckLoadedKeyResponse value) =>
       $_setField(9, value);
   @$pb.TagNumber(9)
-  $core.bool hasGenerateTransportKeyResponse() => $_has(8);
+  $core.bool hasCheckLoadedKeyResponse() => $_has(8);
   @$pb.TagNumber(9)
-  void clearGenerateTransportKeyResponse() => $_clearField(9);
+  void clearCheckLoadedKeyResponse() => $_clearField(9);
   @$pb.TagNumber(9)
-  $3.GenerateTransportKeyResponse ensureGenerateTransportKeyResponse() =>
-      $_ensure(8);
+  $4.CheckLoadedKeyResponse ensureCheckLoadedKeyResponse() => $_ensure(8);
 
   @$pb.TagNumber(10)
-  $3.LoadKeyResponse get loadKeyResponse => $_getN(9);
+  $4.GenerateTransportKeyResponse get generateTransportKeyResponse => $_getN(9);
   @$pb.TagNumber(10)
-  set loadKeyResponse($3.LoadKeyResponse value) => $_setField(10, value);
+  set generateTransportKeyResponse($4.GenerateTransportKeyResponse value) =>
+      $_setField(10, value);
   @$pb.TagNumber(10)
-  $core.bool hasLoadKeyResponse() => $_has(9);
+  $core.bool hasGenerateTransportKeyResponse() => $_has(9);
   @$pb.TagNumber(10)
-  void clearLoadKeyResponse() => $_clearField(10);
+  void clearGenerateTransportKeyResponse() => $_clearField(10);
   @$pb.TagNumber(10)
-  $3.LoadKeyResponse ensureLoadKeyResponse() => $_ensure(9);
+  $4.GenerateTransportKeyResponse ensureGenerateTransportKeyResponse() =>
+      $_ensure(9);
 
   @$pb.TagNumber(11)
-  $3.GetKSNResponse get getKSNResponse => $_getN(10);
+  $4.LoadKeyResponse get loadKeyResponse => $_getN(10);
   @$pb.TagNumber(11)
-  set getKSNResponse($3.GetKSNResponse value) => $_setField(11, value);
+  set loadKeyResponse($4.LoadKeyResponse value) => $_setField(11, value);
   @$pb.TagNumber(11)
-  $core.bool hasGetKSNResponse() => $_has(10);
+  $core.bool hasLoadKeyResponse() => $_has(10);
   @$pb.TagNumber(11)
-  void clearGetKSNResponse() => $_clearField(11);
+  void clearLoadKeyResponse() => $_clearField(11);
   @$pb.TagNumber(11)
-  $3.GetKSNResponse ensureGetKSNResponse() => $_ensure(10);
+  $4.LoadKeyResponse ensureLoadKeyResponse() => $_ensure(10);
 
   @$pb.TagNumber(12)
-  $3.DeleteDukptKeyResponse get deletedUKPTKeyResponse => $_getN(11);
+  $4.GetKSNResponse get getKSNResponse => $_getN(11);
   @$pb.TagNumber(12)
-  set deletedUKPTKeyResponse($3.DeleteDukptKeyResponse value) =>
-      $_setField(12, value);
+  set getKSNResponse($4.GetKSNResponse value) => $_setField(12, value);
   @$pb.TagNumber(12)
-  $core.bool hasDeletedUKPTKeyResponse() => $_has(11);
+  $core.bool hasGetKSNResponse() => $_has(11);
   @$pb.TagNumber(12)
-  void clearDeletedUKPTKeyResponse() => $_clearField(12);
+  void clearGetKSNResponse() => $_clearField(12);
   @$pb.TagNumber(12)
-  $3.DeleteDukptKeyResponse ensureDeletedUKPTKeyResponse() => $_ensure(11);
+  $4.GetKSNResponse ensureGetKSNResponse() => $_ensure(11);
 
   @$pb.TagNumber(13)
-  $4.LoadTerminalParametersResponse get loadTerminalParametersResponse =>
-      $_getN(12);
+  $4.DeleteDukptKeyResponse get deletedUKPTKeyResponse => $_getN(12);
   @$pb.TagNumber(13)
-  set loadTerminalParametersResponse($4.LoadTerminalParametersResponse value) =>
+  set deletedUKPTKeyResponse($4.DeleteDukptKeyResponse value) =>
       $_setField(13, value);
   @$pb.TagNumber(13)
-  $core.bool hasLoadTerminalParametersResponse() => $_has(12);
+  $core.bool hasDeletedUKPTKeyResponse() => $_has(12);
   @$pb.TagNumber(13)
-  void clearLoadTerminalParametersResponse() => $_clearField(13);
+  void clearDeletedUKPTKeyResponse() => $_clearField(13);
   @$pb.TagNumber(13)
-  $4.LoadTerminalParametersResponse ensureLoadTerminalParametersResponse() =>
-      $_ensure(12);
+  $4.DeleteDukptKeyResponse ensureDeletedUKPTKeyResponse() => $_ensure(12);
 
   @$pb.TagNumber(14)
-  $4.LoadCapksResponse get loadCapksResponse => $_getN(13);
+  $5.LoadTerminalParametersResponse get loadTerminalParametersResponse =>
+      $_getN(13);
   @$pb.TagNumber(14)
-  set loadCapksResponse($4.LoadCapksResponse value) => $_setField(14, value);
+  set loadTerminalParametersResponse($5.LoadTerminalParametersResponse value) =>
+      $_setField(14, value);
   @$pb.TagNumber(14)
-  $core.bool hasLoadCapksResponse() => $_has(13);
+  $core.bool hasLoadTerminalParametersResponse() => $_has(13);
   @$pb.TagNumber(14)
-  void clearLoadCapksResponse() => $_clearField(14);
+  void clearLoadTerminalParametersResponse() => $_clearField(14);
   @$pb.TagNumber(14)
-  $4.LoadCapksResponse ensureLoadCapksResponse() => $_ensure(13);
+  $5.LoadTerminalParametersResponse ensureLoadTerminalParametersResponse() =>
+      $_ensure(13);
 
   @$pb.TagNumber(15)
-  $4.LoadEmvAppsResponse get loadEmvAppsResponse => $_getN(14);
+  $5.LoadCapksResponse get loadCapksResponse => $_getN(14);
   @$pb.TagNumber(15)
-  set loadEmvAppsResponse($4.LoadEmvAppsResponse value) =>
-      $_setField(15, value);
+  set loadCapksResponse($5.LoadCapksResponse value) => $_setField(15, value);
   @$pb.TagNumber(15)
-  $core.bool hasLoadEmvAppsResponse() => $_has(14);
+  $core.bool hasLoadCapksResponse() => $_has(14);
   @$pb.TagNumber(15)
-  void clearLoadEmvAppsResponse() => $_clearField(15);
+  void clearLoadCapksResponse() => $_clearField(15);
   @$pb.TagNumber(15)
-  $4.LoadEmvAppsResponse ensureLoadEmvAppsResponse() => $_ensure(14);
+  $5.LoadCapksResponse ensureLoadCapksResponse() => $_ensure(14);
 
   @$pb.TagNumber(16)
-  $5.DetectedCardResponse get detectedCardResponse => $_getN(15);
+  $5.LoadEmvAppsResponse get loadEmvAppsResponse => $_getN(15);
   @$pb.TagNumber(16)
-  set detectedCardResponse($5.DetectedCardResponse value) =>
+  set loadEmvAppsResponse($5.LoadEmvAppsResponse value) =>
       $_setField(16, value);
   @$pb.TagNumber(16)
-  $core.bool hasDetectedCardResponse() => $_has(15);
+  $core.bool hasLoadEmvAppsResponse() => $_has(15);
   @$pb.TagNumber(16)
-  void clearDetectedCardResponse() => $_clearField(16);
+  void clearLoadEmvAppsResponse() => $_clearField(16);
   @$pb.TagNumber(16)
-  $5.DetectedCardResponse ensureDetectedCardResponse() => $_ensure(15);
+  $5.LoadEmvAppsResponse ensureLoadEmvAppsResponse() => $_ensure(15);
 
   @$pb.TagNumber(17)
-  $6.GetEmvTagsResponse get getEmvTagsResponse => $_getN(16);
+  $6.DetectedCardResponse get detectedCardResponse => $_getN(16);
   @$pb.TagNumber(17)
-  set getEmvTagsResponse($6.GetEmvTagsResponse value) => $_setField(17, value);
+  set detectedCardResponse($6.DetectedCardResponse value) =>
+      $_setField(17, value);
   @$pb.TagNumber(17)
-  $core.bool hasGetEmvTagsResponse() => $_has(16);
+  $core.bool hasDetectedCardResponse() => $_has(16);
   @$pb.TagNumber(17)
-  void clearGetEmvTagsResponse() => $_clearField(17);
+  void clearDetectedCardResponse() => $_clearField(17);
   @$pb.TagNumber(17)
-  $6.GetEmvTagsResponse ensureGetEmvTagsResponse() => $_ensure(16);
+  $6.DetectedCardResponse ensureDetectedCardResponse() => $_ensure(16);
 
   @$pb.TagNumber(18)
-  $6.EmvEventNotificationResponse get emvEventNotificationResponse =>
-      $_getN(17);
+  $7.GetEmvTagsResponse get getEmvTagsResponse => $_getN(17);
   @$pb.TagNumber(18)
-  set emvEventNotificationResponse($6.EmvEventNotificationResponse value) =>
-      $_setField(18, value);
+  set getEmvTagsResponse($7.GetEmvTagsResponse value) => $_setField(18, value);
   @$pb.TagNumber(18)
-  $core.bool hasEmvEventNotificationResponse() => $_has(17);
+  $core.bool hasGetEmvTagsResponse() => $_has(17);
   @$pb.TagNumber(18)
-  void clearEmvEventNotificationResponse() => $_clearField(18);
+  void clearGetEmvTagsResponse() => $_clearField(18);
   @$pb.TagNumber(18)
-  $6.EmvEventNotificationResponse ensureEmvEventNotificationResponse() =>
-      $_ensure(17);
+  $7.GetEmvTagsResponse ensureGetEmvTagsResponse() => $_ensure(17);
 
   @$pb.TagNumber(19)
-  $7.ErrorResponse get error => $_getN(18);
+  $7.EmvEventNotificationResponse get emvEventNotificationResponse =>
+      $_getN(18);
   @$pb.TagNumber(19)
-  set error($7.ErrorResponse value) => $_setField(19, value);
+  set emvEventNotificationResponse($7.EmvEventNotificationResponse value) =>
+      $_setField(19, value);
   @$pb.TagNumber(19)
-  $core.bool hasError() => $_has(18);
+  $core.bool hasEmvEventNotificationResponse() => $_has(18);
   @$pb.TagNumber(19)
-  void clearError() => $_clearField(19);
+  void clearEmvEventNotificationResponse() => $_clearField(19);
   @$pb.TagNumber(19)
-  $7.ErrorResponse ensureError() => $_ensure(18);
+  $7.EmvEventNotificationResponse ensureEmvEventNotificationResponse() =>
+      $_ensure(18);
+
+  @$pb.TagNumber(20)
+  $8.ErrorResponse get error => $_getN(19);
+  @$pb.TagNumber(20)
+  set error($8.ErrorResponse value) => $_setField(20, value);
+  @$pb.TagNumber(20)
+  $core.bool hasError() => $_has(19);
+  @$pb.TagNumber(20)
+  void clearError() => $_clearField(20);
+  @$pb.TagNumber(20)
+  $8.ErrorResponse ensureError() => $_ensure(19);
 }
 
 const $core.bool _omitFieldNames =

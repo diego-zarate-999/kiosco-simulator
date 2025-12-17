@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package metaApp;
+
+///
+/// Request y response para mostrar un QR.
+///
+
+message DisplayQRRequest {
+    repeated int32 bitmap = 1;
+    int32 timeout         = 2;
+}
+
+message DisplayQRResponse { }
