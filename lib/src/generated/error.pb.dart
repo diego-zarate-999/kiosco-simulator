@@ -18,9 +18,11 @@ export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 class ErrorResponse extends $pb.GeneratedMessage {
   factory ErrorResponse({
+    $core.String? errorCode,
     $core.String? message,
   }) {
     final result = create();
+    if (errorCode != null) result.errorCode = errorCode;
     if (message != null) result.message = message;
     return result;
   }
@@ -38,7 +40,8 @@ class ErrorResponse extends $pb.GeneratedMessage {
       _omitMessageNames ? '' : 'ErrorResponse',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'message')
+    ..aOS(1, _omitFieldNames ? '' : 'errorCode', protoName: 'errorCode')
+    ..aOS(2, _omitFieldNames ? '' : 'message')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -63,13 +66,22 @@ class ErrorResponse extends $pb.GeneratedMessage {
   static ErrorResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get message => $_getSZ(0);
+  $core.String get errorCode => $_getSZ(0);
   @$pb.TagNumber(1)
-  set message($core.String value) => $_setString(0, value);
+  set errorCode($core.String value) => $_setString(0, value);
   @$pb.TagNumber(1)
-  $core.bool hasMessage() => $_has(0);
+  $core.bool hasErrorCode() => $_has(0);
   @$pb.TagNumber(1)
-  void clearMessage() => $_clearField(1);
+  void clearErrorCode() => $_clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get message => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set message($core.String value) => $_setString(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasMessage() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearMessage() => $_clearField(2);
 }
 
 const $core.bool _omitFieldNames =

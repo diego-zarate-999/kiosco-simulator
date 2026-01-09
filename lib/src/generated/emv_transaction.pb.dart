@@ -84,8 +84,8 @@ class EmvTagEntry extends $pb.GeneratedMessage {
   $pb.PbList<$core.int> get tagValue => $_getList(1);
 }
 
-class EmvStartTransactionParams extends $pb.GeneratedMessage {
-  factory EmvStartTransactionParams({
+class PaymentParameters extends $pb.GeneratedMessage {
+  factory PaymentParameters({
     $core.double? amount,
     $core.double? amountOther,
     $core.int? sequenceCounter,
@@ -101,17 +101,17 @@ class EmvStartTransactionParams extends $pb.GeneratedMessage {
     return result;
   }
 
-  EmvStartTransactionParams._();
+  PaymentParameters._();
 
-  factory EmvStartTransactionParams.fromBuffer($core.List<$core.int> data,
+  factory PaymentParameters.fromBuffer($core.List<$core.int> data,
           [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory EmvStartTransactionParams.fromJson($core.String json,
+  factory PaymentParameters.fromJson($core.String json,
           [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(json, registry);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'EmvStartTransactionParams',
+      _omitMessageNames ? '' : 'PaymentParameters',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
     ..a<$core.double>(1, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OD)
@@ -130,27 +130,25 @@ class EmvStartTransactionParams extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  EmvStartTransactionParams clone() =>
-      EmvStartTransactionParams()..mergeFromMessage(this);
+  PaymentParameters clone() => PaymentParameters()..mergeFromMessage(this);
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  EmvStartTransactionParams copyWith(
-          void Function(EmvStartTransactionParams) updates) =>
-      super.copyWith((message) => updates(message as EmvStartTransactionParams))
-          as EmvStartTransactionParams;
+  PaymentParameters copyWith(void Function(PaymentParameters) updates) =>
+      super.copyWith((message) => updates(message as PaymentParameters))
+          as PaymentParameters;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static EmvStartTransactionParams create() => EmvStartTransactionParams._();
+  static PaymentParameters create() => PaymentParameters._();
   @$core.override
-  EmvStartTransactionParams createEmptyInstance() => create();
-  static $pb.PbList<EmvStartTransactionParams> createRepeated() =>
-      $pb.PbList<EmvStartTransactionParams>();
+  PaymentParameters createEmptyInstance() => create();
+  static $pb.PbList<PaymentParameters> createRepeated() =>
+      $pb.PbList<PaymentParameters>();
   @$core.pragma('dart2js:noInline')
-  static EmvStartTransactionParams getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<EmvStartTransactionParams>(create);
-  static EmvStartTransactionParams? _defaultInstance;
+  static PaymentParameters getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<PaymentParameters>(create);
+  static PaymentParameters? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.double get amount => $_getN(0);
@@ -198,31 +196,33 @@ class EmvStartTransactionParams extends $pb.GeneratedMessage {
   void clearForceOnline() => $_clearField(5);
 }
 
-class StartEmvProcessRequest extends $pb.GeneratedMessage {
-  factory StartEmvProcessRequest({
+class StartPaymentProcessRequest extends $pb.GeneratedMessage {
+  factory StartPaymentProcessRequest({
     $core.Iterable<$0.CardEntryMode>? cardEntryModes,
     $core.int? cardDetectionTimeout,
-    EmvStartTransactionParams? transactionParams,
+    $core.int? fallbackTimeout,
+    PaymentParameters? transactionParams,
   }) {
     final result = create();
     if (cardEntryModes != null) result.cardEntryModes.addAll(cardEntryModes);
     if (cardDetectionTimeout != null)
       result.cardDetectionTimeout = cardDetectionTimeout;
+    if (fallbackTimeout != null) result.fallbackTimeout = fallbackTimeout;
     if (transactionParams != null) result.transactionParams = transactionParams;
     return result;
   }
 
-  StartEmvProcessRequest._();
+  StartPaymentProcessRequest._();
 
-  factory StartEmvProcessRequest.fromBuffer($core.List<$core.int> data,
+  factory StartPaymentProcessRequest.fromBuffer($core.List<$core.int> data,
           [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory StartEmvProcessRequest.fromJson($core.String json,
+  factory StartPaymentProcessRequest.fromJson($core.String json,
           [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(json, registry);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'StartEmvProcessRequest',
+      _omitMessageNames ? '' : 'StartPaymentProcessRequest',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
     ..pc<$0.CardEntryMode>(
@@ -234,34 +234,36 @@ class StartEmvProcessRequest extends $pb.GeneratedMessage {
     ..a<$core.int>(
         2, _omitFieldNames ? '' : 'cardDetectionTimeout', $pb.PbFieldType.O3,
         protoName: 'cardDetectionTimeout')
-    ..aOM<EmvStartTransactionParams>(
-        3, _omitFieldNames ? '' : 'transactionParams',
-        protoName: 'transactionParams',
-        subBuilder: EmvStartTransactionParams.create)
+    ..a<$core.int>(
+        3, _omitFieldNames ? '' : 'fallbackTimeout', $pb.PbFieldType.O3,
+        protoName: 'fallbackTimeout')
+    ..aOM<PaymentParameters>(4, _omitFieldNames ? '' : 'transactionParams',
+        protoName: 'transactionParams', subBuilder: PaymentParameters.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  StartEmvProcessRequest clone() =>
-      StartEmvProcessRequest()..mergeFromMessage(this);
+  StartPaymentProcessRequest clone() =>
+      StartPaymentProcessRequest()..mergeFromMessage(this);
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  StartEmvProcessRequest copyWith(
-          void Function(StartEmvProcessRequest) updates) =>
-      super.copyWith((message) => updates(message as StartEmvProcessRequest))
-          as StartEmvProcessRequest;
+  StartPaymentProcessRequest copyWith(
+          void Function(StartPaymentProcessRequest) updates) =>
+      super.copyWith(
+              (message) => updates(message as StartPaymentProcessRequest))
+          as StartPaymentProcessRequest;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static StartEmvProcessRequest create() => StartEmvProcessRequest._();
+  static StartPaymentProcessRequest create() => StartPaymentProcessRequest._();
   @$core.override
-  StartEmvProcessRequest createEmptyInstance() => create();
-  static $pb.PbList<StartEmvProcessRequest> createRepeated() =>
-      $pb.PbList<StartEmvProcessRequest>();
+  StartPaymentProcessRequest createEmptyInstance() => create();
+  static $pb.PbList<StartPaymentProcessRequest> createRepeated() =>
+      $pb.PbList<StartPaymentProcessRequest>();
   @$core.pragma('dart2js:noInline')
-  static StartEmvProcessRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<StartEmvProcessRequest>(create);
-  static StartEmvProcessRequest? _defaultInstance;
+  static StartPaymentProcessRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<StartPaymentProcessRequest>(create);
+  static StartPaymentProcessRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
   $pb.PbList<$0.CardEntryMode> get cardEntryModes => $_getList(0);
@@ -276,16 +278,24 @@ class StartEmvProcessRequest extends $pb.GeneratedMessage {
   void clearCardDetectionTimeout() => $_clearField(2);
 
   @$pb.TagNumber(3)
-  EmvStartTransactionParams get transactionParams => $_getN(2);
+  $core.int get fallbackTimeout => $_getIZ(2);
   @$pb.TagNumber(3)
-  set transactionParams(EmvStartTransactionParams value) =>
-      $_setField(3, value);
+  set fallbackTimeout($core.int value) => $_setSignedInt32(2, value);
   @$pb.TagNumber(3)
-  $core.bool hasTransactionParams() => $_has(2);
+  $core.bool hasFallbackTimeout() => $_has(2);
   @$pb.TagNumber(3)
-  void clearTransactionParams() => $_clearField(3);
-  @$pb.TagNumber(3)
-  EmvStartTransactionParams ensureTransactionParams() => $_ensure(2);
+  void clearFallbackTimeout() => $_clearField(3);
+
+  @$pb.TagNumber(4)
+  PaymentParameters get transactionParams => $_getN(3);
+  @$pb.TagNumber(4)
+  set transactionParams(PaymentParameters value) => $_setField(4, value);
+  @$pb.TagNumber(4)
+  $core.bool hasTransactionParams() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearTransactionParams() => $_clearField(4);
+  @$pb.TagNumber(4)
+  PaymentParameters ensureTransactionParams() => $_ensure(3);
 }
 
 class StartPinEntryRequest extends $pb.GeneratedMessage {
@@ -383,8 +393,8 @@ class StartPinEntryRequest extends $pb.GeneratedMessage {
   $pb.PbList<$core.int> get allowedLength => $_getList(3);
 }
 
-class CompleteEmvProcessRequest extends $pb.GeneratedMessage {
-  factory CompleteEmvProcessRequest({
+class CompletePaymentRequest extends $pb.GeneratedMessage {
+  factory CompletePaymentRequest({
     $core.bool? successful,
     $core.String? authorisationResponseCode,
     $core.String? displayMessage,
@@ -406,17 +416,17 @@ class CompleteEmvProcessRequest extends $pb.GeneratedMessage {
     return result;
   }
 
-  CompleteEmvProcessRequest._();
+  CompletePaymentRequest._();
 
-  factory CompleteEmvProcessRequest.fromBuffer($core.List<$core.int> data,
+  factory CompletePaymentRequest.fromBuffer($core.List<$core.int> data,
           [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory CompleteEmvProcessRequest.fromJson($core.String json,
+  factory CompletePaymentRequest.fromJson($core.String json,
           [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(json, registry);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'CompleteEmvProcessRequest',
+      _omitMessageNames ? '' : 'CompletePaymentRequest',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
     ..aOB(1, _omitFieldNames ? '' : 'successful')
@@ -438,27 +448,27 @@ class CompleteEmvProcessRequest extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  CompleteEmvProcessRequest clone() =>
-      CompleteEmvProcessRequest()..mergeFromMessage(this);
+  CompletePaymentRequest clone() =>
+      CompletePaymentRequest()..mergeFromMessage(this);
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  CompleteEmvProcessRequest copyWith(
-          void Function(CompleteEmvProcessRequest) updates) =>
-      super.copyWith((message) => updates(message as CompleteEmvProcessRequest))
-          as CompleteEmvProcessRequest;
+  CompletePaymentRequest copyWith(
+          void Function(CompletePaymentRequest) updates) =>
+      super.copyWith((message) => updates(message as CompletePaymentRequest))
+          as CompletePaymentRequest;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static CompleteEmvProcessRequest create() => CompleteEmvProcessRequest._();
+  static CompletePaymentRequest create() => CompletePaymentRequest._();
   @$core.override
-  CompleteEmvProcessRequest createEmptyInstance() => create();
-  static $pb.PbList<CompleteEmvProcessRequest> createRepeated() =>
-      $pb.PbList<CompleteEmvProcessRequest>();
+  CompletePaymentRequest createEmptyInstance() => create();
+  static $pb.PbList<CompletePaymentRequest> createRepeated() =>
+      $pb.PbList<CompletePaymentRequest>();
   @$core.pragma('dart2js:noInline')
-  static CompleteEmvProcessRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<CompleteEmvProcessRequest>(create);
-  static CompleteEmvProcessRequest? _defaultInstance;
+  static CompletePaymentRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<CompletePaymentRequest>(create);
+  static CompletePaymentRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.bool get successful => $_getBF(0);

@@ -30,6 +30,7 @@ void main() async {
     final response = await communicationManager.sendRequest(request);
 
     if (response.hasError()) {
+      print("Codigo de error: ${response.error.errorCode}");
       throw Exception(response.error.message);
     }
 

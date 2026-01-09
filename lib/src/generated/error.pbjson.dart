@@ -18,10 +18,23 @@ import 'dart:typed_data' as $typed_data;
 const ErrorResponse$json = {
   '1': 'ErrorResponse',
   '2': [
-    {'1': 'message', '3': 1, '4': 1, '5': 9, '10': 'message'},
+    {'1': 'errorCode', '3': 1, '4': 1, '5': 9, '10': 'errorCode'},
+    {
+      '1': 'message',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '9': 0,
+      '10': 'message',
+      '17': true
+    },
+  ],
+  '8': [
+    {'1': '_message'},
   ],
 };
 
 /// Descriptor for `ErrorResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List errorResponseDescriptor = $convert
-    .base64Decode('Cg1FcnJvclJlc3BvbnNlEhgKB21lc3NhZ2UYASABKAlSB21lc3NhZ2U=');
+final $typed_data.Uint8List errorResponseDescriptor = $convert.base64Decode(
+    'Cg1FcnJvclJlc3BvbnNlEhwKCWVycm9yQ29kZRgBIAEoCVIJZXJyb3JDb2RlEh0KB21lc3NhZ2'
+    'UYAiABKAlIAFIHbWVzc2FnZYgBAUIKCghfbWVzc2FnZQ==');

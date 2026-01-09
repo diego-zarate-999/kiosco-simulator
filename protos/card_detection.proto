@@ -16,11 +16,12 @@ message StartCardReaderRequest {
     int32 timeout               = 2;
 }
 
+
 /// Regresa el tipo de entry Mode o informa si hay timeout.
 message DetectedCardResponse {
     oneof type {
-        CardEntryMode cardEntryMode = 1;
-        CardTimeout cardTimeout     = 2;
+        CardEntryMode cardEntryMode    = 1;
+        CardTimeout cardTimeout        = 2;
     }
 }
 

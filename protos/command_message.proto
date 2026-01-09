@@ -11,6 +11,8 @@ import "keys.proto";
 import "card_detection.proto";
 import "emv_module.proto";
 import "emv_transaction.proto";
+import "cvv_entry.proto";
+import "fallback.proto";
 
 message CommandMessage {
     oneof type {
@@ -31,11 +33,13 @@ message CommandMessage {
         LoadCapksRequest loadCapksRequest                                    = 15;
         LoadEmvAppsRequest loadEmvAppsRequest                                = 16;
         StartCardReaderRequest startCardReaderRequest                        = 17;
-        StartEmvProcessRequest startEmvProcessRequest                        = 18;
+        StartPaymentProcessRequest startPaymentProcessRequest                = 18;
         StartPinEntryRequest startPinEntryRequest                            = 19;
         GetEmvTagsRequest getEmvTagsRequest                                  = 20;
-        CompleteEmvProcessRequest completeEmvProcessRequest                  = 21;
-        CancelEmvProcessRequest cancelEmvProcessRequest                      = 22;
+        CompletePaymentRequest completePaymentRequest                        = 21;
+        StartCVVEntryRequest startCVVEntryRequest                            = 22;
+        StartFallbackRequest startFallbackRequest                            = 23;
+        CancelEmvProcessRequest cancelEmvProcessRequest                      = 24;
     }
 }
 
@@ -60,6 +64,16 @@ message CommandResponse {
         DetectedCardResponse detectedCardResponse                      = 17;
         GetEmvTagsResponse getEmvTagsResponse                          = 18;
         EmvEventNotificationResponse emvEventNotificationResponse      = 19;
-        ErrorResponse error                                            = 20;
+        FinishedCVVEntryResponse finishedCVVEntryResponse              = 20;
+        StartFallbackResponse startFallbackResponse                    = 21;
+        ErrorResponse error                                            = 22;
     }
+}
+
+///
+/// Para confirmar mensajes.
+///
+
+message CommandConfirmation {
+    bool sucess = 1; // ACK = true, NACK = false
 }

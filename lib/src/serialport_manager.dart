@@ -1,48 +1,78 @@
+import 'dart:async';
 import 'dart:typed_data';
 import 'package:libserialport/libserialport.dart';
 
 class SerialPortManager {
   late final SerialPort _serialPort;
+  StreamController<Uint8List>? _controller;
   bool _isOpen = false;
+  bool _isReading = false;
 
-  void open(String portName) {
-    if (_isOpen) return;
+  /// Abre el puerto y devuelve el stream de datos
+  Stream<Uint8List> open(String portName) {
+    if (_isOpen) {
+      throw StateError('El puerto ya está abierto');
+    }
 
     _serialPort = SerialPort(portName);
-    // print("Puertos disponibles: ${SerialPort.availablePorts}");
 
-    _serialPort.config.baudRate = 115200;
-    _serialPort.config.bits = 8;
-    _serialPort.config.parity = SerialPortParity.none;
-    _serialPort.config.stopBits = 1;
+    _serialPort.config
+      ..baudRate = 115200
+      ..bits = 8
+      ..parity = SerialPortParity.none
+      ..stopBits = 1;
 
     if (!_serialPort.openReadWrite()) {
-      print("Error al abrir el puerto serial: $portName.");
-      return;
+      throw Exception('Error al abrir el puerto serial: $portName');
     }
 
+    _controller = StreamController<Uint8List>.broadcast();
     _isOpen = true;
+    _isReading = true;
+
+    _startReadingLoop();
+
+    return _controller!.stream;
   }
 
-  void sendData(Uint8List dataToSend) {
-    if (!_isOpen) throw Exception("El puerto no está abierto");
-    _serialPort.write(dataToSend, timeout: 1000);
-  }
+  /// Loop infinito de lectura
+  void _startReadingLoop() async {
+    while (_isOpen && _isReading) {
+      try {
+        final data = _serialPort.read(1024, timeout: 100);
 
-  Uint8List readData() {
-    if (!_isOpen) throw Exception("El puerto no está abierto");
+        if (data.isNotEmpty) {
+          _controller?.add(data);
+        }
+      } catch (e, st) {
+        _controller?.addError(e, st);
+        break;
+      }
 
-    Uint8List receivedData = Uint8List(0);
-    while (receivedData.isEmpty) {
-      receivedData = _serialPort.read(1024, timeout: 500);
+      // evita consumir CPU cuando no hay datos
+      await Future.delayed(const Duration(milliseconds: 5));
     }
-
-    return receivedData;
   }
 
+  /// Enviar datos
+  void sendData(Uint8List dataToSend) {
+    if (!_isOpen) {
+      throw StateError('El puerto no está abierto');
+    }
+    print("Enviando datos..");
+    _serialPort.write(dataToSend, timeout: 1000);
+    print("datos enviados!");
+  }
+
+  /// Cerrar puerto y stream
   void close() {
     if (!_isOpen) return;
-    _serialPort.close();
+
+    _isReading = false;
     _isOpen = false;
+
+    _serialPort.close();
+    _controller?.close();
+    _controller = null;
   }
 }

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package metaApp;
+
+enum FallbackResult {
+    fallbackSuccess  = 0;
+    fallbackTimeout  = 1;
+}
+
+message StartFallbackRequest {
+    int32 timeout = 1; // Timeout para lectura de tarjeta durante fallback.
+}
+
+message StartFallbackResponse {
+    FallbackResult fallbackResult = 1;
+}

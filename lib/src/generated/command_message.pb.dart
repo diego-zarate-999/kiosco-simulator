@@ -15,10 +15,12 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'card_detection.pb.dart' as $6;
+import 'cvv_entry.pb.dart' as $8;
 import 'device.pb.dart' as $2;
 import 'emv_module.pb.dart' as $5;
 import 'emv_transaction.pb.dart' as $7;
-import 'error.pb.dart' as $8;
+import 'error.pb.dart' as $10;
+import 'fallback.pb.dart' as $9;
 import 'keys.pb.dart' as $4;
 import 'ping.pb.dart' as $0;
 import 'qr.pb.dart' as $1;
@@ -44,10 +46,12 @@ enum CommandMessage_Type {
   loadCapksRequest,
   loadEmvAppsRequest,
   startCardReaderRequest,
-  startEmvProcessRequest,
+  startPaymentProcessRequest,
   startPinEntryRequest,
   getEmvTagsRequest,
-  completeEmvProcessRequest,
+  completePaymentRequest,
+  startCVVEntryRequest,
+  startFallbackRequest,
   cancelEmvProcessRequest,
   notSet
 }
@@ -71,10 +75,12 @@ class CommandMessage extends $pb.GeneratedMessage {
     $5.LoadCapksRequest? loadCapksRequest,
     $5.LoadEmvAppsRequest? loadEmvAppsRequest,
     $6.StartCardReaderRequest? startCardReaderRequest,
-    $7.StartEmvProcessRequest? startEmvProcessRequest,
+    $7.StartPaymentProcessRequest? startPaymentProcessRequest,
     $7.StartPinEntryRequest? startPinEntryRequest,
     $7.GetEmvTagsRequest? getEmvTagsRequest,
-    $7.CompleteEmvProcessRequest? completeEmvProcessRequest,
+    $7.CompletePaymentRequest? completePaymentRequest,
+    $8.StartCVVEntryRequest? startCVVEntryRequest,
+    $9.StartFallbackRequest? startFallbackRequest,
     $7.CancelEmvProcessRequest? cancelEmvProcessRequest,
   }) {
     final result = create();
@@ -105,13 +111,17 @@ class CommandMessage extends $pb.GeneratedMessage {
       result.loadEmvAppsRequest = loadEmvAppsRequest;
     if (startCardReaderRequest != null)
       result.startCardReaderRequest = startCardReaderRequest;
-    if (startEmvProcessRequest != null)
-      result.startEmvProcessRequest = startEmvProcessRequest;
+    if (startPaymentProcessRequest != null)
+      result.startPaymentProcessRequest = startPaymentProcessRequest;
     if (startPinEntryRequest != null)
       result.startPinEntryRequest = startPinEntryRequest;
     if (getEmvTagsRequest != null) result.getEmvTagsRequest = getEmvTagsRequest;
-    if (completeEmvProcessRequest != null)
-      result.completeEmvProcessRequest = completeEmvProcessRequest;
+    if (completePaymentRequest != null)
+      result.completePaymentRequest = completePaymentRequest;
+    if (startCVVEntryRequest != null)
+      result.startCVVEntryRequest = startCVVEntryRequest;
+    if (startFallbackRequest != null)
+      result.startFallbackRequest = startFallbackRequest;
     if (cancelEmvProcessRequest != null)
       result.cancelEmvProcessRequest = cancelEmvProcessRequest;
     return result;
@@ -145,11 +155,13 @@ class CommandMessage extends $pb.GeneratedMessage {
     15: CommandMessage_Type.loadCapksRequest,
     16: CommandMessage_Type.loadEmvAppsRequest,
     17: CommandMessage_Type.startCardReaderRequest,
-    18: CommandMessage_Type.startEmvProcessRequest,
+    18: CommandMessage_Type.startPaymentProcessRequest,
     19: CommandMessage_Type.startPinEntryRequest,
     20: CommandMessage_Type.getEmvTagsRequest,
-    21: CommandMessage_Type.completeEmvProcessRequest,
-    22: CommandMessage_Type.cancelEmvProcessRequest,
+    21: CommandMessage_Type.completePaymentRequest,
+    22: CommandMessage_Type.startCVVEntryRequest,
+    23: CommandMessage_Type.startFallbackRequest,
+    24: CommandMessage_Type.cancelEmvProcessRequest,
     0: CommandMessage_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -178,7 +190,9 @@ class CommandMessage extends $pb.GeneratedMessage {
       19,
       20,
       21,
-      22
+      22,
+      23,
+      24
     ])
     ..aOM<$0.PingRequest>(1, _omitFieldNames ? '' : 'pingRequest',
         protoName: 'pingRequest', subBuilder: $0.PingRequest.create)
@@ -234,22 +248,30 @@ class CommandMessage extends $pb.GeneratedMessage {
         17, _omitFieldNames ? '' : 'startCardReaderRequest',
         protoName: 'startCardReaderRequest',
         subBuilder: $6.StartCardReaderRequest.create)
-    ..aOM<$7.StartEmvProcessRequest>(
-        18, _omitFieldNames ? '' : 'startEmvProcessRequest',
-        protoName: 'startEmvProcessRequest',
-        subBuilder: $7.StartEmvProcessRequest.create)
+    ..aOM<$7.StartPaymentProcessRequest>(
+        18, _omitFieldNames ? '' : 'startPaymentProcessRequest',
+        protoName: 'startPaymentProcessRequest',
+        subBuilder: $7.StartPaymentProcessRequest.create)
     ..aOM<$7.StartPinEntryRequest>(
         19, _omitFieldNames ? '' : 'startPinEntryRequest',
         protoName: 'startPinEntryRequest',
         subBuilder: $7.StartPinEntryRequest.create)
     ..aOM<$7.GetEmvTagsRequest>(20, _omitFieldNames ? '' : 'getEmvTagsRequest',
         protoName: 'getEmvTagsRequest', subBuilder: $7.GetEmvTagsRequest.create)
-    ..aOM<$7.CompleteEmvProcessRequest>(
-        21, _omitFieldNames ? '' : 'completeEmvProcessRequest',
-        protoName: 'completeEmvProcessRequest',
-        subBuilder: $7.CompleteEmvProcessRequest.create)
+    ..aOM<$7.CompletePaymentRequest>(
+        21, _omitFieldNames ? '' : 'completePaymentRequest',
+        protoName: 'completePaymentRequest',
+        subBuilder: $7.CompletePaymentRequest.create)
+    ..aOM<$8.StartCVVEntryRequest>(
+        22, _omitFieldNames ? '' : 'startCVVEntryRequest',
+        protoName: 'startCVVEntryRequest',
+        subBuilder: $8.StartCVVEntryRequest.create)
+    ..aOM<$9.StartFallbackRequest>(
+        23, _omitFieldNames ? '' : 'startFallbackRequest',
+        protoName: 'startFallbackRequest',
+        subBuilder: $9.StartFallbackRequest.create)
     ..aOM<$7.CancelEmvProcessRequest>(
-        22, _omitFieldNames ? '' : 'cancelEmvProcessRequest',
+        24, _omitFieldNames ? '' : 'cancelEmvProcessRequest',
         protoName: 'cancelEmvProcessRequest',
         subBuilder: $7.CancelEmvProcessRequest.create)
     ..hasRequiredFields = false;
@@ -478,16 +500,17 @@ class CommandMessage extends $pb.GeneratedMessage {
   $6.StartCardReaderRequest ensureStartCardReaderRequest() => $_ensure(16);
 
   @$pb.TagNumber(18)
-  $7.StartEmvProcessRequest get startEmvProcessRequest => $_getN(17);
+  $7.StartPaymentProcessRequest get startPaymentProcessRequest => $_getN(17);
   @$pb.TagNumber(18)
-  set startEmvProcessRequest($7.StartEmvProcessRequest value) =>
+  set startPaymentProcessRequest($7.StartPaymentProcessRequest value) =>
       $_setField(18, value);
   @$pb.TagNumber(18)
-  $core.bool hasStartEmvProcessRequest() => $_has(17);
+  $core.bool hasStartPaymentProcessRequest() => $_has(17);
   @$pb.TagNumber(18)
-  void clearStartEmvProcessRequest() => $_clearField(18);
+  void clearStartPaymentProcessRequest() => $_clearField(18);
   @$pb.TagNumber(18)
-  $7.StartEmvProcessRequest ensureStartEmvProcessRequest() => $_ensure(17);
+  $7.StartPaymentProcessRequest ensureStartPaymentProcessRequest() =>
+      $_ensure(17);
 
   @$pb.TagNumber(19)
   $7.StartPinEntryRequest get startPinEntryRequest => $_getN(18);
@@ -513,29 +536,52 @@ class CommandMessage extends $pb.GeneratedMessage {
   $7.GetEmvTagsRequest ensureGetEmvTagsRequest() => $_ensure(19);
 
   @$pb.TagNumber(21)
-  $7.CompleteEmvProcessRequest get completeEmvProcessRequest => $_getN(20);
+  $7.CompletePaymentRequest get completePaymentRequest => $_getN(20);
   @$pb.TagNumber(21)
-  set completeEmvProcessRequest($7.CompleteEmvProcessRequest value) =>
+  set completePaymentRequest($7.CompletePaymentRequest value) =>
       $_setField(21, value);
   @$pb.TagNumber(21)
-  $core.bool hasCompleteEmvProcessRequest() => $_has(20);
+  $core.bool hasCompletePaymentRequest() => $_has(20);
   @$pb.TagNumber(21)
-  void clearCompleteEmvProcessRequest() => $_clearField(21);
+  void clearCompletePaymentRequest() => $_clearField(21);
   @$pb.TagNumber(21)
-  $7.CompleteEmvProcessRequest ensureCompleteEmvProcessRequest() =>
-      $_ensure(20);
+  $7.CompletePaymentRequest ensureCompletePaymentRequest() => $_ensure(20);
 
   @$pb.TagNumber(22)
-  $7.CancelEmvProcessRequest get cancelEmvProcessRequest => $_getN(21);
+  $8.StartCVVEntryRequest get startCVVEntryRequest => $_getN(21);
   @$pb.TagNumber(22)
-  set cancelEmvProcessRequest($7.CancelEmvProcessRequest value) =>
+  set startCVVEntryRequest($8.StartCVVEntryRequest value) =>
       $_setField(22, value);
   @$pb.TagNumber(22)
-  $core.bool hasCancelEmvProcessRequest() => $_has(21);
+  $core.bool hasStartCVVEntryRequest() => $_has(21);
   @$pb.TagNumber(22)
-  void clearCancelEmvProcessRequest() => $_clearField(22);
+  void clearStartCVVEntryRequest() => $_clearField(22);
   @$pb.TagNumber(22)
-  $7.CancelEmvProcessRequest ensureCancelEmvProcessRequest() => $_ensure(21);
+  $8.StartCVVEntryRequest ensureStartCVVEntryRequest() => $_ensure(21);
+
+  @$pb.TagNumber(23)
+  $9.StartFallbackRequest get startFallbackRequest => $_getN(22);
+  @$pb.TagNumber(23)
+  set startFallbackRequest($9.StartFallbackRequest value) =>
+      $_setField(23, value);
+  @$pb.TagNumber(23)
+  $core.bool hasStartFallbackRequest() => $_has(22);
+  @$pb.TagNumber(23)
+  void clearStartFallbackRequest() => $_clearField(23);
+  @$pb.TagNumber(23)
+  $9.StartFallbackRequest ensureStartFallbackRequest() => $_ensure(22);
+
+  @$pb.TagNumber(24)
+  $7.CancelEmvProcessRequest get cancelEmvProcessRequest => $_getN(23);
+  @$pb.TagNumber(24)
+  set cancelEmvProcessRequest($7.CancelEmvProcessRequest value) =>
+      $_setField(24, value);
+  @$pb.TagNumber(24)
+  $core.bool hasCancelEmvProcessRequest() => $_has(23);
+  @$pb.TagNumber(24)
+  void clearCancelEmvProcessRequest() => $_clearField(24);
+  @$pb.TagNumber(24)
+  $7.CancelEmvProcessRequest ensureCancelEmvProcessRequest() => $_ensure(23);
 }
 
 enum CommandResponse_Type {
@@ -558,6 +604,8 @@ enum CommandResponse_Type {
   detectedCardResponse,
   getEmvTagsResponse,
   emvEventNotificationResponse,
+  finishedCVVEntryResponse,
+  startFallbackResponse,
   error,
   notSet
 }
@@ -583,7 +631,9 @@ class CommandResponse extends $pb.GeneratedMessage {
     $6.DetectedCardResponse? detectedCardResponse,
     $7.GetEmvTagsResponse? getEmvTagsResponse,
     $7.EmvEventNotificationResponse? emvEventNotificationResponse,
-    $8.ErrorResponse? error,
+    $8.FinishedCVVEntryResponse? finishedCVVEntryResponse,
+    $9.StartFallbackResponse? startFallbackResponse,
+    $10.ErrorResponse? error,
   }) {
     final result = create();
     if (pingResponse != null) result.pingResponse = pingResponse;
@@ -618,6 +668,10 @@ class CommandResponse extends $pb.GeneratedMessage {
       result.getEmvTagsResponse = getEmvTagsResponse;
     if (emvEventNotificationResponse != null)
       result.emvEventNotificationResponse = emvEventNotificationResponse;
+    if (finishedCVVEntryResponse != null)
+      result.finishedCVVEntryResponse = finishedCVVEntryResponse;
+    if (startFallbackResponse != null)
+      result.startFallbackResponse = startFallbackResponse;
     if (error != null) result.error = error;
     return result;
   }
@@ -652,15 +706,39 @@ class CommandResponse extends $pb.GeneratedMessage {
     17: CommandResponse_Type.detectedCardResponse,
     18: CommandResponse_Type.getEmvTagsResponse,
     19: CommandResponse_Type.emvEventNotificationResponse,
-    20: CommandResponse_Type.error,
+    20: CommandResponse_Type.finishedCVVEntryResponse,
+    21: CommandResponse_Type.startFallbackResponse,
+    22: CommandResponse_Type.error,
     0: CommandResponse_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'CommandResponse',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..oo(0,
-        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
+    ..oo(0, [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ])
     ..aOM<$0.PingResponse>(1, _omitFieldNames ? '' : 'pingResponse',
         protoName: 'pingResponse', subBuilder: $0.PingResponse.create)
     ..aOM<$1.DisplayQRResponse>(2, _omitFieldNames ? '' : 'displayQRResponse',
@@ -724,8 +802,16 @@ class CommandResponse extends $pb.GeneratedMessage {
         19, _omitFieldNames ? '' : 'emvEventNotificationResponse',
         protoName: 'emvEventNotificationResponse',
         subBuilder: $7.EmvEventNotificationResponse.create)
-    ..aOM<$8.ErrorResponse>(20, _omitFieldNames ? '' : 'error',
-        subBuilder: $8.ErrorResponse.create)
+    ..aOM<$8.FinishedCVVEntryResponse>(
+        20, _omitFieldNames ? '' : 'finishedCVVEntryResponse',
+        protoName: 'finishedCVVEntryResponse',
+        subBuilder: $8.FinishedCVVEntryResponse.create)
+    ..aOM<$9.StartFallbackResponse>(
+        21, _omitFieldNames ? '' : 'startFallbackResponse',
+        protoName: 'startFallbackResponse',
+        subBuilder: $9.StartFallbackResponse.create)
+    ..aOM<$10.ErrorResponse>(22, _omitFieldNames ? '' : 'error',
+        subBuilder: $10.ErrorResponse.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -979,15 +1065,95 @@ class CommandResponse extends $pb.GeneratedMessage {
       $_ensure(18);
 
   @$pb.TagNumber(20)
-  $8.ErrorResponse get error => $_getN(19);
+  $8.FinishedCVVEntryResponse get finishedCVVEntryResponse => $_getN(19);
   @$pb.TagNumber(20)
-  set error($8.ErrorResponse value) => $_setField(20, value);
+  set finishedCVVEntryResponse($8.FinishedCVVEntryResponse value) =>
+      $_setField(20, value);
   @$pb.TagNumber(20)
-  $core.bool hasError() => $_has(19);
+  $core.bool hasFinishedCVVEntryResponse() => $_has(19);
   @$pb.TagNumber(20)
-  void clearError() => $_clearField(20);
+  void clearFinishedCVVEntryResponse() => $_clearField(20);
   @$pb.TagNumber(20)
-  $8.ErrorResponse ensureError() => $_ensure(19);
+  $8.FinishedCVVEntryResponse ensureFinishedCVVEntryResponse() => $_ensure(19);
+
+  @$pb.TagNumber(21)
+  $9.StartFallbackResponse get startFallbackResponse => $_getN(20);
+  @$pb.TagNumber(21)
+  set startFallbackResponse($9.StartFallbackResponse value) =>
+      $_setField(21, value);
+  @$pb.TagNumber(21)
+  $core.bool hasStartFallbackResponse() => $_has(20);
+  @$pb.TagNumber(21)
+  void clearStartFallbackResponse() => $_clearField(21);
+  @$pb.TagNumber(21)
+  $9.StartFallbackResponse ensureStartFallbackResponse() => $_ensure(20);
+
+  @$pb.TagNumber(22)
+  $10.ErrorResponse get error => $_getN(21);
+  @$pb.TagNumber(22)
+  set error($10.ErrorResponse value) => $_setField(22, value);
+  @$pb.TagNumber(22)
+  $core.bool hasError() => $_has(21);
+  @$pb.TagNumber(22)
+  void clearError() => $_clearField(22);
+  @$pb.TagNumber(22)
+  $10.ErrorResponse ensureError() => $_ensure(21);
+}
+
+class CommandConfirmation extends $pb.GeneratedMessage {
+  factory CommandConfirmation({
+    $core.bool? sucess,
+  }) {
+    final result = create();
+    if (sucess != null) result.sucess = sucess;
+    return result;
+  }
+
+  CommandConfirmation._();
+
+  factory CommandConfirmation.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory CommandConfirmation.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CommandConfirmation',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'sucess')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  CommandConfirmation clone() => CommandConfirmation()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  CommandConfirmation copyWith(void Function(CommandConfirmation) updates) =>
+      super.copyWith((message) => updates(message as CommandConfirmation))
+          as CommandConfirmation;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CommandConfirmation create() => CommandConfirmation._();
+  @$core.override
+  CommandConfirmation createEmptyInstance() => create();
+  static $pb.PbList<CommandConfirmation> createRepeated() =>
+      $pb.PbList<CommandConfirmation>();
+  @$core.pragma('dart2js:noInline')
+  static CommandConfirmation getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<CommandConfirmation>(create);
+  static CommandConfirmation? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.bool get sucess => $_getBF(0);
+  @$pb.TagNumber(1)
+  set sucess($core.bool value) => $_setBool(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasSucess() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSucess() => $_clearField(1);
 }
 
 const $core.bool _omitFieldNames =

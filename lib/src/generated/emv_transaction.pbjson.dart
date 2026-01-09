@@ -81,9 +81,9 @@ final $typed_data.Uint8List emvTagEntryDescriptor = $convert.base64Decode(
     'CgtFbXZUYWdFbnRyeRIUCgV0YWdJZBgBIAEoCVIFdGFnSWQSGgoIdGFnVmFsdWUYAiADKAVSCH'
     'RhZ1ZhbHVl');
 
-@$core.Deprecated('Use emvStartTransactionParamsDescriptor instead')
-const EmvStartTransactionParams$json = {
-  '1': 'EmvStartTransactionParams',
+@$core.Deprecated('Use paymentParametersDescriptor instead')
+const PaymentParameters$json = {
+  '1': 'PaymentParameters',
   '2': [
     {'1': 'amount', '3': 1, '4': 1, '5': 1, '10': 'amount'},
     {
@@ -120,17 +120,17 @@ const EmvStartTransactionParams$json = {
   ],
 };
 
-/// Descriptor for `EmvStartTransactionParams`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List emvStartTransactionParamsDescriptor = $convert.base64Decode(
-    'ChlFbXZTdGFydFRyYW5zYWN0aW9uUGFyYW1zEhYKBmFtb3VudBgBIAEoAVIGYW1vdW50EiUKC2'
-    'Ftb3VudE90aGVyGAIgASgBSABSC2Ftb3VudE90aGVyiAEBEigKD3NlcXVlbmNlQ291bnRlchgD'
-    'IAEoBVIPc2VxdWVuY2VDb3VudGVyEjAKCXRyYW5zVHlwZRgEIAEoDjISLm1ldGFBcHAuVHJhbn'
-    'NUeXBlUgl0cmFuc1R5cGUSJQoLZm9yY2VPbmxpbmUYBSABKAhIAVILZm9yY2VPbmxpbmWIAQFC'
-    'DgoMX2Ftb3VudE90aGVyQg4KDF9mb3JjZU9ubGluZQ==');
+/// Descriptor for `PaymentParameters`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List paymentParametersDescriptor = $convert.base64Decode(
+    'ChFQYXltZW50UGFyYW1ldGVycxIWCgZhbW91bnQYASABKAFSBmFtb3VudBIlCgthbW91bnRPdG'
+    'hlchgCIAEoAUgAUgthbW91bnRPdGhlcogBARIoCg9zZXF1ZW5jZUNvdW50ZXIYAyABKAVSD3Nl'
+    'cXVlbmNlQ291bnRlchIwCgl0cmFuc1R5cGUYBCABKA4yEi5tZXRhQXBwLlRyYW5zVHlwZVIJdH'
+    'JhbnNUeXBlEiUKC2ZvcmNlT25saW5lGAUgASgISAFSC2ZvcmNlT25saW5liAEBQg4KDF9hbW91'
+    'bnRPdGhlckIOCgxfZm9yY2VPbmxpbmU=');
 
-@$core.Deprecated('Use startEmvProcessRequestDescriptor instead')
-const StartEmvProcessRequest$json = {
-  '1': 'StartEmvProcessRequest',
+@$core.Deprecated('Use startPaymentProcessRequestDescriptor instead')
+const StartPaymentProcessRequest$json = {
+  '1': 'StartPaymentProcessRequest',
   '2': [
     {
       '1': 'cardEntryModes',
@@ -150,26 +150,37 @@ const StartEmvProcessRequest$json = {
       '17': true
     },
     {
-      '1': 'transactionParams',
+      '1': 'fallbackTimeout',
       '3': 3,
       '4': 1,
+      '5': 5,
+      '9': 1,
+      '10': 'fallbackTimeout',
+      '17': true
+    },
+    {
+      '1': 'transactionParams',
+      '3': 4,
+      '4': 1,
       '5': 11,
-      '6': '.metaApp.EmvStartTransactionParams',
+      '6': '.metaApp.PaymentParameters',
       '10': 'transactionParams'
     },
   ],
   '8': [
     {'1': '_cardDetectionTimeout'},
+    {'1': '_fallbackTimeout'},
   ],
 };
 
-/// Descriptor for `StartEmvProcessRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List startEmvProcessRequestDescriptor = $convert.base64Decode(
-    'ChZTdGFydEVtdlByb2Nlc3NSZXF1ZXN0Ej4KDmNhcmRFbnRyeU1vZGVzGAEgAygOMhYubWV0YU'
-    'FwcC5DYXJkRW50cnlNb2RlUg5jYXJkRW50cnlNb2RlcxI3ChRjYXJkRGV0ZWN0aW9uVGltZW91'
-    'dBgCIAEoBUgAUhRjYXJkRGV0ZWN0aW9uVGltZW91dIgBARJQChF0cmFuc2FjdGlvblBhcmFtcx'
-    'gDIAEoCzIiLm1ldGFBcHAuRW12U3RhcnRUcmFuc2FjdGlvblBhcmFtc1IRdHJhbnNhY3Rpb25Q'
-    'YXJhbXNCFwoVX2NhcmREZXRlY3Rpb25UaW1lb3V0');
+/// Descriptor for `StartPaymentProcessRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List startPaymentProcessRequestDescriptor = $convert.base64Decode(
+    'ChpTdGFydFBheW1lbnRQcm9jZXNzUmVxdWVzdBI+Cg5jYXJkRW50cnlNb2RlcxgBIAMoDjIWLm'
+    '1ldGFBcHAuQ2FyZEVudHJ5TW9kZVIOY2FyZEVudHJ5TW9kZXMSNwoUY2FyZERldGVjdGlvblRp'
+    'bWVvdXQYAiABKAVIAFIUY2FyZERldGVjdGlvblRpbWVvdXSIAQESLQoPZmFsbGJhY2tUaW1lb3'
+    'V0GAMgASgFSAFSD2ZhbGxiYWNrVGltZW91dIgBARJIChF0cmFuc2FjdGlvblBhcmFtcxgEIAEo'
+    'CzIaLm1ldGFBcHAuUGF5bWVudFBhcmFtZXRlcnNSEXRyYW5zYWN0aW9uUGFyYW1zQhcKFV9jYX'
+    'JkRGV0ZWN0aW9uVGltZW91dEISChBfZmFsbGJhY2tUaW1lb3V0');
 
 @$core.Deprecated('Use startPinEntryRequestDescriptor instead')
 const StartPinEntryRequest$json = {
@@ -196,9 +207,9 @@ final $typed_data.Uint8List startPinEntryRequestDescriptor = $convert.base64Deco
     'ZXJNb2RlUgpjaXBoZXJNb2RlEiQKDWFsbG93ZWRMZW5ndGgYBCADKAVSDWFsbG93ZWRMZW5ndG'
     'g=');
 
-@$core.Deprecated('Use completeEmvProcessRequestDescriptor instead')
-const CompleteEmvProcessRequest$json = {
-  '1': 'CompleteEmvProcessRequest',
+@$core.Deprecated('Use completePaymentRequestDescriptor instead')
+const CompletePaymentRequest$json = {
+  '1': 'CompletePaymentRequest',
   '2': [
     {'1': 'successful', '3': 1, '4': 1, '5': 8, '10': 'successful'},
     {
@@ -233,15 +244,15 @@ const CompleteEmvProcessRequest$json = {
   ],
 };
 
-/// Descriptor for `CompleteEmvProcessRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List completeEmvProcessRequestDescriptor = $convert.base64Decode(
-    'ChlDb21wbGV0ZUVtdlByb2Nlc3NSZXF1ZXN0Eh4KCnN1Y2Nlc3NmdWwYASABKAhSCnN1Y2Nlc3'
-    'NmdWwSPAoZYXV0aG9yaXNhdGlvblJlc3BvbnNlQ29kZRgCIAEoCVIZYXV0aG9yaXNhdGlvblJl'
-    'c3BvbnNlQ29kZRImCg5kaXNwbGF5TWVzc2FnZRgDIAEoCVIOZGlzcGxheU1lc3NhZ2USMQoRYX'
-    'V0aG9yaXNhdGlvbkNvZGUYBCABKAlIAFIRYXV0aG9yaXNhdGlvbkNvZGWIAQESOgoYaXNzdWVy'
-    'QXV0aGVudGljYXRpb25EYXRhGAUgAygFUhhpc3N1ZXJBdXRoZW50aWNhdGlvbkRhdGESJAoNaX'
-    'NzdWVyU2NyaXB0MRgGIAMoBVINaXNzdWVyU2NyaXB0MRIkCg1pc3N1ZXJTY3JpcHQyGAcgAygF'
-    'Ug1pc3N1ZXJTY3JpcHQyQhQKEl9hdXRob3Jpc2F0aW9uQ29kZQ==');
+/// Descriptor for `CompletePaymentRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List completePaymentRequestDescriptor = $convert.base64Decode(
+    'ChZDb21wbGV0ZVBheW1lbnRSZXF1ZXN0Eh4KCnN1Y2Nlc3NmdWwYASABKAhSCnN1Y2Nlc3NmdW'
+    'wSPAoZYXV0aG9yaXNhdGlvblJlc3BvbnNlQ29kZRgCIAEoCVIZYXV0aG9yaXNhdGlvblJlc3Bv'
+    'bnNlQ29kZRImCg5kaXNwbGF5TWVzc2FnZRgDIAEoCVIOZGlzcGxheU1lc3NhZ2USMQoRYXV0aG'
+    '9yaXNhdGlvbkNvZGUYBCABKAlIAFIRYXV0aG9yaXNhdGlvbkNvZGWIAQESOgoYaXNzdWVyQXV0'
+    'aGVudGljYXRpb25EYXRhGAUgAygFUhhpc3N1ZXJBdXRoZW50aWNhdGlvbkRhdGESJAoNaXNzdW'
+    'VyU2NyaXB0MRgGIAMoBVINaXNzdWVyU2NyaXB0MRIkCg1pc3N1ZXJTY3JpcHQyGAcgAygFUg1p'
+    'c3N1ZXJTY3JpcHQyQhQKEl9hdXRob3Jpc2F0aW9uQ29kZQ==');
 
 @$core.Deprecated('Use cancelEmvProcessRequestDescriptor instead')
 const CancelEmvProcessRequest$json = {

@@ -3,5 +3,6 @@ syntax = "proto3";
 package metaApp;
 
 message ErrorResponse {
-    string message = 1;
+    string errorCode        = 1;
+    optional string message = 2;
 }

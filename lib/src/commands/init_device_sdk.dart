@@ -1,5 +1,4 @@
 import 'package:kiosco_simulator/src/commands/get_device_information.dart';
-import 'package:kiosco_simulator/src/commands/set_datetime_command.dart';
 import 'package:kiosco_simulator/src/communication_manager.dart';
 import 'package:kiosco_simulator/src/generated/command_message.pb.dart';
 import 'package:kiosco_simulator/src/generated/sdk.pb.dart';
@@ -9,8 +8,6 @@ Future<void> initDeviceSdk() async {
   final communicationManager = CommunicationManager.instance;
 
   try {
-    await setDateTime();
-
     print("Obteniendo datos del dispositivo...");
     final deviceInfo = await getDeviceInformation();
 
@@ -23,6 +20,7 @@ Future<void> initDeviceSdk() async {
       brand: deviceInfo.brand,
       serialNumber: deviceInfo.serialNumber,
     );
+
     // final authToken = "blabla";
 
     print("✓ Token obtenido.");

@@ -8,19 +8,20 @@ Future<void> runSuccessfulTransaction() async {
   final communicationManager = CommunicationManager.instance;
 
   final request = CommandMessage(
-    startEmvProcessRequest: StartEmvProcessRequest(
+    startPaymentProcessRequest: StartPaymentProcessRequest(
       cardEntryModes: [
         CardEntryMode.chip,
         CardEntryMode.contactless,
         CardEntryMode.magneticStripe,
       ],
       cardDetectionTimeout: 20,
-      transactionParams: EmvStartTransactionParams(
+      transactionParams: PaymentParameters(
         amount: 25.50,
         forceOnline: true,
         sequenceCounter: 1,
         transType: TransType.sale,
       ),
+      fallbackTimeout: 20,
     ),
   );
 
@@ -34,12 +35,12 @@ Future<void> runSuccessfulTransaction() async {
 
   print("Tarjeta detectada: ${response.detectedCardResponse.cardEntryMode}");
 
-  response = await communicationManager.waitForReponse();
+  response = await communicationManager.waitForResponse();
   var emvResponse = response.emvEventNotificationResponse;
   do {
     if (emvResponse.hasEmvCandidateListEventResponse()) {
       print("Usuario esta seleccionando app candidate...");
-      final emvSelectedAppEvent = await communicationManager.waitForReponse();
+      final emvSelectedAppEvent = await communicationManager.waitForResponse();
       final emvEventResponse = emvSelectedAppEvent
           .emvEventNotificationResponse
           .emvSelectedAppEventResponse;
@@ -48,7 +49,7 @@ Future<void> runSuccessfulTransaction() async {
       print("\t AID = ${emvEventResponse.aid}");
       print("\t appLabel = ${emvEventResponse.appLabel}");
 
-      emvResponse = (await communicationManager.waitForReponse())
+      emvResponse = (await communicationManager.waitForResponse())
           .emvEventNotificationResponse;
     } else if (emvResponse.hasEmvSelectedAppEventResponse()) {
       final emvEventResponse = emvResponse.emvSelectedAppEventResponse;
@@ -58,7 +59,7 @@ Future<void> runSuccessfulTransaction() async {
       print("\t AID = ${emvEventResponse.aid}");
       print("\t appLabel = ${emvEventResponse.appLabel}");
 
-      emvResponse = (await communicationManager.waitForReponse())
+      emvResponse = (await communicationManager.waitForResponse())
           .emvEventNotificationResponse;
     } else if (emvResponse.hasEmvPinRequestedEventResponse()) {
       print("✓ PinPad pide solicitar PIN.");
@@ -80,7 +81,7 @@ Future<void> runSuccessfulTransaction() async {
                   .hasPinEntryStartedResponse()) {
         print("✓ Se inició la solicitud de PIN.");
 
-        final pinResultResponse = await communicationManager.waitForReponse();
+        final pinResultResponse = await communicationManager.waitForResponse();
 
         print("Response despues de PIN: ${pinResultResponse.toString()}");
 
@@ -126,7 +127,7 @@ Future<void> runSuccessfulTransaction() async {
       // Simular un response exitoso.
       final finishEmvResponse = await communicationManager.sendRequest(
         CommandMessage(
-          completeEmvProcessRequest: CompleteEmvProcessRequest(
+          completePaymentRequest: CompletePaymentRequest(
             successful: true,
             authorisationCode: "B12345",
             displayMessage: "Autorizada - 00",

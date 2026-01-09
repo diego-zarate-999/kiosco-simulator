@@ -36,7 +36,7 @@ message EmvTagEntry {
     repeated int32 tagValue = 2;
 }
 
-message EmvStartTransactionParams {
+message PaymentParameters {
     double amount               = 1;
     optional double amountOther = 2;
     int32 sequenceCounter       = 3;
@@ -44,10 +44,11 @@ message EmvStartTransactionParams {
     optional bool forceOnline   = 5;
 }
 
-message StartEmvProcessRequest {
+message StartPaymentProcessRequest {
     repeated CardEntryMode cardEntryModes       = 1;
     optional int32 cardDetectionTimeout         = 2;
-    EmvStartTransactionParams transactionParams = 3;
+    optional int32 fallbackTimeout              = 3;
+    PaymentParameters transactionParams         = 4;
 }
 
 message StartPinEntryRequest {
@@ -57,7 +58,7 @@ message StartPinEntryRequest {
     repeated int32 allowedLength = 4;
 }
 
-message CompleteEmvProcessRequest {
+message CompletePaymentRequest {
     bool successful                         = 1;
     string authorisationResponseCode        = 2;
     string displayMessage                   = 3;
@@ -118,13 +119,13 @@ message GetEmvTagsResponse {
 }
 
 message EmvFinishEventResponse {
-    bool isContactless                    = 1;
-    bool onlineRequested                  = 2;
-    bool pinRequested                     = 3;
-    EmvTxnResult txnResult                = 4;
-    optional EmvTxnKernelType kernelType  = 5;
-    repeated int32 scriptResults          = 6;
-    repeated EmvTagEntry secondGenTags    = 7;
+    bool isContactless                                 = 1;
+    bool onlineRequested                               = 2;
+    bool pinRequested                                  = 3;
+    EmvTxnResult txnResult                             = 4;
+    optional EmvTxnKernelType kernelType               = 5;
+    repeated int32 scriptResults                       = 6;
+    repeated EmvTagEntry secondGenTags                 = 7;
 }
 
 message EmvEventNotificationResponse {

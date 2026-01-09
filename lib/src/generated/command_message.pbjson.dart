@@ -172,13 +172,13 @@ const CommandMessage$json = {
       '10': 'startCardReaderRequest'
     },
     {
-      '1': 'startEmvProcessRequest',
+      '1': 'startPaymentProcessRequest',
       '3': 18,
       '4': 1,
       '5': 11,
-      '6': '.metaApp.StartEmvProcessRequest',
+      '6': '.metaApp.StartPaymentProcessRequest',
       '9': 0,
-      '10': 'startEmvProcessRequest'
+      '10': 'startPaymentProcessRequest'
     },
     {
       '1': 'startPinEntryRequest',
@@ -199,17 +199,35 @@ const CommandMessage$json = {
       '10': 'getEmvTagsRequest'
     },
     {
-      '1': 'completeEmvProcessRequest',
+      '1': 'completePaymentRequest',
       '3': 21,
       '4': 1,
       '5': 11,
-      '6': '.metaApp.CompleteEmvProcessRequest',
+      '6': '.metaApp.CompletePaymentRequest',
       '9': 0,
-      '10': 'completeEmvProcessRequest'
+      '10': 'completePaymentRequest'
+    },
+    {
+      '1': 'startCVVEntryRequest',
+      '3': 22,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.StartCVVEntryRequest',
+      '9': 0,
+      '10': 'startCVVEntryRequest'
+    },
+    {
+      '1': 'startFallbackRequest',
+      '3': 23,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.StartFallbackRequest',
+      '9': 0,
+      '10': 'startFallbackRequest'
     },
     {
       '1': 'cancelEmvProcessRequest',
-      '3': 22,
+      '3': 24,
       '4': 1,
       '5': 11,
       '6': '.metaApp.CancelEmvProcessRequest',
@@ -249,15 +267,18 @@ final $typed_data.Uint8List commandMessageDescriptor = $convert.base64Decode(
     'AFIQbG9hZENhcGtzUmVxdWVzdBJNChJsb2FkRW12QXBwc1JlcXVlc3QYECABKAsyGy5tZXRhQX'
     'BwLkxvYWRFbXZBcHBzUmVxdWVzdEgAUhJsb2FkRW12QXBwc1JlcXVlc3QSWQoWc3RhcnRDYXJk'
     'UmVhZGVyUmVxdWVzdBgRIAEoCzIfLm1ldGFBcHAuU3RhcnRDYXJkUmVhZGVyUmVxdWVzdEgAUh'
-    'ZzdGFydENhcmRSZWFkZXJSZXF1ZXN0ElkKFnN0YXJ0RW12UHJvY2Vzc1JlcXVlc3QYEiABKAsy'
-    'Hy5tZXRhQXBwLlN0YXJ0RW12UHJvY2Vzc1JlcXVlc3RIAFIWc3RhcnRFbXZQcm9jZXNzUmVxdW'
-    'VzdBJTChRzdGFydFBpbkVudHJ5UmVxdWVzdBgTIAEoCzIdLm1ldGFBcHAuU3RhcnRQaW5FbnRy'
-    'eVJlcXVlc3RIAFIUc3RhcnRQaW5FbnRyeVJlcXVlc3QSSgoRZ2V0RW12VGFnc1JlcXVlc3QYFC'
-    'ABKAsyGi5tZXRhQXBwLkdldEVtdlRhZ3NSZXF1ZXN0SABSEWdldEVtdlRhZ3NSZXF1ZXN0EmIK'
-    'GWNvbXBsZXRlRW12UHJvY2Vzc1JlcXVlc3QYFSABKAsyIi5tZXRhQXBwLkNvbXBsZXRlRW12UH'
-    'JvY2Vzc1JlcXVlc3RIAFIZY29tcGxldGVFbXZQcm9jZXNzUmVxdWVzdBJcChdjYW5jZWxFbXZQ'
-    'cm9jZXNzUmVxdWVzdBgWIAEoCzIgLm1ldGFBcHAuQ2FuY2VsRW12UHJvY2Vzc1JlcXVlc3RIAF'
-    'IXY2FuY2VsRW12UHJvY2Vzc1JlcXVlc3RCBgoEdHlwZQ==');
+    'ZzdGFydENhcmRSZWFkZXJSZXF1ZXN0EmUKGnN0YXJ0UGF5bWVudFByb2Nlc3NSZXF1ZXN0GBIg'
+    'ASgLMiMubWV0YUFwcC5TdGFydFBheW1lbnRQcm9jZXNzUmVxdWVzdEgAUhpzdGFydFBheW1lbn'
+    'RQcm9jZXNzUmVxdWVzdBJTChRzdGFydFBpbkVudHJ5UmVxdWVzdBgTIAEoCzIdLm1ldGFBcHAu'
+    'U3RhcnRQaW5FbnRyeVJlcXVlc3RIAFIUc3RhcnRQaW5FbnRyeVJlcXVlc3QSSgoRZ2V0RW12VG'
+    'Fnc1JlcXVlc3QYFCABKAsyGi5tZXRhQXBwLkdldEVtdlRhZ3NSZXF1ZXN0SABSEWdldEVtdlRh'
+    'Z3NSZXF1ZXN0ElkKFmNvbXBsZXRlUGF5bWVudFJlcXVlc3QYFSABKAsyHy5tZXRhQXBwLkNvbX'
+    'BsZXRlUGF5bWVudFJlcXVlc3RIAFIWY29tcGxldGVQYXltZW50UmVxdWVzdBJTChRzdGFydENW'
+    'VkVudHJ5UmVxdWVzdBgWIAEoCzIdLm1ldGFBcHAuU3RhcnRDVlZFbnRyeVJlcXVlc3RIAFIUc3'
+    'RhcnRDVlZFbnRyeVJlcXVlc3QSUwoUc3RhcnRGYWxsYmFja1JlcXVlc3QYFyABKAsyHS5tZXRh'
+    'QXBwLlN0YXJ0RmFsbGJhY2tSZXF1ZXN0SABSFHN0YXJ0RmFsbGJhY2tSZXF1ZXN0ElwKF2Nhbm'
+    'NlbEVtdlByb2Nlc3NSZXF1ZXN0GBggASgLMiAubWV0YUFwcC5DYW5jZWxFbXZQcm9jZXNzUmVx'
+    'dWVzdEgAUhdjYW5jZWxFbXZQcm9jZXNzUmVxdWVzdEIGCgR0eXBl');
 
 @$core.Deprecated('Use commandResponseDescriptor instead')
 const CommandResponse$json = {
@@ -435,8 +456,26 @@ const CommandResponse$json = {
       '10': 'emvEventNotificationResponse'
     },
     {
-      '1': 'error',
+      '1': 'finishedCVVEntryResponse',
       '3': 20,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.FinishedCVVEntryResponse',
+      '9': 0,
+      '10': 'finishedCVVEntryResponse'
+    },
+    {
+      '1': 'startFallbackResponse',
+      '3': 21,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.StartFallbackResponse',
+      '9': 0,
+      '10': 'startFallbackResponse'
+    },
+    {
+      '1': 'error',
+      '3': 22,
       '4': 1,
       '5': 11,
       '6': '.metaApp.ErrorResponse',
@@ -480,5 +519,21 @@ final $typed_data.Uint8List commandResponseDescriptor = $convert.base64Decode(
     'cmRSZXNwb25zZRJNChJnZXRFbXZUYWdzUmVzcG9uc2UYEiABKAsyGy5tZXRhQXBwLkdldEVtdl'
     'RhZ3NSZXNwb25zZUgAUhJnZXRFbXZUYWdzUmVzcG9uc2USawocZW12RXZlbnROb3RpZmljYXRp'
     'b25SZXNwb25zZRgTIAEoCzIlLm1ldGFBcHAuRW12RXZlbnROb3RpZmljYXRpb25SZXNwb25zZU'
-    'gAUhxlbXZFdmVudE5vdGlmaWNhdGlvblJlc3BvbnNlEi4KBWVycm9yGBQgASgLMhYubWV0YUFw'
-    'cC5FcnJvclJlc3BvbnNlSABSBWVycm9yQgYKBHR5cGU=');
+    'gAUhxlbXZFdmVudE5vdGlmaWNhdGlvblJlc3BvbnNlEl8KGGZpbmlzaGVkQ1ZWRW50cnlSZXNw'
+    'b25zZRgUIAEoCzIhLm1ldGFBcHAuRmluaXNoZWRDVlZFbnRyeVJlc3BvbnNlSABSGGZpbmlzaG'
+    'VkQ1ZWRW50cnlSZXNwb25zZRJWChVzdGFydEZhbGxiYWNrUmVzcG9uc2UYFSABKAsyHi5tZXRh'
+    'QXBwLlN0YXJ0RmFsbGJhY2tSZXNwb25zZUgAUhVzdGFydEZhbGxiYWNrUmVzcG9uc2USLgoFZX'
+    'Jyb3IYFiABKAsyFi5tZXRhQXBwLkVycm9yUmVzcG9uc2VIAFIFZXJyb3JCBgoEdHlwZQ==');
+
+@$core.Deprecated('Use commandConfirmationDescriptor instead')
+const CommandConfirmation$json = {
+  '1': 'CommandConfirmation',
+  '2': [
+    {'1': 'sucess', '3': 1, '4': 1, '5': 8, '10': 'sucess'},
+  ],
+};
+
+/// Descriptor for `CommandConfirmation`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List commandConfirmationDescriptor =
+    $convert.base64Decode(
+        'ChNDb21tYW5kQ29uZmlybWF0aW9uEhYKBnN1Y2VzcxgBIAEoCFIGc3VjZXNz');
