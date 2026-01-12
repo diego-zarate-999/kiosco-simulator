@@ -150,17 +150,26 @@ const StartPaymentProcessRequest$json = {
       '17': true
     },
     {
-      '1': 'fallbackTimeout',
+      '1': 'isRetry',
       '3': 3,
       '4': 1,
-      '5': 5,
+      '5': 8,
       '9': 1,
-      '10': 'fallbackTimeout',
+      '10': 'isRetry',
+      '17': true
+    },
+    {
+      '1': 'isFallback',
+      '3': 4,
+      '4': 1,
+      '5': 8,
+      '9': 2,
+      '10': 'isFallback',
       '17': true
     },
     {
       '1': 'transactionParams',
-      '3': 4,
+      '3': 5,
       '4': 1,
       '5': 11,
       '6': '.metaApp.PaymentParameters',
@@ -169,7 +178,8 @@ const StartPaymentProcessRequest$json = {
   ],
   '8': [
     {'1': '_cardDetectionTimeout'},
-    {'1': '_fallbackTimeout'},
+    {'1': '_isRetry'},
+    {'1': '_isFallback'},
   ],
 };
 
@@ -177,10 +187,20 @@ const StartPaymentProcessRequest$json = {
 final $typed_data.Uint8List startPaymentProcessRequestDescriptor = $convert.base64Decode(
     'ChpTdGFydFBheW1lbnRQcm9jZXNzUmVxdWVzdBI+Cg5jYXJkRW50cnlNb2RlcxgBIAMoDjIWLm'
     '1ldGFBcHAuQ2FyZEVudHJ5TW9kZVIOY2FyZEVudHJ5TW9kZXMSNwoUY2FyZERldGVjdGlvblRp'
-    'bWVvdXQYAiABKAVIAFIUY2FyZERldGVjdGlvblRpbWVvdXSIAQESLQoPZmFsbGJhY2tUaW1lb3'
-    'V0GAMgASgFSAFSD2ZhbGxiYWNrVGltZW91dIgBARJIChF0cmFuc2FjdGlvblBhcmFtcxgEIAEo'
-    'CzIaLm1ldGFBcHAuUGF5bWVudFBhcmFtZXRlcnNSEXRyYW5zYWN0aW9uUGFyYW1zQhcKFV9jYX'
-    'JkRGV0ZWN0aW9uVGltZW91dEISChBfZmFsbGJhY2tUaW1lb3V0');
+    'bWVvdXQYAiABKAVIAFIUY2FyZERldGVjdGlvblRpbWVvdXSIAQESHQoHaXNSZXRyeRgDIAEoCE'
+    'gBUgdpc1JldHJ5iAEBEiMKCmlzRmFsbGJhY2sYBCABKAhIAlIKaXNGYWxsYmFja4gBARJIChF0'
+    'cmFuc2FjdGlvblBhcmFtcxgFIAEoCzIaLm1ldGFBcHAuUGF5bWVudFBhcmFtZXRlcnNSEXRyYW'
+    '5zYWN0aW9uUGFyYW1zQhcKFV9jYXJkRGV0ZWN0aW9uVGltZW91dEIKCghfaXNSZXRyeUINCgtf'
+    'aXNGYWxsYmFjaw==');
+
+@$core.Deprecated('Use retryTransactionResponseDescriptor instead')
+const RetryTransactionResponse$json = {
+  '1': 'RetryTransactionResponse',
+};
+
+/// Descriptor for `RetryTransactionResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List retryTransactionResponseDescriptor =
+    $convert.base64Decode('ChhSZXRyeVRyYW5zYWN0aW9uUmVzcG9uc2U=');
 
 @$core.Deprecated('Use startPinEntryRequestDescriptor instead')
 const StartPinEntryRequest$json = {
@@ -459,22 +479,22 @@ const EmvEventNotificationResponse$json = {
   '1': 'EmvEventNotificationResponse',
   '2': [
     {
-      '1': 'emvCandidateListEventResponse',
+      '1': 'retryTransactionResponse',
       '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.RetryTransactionResponse',
+      '9': 0,
+      '10': 'retryTransactionResponse'
+    },
+    {
+      '1': 'emvCandidateListEventResponse',
+      '3': 2,
       '4': 1,
       '5': 11,
       '6': '.metaApp.EmvCandidateListEventResponse',
       '9': 0,
       '10': 'emvCandidateListEventResponse'
-    },
-    {
-      '1': 'emvSelectedAppEventResponse',
-      '3': 2,
-      '4': 1,
-      '5': 11,
-      '6': '.metaApp.EmvSelectedAppEventResponse',
-      '9': 0,
-      '10': 'emvSelectedAppEventResponse'
     },
     {
       '1': 'emvCardDataResponse',
@@ -557,6 +577,15 @@ const EmvEventNotificationResponse$json = {
       '9': 0,
       '10': 'emvCancelTransactionResponse'
     },
+    {
+      '1': 'emvSelectedAppEventResponse',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.metaApp.EmvSelectedAppEventResponse',
+      '9': 0,
+      '10': 'emvSelectedAppEventResponse'
+    },
   ],
   '8': [
     {'1': 'type'},
@@ -565,24 +594,26 @@ const EmvEventNotificationResponse$json = {
 
 /// Descriptor for `EmvEventNotificationResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List emvEventNotificationResponseDescriptor = $convert.base64Decode(
-    'ChxFbXZFdmVudE5vdGlmaWNhdGlvblJlc3BvbnNlEm4KHWVtdkNhbmRpZGF0ZUxpc3RFdmVudF'
-    'Jlc3BvbnNlGAEgASgLMiYubWV0YUFwcC5FbXZDYW5kaWRhdGVMaXN0RXZlbnRSZXNwb25zZUgA'
-    'Uh1lbXZDYW5kaWRhdGVMaXN0RXZlbnRSZXNwb25zZRJoChtlbXZTZWxlY3RlZEFwcEV2ZW50Um'
-    'VzcG9uc2UYAiABKAsyJC5tZXRhQXBwLkVtdlNlbGVjdGVkQXBwRXZlbnRSZXNwb25zZUgAUhtl'
-    'bXZTZWxlY3RlZEFwcEV2ZW50UmVzcG9uc2USUAoTZW12Q2FyZERhdGFSZXNwb25zZRgDIAEoCz'
-    'IcLm1ldGFBcHAuRW12Q2FyZERhdGFSZXNwb25zZUgAUhNlbXZDYXJkRGF0YVJlc3BvbnNlEl8K'
-    'GGVtdkdvT25saW5lRXZlbnRSZXNwb25zZRgEIAEoCzIhLm1ldGFBcHAuRW12R29PbmxpbmVFdm'
-    'VudFJlc3BvbnNlSABSGGVtdkdvT25saW5lRXZlbnRSZXNwb25zZRJZChZlbXZGaW5pc2hFdmVu'
-    'dFJlc3BvbnNlGAUgASgLMh8ubWV0YUFwcC5FbXZGaW5pc2hFdmVudFJlc3BvbnNlSABSFmVtdk'
-    'ZpbmlzaEV2ZW50UmVzcG9uc2USawocZW12UGluUmVxdWVzdGVkRXZlbnRSZXNwb25zZRgGIAEo'
-    'CzIlLm1ldGFBcHAuRW12UGluUmVxdWVzdGVkRXZlbnRSZXNwb25zZUgAUhxlbXZQaW5SZXF1ZX'
-    'N0ZWRFdmVudFJlc3BvbnNlElwKF3BpbkVudHJ5U3RhcnRlZFJlc3BvbnNlGAcgASgLMiAubWV0'
-    'YUFwcC5QaW5FbnRyeVN0YXJ0ZWRSZXNwb25zZUgAUhdwaW5FbnRyeVN0YXJ0ZWRSZXNwb25zZR'
-    'JcChdwaW5FbnRyeVRpbWVvdXRSZXNwb25zZRgIIAEoCzIgLm1ldGFBcHAuUGluRW50cnlUaW1l'
-    'b3V0UmVzcG9uc2VIAFIXcGluRW50cnlUaW1lb3V0UmVzcG9uc2USYgoZcGluRW50cnlDYW5jZW'
-    'xsZWRSZXNwb25zZRgJIAEoCzIiLm1ldGFBcHAuUGluRW50cnlDYW5jZWxsZWRSZXNwb25zZUgA'
-    'UhlwaW5FbnRyeUNhbmNlbGxlZFJlc3BvbnNlEl8KGHBpbkVudHJ5RmluaXNoZWRSZXNwb25zZR'
-    'gKIAEoCzIhLm1ldGFBcHAuUGluRW50cnlGaW5pc2hlZFJlc3BvbnNlSABSGHBpbkVudHJ5Rmlu'
-    'aXNoZWRSZXNwb25zZRJrChxlbXZDYW5jZWxUcmFuc2FjdGlvblJlc3BvbnNlGAsgASgLMiUubW'
-    'V0YUFwcC5FbXZDYW5jZWxUcmFuc2FjdGlvblJlc3BvbnNlSABSHGVtdkNhbmNlbFRyYW5zYWN0'
-    'aW9uUmVzcG9uc2VCBgoEdHlwZQ==');
+    'ChxFbXZFdmVudE5vdGlmaWNhdGlvblJlc3BvbnNlEl8KGHJldHJ5VHJhbnNhY3Rpb25SZXNwb2'
+    '5zZRgBIAEoCzIhLm1ldGFBcHAuUmV0cnlUcmFuc2FjdGlvblJlc3BvbnNlSABSGHJldHJ5VHJh'
+    'bnNhY3Rpb25SZXNwb25zZRJuCh1lbXZDYW5kaWRhdGVMaXN0RXZlbnRSZXNwb25zZRgCIAEoCz'
+    'ImLm1ldGFBcHAuRW12Q2FuZGlkYXRlTGlzdEV2ZW50UmVzcG9uc2VIAFIdZW12Q2FuZGlkYXRl'
+    'TGlzdEV2ZW50UmVzcG9uc2USUAoTZW12Q2FyZERhdGFSZXNwb25zZRgDIAEoCzIcLm1ldGFBcH'
+    'AuRW12Q2FyZERhdGFSZXNwb25zZUgAUhNlbXZDYXJkRGF0YVJlc3BvbnNlEl8KGGVtdkdvT25s'
+    'aW5lRXZlbnRSZXNwb25zZRgEIAEoCzIhLm1ldGFBcHAuRW12R29PbmxpbmVFdmVudFJlc3Bvbn'
+    'NlSABSGGVtdkdvT25saW5lRXZlbnRSZXNwb25zZRJZChZlbXZGaW5pc2hFdmVudFJlc3BvbnNl'
+    'GAUgASgLMh8ubWV0YUFwcC5FbXZGaW5pc2hFdmVudFJlc3BvbnNlSABSFmVtdkZpbmlzaEV2ZW'
+    '50UmVzcG9uc2USawocZW12UGluUmVxdWVzdGVkRXZlbnRSZXNwb25zZRgGIAEoCzIlLm1ldGFB'
+    'cHAuRW12UGluUmVxdWVzdGVkRXZlbnRSZXNwb25zZUgAUhxlbXZQaW5SZXF1ZXN0ZWRFdmVudF'
+    'Jlc3BvbnNlElwKF3BpbkVudHJ5U3RhcnRlZFJlc3BvbnNlGAcgASgLMiAubWV0YUFwcC5QaW5F'
+    'bnRyeVN0YXJ0ZWRSZXNwb25zZUgAUhdwaW5FbnRyeVN0YXJ0ZWRSZXNwb25zZRJcChdwaW5Fbn'
+    'RyeVRpbWVvdXRSZXNwb25zZRgIIAEoCzIgLm1ldGFBcHAuUGluRW50cnlUaW1lb3V0UmVzcG9u'
+    'c2VIAFIXcGluRW50cnlUaW1lb3V0UmVzcG9uc2USYgoZcGluRW50cnlDYW5jZWxsZWRSZXNwb2'
+    '5zZRgJIAEoCzIiLm1ldGFBcHAuUGluRW50cnlDYW5jZWxsZWRSZXNwb25zZUgAUhlwaW5FbnRy'
+    'eUNhbmNlbGxlZFJlc3BvbnNlEl8KGHBpbkVudHJ5RmluaXNoZWRSZXNwb25zZRgKIAEoCzIhLm'
+    '1ldGFBcHAuUGluRW50cnlGaW5pc2hlZFJlc3BvbnNlSABSGHBpbkVudHJ5RmluaXNoZWRSZXNw'
+    'b25zZRJrChxlbXZDYW5jZWxUcmFuc2FjdGlvblJlc3BvbnNlGAsgASgLMiUubWV0YUFwcC5FbX'
+    'ZDYW5jZWxUcmFuc2FjdGlvblJlc3BvbnNlSABSHGVtdkNhbmNlbFRyYW5zYWN0aW9uUmVzcG9u'
+    'c2USaAobZW12U2VsZWN0ZWRBcHBFdmVudFJlc3BvbnNlGAwgASgLMiQubWV0YUFwcC5FbXZTZW'
+    'xlY3RlZEFwcEV2ZW50UmVzcG9uc2VIAFIbZW12U2VsZWN0ZWRBcHBFdmVudFJlc3BvbnNlQgYK'
+    'BHR5cGU=');

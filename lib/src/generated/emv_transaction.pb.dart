@@ -200,14 +200,16 @@ class StartPaymentProcessRequest extends $pb.GeneratedMessage {
   factory StartPaymentProcessRequest({
     $core.Iterable<$0.CardEntryMode>? cardEntryModes,
     $core.int? cardDetectionTimeout,
-    $core.int? fallbackTimeout,
+    $core.bool? isRetry,
+    $core.bool? isFallback,
     PaymentParameters? transactionParams,
   }) {
     final result = create();
     if (cardEntryModes != null) result.cardEntryModes.addAll(cardEntryModes);
     if (cardDetectionTimeout != null)
       result.cardDetectionTimeout = cardDetectionTimeout;
-    if (fallbackTimeout != null) result.fallbackTimeout = fallbackTimeout;
+    if (isRetry != null) result.isRetry = isRetry;
+    if (isFallback != null) result.isFallback = isFallback;
     if (transactionParams != null) result.transactionParams = transactionParams;
     return result;
   }
@@ -234,10 +236,9 @@ class StartPaymentProcessRequest extends $pb.GeneratedMessage {
     ..a<$core.int>(
         2, _omitFieldNames ? '' : 'cardDetectionTimeout', $pb.PbFieldType.O3,
         protoName: 'cardDetectionTimeout')
-    ..a<$core.int>(
-        3, _omitFieldNames ? '' : 'fallbackTimeout', $pb.PbFieldType.O3,
-        protoName: 'fallbackTimeout')
-    ..aOM<PaymentParameters>(4, _omitFieldNames ? '' : 'transactionParams',
+    ..aOB(3, _omitFieldNames ? '' : 'isRetry', protoName: 'isRetry')
+    ..aOB(4, _omitFieldNames ? '' : 'isFallback', protoName: 'isFallback')
+    ..aOM<PaymentParameters>(5, _omitFieldNames ? '' : 'transactionParams',
         protoName: 'transactionParams', subBuilder: PaymentParameters.create)
     ..hasRequiredFields = false;
 
@@ -278,24 +279,76 @@ class StartPaymentProcessRequest extends $pb.GeneratedMessage {
   void clearCardDetectionTimeout() => $_clearField(2);
 
   @$pb.TagNumber(3)
-  $core.int get fallbackTimeout => $_getIZ(2);
+  $core.bool get isRetry => $_getBF(2);
   @$pb.TagNumber(3)
-  set fallbackTimeout($core.int value) => $_setSignedInt32(2, value);
+  set isRetry($core.bool value) => $_setBool(2, value);
   @$pb.TagNumber(3)
-  $core.bool hasFallbackTimeout() => $_has(2);
+  $core.bool hasIsRetry() => $_has(2);
   @$pb.TagNumber(3)
-  void clearFallbackTimeout() => $_clearField(3);
+  void clearIsRetry() => $_clearField(3);
 
   @$pb.TagNumber(4)
-  PaymentParameters get transactionParams => $_getN(3);
+  $core.bool get isFallback => $_getBF(3);
   @$pb.TagNumber(4)
-  set transactionParams(PaymentParameters value) => $_setField(4, value);
+  set isFallback($core.bool value) => $_setBool(3, value);
   @$pb.TagNumber(4)
-  $core.bool hasTransactionParams() => $_has(3);
+  $core.bool hasIsFallback() => $_has(3);
   @$pb.TagNumber(4)
-  void clearTransactionParams() => $_clearField(4);
-  @$pb.TagNumber(4)
-  PaymentParameters ensureTransactionParams() => $_ensure(3);
+  void clearIsFallback() => $_clearField(4);
+
+  @$pb.TagNumber(5)
+  PaymentParameters get transactionParams => $_getN(4);
+  @$pb.TagNumber(5)
+  set transactionParams(PaymentParameters value) => $_setField(5, value);
+  @$pb.TagNumber(5)
+  $core.bool hasTransactionParams() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearTransactionParams() => $_clearField(5);
+  @$pb.TagNumber(5)
+  PaymentParameters ensureTransactionParams() => $_ensure(4);
+}
+
+/// / Indica que la transaccion se esta reintentando.
+class RetryTransactionResponse extends $pb.GeneratedMessage {
+  factory RetryTransactionResponse() => create();
+
+  RetryTransactionResponse._();
+
+  factory RetryTransactionResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory RetryTransactionResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'RetryTransactionResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  RetryTransactionResponse clone() =>
+      RetryTransactionResponse()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  RetryTransactionResponse copyWith(
+          void Function(RetryTransactionResponse) updates) =>
+      super.copyWith((message) => updates(message as RetryTransactionResponse))
+          as RetryTransactionResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static RetryTransactionResponse create() => RetryTransactionResponse._();
+  @$core.override
+  RetryTransactionResponse createEmptyInstance() => create();
+  static $pb.PbList<RetryTransactionResponse> createRepeated() =>
+      $pb.PbList<RetryTransactionResponse>();
+  @$core.pragma('dart2js:noInline')
+  static RetryTransactionResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RetryTransactionResponse>(create);
+  static RetryTransactionResponse? _defaultInstance;
 }
 
 class StartPinEntryRequest extends $pb.GeneratedMessage {
@@ -1320,8 +1373,8 @@ class EmvFinishEventResponse extends $pb.GeneratedMessage {
 }
 
 enum EmvEventNotificationResponse_Type {
+  retryTransactionResponse,
   emvCandidateListEventResponse,
-  emvSelectedAppEventResponse,
   emvCardDataResponse,
   emvGoOnlineEventResponse,
   emvFinishEventResponse,
@@ -1331,13 +1384,14 @@ enum EmvEventNotificationResponse_Type {
   pinEntryCancelledResponse,
   pinEntryFinishedResponse,
   emvCancelTransactionResponse,
+  emvSelectedAppEventResponse,
   notSet
 }
 
 class EmvEventNotificationResponse extends $pb.GeneratedMessage {
   factory EmvEventNotificationResponse({
+    RetryTransactionResponse? retryTransactionResponse,
     EmvCandidateListEventResponse? emvCandidateListEventResponse,
-    EmvSelectedAppEventResponse? emvSelectedAppEventResponse,
     EmvCardDataResponse? emvCardDataResponse,
     EmvGoOnlineEventResponse? emvGoOnlineEventResponse,
     EmvFinishEventResponse? emvFinishEventResponse,
@@ -1347,12 +1401,13 @@ class EmvEventNotificationResponse extends $pb.GeneratedMessage {
     PinEntryCancelledResponse? pinEntryCancelledResponse,
     PinEntryFinishedResponse? pinEntryFinishedResponse,
     EmvCancelTransactionResponse? emvCancelTransactionResponse,
+    EmvSelectedAppEventResponse? emvSelectedAppEventResponse,
   }) {
     final result = create();
+    if (retryTransactionResponse != null)
+      result.retryTransactionResponse = retryTransactionResponse;
     if (emvCandidateListEventResponse != null)
       result.emvCandidateListEventResponse = emvCandidateListEventResponse;
-    if (emvSelectedAppEventResponse != null)
-      result.emvSelectedAppEventResponse = emvSelectedAppEventResponse;
     if (emvCardDataResponse != null)
       result.emvCardDataResponse = emvCardDataResponse;
     if (emvGoOnlineEventResponse != null)
@@ -1371,6 +1426,8 @@ class EmvEventNotificationResponse extends $pb.GeneratedMessage {
       result.pinEntryFinishedResponse = pinEntryFinishedResponse;
     if (emvCancelTransactionResponse != null)
       result.emvCancelTransactionResponse = emvCancelTransactionResponse;
+    if (emvSelectedAppEventResponse != null)
+      result.emvSelectedAppEventResponse = emvSelectedAppEventResponse;
     return result;
   }
 
@@ -1385,8 +1442,8 @@ class EmvEventNotificationResponse extends $pb.GeneratedMessage {
 
   static const $core.Map<$core.int, EmvEventNotificationResponse_Type>
       _EmvEventNotificationResponse_TypeByTag = {
-    1: EmvEventNotificationResponse_Type.emvCandidateListEventResponse,
-    2: EmvEventNotificationResponse_Type.emvSelectedAppEventResponse,
+    1: EmvEventNotificationResponse_Type.retryTransactionResponse,
+    2: EmvEventNotificationResponse_Type.emvCandidateListEventResponse,
     3: EmvEventNotificationResponse_Type.emvCardDataResponse,
     4: EmvEventNotificationResponse_Type.emvGoOnlineEventResponse,
     5: EmvEventNotificationResponse_Type.emvFinishEventResponse,
@@ -1396,21 +1453,22 @@ class EmvEventNotificationResponse extends $pb.GeneratedMessage {
     9: EmvEventNotificationResponse_Type.pinEntryCancelledResponse,
     10: EmvEventNotificationResponse_Type.pinEntryFinishedResponse,
     11: EmvEventNotificationResponse_Type.emvCancelTransactionResponse,
+    12: EmvEventNotificationResponse_Type.emvSelectedAppEventResponse,
     0: EmvEventNotificationResponse_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'EmvEventNotificationResponse',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+    ..aOM<RetryTransactionResponse>(
+        1, _omitFieldNames ? '' : 'retryTransactionResponse',
+        protoName: 'retryTransactionResponse',
+        subBuilder: RetryTransactionResponse.create)
     ..aOM<EmvCandidateListEventResponse>(
-        1, _omitFieldNames ? '' : 'emvCandidateListEventResponse',
+        2, _omitFieldNames ? '' : 'emvCandidateListEventResponse',
         protoName: 'emvCandidateListEventResponse',
         subBuilder: EmvCandidateListEventResponse.create)
-    ..aOM<EmvSelectedAppEventResponse>(
-        2, _omitFieldNames ? '' : 'emvSelectedAppEventResponse',
-        protoName: 'emvSelectedAppEventResponse',
-        subBuilder: EmvSelectedAppEventResponse.create)
     ..aOM<EmvCardDataResponse>(3, _omitFieldNames ? '' : 'emvCardDataResponse',
         protoName: 'emvCardDataResponse',
         subBuilder: EmvCardDataResponse.create)
@@ -1446,6 +1504,10 @@ class EmvEventNotificationResponse extends $pb.GeneratedMessage {
         11, _omitFieldNames ? '' : 'emvCancelTransactionResponse',
         protoName: 'emvCancelTransactionResponse',
         subBuilder: EmvCancelTransactionResponse.create)
+    ..aOM<EmvSelectedAppEventResponse>(
+        12, _omitFieldNames ? '' : 'emvSelectedAppEventResponse',
+        protoName: 'emvSelectedAppEventResponse',
+        subBuilder: EmvSelectedAppEventResponse.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -1478,29 +1540,28 @@ class EmvEventNotificationResponse extends $pb.GeneratedMessage {
   void clearType() => $_clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
-  EmvCandidateListEventResponse get emvCandidateListEventResponse => $_getN(0);
+  RetryTransactionResponse get retryTransactionResponse => $_getN(0);
   @$pb.TagNumber(1)
-  set emvCandidateListEventResponse(EmvCandidateListEventResponse value) =>
+  set retryTransactionResponse(RetryTransactionResponse value) =>
       $_setField(1, value);
   @$pb.TagNumber(1)
-  $core.bool hasEmvCandidateListEventResponse() => $_has(0);
+  $core.bool hasRetryTransactionResponse() => $_has(0);
   @$pb.TagNumber(1)
-  void clearEmvCandidateListEventResponse() => $_clearField(1);
+  void clearRetryTransactionResponse() => $_clearField(1);
   @$pb.TagNumber(1)
-  EmvCandidateListEventResponse ensureEmvCandidateListEventResponse() =>
-      $_ensure(0);
+  RetryTransactionResponse ensureRetryTransactionResponse() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  EmvSelectedAppEventResponse get emvSelectedAppEventResponse => $_getN(1);
+  EmvCandidateListEventResponse get emvCandidateListEventResponse => $_getN(1);
   @$pb.TagNumber(2)
-  set emvSelectedAppEventResponse(EmvSelectedAppEventResponse value) =>
+  set emvCandidateListEventResponse(EmvCandidateListEventResponse value) =>
       $_setField(2, value);
   @$pb.TagNumber(2)
-  $core.bool hasEmvSelectedAppEventResponse() => $_has(1);
+  $core.bool hasEmvCandidateListEventResponse() => $_has(1);
   @$pb.TagNumber(2)
-  void clearEmvSelectedAppEventResponse() => $_clearField(2);
+  void clearEmvCandidateListEventResponse() => $_clearField(2);
   @$pb.TagNumber(2)
-  EmvSelectedAppEventResponse ensureEmvSelectedAppEventResponse() =>
+  EmvCandidateListEventResponse ensureEmvCandidateListEventResponse() =>
       $_ensure(1);
 
   @$pb.TagNumber(3)
@@ -1611,6 +1672,19 @@ class EmvEventNotificationResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(11)
   EmvCancelTransactionResponse ensureEmvCancelTransactionResponse() =>
       $_ensure(10);
+
+  @$pb.TagNumber(12)
+  EmvSelectedAppEventResponse get emvSelectedAppEventResponse => $_getN(11);
+  @$pb.TagNumber(12)
+  set emvSelectedAppEventResponse(EmvSelectedAppEventResponse value) =>
+      $_setField(12, value);
+  @$pb.TagNumber(12)
+  $core.bool hasEmvSelectedAppEventResponse() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearEmvSelectedAppEventResponse() => $_clearField(12);
+  @$pb.TagNumber(12)
+  EmvSelectedAppEventResponse ensureEmvSelectedAppEventResponse() =>
+      $_ensure(11);
 }
 
 const $core.bool _omitFieldNames =

@@ -465,17 +465,8 @@ const CommandResponse$json = {
       '10': 'finishedCVVEntryResponse'
     },
     {
-      '1': 'startFallbackResponse',
-      '3': 21,
-      '4': 1,
-      '5': 11,
-      '6': '.metaApp.StartFallbackResponse',
-      '9': 0,
-      '10': 'startFallbackResponse'
-    },
-    {
       '1': 'error',
-      '3': 22,
+      '3': 21,
       '4': 1,
       '5': 11,
       '6': '.metaApp.ErrorResponse',
@@ -521,9 +512,8 @@ final $typed_data.Uint8List commandResponseDescriptor = $convert.base64Decode(
     'b25SZXNwb25zZRgTIAEoCzIlLm1ldGFBcHAuRW12RXZlbnROb3RpZmljYXRpb25SZXNwb25zZU'
     'gAUhxlbXZFdmVudE5vdGlmaWNhdGlvblJlc3BvbnNlEl8KGGZpbmlzaGVkQ1ZWRW50cnlSZXNw'
     'b25zZRgUIAEoCzIhLm1ldGFBcHAuRmluaXNoZWRDVlZFbnRyeVJlc3BvbnNlSABSGGZpbmlzaG'
-    'VkQ1ZWRW50cnlSZXNwb25zZRJWChVzdGFydEZhbGxiYWNrUmVzcG9uc2UYFSABKAsyHi5tZXRh'
-    'QXBwLlN0YXJ0RmFsbGJhY2tSZXNwb25zZUgAUhVzdGFydEZhbGxiYWNrUmVzcG9uc2USLgoFZX'
-    'Jyb3IYFiABKAsyFi5tZXRhQXBwLkVycm9yUmVzcG9uc2VIAFIFZXJyb3JCBgoEdHlwZQ==');
+    'VkQ1ZWRW50cnlSZXNwb25zZRIuCgVlcnJvchgVIAEoCzIWLm1ldGFBcHAuRXJyb3JSZXNwb25z'
+    'ZUgAUgVlcnJvckIGCgR0eXBl');
 
 @$core.Deprecated('Use commandConfirmationDescriptor instead')
 const CommandConfirmation$json = {

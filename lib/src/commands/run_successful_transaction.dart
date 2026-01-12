@@ -21,7 +21,6 @@ Future<void> runSuccessfulTransaction() async {
         sequenceCounter: 1,
         transType: TransType.sale,
       ),
-      fallbackTimeout: 20,
     ),
   );
 

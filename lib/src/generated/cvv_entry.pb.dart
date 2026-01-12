@@ -20,87 +20,16 @@ export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 export 'cvv_entry.pbenum.dart';
 
-class MagneticTrackData extends $pb.GeneratedMessage {
-  factory MagneticTrackData({
-    $core.Iterable<$core.int>? data,
-    $core.int? actualLen,
-    $core.Iterable<$core.int>? ksn,
-  }) {
-    final result = create();
-    if (data != null) result.data.addAll(data);
-    if (actualLen != null) result.actualLen = actualLen;
-    if (ksn != null) result.ksn.addAll(ksn);
-    return result;
-  }
-
-  MagneticTrackData._();
-
-  factory MagneticTrackData.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(data, registry);
-  factory MagneticTrackData.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'MagneticTrackData',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
-      createEmptyInstance: create)
-    ..p<$core.int>(1, _omitFieldNames ? '' : 'data', $pb.PbFieldType.K3)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'actualLen', $pb.PbFieldType.O3,
-        protoName: 'actualLen')
-    ..p<$core.int>(3, _omitFieldNames ? '' : 'ksn', $pb.PbFieldType.K3)
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  MagneticTrackData clone() => MagneticTrackData()..mergeFromMessage(this);
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  MagneticTrackData copyWith(void Function(MagneticTrackData) updates) =>
-      super.copyWith((message) => updates(message as MagneticTrackData))
-          as MagneticTrackData;
-
-  @$core.override
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static MagneticTrackData create() => MagneticTrackData._();
-  @$core.override
-  MagneticTrackData createEmptyInstance() => create();
-  static $pb.PbList<MagneticTrackData> createRepeated() =>
-      $pb.PbList<MagneticTrackData>();
-  @$core.pragma('dart2js:noInline')
-  static MagneticTrackData getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<MagneticTrackData>(create);
-  static MagneticTrackData? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $pb.PbList<$core.int> get data => $_getList(0);
-
-  @$pb.TagNumber(2)
-  $core.int get actualLen => $_getIZ(1);
-  @$pb.TagNumber(2)
-  set actualLen($core.int value) => $_setSignedInt32(1, value);
-  @$pb.TagNumber(2)
-  $core.bool hasActualLen() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearActualLen() => $_clearField(2);
-
-  @$pb.TagNumber(3)
-  $pb.PbList<$core.int> get ksn => $_getList(2);
-}
-
 class MagneticStripeTracks extends $pb.GeneratedMessage {
   factory MagneticStripeTracks({
-    MagneticTrackData? track1,
-    MagneticTrackData? track2,
-    MagneticTrackData? track3,
+    $core.String? track1,
+    $core.String? track2,
     $core.String? maskPan,
     $core.String? serviceCode,
   }) {
     final result = create();
     if (track1 != null) result.track1 = track1;
     if (track2 != null) result.track2 = track2;
-    if (track3 != null) result.track3 = track3;
     if (maskPan != null) result.maskPan = maskPan;
     if (serviceCode != null) result.serviceCode = serviceCode;
     return result;
@@ -119,14 +48,10 @@ class MagneticStripeTracks extends $pb.GeneratedMessage {
       _omitMessageNames ? '' : 'MagneticStripeTracks',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..aOM<MagneticTrackData>(1, _omitFieldNames ? '' : 'track1',
-        subBuilder: MagneticTrackData.create)
-    ..aOM<MagneticTrackData>(2, _omitFieldNames ? '' : 'track2',
-        subBuilder: MagneticTrackData.create)
-    ..aOM<MagneticTrackData>(3, _omitFieldNames ? '' : 'track3',
-        subBuilder: MagneticTrackData.create)
-    ..aOS(4, _omitFieldNames ? '' : 'maskPan', protoName: 'maskPan')
-    ..aOS(5, _omitFieldNames ? '' : 'serviceCode', protoName: 'serviceCode')
+    ..aOS(1, _omitFieldNames ? '' : 'track1')
+    ..aOS(2, _omitFieldNames ? '' : 'track2')
+    ..aOS(3, _omitFieldNames ? '' : 'maskPan', protoName: 'maskPan')
+    ..aOS(4, _omitFieldNames ? '' : 'serviceCode', protoName: 'serviceCode')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -152,55 +77,40 @@ class MagneticStripeTracks extends $pb.GeneratedMessage {
   static MagneticStripeTracks? _defaultInstance;
 
   @$pb.TagNumber(1)
-  MagneticTrackData get track1 => $_getN(0);
+  $core.String get track1 => $_getSZ(0);
   @$pb.TagNumber(1)
-  set track1(MagneticTrackData value) => $_setField(1, value);
+  set track1($core.String value) => $_setString(0, value);
   @$pb.TagNumber(1)
   $core.bool hasTrack1() => $_has(0);
   @$pb.TagNumber(1)
   void clearTrack1() => $_clearField(1);
-  @$pb.TagNumber(1)
-  MagneticTrackData ensureTrack1() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  MagneticTrackData get track2 => $_getN(1);
+  $core.String get track2 => $_getSZ(1);
   @$pb.TagNumber(2)
-  set track2(MagneticTrackData value) => $_setField(2, value);
+  set track2($core.String value) => $_setString(1, value);
   @$pb.TagNumber(2)
   $core.bool hasTrack2() => $_has(1);
   @$pb.TagNumber(2)
   void clearTrack2() => $_clearField(2);
-  @$pb.TagNumber(2)
-  MagneticTrackData ensureTrack2() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  MagneticTrackData get track3 => $_getN(2);
+  $core.String get maskPan => $_getSZ(2);
   @$pb.TagNumber(3)
-  set track3(MagneticTrackData value) => $_setField(3, value);
+  set maskPan($core.String value) => $_setString(2, value);
   @$pb.TagNumber(3)
-  $core.bool hasTrack3() => $_has(2);
+  $core.bool hasMaskPan() => $_has(2);
   @$pb.TagNumber(3)
-  void clearTrack3() => $_clearField(3);
-  @$pb.TagNumber(3)
-  MagneticTrackData ensureTrack3() => $_ensure(2);
+  void clearMaskPan() => $_clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get maskPan => $_getSZ(3);
+  $core.String get serviceCode => $_getSZ(3);
   @$pb.TagNumber(4)
-  set maskPan($core.String value) => $_setString(3, value);
+  set serviceCode($core.String value) => $_setString(3, value);
   @$pb.TagNumber(4)
-  $core.bool hasMaskPan() => $_has(3);
+  $core.bool hasServiceCode() => $_has(3);
   @$pb.TagNumber(4)
-  void clearMaskPan() => $_clearField(4);
-
-  @$pb.TagNumber(5)
-  $core.String get serviceCode => $_getSZ(4);
-  @$pb.TagNumber(5)
-  set serviceCode($core.String value) => $_setString(4, value);
-  @$pb.TagNumber(5)
-  $core.bool hasServiceCode() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearServiceCode() => $_clearField(5);
+  void clearServiceCode() => $_clearField(4);
 }
 
 class StartCVVEntryRequest extends $pb.GeneratedMessage {

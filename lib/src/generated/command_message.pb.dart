@@ -605,7 +605,6 @@ enum CommandResponse_Type {
   getEmvTagsResponse,
   emvEventNotificationResponse,
   finishedCVVEntryResponse,
-  startFallbackResponse,
   error,
   notSet
 }
@@ -632,7 +631,6 @@ class CommandResponse extends $pb.GeneratedMessage {
     $7.GetEmvTagsResponse? getEmvTagsResponse,
     $7.EmvEventNotificationResponse? emvEventNotificationResponse,
     $8.FinishedCVVEntryResponse? finishedCVVEntryResponse,
-    $9.StartFallbackResponse? startFallbackResponse,
     $10.ErrorResponse? error,
   }) {
     final result = create();
@@ -670,8 +668,6 @@ class CommandResponse extends $pb.GeneratedMessage {
       result.emvEventNotificationResponse = emvEventNotificationResponse;
     if (finishedCVVEntryResponse != null)
       result.finishedCVVEntryResponse = finishedCVVEntryResponse;
-    if (startFallbackResponse != null)
-      result.startFallbackResponse = startFallbackResponse;
     if (error != null) result.error = error;
     return result;
   }
@@ -707,8 +703,7 @@ class CommandResponse extends $pb.GeneratedMessage {
     18: CommandResponse_Type.getEmvTagsResponse,
     19: CommandResponse_Type.emvEventNotificationResponse,
     20: CommandResponse_Type.finishedCVVEntryResponse,
-    21: CommandResponse_Type.startFallbackResponse,
-    22: CommandResponse_Type.error,
+    21: CommandResponse_Type.error,
     0: CommandResponse_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -736,8 +731,7 @@ class CommandResponse extends $pb.GeneratedMessage {
       18,
       19,
       20,
-      21,
-      22
+      21
     ])
     ..aOM<$0.PingResponse>(1, _omitFieldNames ? '' : 'pingResponse',
         protoName: 'pingResponse', subBuilder: $0.PingResponse.create)
@@ -806,11 +800,7 @@ class CommandResponse extends $pb.GeneratedMessage {
         20, _omitFieldNames ? '' : 'finishedCVVEntryResponse',
         protoName: 'finishedCVVEntryResponse',
         subBuilder: $8.FinishedCVVEntryResponse.create)
-    ..aOM<$9.StartFallbackResponse>(
-        21, _omitFieldNames ? '' : 'startFallbackResponse',
-        protoName: 'startFallbackResponse',
-        subBuilder: $9.StartFallbackResponse.create)
-    ..aOM<$10.ErrorResponse>(22, _omitFieldNames ? '' : 'error',
+    ..aOM<$10.ErrorResponse>(21, _omitFieldNames ? '' : 'error',
         subBuilder: $10.ErrorResponse.create)
     ..hasRequiredFields = false;
 
@@ -1077,27 +1067,15 @@ class CommandResponse extends $pb.GeneratedMessage {
   $8.FinishedCVVEntryResponse ensureFinishedCVVEntryResponse() => $_ensure(19);
 
   @$pb.TagNumber(21)
-  $9.StartFallbackResponse get startFallbackResponse => $_getN(20);
+  $10.ErrorResponse get error => $_getN(20);
   @$pb.TagNumber(21)
-  set startFallbackResponse($9.StartFallbackResponse value) =>
-      $_setField(21, value);
+  set error($10.ErrorResponse value) => $_setField(21, value);
   @$pb.TagNumber(21)
-  $core.bool hasStartFallbackResponse() => $_has(20);
+  $core.bool hasError() => $_has(20);
   @$pb.TagNumber(21)
-  void clearStartFallbackResponse() => $_clearField(21);
+  void clearError() => $_clearField(21);
   @$pb.TagNumber(21)
-  $9.StartFallbackResponse ensureStartFallbackResponse() => $_ensure(20);
-
-  @$pb.TagNumber(22)
-  $10.ErrorResponse get error => $_getN(21);
-  @$pb.TagNumber(22)
-  set error($10.ErrorResponse value) => $_setField(22, value);
-  @$pb.TagNumber(22)
-  $core.bool hasError() => $_has(21);
-  @$pb.TagNumber(22)
-  void clearError() => $_clearField(22);
-  @$pb.TagNumber(22)
-  $10.ErrorResponse ensureError() => $_ensure(21);
+  $10.ErrorResponse ensureError() => $_ensure(20);
 }
 
 class CommandConfirmation extends $pb.GeneratedMessage {

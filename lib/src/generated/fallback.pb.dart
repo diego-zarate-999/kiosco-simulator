@@ -14,8 +14,6 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'fallback.pbenum.dart';
-
 export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 export 'fallback.pbenum.dart';
@@ -75,69 +73,6 @@ class StartFallbackRequest extends $pb.GeneratedMessage {
   $core.bool hasTimeout() => $_has(0);
   @$pb.TagNumber(1)
   void clearTimeout() => $_clearField(1);
-}
-
-class StartFallbackResponse extends $pb.GeneratedMessage {
-  factory StartFallbackResponse({
-    FallbackResult? fallbackResult,
-  }) {
-    final result = create();
-    if (fallbackResult != null) result.fallbackResult = fallbackResult;
-    return result;
-  }
-
-  StartFallbackResponse._();
-
-  factory StartFallbackResponse.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(data, registry);
-  factory StartFallbackResponse.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'StartFallbackResponse',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
-      createEmptyInstance: create)
-    ..e<FallbackResult>(
-        1, _omitFieldNames ? '' : 'fallbackResult', $pb.PbFieldType.OE,
-        protoName: 'fallbackResult',
-        defaultOrMaker: FallbackResult.fallbackSuccess,
-        valueOf: FallbackResult.valueOf,
-        enumValues: FallbackResult.values)
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  StartFallbackResponse clone() =>
-      StartFallbackResponse()..mergeFromMessage(this);
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  StartFallbackResponse copyWith(
-          void Function(StartFallbackResponse) updates) =>
-      super.copyWith((message) => updates(message as StartFallbackResponse))
-          as StartFallbackResponse;
-
-  @$core.override
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static StartFallbackResponse create() => StartFallbackResponse._();
-  @$core.override
-  StartFallbackResponse createEmptyInstance() => create();
-  static $pb.PbList<StartFallbackResponse> createRepeated() =>
-      $pb.PbList<StartFallbackResponse>();
-  @$core.pragma('dart2js:noInline')
-  static StartFallbackResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<StartFallbackResponse>(create);
-  static StartFallbackResponse? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  FallbackResult get fallbackResult => $_getN(0);
-  @$pb.TagNumber(1)
-  set fallbackResult(FallbackResult value) => $_setField(1, value);
-  @$pb.TagNumber(1)
-  $core.bool hasFallbackResult() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearFallbackResult() => $_clearField(1);
 }
 
 const $core.bool _omitFieldNames =

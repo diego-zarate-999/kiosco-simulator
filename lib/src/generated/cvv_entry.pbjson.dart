@@ -29,70 +29,27 @@ final $typed_data.Uint8List cVVEntryResultDescriptor = $convert.base64Decode(
     'Cg5DVlZFbnRyeVJlc3VsdBILCgdzdWNjZXNzEAASEQoNdXNlckNhbmNlbGxlZBABEgsKB3RpbW'
     'VvdXQQAg==');
 
-@$core.Deprecated('Use magneticTrackDataDescriptor instead')
-const MagneticTrackData$json = {
-  '1': 'MagneticTrackData',
-  '2': [
-    {'1': 'data', '3': 1, '4': 3, '5': 5, '10': 'data'},
-    {'1': 'actualLen', '3': 2, '4': 1, '5': 5, '10': 'actualLen'},
-    {'1': 'ksn', '3': 3, '4': 3, '5': 5, '10': 'ksn'},
-  ],
-};
-
-/// Descriptor for `MagneticTrackData`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List magneticTrackDataDescriptor = $convert.base64Decode(
-    'ChFNYWduZXRpY1RyYWNrRGF0YRISCgRkYXRhGAEgAygFUgRkYXRhEhwKCWFjdHVhbExlbhgCIA'
-    'EoBVIJYWN0dWFsTGVuEhAKA2tzbhgDIAMoBVIDa3Nu');
-
 @$core.Deprecated('Use magneticStripeTracksDescriptor instead')
 const MagneticStripeTracks$json = {
   '1': 'MagneticStripeTracks',
   '2': [
-    {
-      '1': 'track1',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.metaApp.MagneticTrackData',
-      '9': 0,
-      '10': 'track1',
-      '17': true
-    },
-    {
-      '1': 'track2',
-      '3': 2,
-      '4': 1,
-      '5': 11,
-      '6': '.metaApp.MagneticTrackData',
-      '9': 1,
-      '10': 'track2',
-      '17': true
-    },
-    {
-      '1': 'track3',
-      '3': 3,
-      '4': 1,
-      '5': 11,
-      '6': '.metaApp.MagneticTrackData',
-      '9': 2,
-      '10': 'track3',
-      '17': true
-    },
+    {'1': 'track1', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'track1', '17': true},
+    {'1': 'track2', '3': 2, '4': 1, '5': 9, '9': 1, '10': 'track2', '17': true},
     {
       '1': 'maskPan',
-      '3': 4,
+      '3': 3,
       '4': 1,
       '5': 9,
-      '9': 3,
+      '9': 2,
       '10': 'maskPan',
       '17': true
     },
     {
       '1': 'serviceCode',
-      '3': 5,
+      '3': 4,
       '4': 1,
       '5': 9,
-      '9': 4,
+      '9': 3,
       '10': 'serviceCode',
       '17': true
     },
@@ -100,7 +57,6 @@ const MagneticStripeTracks$json = {
   '8': [
     {'1': '_track1'},
     {'1': '_track2'},
-    {'1': '_track3'},
     {'1': '_maskPan'},
     {'1': '_serviceCode'},
   ],
@@ -108,12 +64,10 @@ const MagneticStripeTracks$json = {
 
 /// Descriptor for `MagneticStripeTracks`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List magneticStripeTracksDescriptor = $convert.base64Decode(
-    'ChRNYWduZXRpY1N0cmlwZVRyYWNrcxI3CgZ0cmFjazEYASABKAsyGi5tZXRhQXBwLk1hZ25ldG'
-    'ljVHJhY2tEYXRhSABSBnRyYWNrMYgBARI3CgZ0cmFjazIYAiABKAsyGi5tZXRhQXBwLk1hZ25l'
-    'dGljVHJhY2tEYXRhSAFSBnRyYWNrMogBARI3CgZ0cmFjazMYAyABKAsyGi5tZXRhQXBwLk1hZ2'
-    '5ldGljVHJhY2tEYXRhSAJSBnRyYWNrM4gBARIdCgdtYXNrUGFuGAQgASgJSANSB21hc2tQYW6I'
-    'AQESJQoLc2VydmljZUNvZGUYBSABKAlIBFILc2VydmljZUNvZGWIAQFCCQoHX3RyYWNrMUIJCg'
-    'dfdHJhY2syQgkKB190cmFjazNCCgoIX21hc2tQYW5CDgoMX3NlcnZpY2VDb2Rl');
+    'ChRNYWduZXRpY1N0cmlwZVRyYWNrcxIbCgZ0cmFjazEYASABKAlIAFIGdHJhY2sxiAEBEhsKBn'
+    'RyYWNrMhgCIAEoCUgBUgZ0cmFjazKIAQESHQoHbWFza1BhbhgDIAEoCUgCUgdtYXNrUGFuiAEB'
+    'EiUKC3NlcnZpY2VDb2RlGAQgASgJSANSC3NlcnZpY2VDb2RliAEBQgkKB190cmFjazFCCQoHX3'
+    'RyYWNrMkIKCghfbWFza1BhbkIOCgxfc2VydmljZUNvZGU=');
 
 @$core.Deprecated('Use startCVVEntryRequestDescriptor instead')
 const StartCVVEntryRequest$json = {

@@ -40,23 +40,3 @@ const StartFallbackRequest$json = {
 final $typed_data.Uint8List startFallbackRequestDescriptor =
     $convert.base64Decode(
         'ChRTdGFydEZhbGxiYWNrUmVxdWVzdBIYCgd0aW1lb3V0GAEgASgFUgd0aW1lb3V0');
-
-@$core.Deprecated('Use startFallbackResponseDescriptor instead')
-const StartFallbackResponse$json = {
-  '1': 'StartFallbackResponse',
-  '2': [
-    {
-      '1': 'fallbackResult',
-      '3': 1,
-      '4': 1,
-      '5': 14,
-      '6': '.metaApp.FallbackResult',
-      '10': 'fallbackResult'
-    },
-  ],
-};
-
-/// Descriptor for `StartFallbackResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List startFallbackResponseDescriptor = $convert.base64Decode(
-    'ChVTdGFydEZhbGxiYWNrUmVzcG9uc2USPwoOZmFsbGJhY2tSZXN1bHQYASABKA4yFy5tZXRhQX'
-    'BwLkZhbGxiYWNrUmVzdWx0Ug5mYWxsYmFja1Jlc3VsdA==');

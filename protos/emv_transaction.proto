@@ -47,9 +47,13 @@ message PaymentParameters {
 message StartPaymentProcessRequest {
     repeated CardEntryMode cardEntryModes       = 1;
     optional int32 cardDetectionTimeout         = 2;
-    optional int32 fallbackTimeout              = 3;
-    PaymentParameters transactionParams         = 4;
+    optional bool isRetry                       = 3;
+    optional bool isFallback                    = 4;
+    PaymentParameters transactionParams         = 5;
 }
+
+/// Indica que la transaccion se esta reintentando.
+message RetryTransactionResponse { }
 
 message StartPinEntryRequest {
     int32 timeout                = 1;
@@ -130,8 +134,8 @@ message EmvFinishEventResponse {
 
 message EmvEventNotificationResponse {
     oneof type {
-        EmvCandidateListEventResponse emvCandidateListEventResponse       = 1;
-        EmvSelectedAppEventResponse emvSelectedAppEventResponse           = 2;
+        RetryTransactionResponse retryTransactionResponse                 = 1;
+        EmvCandidateListEventResponse emvCandidateListEventResponse       = 2;
         EmvCardDataResponse emvCardDataResponse                           = 3;
         EmvGoOnlineEventResponse emvGoOnlineEventResponse                 = 4;
         EmvFinishEventResponse emvFinishEventResponse                     = 5;
@@ -141,5 +145,6 @@ message EmvEventNotificationResponse {
         PinEntryCancelledResponse pinEntryCancelledResponse               = 9;
         PinEntryFinishedResponse pinEntryFinishedResponse                 = 10;
         EmvCancelTransactionResponse emvCancelTransactionResponse         = 11;
+        EmvSelectedAppEventResponse emvSelectedAppEventResponse           = 12;
     }
 }

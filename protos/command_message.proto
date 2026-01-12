@@ -65,8 +65,7 @@ message CommandResponse {
         GetEmvTagsResponse getEmvTagsResponse                          = 18;
         EmvEventNotificationResponse emvEventNotificationResponse      = 19;
         FinishedCVVEntryResponse finishedCVVEntryResponse              = 20;
-        StartFallbackResponse startFallbackResponse                    = 21;
-        ErrorResponse error                                            = 22;
+        ErrorResponse error                                            = 21;
     }
 }
 

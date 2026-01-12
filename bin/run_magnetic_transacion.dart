@@ -69,6 +69,7 @@ void main() async {
         ),
       );
 
+      await Future.delayed(const Duration(seconds: 1));
       await communicationManager.sendMessage(completeTransactionRequest);
 
       print("termina transaccion!!");

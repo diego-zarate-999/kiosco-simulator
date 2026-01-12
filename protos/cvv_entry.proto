@@ -8,18 +8,11 @@ enum CVVEntryResult {
     timeout        = 2;
 }
 
-message MagneticTrackData {
-    repeated int32 data          = 1;
-    int32 actualLen              = 2;
-    repeated int32 ksn           = 3;
-}
-
 message MagneticStripeTracks {
-    optional MagneticTrackData track1 = 1;
-    optional MagneticTrackData track2 = 2;
-    optional MagneticTrackData track3 = 3;
-    optional string maskPan           = 4;
-    optional string serviceCode       = 5;
+    optional string track1            = 1;
+    optional string track2            = 2;
+    optional string maskPan           = 3;
+    optional string serviceCode       = 4;
 }
 
 message StartCVVEntryRequest {
