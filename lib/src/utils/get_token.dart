@@ -5,7 +5,7 @@ Future<String> getDeviceToken({
   required String brand,
   required String serialNumber,
 }) async {
-  return "Aqc/P+gFyQ8idbg4IB8ksEr7WS6MNoBxeuzJbYn39MRSbYlqP+ypV8oQSr1/aKt7H6SjmB4zNM1dVX0eC/RYCyOLHTQhmRakLs8+Cfb+RccPz0hPDmtZrLZIHe35UinBNN/0Ag/XaWsbMCbLk9egNVLWZl/kGIXbrs9l9VJge30GgzH2UAffzwSc/qVO+QeljNqFwesGK89xw/QaZzU/PScsXki3tDwdweJrLs1h/O3vdXAEXJckMrV6l98mavIp8ZEcIk176Ij1Qb3LY+ws9Huo+UoDnv3a1pw8cAuB8Z+uv5HFRRrMd7ol2Ggla8T/S+H5nkQvFrpNdMpXTK+88p8Bm7RGSug=";
+  return "AqYn6HUDtu+LGQ1M6oCH4cczOci7oVI/RcDxihsq1tw6I4uWGWpP9hipwA5b8VAgoEm2lyPF8qnEZ4IroD1GONgFpyhqDl3t+zpmk3sscZm/8JZtRhmUFaodC9MtVQFSp/eXLGCNcV7c/vfuOYzU21RTNfMDXwPs9gfYgj2B/i7ejaEEurU77UO+rEd5Tw2enn7DFp/OV4I9IVDRYhfblCDxx2t6aAVwclK3Jz2zrxpexUk0nwvMjqrE2xN9jtjeIS5fyYcDepvKpri+D/IFxeLt6Ut/YWQZaAK37TLrwMKzZWj3J0KycZEYdbEf8fCmAkklczkbYrJzIxeUDMVWdCcBm9Gfs8U=";
   final dio = Dio();
 
   final url =

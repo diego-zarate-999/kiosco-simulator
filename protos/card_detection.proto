@@ -9,19 +9,19 @@ enum CardEntryMode {
     contactless     = 3;
 }
 
-message CardTimeout { }
+enum CardDetectionResult {
+    readSucess  = 0;
+    cardTimeout = 1;
+}
 
 message StartCardReaderRequest {
     repeated CardEntryMode cardEntryModes = 1;
     int32 timeout               = 2;
 }
 
-
 /// Regresa el tipo de entry Mode o informa si hay timeout.
 message DetectedCardResponse {
-    oneof type {
-        CardEntryMode cardEntryMode    = 1;
-        CardTimeout cardTimeout        = 2;
-    }
+    CardDetectionResult result       = 1;
+    optional CardEntryMode entrymode = 2;
 }
 

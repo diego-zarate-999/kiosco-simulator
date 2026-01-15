@@ -161,6 +161,8 @@ void main() async {
       return;
     }
 
+    print("Result =$txnResult");
+
     /// ================================== Terminan Eventos EMV ==================================
 
     tries += 1;
@@ -226,7 +228,7 @@ void main() async {
         completePaymentRequest: CompletePaymentRequest(
           authorisationCode: "00",
           authorisationResponseCode: "APROBADA",
-          displayMessage: "Se aprueba la transaccion",
+          displayMessage: "Se adart ruprueba la transaccion",
           successful: true,
         ),
       );

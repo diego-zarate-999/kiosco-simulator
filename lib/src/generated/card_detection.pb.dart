@@ -20,45 +20,6 @@ export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 export 'card_detection.pbenum.dart';
 
-class CardTimeout extends $pb.GeneratedMessage {
-  factory CardTimeout() => create();
-
-  CardTimeout._();
-
-  factory CardTimeout.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(data, registry);
-  factory CardTimeout.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'CardTimeout',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
-      createEmptyInstance: create)
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  CardTimeout clone() => CardTimeout()..mergeFromMessage(this);
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  CardTimeout copyWith(void Function(CardTimeout) updates) =>
-      super.copyWith((message) => updates(message as CardTimeout))
-          as CardTimeout;
-
-  @$core.override
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static CardTimeout create() => CardTimeout._();
-  @$core.override
-  CardTimeout createEmptyInstance() => create();
-  static $pb.PbList<CardTimeout> createRepeated() => $pb.PbList<CardTimeout>();
-  @$core.pragma('dart2js:noInline')
-  static CardTimeout getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<CardTimeout>(create);
-  static CardTimeout? _defaultInstance;
-}
-
 class StartCardReaderRequest extends $pb.GeneratedMessage {
   factory StartCardReaderRequest({
     $core.Iterable<CardEntryMode>? cardEntryModes,
@@ -128,18 +89,16 @@ class StartCardReaderRequest extends $pb.GeneratedMessage {
   void clearTimeout() => $_clearField(2);
 }
 
-enum DetectedCardResponse_Type { cardEntryMode, cardTimeout, notSet }
-
 /// / Regresa el tipo de entry Mode o informa si hay timeout.
 class DetectedCardResponse extends $pb.GeneratedMessage {
   factory DetectedCardResponse({
-    CardEntryMode? cardEntryMode,
-    CardTimeout? cardTimeout,
+    CardDetectionResult? result,
+    CardEntryMode? entrymode,
   }) {
-    final result = create();
-    if (cardEntryMode != null) result.cardEntryMode = cardEntryMode;
-    if (cardTimeout != null) result.cardTimeout = cardTimeout;
-    return result;
+    final result$ = create();
+    if (result != null) result$.result = result;
+    if (entrymode != null) result$.entrymode = entrymode;
+    return result$;
   }
 
   DetectedCardResponse._();
@@ -151,25 +110,20 @@ class DetectedCardResponse extends $pb.GeneratedMessage {
           [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(json, registry);
 
-  static const $core.Map<$core.int, DetectedCardResponse_Type>
-      _DetectedCardResponse_TypeByTag = {
-    1: DetectedCardResponse_Type.cardEntryMode,
-    2: DetectedCardResponse_Type.cardTimeout,
-    0: DetectedCardResponse_Type.notSet
-  };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'DetectedCardResponse',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2])
+    ..e<CardDetectionResult>(
+        1, _omitFieldNames ? '' : 'result', $pb.PbFieldType.OE,
+        defaultOrMaker: CardDetectionResult.readSucess,
+        valueOf: CardDetectionResult.valueOf,
+        enumValues: CardDetectionResult.values)
     ..e<CardEntryMode>(
-        1, _omitFieldNames ? '' : 'cardEntryMode', $pb.PbFieldType.OE,
-        protoName: 'cardEntryMode',
+        2, _omitFieldNames ? '' : 'entrymode', $pb.PbFieldType.OE,
         defaultOrMaker: CardEntryMode.manual,
         valueOf: CardEntryMode.valueOf,
         enumValues: CardEntryMode.values)
-    ..aOM<CardTimeout>(2, _omitFieldNames ? '' : 'cardTimeout',
-        protoName: 'cardTimeout', subBuilder: CardTimeout.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -194,29 +148,23 @@ class DetectedCardResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<DetectedCardResponse>(create);
   static DetectedCardResponse? _defaultInstance;
 
-  DetectedCardResponse_Type whichType() =>
-      _DetectedCardResponse_TypeByTag[$_whichOneof(0)]!;
-  void clearType() => $_clearField($_whichOneof(0));
-
   @$pb.TagNumber(1)
-  CardEntryMode get cardEntryMode => $_getN(0);
+  CardDetectionResult get result => $_getN(0);
   @$pb.TagNumber(1)
-  set cardEntryMode(CardEntryMode value) => $_setField(1, value);
+  set result(CardDetectionResult value) => $_setField(1, value);
   @$pb.TagNumber(1)
-  $core.bool hasCardEntryMode() => $_has(0);
+  $core.bool hasResult() => $_has(0);
   @$pb.TagNumber(1)
-  void clearCardEntryMode() => $_clearField(1);
+  void clearResult() => $_clearField(1);
 
   @$pb.TagNumber(2)
-  CardTimeout get cardTimeout => $_getN(1);
+  CardEntryMode get entrymode => $_getN(1);
   @$pb.TagNumber(2)
-  set cardTimeout(CardTimeout value) => $_setField(2, value);
+  set entrymode(CardEntryMode value) => $_setField(2, value);
   @$pb.TagNumber(2)
-  $core.bool hasCardTimeout() => $_has(1);
+  $core.bool hasEntrymode() => $_has(1);
   @$pb.TagNumber(2)
-  void clearCardTimeout() => $_clearField(2);
-  @$pb.TagNumber(2)
-  CardTimeout ensureCardTimeout() => $_ensure(1);
+  void clearEntrymode() => $_clearField(2);
 }
 
 const $core.bool _omitFieldNames =

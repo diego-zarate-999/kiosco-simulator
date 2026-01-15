@@ -31,6 +31,12 @@ enum EmvTxnResult {
     pinCancel          = 10;
 }         
 
+enum PINEntryResult {
+    pinEntrySuccess       = 0;
+    pinEntryTimeout       = 1;
+    pinEntryCancelled     = 2;
+}
+
 message EmvTagEntry {
     string tagId            = 1;
     repeated int32 tagValue = 2;
@@ -62,6 +68,10 @@ message StartPinEntryRequest {
     repeated int32 allowedLength = 4;
 }
 
+message PinEntryResponse {
+    PINEntryResult pinEntryResult = 1;
+}
+
 message CompletePaymentRequest {
     bool successful                         = 1;
     string authorisationResponseCode        = 2;
@@ -84,7 +94,7 @@ message EmvSelectedAppEventResponse {
     string appLabel    = 2;
 }
 
-// Este mensaje regresa datos impotantes de la tarjeta.
+// Este mensaje regresa datos IMPORTANTES de la tarjeta.
 message EmvCardDataResponse {
     string track2         = 1;
     string pan            = 2;
@@ -97,20 +107,6 @@ message EmvGoOnlineEventResponse { }
 
 // Notifica que se require PIN.
 message EmvPinRequestedEventResponse { }
-
-// Se regresa para notificar que ya se esta ingresando el PIN
-message PinEntryStartedResponse { }
-
-// Se regresa cuando hay un timeout en ingreso de pin.
-message PinEntryTimeoutResponse { }
-
-// Se regresa cuando hay un timeout en ingreso de pin.
-message PinEntryCancelledResponse { }
-
-// Resultado de ingreso del PIN.
-message PinEntryFinishedResponse {
-    bool success = 1;
-}
 
 message EmvCancelTransactionResponse { }
 
@@ -140,11 +136,8 @@ message EmvEventNotificationResponse {
         EmvGoOnlineEventResponse emvGoOnlineEventResponse                 = 4;
         EmvFinishEventResponse emvFinishEventResponse                     = 5;
         EmvPinRequestedEventResponse emvPinRequestedEventResponse         = 6;
-        PinEntryStartedResponse pinEntryStartedResponse                   = 7;
-        PinEntryTimeoutResponse pinEntryTimeoutResponse                   = 8;
-        PinEntryCancelledResponse pinEntryCancelledResponse               = 9;
-        PinEntryFinishedResponse pinEntryFinishedResponse                 = 10;
-        EmvCancelTransactionResponse emvCancelTransactionResponse         = 11;
-        EmvSelectedAppEventResponse emvSelectedAppEventResponse           = 12;
+        PinEntryResponse pinEntryResponse                                 = 7;
+        EmvCancelTransactionResponse emvCancelTransactionResponse         = 8;
+        EmvSelectedAppEventResponse emvSelectedAppEventResponse           = 9;
     }
 }

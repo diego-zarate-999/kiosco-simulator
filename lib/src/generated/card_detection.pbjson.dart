@@ -30,14 +30,18 @@ final $typed_data.Uint8List cardEntryModeDescriptor = $convert.base64Decode(
     'Cg1DYXJkRW50cnlNb2RlEgoKBm1hbnVhbBAAEggKBGNoaXAQARISCg5tYWduZXRpY1N0cmlwZR'
     'ACEg8KC2NvbnRhY3RsZXNzEAM=');
 
-@$core.Deprecated('Use cardTimeoutDescriptor instead')
-const CardTimeout$json = {
-  '1': 'CardTimeout',
+@$core.Deprecated('Use cardDetectionResultDescriptor instead')
+const CardDetectionResult$json = {
+  '1': 'CardDetectionResult',
+  '2': [
+    {'1': 'readSucess', '2': 0},
+    {'1': 'cardTimeout', '2': 1},
+  ],
 };
 
-/// Descriptor for `CardTimeout`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List cardTimeoutDescriptor =
-    $convert.base64Decode('CgtDYXJkVGltZW91dA==');
+/// Descriptor for `CardDetectionResult`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List cardDetectionResultDescriptor = $convert.base64Decode(
+    'ChNDYXJkRGV0ZWN0aW9uUmVzdWx0Eg4KCnJlYWRTdWNlc3MQABIPCgtjYXJkVGltZW91dBAB');
 
 @$core.Deprecated('Use startCardReaderRequestDescriptor instead')
 const StartCardReaderRequest$json = {
@@ -66,31 +70,31 @@ const DetectedCardResponse$json = {
   '1': 'DetectedCardResponse',
   '2': [
     {
-      '1': 'cardEntryMode',
+      '1': 'result',
       '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.metaApp.CardDetectionResult',
+      '10': 'result'
+    },
+    {
+      '1': 'entrymode',
+      '3': 2,
       '4': 1,
       '5': 14,
       '6': '.metaApp.CardEntryMode',
       '9': 0,
-      '10': 'cardEntryMode'
-    },
-    {
-      '1': 'cardTimeout',
-      '3': 2,
-      '4': 1,
-      '5': 11,
-      '6': '.metaApp.CardTimeout',
-      '9': 0,
-      '10': 'cardTimeout'
+      '10': 'entrymode',
+      '17': true
     },
   ],
   '8': [
-    {'1': 'type'},
+    {'1': '_entrymode'},
   ],
 };
 
 /// Descriptor for `DetectedCardResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List detectedCardResponseDescriptor = $convert.base64Decode(
-    'ChREZXRlY3RlZENhcmRSZXNwb25zZRI+Cg1jYXJkRW50cnlNb2RlGAEgASgOMhYubWV0YUFwcC'
-    '5DYXJkRW50cnlNb2RlSABSDWNhcmRFbnRyeU1vZGUSOAoLY2FyZFRpbWVvdXQYAiABKAsyFC5t'
-    'ZXRhQXBwLkNhcmRUaW1lb3V0SABSC2NhcmRUaW1lb3V0QgYKBHR5cGU=');
+    'ChREZXRlY3RlZENhcmRSZXNwb25zZRI0CgZyZXN1bHQYASABKA4yHC5tZXRhQXBwLkNhcmREZX'
+    'RlY3Rpb25SZXN1bHRSBnJlc3VsdBI5CgllbnRyeW1vZGUYAiABKA4yFi5tZXRhQXBwLkNhcmRF'
+    'bnRyeU1vZGVIAFIJZW50cnltb2RliAEBQgwKCl9lbnRyeW1vZGU=');

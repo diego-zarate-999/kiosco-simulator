@@ -101,5 +101,27 @@ class EmvTxnResult extends $pb.ProtobufEnum {
   const EmvTxnResult._(super.value, super.name);
 }
 
+class PINEntryResult extends $pb.ProtobufEnum {
+  static const PINEntryResult pinEntrySuccess =
+      PINEntryResult._(0, _omitEnumNames ? '' : 'pinEntrySuccess');
+  static const PINEntryResult pinEntryTimeout =
+      PINEntryResult._(1, _omitEnumNames ? '' : 'pinEntryTimeout');
+  static const PINEntryResult pinEntryCancelled =
+      PINEntryResult._(2, _omitEnumNames ? '' : 'pinEntryCancelled');
+
+  static const $core.List<PINEntryResult> values = <PINEntryResult>[
+    pinEntrySuccess,
+    pinEntryTimeout,
+    pinEntryCancelled,
+  ];
+
+  static final $core.List<PINEntryResult?> _byValue =
+      $pb.ProtobufEnum.$_initByValueList(values, 2);
+  static PINEntryResult? valueOf($core.int value) =>
+      value < 0 || value >= _byValue.length ? null : _byValue[value];
+
+  const PINEntryResult._(super.value, super.name);
+}
+
 const $core.bool _omitEnumNames =
     $core.bool.fromEnvironment('protobuf.omit_enum_names');

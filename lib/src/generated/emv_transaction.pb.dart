@@ -446,6 +446,67 @@ class StartPinEntryRequest extends $pb.GeneratedMessage {
   $pb.PbList<$core.int> get allowedLength => $_getList(3);
 }
 
+class PinEntryResponse extends $pb.GeneratedMessage {
+  factory PinEntryResponse({
+    PINEntryResult? pinEntryResult,
+  }) {
+    final result = create();
+    if (pinEntryResult != null) result.pinEntryResult = pinEntryResult;
+    return result;
+  }
+
+  PinEntryResponse._();
+
+  factory PinEntryResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory PinEntryResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'PinEntryResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
+      createEmptyInstance: create)
+    ..e<PINEntryResult>(
+        1, _omitFieldNames ? '' : 'pinEntryResult', $pb.PbFieldType.OE,
+        protoName: 'pinEntryResult',
+        defaultOrMaker: PINEntryResult.pinEntrySuccess,
+        valueOf: PINEntryResult.valueOf,
+        enumValues: PINEntryResult.values)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  PinEntryResponse clone() => PinEntryResponse()..mergeFromMessage(this);
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  PinEntryResponse copyWith(void Function(PinEntryResponse) updates) =>
+      super.copyWith((message) => updates(message as PinEntryResponse))
+          as PinEntryResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static PinEntryResponse create() => PinEntryResponse._();
+  @$core.override
+  PinEntryResponse createEmptyInstance() => create();
+  static $pb.PbList<PinEntryResponse> createRepeated() =>
+      $pb.PbList<PinEntryResponse>();
+  @$core.pragma('dart2js:noInline')
+  static PinEntryResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<PinEntryResponse>(create);
+  static PinEntryResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  PINEntryResult get pinEntryResult => $_getN(0);
+  @$pb.TagNumber(1)
+  set pinEntryResult(PINEntryResult value) => $_setField(1, value);
+  @$pb.TagNumber(1)
+  $core.bool hasPinEntryResult() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPinEntryResult() => $_clearField(1);
+}
+
 class CompletePaymentRequest extends $pb.GeneratedMessage {
   factory CompletePaymentRequest({
     $core.bool? successful,
@@ -724,7 +785,7 @@ class EmvSelectedAppEventResponse extends $pb.GeneratedMessage {
   void clearAppLabel() => $_clearField(2);
 }
 
-/// Este mensaje regresa datos impotantes de la tarjeta.
+/// Este mensaje regresa datos IMPORTANTES de la tarjeta.
 class EmvCardDataResponse extends $pb.GeneratedMessage {
   factory EmvCardDataResponse({
     $core.String? track2,
@@ -905,194 +966,6 @@ class EmvPinRequestedEventResponse extends $pb.GeneratedMessage {
   static EmvPinRequestedEventResponse getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<EmvPinRequestedEventResponse>(create);
   static EmvPinRequestedEventResponse? _defaultInstance;
-}
-
-/// Se regresa para notificar que ya se esta ingresando el PIN
-class PinEntryStartedResponse extends $pb.GeneratedMessage {
-  factory PinEntryStartedResponse() => create();
-
-  PinEntryStartedResponse._();
-
-  factory PinEntryStartedResponse.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(data, registry);
-  factory PinEntryStartedResponse.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'PinEntryStartedResponse',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
-      createEmptyInstance: create)
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  PinEntryStartedResponse clone() =>
-      PinEntryStartedResponse()..mergeFromMessage(this);
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  PinEntryStartedResponse copyWith(
-          void Function(PinEntryStartedResponse) updates) =>
-      super.copyWith((message) => updates(message as PinEntryStartedResponse))
-          as PinEntryStartedResponse;
-
-  @$core.override
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static PinEntryStartedResponse create() => PinEntryStartedResponse._();
-  @$core.override
-  PinEntryStartedResponse createEmptyInstance() => create();
-  static $pb.PbList<PinEntryStartedResponse> createRepeated() =>
-      $pb.PbList<PinEntryStartedResponse>();
-  @$core.pragma('dart2js:noInline')
-  static PinEntryStartedResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<PinEntryStartedResponse>(create);
-  static PinEntryStartedResponse? _defaultInstance;
-}
-
-/// Se regresa cuando hay un timeout en ingreso de pin.
-class PinEntryTimeoutResponse extends $pb.GeneratedMessage {
-  factory PinEntryTimeoutResponse() => create();
-
-  PinEntryTimeoutResponse._();
-
-  factory PinEntryTimeoutResponse.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(data, registry);
-  factory PinEntryTimeoutResponse.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'PinEntryTimeoutResponse',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
-      createEmptyInstance: create)
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  PinEntryTimeoutResponse clone() =>
-      PinEntryTimeoutResponse()..mergeFromMessage(this);
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  PinEntryTimeoutResponse copyWith(
-          void Function(PinEntryTimeoutResponse) updates) =>
-      super.copyWith((message) => updates(message as PinEntryTimeoutResponse))
-          as PinEntryTimeoutResponse;
-
-  @$core.override
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static PinEntryTimeoutResponse create() => PinEntryTimeoutResponse._();
-  @$core.override
-  PinEntryTimeoutResponse createEmptyInstance() => create();
-  static $pb.PbList<PinEntryTimeoutResponse> createRepeated() =>
-      $pb.PbList<PinEntryTimeoutResponse>();
-  @$core.pragma('dart2js:noInline')
-  static PinEntryTimeoutResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<PinEntryTimeoutResponse>(create);
-  static PinEntryTimeoutResponse? _defaultInstance;
-}
-
-/// Se regresa cuando hay un timeout en ingreso de pin.
-class PinEntryCancelledResponse extends $pb.GeneratedMessage {
-  factory PinEntryCancelledResponse() => create();
-
-  PinEntryCancelledResponse._();
-
-  factory PinEntryCancelledResponse.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(data, registry);
-  factory PinEntryCancelledResponse.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'PinEntryCancelledResponse',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
-      createEmptyInstance: create)
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  PinEntryCancelledResponse clone() =>
-      PinEntryCancelledResponse()..mergeFromMessage(this);
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  PinEntryCancelledResponse copyWith(
-          void Function(PinEntryCancelledResponse) updates) =>
-      super.copyWith((message) => updates(message as PinEntryCancelledResponse))
-          as PinEntryCancelledResponse;
-
-  @$core.override
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static PinEntryCancelledResponse create() => PinEntryCancelledResponse._();
-  @$core.override
-  PinEntryCancelledResponse createEmptyInstance() => create();
-  static $pb.PbList<PinEntryCancelledResponse> createRepeated() =>
-      $pb.PbList<PinEntryCancelledResponse>();
-  @$core.pragma('dart2js:noInline')
-  static PinEntryCancelledResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<PinEntryCancelledResponse>(create);
-  static PinEntryCancelledResponse? _defaultInstance;
-}
-
-/// Resultado de ingreso del PIN.
-class PinEntryFinishedResponse extends $pb.GeneratedMessage {
-  factory PinEntryFinishedResponse({
-    $core.bool? success,
-  }) {
-    final result = create();
-    if (success != null) result.success = success;
-    return result;
-  }
-
-  PinEntryFinishedResponse._();
-
-  factory PinEntryFinishedResponse.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(data, registry);
-  factory PinEntryFinishedResponse.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'PinEntryFinishedResponse',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
-      createEmptyInstance: create)
-    ..aOB(1, _omitFieldNames ? '' : 'success')
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  PinEntryFinishedResponse clone() =>
-      PinEntryFinishedResponse()..mergeFromMessage(this);
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  PinEntryFinishedResponse copyWith(
-          void Function(PinEntryFinishedResponse) updates) =>
-      super.copyWith((message) => updates(message as PinEntryFinishedResponse))
-          as PinEntryFinishedResponse;
-
-  @$core.override
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static PinEntryFinishedResponse create() => PinEntryFinishedResponse._();
-  @$core.override
-  PinEntryFinishedResponse createEmptyInstance() => create();
-  static $pb.PbList<PinEntryFinishedResponse> createRepeated() =>
-      $pb.PbList<PinEntryFinishedResponse>();
-  @$core.pragma('dart2js:noInline')
-  static PinEntryFinishedResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<PinEntryFinishedResponse>(create);
-  static PinEntryFinishedResponse? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.bool get success => $_getBF(0);
-  @$pb.TagNumber(1)
-  set success($core.bool value) => $_setBool(0, value);
-  @$pb.TagNumber(1)
-  $core.bool hasSuccess() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearSuccess() => $_clearField(1);
 }
 
 class EmvCancelTransactionResponse extends $pb.GeneratedMessage {
@@ -1379,10 +1252,7 @@ enum EmvEventNotificationResponse_Type {
   emvGoOnlineEventResponse,
   emvFinishEventResponse,
   emvPinRequestedEventResponse,
-  pinEntryStartedResponse,
-  pinEntryTimeoutResponse,
-  pinEntryCancelledResponse,
-  pinEntryFinishedResponse,
+  pinEntryResponse,
   emvCancelTransactionResponse,
   emvSelectedAppEventResponse,
   notSet
@@ -1396,10 +1266,7 @@ class EmvEventNotificationResponse extends $pb.GeneratedMessage {
     EmvGoOnlineEventResponse? emvGoOnlineEventResponse,
     EmvFinishEventResponse? emvFinishEventResponse,
     EmvPinRequestedEventResponse? emvPinRequestedEventResponse,
-    PinEntryStartedResponse? pinEntryStartedResponse,
-    PinEntryTimeoutResponse? pinEntryTimeoutResponse,
-    PinEntryCancelledResponse? pinEntryCancelledResponse,
-    PinEntryFinishedResponse? pinEntryFinishedResponse,
+    PinEntryResponse? pinEntryResponse,
     EmvCancelTransactionResponse? emvCancelTransactionResponse,
     EmvSelectedAppEventResponse? emvSelectedAppEventResponse,
   }) {
@@ -1416,14 +1283,7 @@ class EmvEventNotificationResponse extends $pb.GeneratedMessage {
       result.emvFinishEventResponse = emvFinishEventResponse;
     if (emvPinRequestedEventResponse != null)
       result.emvPinRequestedEventResponse = emvPinRequestedEventResponse;
-    if (pinEntryStartedResponse != null)
-      result.pinEntryStartedResponse = pinEntryStartedResponse;
-    if (pinEntryTimeoutResponse != null)
-      result.pinEntryTimeoutResponse = pinEntryTimeoutResponse;
-    if (pinEntryCancelledResponse != null)
-      result.pinEntryCancelledResponse = pinEntryCancelledResponse;
-    if (pinEntryFinishedResponse != null)
-      result.pinEntryFinishedResponse = pinEntryFinishedResponse;
+    if (pinEntryResponse != null) result.pinEntryResponse = pinEntryResponse;
     if (emvCancelTransactionResponse != null)
       result.emvCancelTransactionResponse = emvCancelTransactionResponse;
     if (emvSelectedAppEventResponse != null)
@@ -1448,19 +1308,16 @@ class EmvEventNotificationResponse extends $pb.GeneratedMessage {
     4: EmvEventNotificationResponse_Type.emvGoOnlineEventResponse,
     5: EmvEventNotificationResponse_Type.emvFinishEventResponse,
     6: EmvEventNotificationResponse_Type.emvPinRequestedEventResponse,
-    7: EmvEventNotificationResponse_Type.pinEntryStartedResponse,
-    8: EmvEventNotificationResponse_Type.pinEntryTimeoutResponse,
-    9: EmvEventNotificationResponse_Type.pinEntryCancelledResponse,
-    10: EmvEventNotificationResponse_Type.pinEntryFinishedResponse,
-    11: EmvEventNotificationResponse_Type.emvCancelTransactionResponse,
-    12: EmvEventNotificationResponse_Type.emvSelectedAppEventResponse,
+    7: EmvEventNotificationResponse_Type.pinEntryResponse,
+    8: EmvEventNotificationResponse_Type.emvCancelTransactionResponse,
+    9: EmvEventNotificationResponse_Type.emvSelectedAppEventResponse,
     0: EmvEventNotificationResponse_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'EmvEventNotificationResponse',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'metaApp'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9])
     ..aOM<RetryTransactionResponse>(
         1, _omitFieldNames ? '' : 'retryTransactionResponse',
         protoName: 'retryTransactionResponse',
@@ -1484,28 +1341,14 @@ class EmvEventNotificationResponse extends $pb.GeneratedMessage {
         6, _omitFieldNames ? '' : 'emvPinRequestedEventResponse',
         protoName: 'emvPinRequestedEventResponse',
         subBuilder: EmvPinRequestedEventResponse.create)
-    ..aOM<PinEntryStartedResponse>(
-        7, _omitFieldNames ? '' : 'pinEntryStartedResponse',
-        protoName: 'pinEntryStartedResponse',
-        subBuilder: PinEntryStartedResponse.create)
-    ..aOM<PinEntryTimeoutResponse>(
-        8, _omitFieldNames ? '' : 'pinEntryTimeoutResponse',
-        protoName: 'pinEntryTimeoutResponse',
-        subBuilder: PinEntryTimeoutResponse.create)
-    ..aOM<PinEntryCancelledResponse>(
-        9, _omitFieldNames ? '' : 'pinEntryCancelledResponse',
-        protoName: 'pinEntryCancelledResponse',
-        subBuilder: PinEntryCancelledResponse.create)
-    ..aOM<PinEntryFinishedResponse>(
-        10, _omitFieldNames ? '' : 'pinEntryFinishedResponse',
-        protoName: 'pinEntryFinishedResponse',
-        subBuilder: PinEntryFinishedResponse.create)
+    ..aOM<PinEntryResponse>(7, _omitFieldNames ? '' : 'pinEntryResponse',
+        protoName: 'pinEntryResponse', subBuilder: PinEntryResponse.create)
     ..aOM<EmvCancelTransactionResponse>(
-        11, _omitFieldNames ? '' : 'emvCancelTransactionResponse',
+        8, _omitFieldNames ? '' : 'emvCancelTransactionResponse',
         protoName: 'emvCancelTransactionResponse',
         subBuilder: EmvCancelTransactionResponse.create)
     ..aOM<EmvSelectedAppEventResponse>(
-        12, _omitFieldNames ? '' : 'emvSelectedAppEventResponse',
+        9, _omitFieldNames ? '' : 'emvSelectedAppEventResponse',
         protoName: 'emvSelectedAppEventResponse',
         subBuilder: EmvSelectedAppEventResponse.create)
     ..hasRequiredFields = false;
@@ -1613,78 +1456,41 @@ class EmvEventNotificationResponse extends $pb.GeneratedMessage {
       $_ensure(5);
 
   @$pb.TagNumber(7)
-  PinEntryStartedResponse get pinEntryStartedResponse => $_getN(6);
+  PinEntryResponse get pinEntryResponse => $_getN(6);
   @$pb.TagNumber(7)
-  set pinEntryStartedResponse(PinEntryStartedResponse value) =>
-      $_setField(7, value);
+  set pinEntryResponse(PinEntryResponse value) => $_setField(7, value);
   @$pb.TagNumber(7)
-  $core.bool hasPinEntryStartedResponse() => $_has(6);
+  $core.bool hasPinEntryResponse() => $_has(6);
   @$pb.TagNumber(7)
-  void clearPinEntryStartedResponse() => $_clearField(7);
+  void clearPinEntryResponse() => $_clearField(7);
   @$pb.TagNumber(7)
-  PinEntryStartedResponse ensurePinEntryStartedResponse() => $_ensure(6);
+  PinEntryResponse ensurePinEntryResponse() => $_ensure(6);
 
   @$pb.TagNumber(8)
-  PinEntryTimeoutResponse get pinEntryTimeoutResponse => $_getN(7);
+  EmvCancelTransactionResponse get emvCancelTransactionResponse => $_getN(7);
   @$pb.TagNumber(8)
-  set pinEntryTimeoutResponse(PinEntryTimeoutResponse value) =>
+  set emvCancelTransactionResponse(EmvCancelTransactionResponse value) =>
       $_setField(8, value);
   @$pb.TagNumber(8)
-  $core.bool hasPinEntryTimeoutResponse() => $_has(7);
+  $core.bool hasEmvCancelTransactionResponse() => $_has(7);
   @$pb.TagNumber(8)
-  void clearPinEntryTimeoutResponse() => $_clearField(8);
+  void clearEmvCancelTransactionResponse() => $_clearField(8);
   @$pb.TagNumber(8)
-  PinEntryTimeoutResponse ensurePinEntryTimeoutResponse() => $_ensure(7);
+  EmvCancelTransactionResponse ensureEmvCancelTransactionResponse() =>
+      $_ensure(7);
 
   @$pb.TagNumber(9)
-  PinEntryCancelledResponse get pinEntryCancelledResponse => $_getN(8);
+  EmvSelectedAppEventResponse get emvSelectedAppEventResponse => $_getN(8);
   @$pb.TagNumber(9)
-  set pinEntryCancelledResponse(PinEntryCancelledResponse value) =>
+  set emvSelectedAppEventResponse(EmvSelectedAppEventResponse value) =>
       $_setField(9, value);
   @$pb.TagNumber(9)
-  $core.bool hasPinEntryCancelledResponse() => $_has(8);
+  $core.bool hasEmvSelectedAppEventResponse() => $_has(8);
   @$pb.TagNumber(9)
-  void clearPinEntryCancelledResponse() => $_clearField(9);
+  void clearEmvSelectedAppEventResponse() => $_clearField(9);
   @$pb.TagNumber(9)
-  PinEntryCancelledResponse ensurePinEntryCancelledResponse() => $_ensure(8);
-
-  @$pb.TagNumber(10)
-  PinEntryFinishedResponse get pinEntryFinishedResponse => $_getN(9);
-  @$pb.TagNumber(10)
-  set pinEntryFinishedResponse(PinEntryFinishedResponse value) =>
-      $_setField(10, value);
-  @$pb.TagNumber(10)
-  $core.bool hasPinEntryFinishedResponse() => $_has(9);
-  @$pb.TagNumber(10)
-  void clearPinEntryFinishedResponse() => $_clearField(10);
-  @$pb.TagNumber(10)
-  PinEntryFinishedResponse ensurePinEntryFinishedResponse() => $_ensure(9);
-
-  @$pb.TagNumber(11)
-  EmvCancelTransactionResponse get emvCancelTransactionResponse => $_getN(10);
-  @$pb.TagNumber(11)
-  set emvCancelTransactionResponse(EmvCancelTransactionResponse value) =>
-      $_setField(11, value);
-  @$pb.TagNumber(11)
-  $core.bool hasEmvCancelTransactionResponse() => $_has(10);
-  @$pb.TagNumber(11)
-  void clearEmvCancelTransactionResponse() => $_clearField(11);
-  @$pb.TagNumber(11)
-  EmvCancelTransactionResponse ensureEmvCancelTransactionResponse() =>
-      $_ensure(10);
-
-  @$pb.TagNumber(12)
-  EmvSelectedAppEventResponse get emvSelectedAppEventResponse => $_getN(11);
-  @$pb.TagNumber(12)
-  set emvSelectedAppEventResponse(EmvSelectedAppEventResponse value) =>
-      $_setField(12, value);
-  @$pb.TagNumber(12)
-  $core.bool hasEmvSelectedAppEventResponse() => $_has(11);
-  @$pb.TagNumber(12)
-  void clearEmvSelectedAppEventResponse() => $_clearField(12);
-  @$pb.TagNumber(12)
   EmvSelectedAppEventResponse ensureEmvSelectedAppEventResponse() =>
-      $_ensure(11);
+      $_ensure(8);
 }
 
 const $core.bool _omitFieldNames =

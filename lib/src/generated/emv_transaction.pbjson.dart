@@ -67,6 +67,21 @@ final $typed_data.Uint8List emvTxnResultDescriptor = $convert.base64Decode(
     'CWNhcmRCbG9jaxAHEhYKEnJlZmVyUGF5bWVudERldmljZRAIEg4KCnBpblRpbWVvdXQQCRINCg'
     'lwaW5DYW5jZWwQCg==');
 
+@$core.Deprecated('Use pINEntryResultDescriptor instead')
+const PINEntryResult$json = {
+  '1': 'PINEntryResult',
+  '2': [
+    {'1': 'pinEntrySuccess', '2': 0},
+    {'1': 'pinEntryTimeout', '2': 1},
+    {'1': 'pinEntryCancelled', '2': 2},
+  ],
+};
+
+/// Descriptor for `PINEntryResult`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List pINEntryResultDescriptor = $convert.base64Decode(
+    'Cg5QSU5FbnRyeVJlc3VsdBITCg9waW5FbnRyeVN1Y2Nlc3MQABITCg9waW5FbnRyeVRpbWVvdX'
+    'QQARIVChFwaW5FbnRyeUNhbmNlbGxlZBAC');
+
 @$core.Deprecated('Use emvTagEntryDescriptor instead')
 const EmvTagEntry$json = {
   '1': 'EmvTagEntry',
@@ -227,6 +242,26 @@ final $typed_data.Uint8List startPinEntryRequestDescriptor = $convert.base64Deco
     'ZXJNb2RlUgpjaXBoZXJNb2RlEiQKDWFsbG93ZWRMZW5ndGgYBCADKAVSDWFsbG93ZWRMZW5ndG'
     'g=');
 
+@$core.Deprecated('Use pinEntryResponseDescriptor instead')
+const PinEntryResponse$json = {
+  '1': 'PinEntryResponse',
+  '2': [
+    {
+      '1': 'pinEntryResult',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.metaApp.PINEntryResult',
+      '10': 'pinEntryResult'
+    },
+  ],
+};
+
+/// Descriptor for `PinEntryResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List pinEntryResponseDescriptor = $convert.base64Decode(
+    'ChBQaW5FbnRyeVJlc3BvbnNlEj8KDnBpbkVudHJ5UmVzdWx0GAEgASgOMhcubWV0YUFwcC5QSU'
+    '5FbnRyeVJlc3VsdFIOcGluRW50cnlSZXN1bHQ=');
+
 @$core.Deprecated('Use completePaymentRequestDescriptor instead')
 const CompletePaymentRequest$json = {
   '1': 'CompletePaymentRequest',
@@ -341,46 +376,6 @@ const EmvPinRequestedEventResponse$json = {
 /// Descriptor for `EmvPinRequestedEventResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List emvPinRequestedEventResponseDescriptor =
     $convert.base64Decode('ChxFbXZQaW5SZXF1ZXN0ZWRFdmVudFJlc3BvbnNl');
-
-@$core.Deprecated('Use pinEntryStartedResponseDescriptor instead')
-const PinEntryStartedResponse$json = {
-  '1': 'PinEntryStartedResponse',
-};
-
-/// Descriptor for `PinEntryStartedResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List pinEntryStartedResponseDescriptor =
-    $convert.base64Decode('ChdQaW5FbnRyeVN0YXJ0ZWRSZXNwb25zZQ==');
-
-@$core.Deprecated('Use pinEntryTimeoutResponseDescriptor instead')
-const PinEntryTimeoutResponse$json = {
-  '1': 'PinEntryTimeoutResponse',
-};
-
-/// Descriptor for `PinEntryTimeoutResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List pinEntryTimeoutResponseDescriptor =
-    $convert.base64Decode('ChdQaW5FbnRyeVRpbWVvdXRSZXNwb25zZQ==');
-
-@$core.Deprecated('Use pinEntryCancelledResponseDescriptor instead')
-const PinEntryCancelledResponse$json = {
-  '1': 'PinEntryCancelledResponse',
-};
-
-/// Descriptor for `PinEntryCancelledResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List pinEntryCancelledResponseDescriptor =
-    $convert.base64Decode('ChlQaW5FbnRyeUNhbmNlbGxlZFJlc3BvbnNl');
-
-@$core.Deprecated('Use pinEntryFinishedResponseDescriptor instead')
-const PinEntryFinishedResponse$json = {
-  '1': 'PinEntryFinishedResponse',
-  '2': [
-    {'1': 'success', '3': 1, '4': 1, '5': 8, '10': 'success'},
-  ],
-};
-
-/// Descriptor for `PinEntryFinishedResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List pinEntryFinishedResponseDescriptor =
-    $convert.base64Decode(
-        'ChhQaW5FbnRyeUZpbmlzaGVkUmVzcG9uc2USGAoHc3VjY2VzcxgBIAEoCFIHc3VjY2Vzcw==');
 
 @$core.Deprecated('Use emvCancelTransactionResponseDescriptor instead')
 const EmvCancelTransactionResponse$json = {
@@ -533,44 +528,17 @@ const EmvEventNotificationResponse$json = {
       '10': 'emvPinRequestedEventResponse'
     },
     {
-      '1': 'pinEntryStartedResponse',
+      '1': 'pinEntryResponse',
       '3': 7,
       '4': 1,
       '5': 11,
-      '6': '.metaApp.PinEntryStartedResponse',
+      '6': '.metaApp.PinEntryResponse',
       '9': 0,
-      '10': 'pinEntryStartedResponse'
-    },
-    {
-      '1': 'pinEntryTimeoutResponse',
-      '3': 8,
-      '4': 1,
-      '5': 11,
-      '6': '.metaApp.PinEntryTimeoutResponse',
-      '9': 0,
-      '10': 'pinEntryTimeoutResponse'
-    },
-    {
-      '1': 'pinEntryCancelledResponse',
-      '3': 9,
-      '4': 1,
-      '5': 11,
-      '6': '.metaApp.PinEntryCancelledResponse',
-      '9': 0,
-      '10': 'pinEntryCancelledResponse'
-    },
-    {
-      '1': 'pinEntryFinishedResponse',
-      '3': 10,
-      '4': 1,
-      '5': 11,
-      '6': '.metaApp.PinEntryFinishedResponse',
-      '9': 0,
-      '10': 'pinEntryFinishedResponse'
+      '10': 'pinEntryResponse'
     },
     {
       '1': 'emvCancelTransactionResponse',
-      '3': 11,
+      '3': 8,
       '4': 1,
       '5': 11,
       '6': '.metaApp.EmvCancelTransactionResponse',
@@ -579,7 +547,7 @@ const EmvEventNotificationResponse$json = {
     },
     {
       '1': 'emvSelectedAppEventResponse',
-      '3': 12,
+      '3': 9,
       '4': 1,
       '5': 11,
       '6': '.metaApp.EmvSelectedAppEventResponse',
@@ -605,15 +573,9 @@ final $typed_data.Uint8List emvEventNotificationResponseDescriptor = $convert.ba
     'GAUgASgLMh8ubWV0YUFwcC5FbXZGaW5pc2hFdmVudFJlc3BvbnNlSABSFmVtdkZpbmlzaEV2ZW'
     '50UmVzcG9uc2USawocZW12UGluUmVxdWVzdGVkRXZlbnRSZXNwb25zZRgGIAEoCzIlLm1ldGFB'
     'cHAuRW12UGluUmVxdWVzdGVkRXZlbnRSZXNwb25zZUgAUhxlbXZQaW5SZXF1ZXN0ZWRFdmVudF'
-    'Jlc3BvbnNlElwKF3BpbkVudHJ5U3RhcnRlZFJlc3BvbnNlGAcgASgLMiAubWV0YUFwcC5QaW5F'
-    'bnRyeVN0YXJ0ZWRSZXNwb25zZUgAUhdwaW5FbnRyeVN0YXJ0ZWRSZXNwb25zZRJcChdwaW5Fbn'
-    'RyeVRpbWVvdXRSZXNwb25zZRgIIAEoCzIgLm1ldGFBcHAuUGluRW50cnlUaW1lb3V0UmVzcG9u'
-    'c2VIAFIXcGluRW50cnlUaW1lb3V0UmVzcG9uc2USYgoZcGluRW50cnlDYW5jZWxsZWRSZXNwb2'
-    '5zZRgJIAEoCzIiLm1ldGFBcHAuUGluRW50cnlDYW5jZWxsZWRSZXNwb25zZUgAUhlwaW5FbnRy'
-    'eUNhbmNlbGxlZFJlc3BvbnNlEl8KGHBpbkVudHJ5RmluaXNoZWRSZXNwb25zZRgKIAEoCzIhLm'
-    '1ldGFBcHAuUGluRW50cnlGaW5pc2hlZFJlc3BvbnNlSABSGHBpbkVudHJ5RmluaXNoZWRSZXNw'
-    'b25zZRJrChxlbXZDYW5jZWxUcmFuc2FjdGlvblJlc3BvbnNlGAsgASgLMiUubWV0YUFwcC5FbX'
-    'ZDYW5jZWxUcmFuc2FjdGlvblJlc3BvbnNlSABSHGVtdkNhbmNlbFRyYW5zYWN0aW9uUmVzcG9u'
-    'c2USaAobZW12U2VsZWN0ZWRBcHBFdmVudFJlc3BvbnNlGAwgASgLMiQubWV0YUFwcC5FbXZTZW'
-    'xlY3RlZEFwcEV2ZW50UmVzcG9uc2VIAFIbZW12U2VsZWN0ZWRBcHBFdmVudFJlc3BvbnNlQgYK'
-    'BHR5cGU=');
+    'Jlc3BvbnNlEkcKEHBpbkVudHJ5UmVzcG9uc2UYByABKAsyGS5tZXRhQXBwLlBpbkVudHJ5UmVz'
+    'cG9uc2VIAFIQcGluRW50cnlSZXNwb25zZRJrChxlbXZDYW5jZWxUcmFuc2FjdGlvblJlc3Bvbn'
+    'NlGAggASgLMiUubWV0YUFwcC5FbXZDYW5jZWxUcmFuc2FjdGlvblJlc3BvbnNlSABSHGVtdkNh'
+    'bmNlbFRyYW5zYWN0aW9uUmVzcG9uc2USaAobZW12U2VsZWN0ZWRBcHBFdmVudFJlc3BvbnNlGA'
+    'kgASgLMiQubWV0YUFwcC5FbXZTZWxlY3RlZEFwcEV2ZW50UmVzcG9uc2VIAFIbZW12U2VsZWN0'
+    'ZWRBcHBFdmVudFJlc3BvbnNlQgYKBHR5cGU=');

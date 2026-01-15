@@ -39,5 +39,24 @@ class CardEntryMode extends $pb.ProtobufEnum {
   const CardEntryMode._(super.value, super.name);
 }
 
+class CardDetectionResult extends $pb.ProtobufEnum {
+  static const CardDetectionResult readSucess =
+      CardDetectionResult._(0, _omitEnumNames ? '' : 'readSucess');
+  static const CardDetectionResult cardTimeout =
+      CardDetectionResult._(1, _omitEnumNames ? '' : 'cardTimeout');
+
+  static const $core.List<CardDetectionResult> values = <CardDetectionResult>[
+    readSucess,
+    cardTimeout,
+  ];
+
+  static final $core.List<CardDetectionResult?> _byValue =
+      $pb.ProtobufEnum.$_initByValueList(values, 1);
+  static CardDetectionResult? valueOf($core.int value) =>
+      value < 0 || value >= _byValue.length ? null : _byValue[value];
+
+  const CardDetectionResult._(super.value, super.name);
+}
+
 const $core.bool _omitEnumNames =
     $core.bool.fromEnvironment('protobuf.omit_enum_names');
