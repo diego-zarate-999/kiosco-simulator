@@ -36,12 +36,14 @@ const CardDetectionResult$json = {
   '2': [
     {'1': 'readSucess', '2': 0},
     {'1': 'cardTimeout', '2': 1},
+    {'1': 'cardEntryCancel', '2': 2},
   ],
 };
 
 /// Descriptor for `CardDetectionResult`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List cardDetectionResultDescriptor = $convert.base64Decode(
-    'ChNDYXJkRGV0ZWN0aW9uUmVzdWx0Eg4KCnJlYWRTdWNlc3MQABIPCgtjYXJkVGltZW91dBAB');
+    'ChNDYXJkRGV0ZWN0aW9uUmVzdWx0Eg4KCnJlYWRTdWNlc3MQABIPCgtjYXJkVGltZW91dBABEh'
+    'MKD2NhcmRFbnRyeUNhbmNlbBAC');
 
 @$core.Deprecated('Use startCardReaderRequestDescriptor instead')
 const StartCardReaderRequest$json = {

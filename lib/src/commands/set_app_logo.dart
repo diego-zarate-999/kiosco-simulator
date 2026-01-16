@@ -34,15 +34,14 @@ Future<void> setAppLogo(String path) async {
 
 Future<Uint8List> prepareImageForSending(
   String path, {
-  int maxWidth = 420,
-  int quality = 60,
+  int maxWidth = 360,
+  int quality = 80,
 }) async {
   final bytes = await File(path).readAsBytes();
   final image = img.decodeImage(bytes);
   if (image == null) throw Exception('No se pudo decodificar la imagen');
 
   final resized = img.copyResize(image, width: maxWidth);
-
   final jpegBytes = img.encodeJpg(resized, quality: quality);
 
   return Uint8List.fromList(jpegBytes);

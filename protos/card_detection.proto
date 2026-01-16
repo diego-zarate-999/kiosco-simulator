@@ -10,8 +10,9 @@ enum CardEntryMode {
 }
 
 enum CardDetectionResult {
-    readSucess  = 0;
-    cardTimeout = 1;
+    readSucess      = 0;
+    cardTimeout     = 1;
+    cardEntryCancel = 2;
 }
 
 message StartCardReaderRequest {

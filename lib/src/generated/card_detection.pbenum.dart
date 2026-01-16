@@ -44,14 +44,17 @@ class CardDetectionResult extends $pb.ProtobufEnum {
       CardDetectionResult._(0, _omitEnumNames ? '' : 'readSucess');
   static const CardDetectionResult cardTimeout =
       CardDetectionResult._(1, _omitEnumNames ? '' : 'cardTimeout');
+  static const CardDetectionResult cardEntryCancel =
+      CardDetectionResult._(2, _omitEnumNames ? '' : 'cardEntryCancel');
 
   static const $core.List<CardDetectionResult> values = <CardDetectionResult>[
     readSucess,
     cardTimeout,
+    cardEntryCancel,
   ];
 
   static final $core.List<CardDetectionResult?> _byValue =
-      $pb.ProtobufEnum.$_initByValueList(values, 1);
+      $pb.ProtobufEnum.$_initByValueList(values, 2);
   static CardDetectionResult? valueOf($core.int value) =>
       value < 0 || value >= _byValue.length ? null : _byValue[value];
 

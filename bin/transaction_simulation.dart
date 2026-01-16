@@ -57,6 +57,12 @@ void main() async {
         return;
       }
 
+      if (cardDetectedResponse.detectedCardResponse.result ==
+          CardDetectionResult.cardEntryCancel) {
+        printRed("Operación cancelada por usuario");
+        return;
+      }
+
       final selectedEntryMode =
           cardDetectedResponse.detectedCardResponse.entrymode;
       printBlue("Se lee tarjeta con entry mode = $selectedEntryMode");
